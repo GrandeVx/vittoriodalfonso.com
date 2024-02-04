@@ -24,7 +24,7 @@ export default function RootLayout({
       <body
         className={cn(
           inter.className,
-          "relative h-screen w-full bg-background",
+          "relative h-screen w-screen bg-background",
         )}
       >
         <ThemeProvider
@@ -35,7 +35,7 @@ export default function RootLayout({
         >
           <main className="md:hidden">
             <section className="">{children}</section>
-            <span className="absolute bottom-0 left-0 ">
+            <span className="absolute bottom-0">
               <MobileMenu />
             </span>
           </main>
@@ -48,15 +48,15 @@ export default function RootLayout({
           </main>
 
           <main className="hidden h-screen lg:flex xl:hidden">
-            <section className="w-8/12">{children}</section>
+            <section className="w-11/12">{children}</section>
             <section className="w-4/12">
               <DesktopMenu />
             </section>
           </main>
 
           <main className="hidden h-screen xl:flex">
-            <section className="w-9/12">{children}</section>
-            <section className="w-3/12">
+            <section className="w-[80%]">{children}</section>
+            <section className="w-[20%]">
               <DesktopMenu />
             </section>
           </main>

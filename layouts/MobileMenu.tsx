@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/drawer";
 
 import { usePathname } from "next/navigation";
+import DesktopMenu from "./DesktopMenu";
 
 export default function MobileMenu() {
   const pathname = usePathname();
@@ -37,11 +38,12 @@ export default function MobileMenu() {
         </section>
       </DrawerTrigger>
       <DrawerContent>
-        <DrawerHeader className=" w-full">
+        <DrawerHeader className="w-full">
+        <DrawerClose>
           <section className="flex min-h-10 w-screen justify-between border-t border-border p-3 pl-5">
             <p className="text-sm text-gray-400">{pathname}</p>
             <div className="flex items-center justify-center gap-2">
-              <p className="text-sm">Open Navigation</p>
+              <p className="text-sm">Close Navigation</p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -58,13 +60,9 @@ export default function MobileMenu() {
               </svg>
             </div>
           </section>
-        </DrawerHeader>
-        <DrawerFooter>
-          <button>Submit</button>
-          <DrawerClose>
-            <button>Cancel</button>
           </DrawerClose>
-        </DrawerFooter>
+        </DrawerHeader>
+        <DesktopMenu />
       </DrawerContent>
     </Drawer>
   );
