@@ -3,10 +3,8 @@ import {
   Drawer,
   DrawerClose,
   DrawerContent,
-  DrawerDescription,
   DrawerFooter,
   DrawerHeader,
-  DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
 
@@ -17,7 +15,7 @@ export default function MobileMenu() {
   return (
     <Drawer>
       <DrawerTrigger>
-        <section className="flex min-h-10 w-screen justify-between border-t border-border p-3 pl-5 pr-3">
+        <section className="flex min-h-10 w-screen justify-between border-t border-border p-3 pl-5">
           <p className="text-sm text-gray-400">{pathname}</p>
           <div className="flex items-center justify-center gap-2">
             <p className="text-sm">Open Navigation</p>
@@ -27,7 +25,7 @@ export default function MobileMenu() {
               viewBox="0 0 24 24"
               strokeWidth={1}
               stroke="currentColor"
-              className="h-5 w-5"
+              className="size-5"
             >
               <path
                 strokeLinecap="round"
@@ -40,7 +38,7 @@ export default function MobileMenu() {
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader className=" w-full">
-          <section className="flex min-h-10 w-screen justify-between border-t border-border p-3 pl-5 pr-3">
+          <section className="flex min-h-10 w-screen justify-between border-t border-border p-3 pl-5">
             <p className="text-sm text-gray-400">{pathname}</p>
             <div className="flex items-center justify-center gap-2">
               <p className="text-sm">Open Navigation</p>
@@ -50,7 +48,7 @@ export default function MobileMenu() {
                 viewBox="0 0 24 24"
                 strokeWidth={1}
                 stroke="currentColor"
-                className="h-5 w-5"
+                className="size-5"
               >
                 <path
                   strokeLinecap="round"
