@@ -78,3 +78,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+@supports (-webkit-touch-callout: none) {
+  .h-screen {
+    height: -webkit-fill-available;
+  }
+}
