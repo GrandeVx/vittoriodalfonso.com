@@ -30,7 +30,9 @@ export default function RootLayout({
         >
           {/* Mobile View */}
           <main className="md:hidden">
-            <section className="">{children}</section>
+            <section className="no-scrollbar overflow-y-scroll">
+              {children}
+            </section>
             <span className="absolute bottom-0">
               <MobileMenu />
             </span>
@@ -39,7 +41,7 @@ export default function RootLayout({
           {/* md-Desktop View */}
           <main className="hidden h-screen md:flex lg:hidden">
             <section className="w-8/12">{children}</section>
-            <section className="w-4/12">
+            <section className="w-4/12 ">
               <DesktopMenu />
             </section>
           </main>

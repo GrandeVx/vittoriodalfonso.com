@@ -26,7 +26,7 @@ export default function Work() {
       <section className="h-[7%] w-[92%] md:w-[90%] lg:w-[95%] xl:h-full xl:w-[50%] ">
         <TopBar />
       </section>
-      <main className="flex h-screen w-[92%] flex-col gap-3 pt-8 selection:bg-orange-400/40 md:w-[90%] md:pr-[15%] lg:pl-[23%] lg:pr-[15%] xl:px-[12%]">
+      <main className="flex h-screen w-[92%] flex-col gap-3 pt-16 selection:bg-orange-400/40 md:w-[90%] md:pr-[15%] lg:pl-[23%] lg:pr-[15%] xl:px-[12%]">
         <p className="font-sans text-sm">
           My work includes research, conception, interface and motion design,
           and front-end development. I have also worked on brand systems in the
@@ -38,7 +38,7 @@ export default function Work() {
           projects available upon request.
         </p>
 
-        <section className="mt-16">
+        <section className=" mt-16 pb-16">
           {works.map((work: any, idx: any) => (
             <WorkCard key={idx} {...work} />
           ))}

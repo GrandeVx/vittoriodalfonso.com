@@ -17,8 +17,8 @@ const workLayout = ({ params }: { params: { slug: string } }) => {
       <section className="h-[7%] w-[92%] md:w-[90%] lg:w-[95%] xl:h-full xl:w-[60%] ">
         <TopBar />
       </section>
-      <main className="flex h-screen w-[92%] flex-col pt-8 selection:bg-orange-400/40 md:w-[90%] md:pr-[15%] lg:pl-[23%] lg:pr-[15%] xl:px-[3%]">
-        <article className="prose pb-8 dark:prose-invert prose-h1:text-sm prose-p:text-sm">
+      <main className="flex h-screen w-[92%] flex-col pt-20 selection:bg-orange-400/40  md:w-[90%] md:pr-[15%] md:pt-16 lg:pl-[23%] lg:pr-[15%] xl:px-[3%] xl:pt-8">
+        <article className="prose pb-16 dark:prose-invert prose-h1:text-sm prose-p:text-sm md:pb-8 ">
           <Mdx code={work.body.code} />
         </article>
       </main>
