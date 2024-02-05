@@ -2,7 +2,7 @@ import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 export default function DesktopMenu() {
   return (
-    <section className="md:fixed">
+    <section className=" md:fixed">
       <nav className=" flex size-full flex-col items-center justify-start gap-2 pt-6 text-sm font-light text-gray-400 ">
         <Link
           href={"/work"}
