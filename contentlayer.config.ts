@@ -1,33 +1,36 @@
-import { defineDocumentType, makeSource } from 'contentlayer/source-files'
+import { defineDocumentType, makeSource } from "contentlayer/source-files";
 
 const Work = defineDocumentType(() => ({
-  name: 'Work',
+  name: "Work",
   filePathPattern: `work/**/*.mdx`,
-  contentType: 'mdx', 
+  contentType: "mdx",
   fields: {
-    title: { type: 'string', required: true },
-    date: { type: 'date', required: true },
+    title: { type: "string", required: true },
+    date: { type: "date", required: true },
+    cover: { type: "string", required: true },
   },
   computedFields: {
-    url: { type: 'string', resolve: (work) => `${work._raw.flattenedPath}` },
+    url: { type: "string", resolve: (work) => `${work._raw.flattenedPath}` },
   },
-}))
+}));
 
 const Post = defineDocumentType(() => ({
-  name: 'Post',
+  name: "Post",
   filePathPattern: `posts/**/*.mdx`,
-  contentType: 'mdx',
+  contentType: "mdx",
   fields: {
-    title: { type: 'string', required: true },
-    date: { type: 'date', required: true },
+    title: { type: "string", required: true },
+    date: { type: "date", required: true },
   },
   computedFields: {
-    url: { type: 'string', resolve: (post : any) => `/posts/${post._raw.flattenedPath}` },
+    url: {
+      type: "string",
+      resolve: (post: any) => `/posts/${post._raw.flattenedPath}`,
+    },
   },
-}))
+}));
 
 export default makeSource({
   contentDirPath: "markdown",
   documentTypes: [Post, Work],
-})
-
+});
