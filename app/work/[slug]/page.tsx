@@ -1,5 +1,4 @@
-import { format, parseISO } from "date-fns";
-import { allWorks, Work } from "contentlayer/generated";
+import { allWorks } from "contentlayer/generated";
 import { Mdx } from "@/components/mdx-components";
 import TopBar from "@/layouts/TopBar";
 

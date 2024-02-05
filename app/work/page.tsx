@@ -18,7 +18,7 @@ function WorkCard(work: Work) {
 }
 
 export default function Work() {
-  const works = allWorks.sort((a: any, b: any) =>
+  const works = allWorks.sort((a: Work, b: Work) =>
     compareDesc(new Date(a.date), new Date(b.date)),
   );
   return (
@@ -39,7 +39,7 @@ export default function Work() {
         </p>
 
         <section className=" mt-16 pb-16">
-          {works.map((work: any, idx: any) => (
+          {works.map((work: Work, idx: number) => (
             <WorkCard key={idx} {...work} />
           ))}
         </section>
