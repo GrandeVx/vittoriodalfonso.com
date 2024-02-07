@@ -27,13 +27,13 @@ export default function Work() {
         <TopBar />
       </section>
       <main className="flex h-screen w-[92%] flex-col gap-3 pt-16 selection:bg-orange-400/40 md:w-[90%] md:pr-[15%] lg:pl-[23%] lg:pr-[15%] xl:px-[12%]">
-        <p className="font-sans text-sm">
+        <p className="text-pretty font-sans text-sm">
           My work includes research, conception, interface and motion design,
           and front-end development. I have also worked on brand systems in the
           past, but my strength lies in forming user-applicable interfaces for
           mobile and desktop.
         </p>
-        <p className="font-sans text-sm text-white/40">
+        <p className="text-pretty font-sans text-sm  text-black/40 dark:text-white/40">
           Work archive includes both freelance and studio projects. More
           projects available upon request.
         </p>
