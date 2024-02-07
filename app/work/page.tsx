@@ -38,7 +38,7 @@ export default function Work() {
           projects available upon request.
         </p>
 
-        <section className="  pb-16">
+        <section className=" mt-5  pb-16">
           {works.map((work: Work, idx: number) => (
             <WorkCard key={idx} {...work} />
           ))}
