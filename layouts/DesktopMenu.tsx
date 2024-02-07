@@ -76,7 +76,10 @@ export default function DesktopMenu() {
     compareDesc(new Date(a.date), new Date(b.date)),
   );
   return (
-    <section className="md:fixed" suppressHydrationWarning>
+    <section
+      className="md:fixed md:w-[40%] md:px-4 lg:w-[30%] xl:w-[20%]"
+      suppressHydrationWarning
+    >
       <Accordion
         type="single"
         collapsible

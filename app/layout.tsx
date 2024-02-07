@@ -40,16 +40,16 @@ export default function RootLayout({
 
           {/* md-Desktop View */}
           <main className="hidden h-screen md:flex lg:hidden">
-            <section className="w-8/12">{children}</section>
-            <section className="w-4/12">
+            <section className="w-[60%]">{children}</section>
+            <section className="w-[40%] ">
               <DesktopMenu />
             </section>
           </main>
 
           {/* lg-Desktop View */}
           <main className="hidden h-screen lg:flex xl:hidden">
-            <section className="w-[90%]">{children}</section>
-            <section className="w-[30%]">
+            <section className="w-[70%]">{children}</section>
+            <section className="w-[30%] ">
               <DesktopMenu />
             </section>
           </main>

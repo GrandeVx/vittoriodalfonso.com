@@ -11,14 +11,14 @@ const config = {
   ],
   prefix: "",
   theme: {
+    screens: {
+      md: "810px",
+      lg: "1030px",
+      xl: "1430px",
+    },
     container: {
       center: true,
       padding: "2rem",
-      screens: {
-        md: "770px",
-        lg: "1030px",
-        xl: "1300px",
-      },
     },
     extend: {
       colors: {
@@ -77,7 +77,7 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"),require('@tailwindcss/typography'),],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 } satisfies Config;
 
 export default config;
