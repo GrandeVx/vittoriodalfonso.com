@@ -1,21 +1,17 @@
 import { allWorks } from "contentlayer/generated";
 import { Mdx } from "@/components/mdx-components";
 import TopBar from "@/layouts/TopBar";
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
 
 type Props = {
-  params: any;
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: {slug : string};
+  
 };
 
 export async function generateMetadata(
-  { params, searchParams }: Props,
-  parent: ResolvingMetadata,
+  { params }: Props,
 ): Promise<Metadata> {
-  console.log("params", params);
-  // read route params
   const slug = params.slug;
-
   return {
     title: `${slug} | Vittorio D'Alfonso`,
     description: "Work for client",
