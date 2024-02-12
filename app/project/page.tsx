@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { compareDesc, format, parseISO } from "date-fns";
-import { allWorks, Work } from "contentlayer/generated";
+import { allProjects, Project } from "contentlayer/generated";
 import TopBar from "@/layouts/TopBar";
 import Image from "next/image";
-function WorkCard(work: Work) {
+function WorkCard(work: Project) {
   return (
     <Link href={work.url} className="flex cursor-pointer flex-col gap-3">
       <Image src={work.cover} alt={work.title} width={1000} height={1000} />
@@ -21,7 +21,7 @@ function WorkCard(work: Work) {
 }
 
 export default function Work() {
-  const works = allWorks.sort((a: Work, b: Work) =>
+  const projects = allProjects.sort((a: Project, b: Project) =>
     compareDesc(new Date(a.date), new Date(b.date)),
   );
   return (
@@ -31,19 +31,23 @@ export default function Work() {
       </section>
       <main className="flex h-screen w-[92%] flex-col gap-3 pt-3 selection:bg-orange-400/30 selection:text-orange-600 md:w-[90%] md:pr-[15%] md:pt-8 lg:pl-[23%] lg:pr-[15%] xl:px-[12%]">
         <p className="text-pretty font-sans text-sm">
-          My work includes research, conception, interface and motion design,
-          and front-end development. I have also worked on brand systems in the
-          past, but my strength lies in forming user-applicable interfaces for
-          mobile and desktop.
+          Ventures are projects founded by yours truly, or in collaboration with
+          other great minds. They provoke change, make life more joyful, and aim
+          to reduce day-to-day problems.
         </p>
-        <p className="text-pretty font-sans text-sm  text-black/40 dark:text-white/40">
-          Work archive includes both freelance and studio projects. More
-          projects available upon request.
+        <p className=" text-pretty font-sans text-sm text-black/40 dark:text-white/40 ">
+          if you want to collaborate with me, feel free to reach out
+          <span className="cursor-pointer underline">
+            {" "}
+            <Link href="mailto:v.dalfonso@metrica.dev">
+              v.dalfonso@metrica.dev
+            </Link>
+          </span>
         </p>
 
-        <section className=" mt-5  pb-16">
-          {works.map((work: Work, idx: number) => (
-            <WorkCard key={idx} {...work} />
+        <section className="mt-16 pb-16">
+          {projects.map((project: Project, idx: number) => (
+            <WorkCard key={idx} {...project} />
           ))}
         </section>
       </main>

@@ -68,6 +68,10 @@
   .dark {
     --background: rgb(200, 15, 15);
   }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
 }
 
 @layer base {

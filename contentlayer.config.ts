@@ -14,23 +14,24 @@ const Work = defineDocumentType(() => ({
   },
 }));
 
-const Post = defineDocumentType(() => ({
-  name: "Post",
-  filePathPattern: `posts/**/*.mdx`,
+const Project = defineDocumentType(() => ({
+  name: "Project",
+  filePathPattern: `project/**/*.mdx`,
   contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
     date: { type: "date", required: true },
+    cover: { type: "string", required: true },
   },
   computedFields: {
     url: {
       type: "string",
-      resolve: (post: any) => `/posts/${post._raw.flattenedPath}`,
+      resolve: (post: any) => `${post._raw.flattenedPath}`,
     },
   },
 }));
 
 export default makeSource({
   contentDirPath: "markdown",
-  documentTypes: [Post, Work],
+  documentTypes: [Project, Work],
 });
