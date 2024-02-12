@@ -16,6 +16,7 @@ import {
 } from "@/.contentlayer/generated";
 import { compareDesc } from "date-fns";
 import React, { useEffect } from "react";
+import Link from "next/link";
 
 export default function DesktopMenu() {
   const router = useRouter();
@@ -30,6 +31,9 @@ export default function DesktopMenu() {
           return "item-1";
         case "project":
           return "item-2";
+        case "about":
+          return "item-3";
+
         default:
           return "";
       }
@@ -131,14 +135,27 @@ export default function DesktopMenu() {
           </AccordionContent>
         </AccordionItem>
       */}
-        <div
-          id="imprint"
-          onClick={() => router.push("/about")}
-          className="flex w-full cursor-pointer justify-between  gap-24 pl-4 pr-4 hover:text-black  dark:hover:text-white"
-        >
-          <p>About</p>
-          <p>{new Date().getFullYear() - 2003} years</p>
-        </div>
+        <AccordionItem value="item-3">
+          <AccordionTrigger>
+            <div
+              id="about"
+              onClick={() => router.push("/about")}
+              className="flex w-full cursor-pointer justify-between  gap-24 pl-4 pr-4 hover:text-black  dark:hover:text-white"
+            >
+              <p>About</p>
+              <p>{new Date().getFullYear() - 2003} years</p>
+            </div>
+          </AccordionTrigger>
+          <AccordionContent>
+            <Link
+              key={1}
+              href="https://www.google.com/"
+              className="cursor-pointer hover:text-black dark:hover:text-white"
+            >
+              My CV
+            </Link>
+          </AccordionContent>
+        </AccordionItem>
 
         {/*
         <AccordionItem value="item-5">
@@ -162,21 +179,14 @@ export default function DesktopMenu() {
           <Separator />
         </div>
 
-        <AccordionItem value="item-6">
-          <AccordionTrigger>
-            <div
-              id="colophon"
-              onClick={() => router.push("/colophon")}
-              className="flex w-full cursor-pointer justify-between  gap-24 pl-4 pr-4 hover:text-black  dark:hover:text-white"
-            >
-              <p>Colophon</p>
-              <p>5 topics</p>
-            </div>
-          </AccordionTrigger>
-          <AccordionContent>
-            Yes. It adheres to the WAI-ARIA design pattern.
-          </AccordionContent>
-        </AccordionItem>
+        <div
+          id="colophon"
+          onClick={() => router.push("/colophon")}
+          className="flex w-full cursor-pointer justify-between  gap-24 pl-4 pr-4 hover:text-black  dark:hover:text-white"
+        >
+          <p>Colophon</p>
+          <p>5 topics</p>
+        </div>
 
         {/* 
         <div

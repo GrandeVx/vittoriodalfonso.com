@@ -3,6 +3,13 @@ import { compareDesc, format, parseISO } from "date-fns";
 import { allWorks, Work } from "contentlayer/generated";
 import TopBar from "@/layouts/TopBar";
 import Image from "next/image";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Work | Vittorio D'Alfonso",
+  description: "All my Work for clients.",
+};
+
 function WorkCard(work: Work) {
   return (
     <Link href={work.url} className="flex cursor-pointer flex-col gap-3">

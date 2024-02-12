@@ -2,8 +2,8 @@ import TopBar from "@/layouts/TopBar";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About | Vittorio D'Alfonso",
-  description: "Everything you need to know about me.",
+  title: "Colophon | Vittorio D'Alfonso",
+  description: "All about the tech stack and design choices.",
 };
 
 export default function About() {

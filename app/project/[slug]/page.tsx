@@ -1,6 +1,26 @@
 import { allProjects } from "contentlayer/generated";
 import { Mdx } from "@/components/mdx-components";
 import TopBar from "@/layouts/TopBar";
+import type { Metadata, ResolvingMetadata } from "next";
+
+type Props = {
+  params: any;
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  console.log("params", params);
+  // read route params
+  const slug = params.slug;
+
+  return {
+    title: `${slug} | Vittorio D'Alfonso`,
+    description: "Work for client",
+  };
+}
 
 export const generateStaticParams = async () =>
   allProjects.map((project) => ({ slug: project._raw.flattenedPath }));
