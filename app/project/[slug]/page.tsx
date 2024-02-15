@@ -4,12 +4,10 @@ import TopBar from "@/layouts/TopBar";
 import type { Metadata } from "next";
 
 type Props = {
-  params: {slug : string};
+  params: { slug: string };
 };
 
-export async function generateMetadata(
-  { params }: Props,
-): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = params.slug;
   return {
     title: `${slug} | Vittorio D'Alfonso`,
@@ -32,9 +30,7 @@ const projectLayout = ({ params }: { params: { slug: string } }) => {
         <TopBar />
       </section>
       <main className="flex h-screen w-[92%] flex-col pt-20 selection:bg-orange-400/30 selection:text-orange-600  md:w-[90%] md:pr-[15%] md:pt-16 lg:pl-[23%] lg:pr-[15%] xl:px-[3%] xl:pt-8">
-        <article className="prose pb-16 dark:prose-invert prose-h1:text-sm prose-p:text-pretty prose-p:text-sm md:pb-8">
-          <Mdx code={project.body.code} />
-        </article>
+        <Mdx code={project.body.code} />
       </main>
     </main>
   );
