@@ -65,7 +65,7 @@ export default function DesktopMenu() {
             <div
               id="work"
               onClick={() => router.push("/work")}
-              className="flex w-full cursor-pointer justify-between gap-24 pl-4 pr-4 hover:text-black dark:hover:text-white"
+              className="flex w-full cursor-pointer justify-between gap-24 px-4 hover:text-black dark:hover:text-white"
             >
               <p className="">Work</p>
               <p>
@@ -94,7 +94,7 @@ export default function DesktopMenu() {
             <div
               id="projects"
               onClick={() => router.push("/project")}
-              className="flex w-full cursor-pointer justify-between  gap-24 pl-4 pr-4 hover:text-black  dark:hover:text-white"
+              className="flex w-full cursor-pointer justify-between  gap-24 px-4 hover:text-black dark:hover:text-white"
             >
               <p>Projects</p>
               <p>
@@ -140,7 +140,7 @@ export default function DesktopMenu() {
             <div
               id="about"
               onClick={() => router.push("/about")}
-              className="flex w-full cursor-pointer justify-between  gap-24 pl-4 pr-4 hover:text-black  dark:hover:text-white"
+              className="flex w-full cursor-pointer justify-between  gap-24 px-4 hover:text-black dark:hover:text-white"
             >
               <p>About</p>
               <p>{new Date().getFullYear() - 2003} years</p>
@@ -149,10 +149,25 @@ export default function DesktopMenu() {
           <AccordionContent>
             <Link
               key={1}
-              href="https://www.google.com/"
+              href="/CV.pdf"
               className="cursor-pointer hover:text-black dark:hover:text-white"
             >
-              My CV
+              Curriculum Vitae
+            </Link>
+            <Link
+              key={1}
+              href="https://twitter.com/vittoIam" // https://github.com/
+              className="cursor-pointer hover:text-blue-400 dark:hover:text-blue-400"
+            >
+              Twitter
+            </Link>
+
+            <Link
+              key={1}
+              href="https://github.com/GrandeVx"
+              className="cursor-pointer hover:text-black/60 dark:hover:text-white"
+            >
+              GitHub
             </Link>
           </AccordionContent>
         </AccordionItem>
@@ -175,14 +190,14 @@ export default function DesktopMenu() {
         </AccordionItem>
         */}
 
-        <div className="mb-4 mt-4 w-full pl-4 pr-4">
+        <div className="my-4 w-full px-4">
           <Separator />
         </div>
 
         <div
           id="colophon"
           onClick={() => router.push("/colophon")}
-          className="flex w-full cursor-pointer justify-between  gap-24 pl-4 pr-4 hover:text-black  dark:hover:text-white"
+          className="flex w-full cursor-pointer justify-between  gap-24 px-4 hover:text-black dark:hover:text-white"
         >
           <p>Colophon</p>
           <p>5 topics</p>
