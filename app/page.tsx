@@ -1,4 +1,5 @@
 import TopBar from "@/layouts/TopBar";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -17,8 +18,14 @@ export default function Home() {
           launch great products.
         </p>
         <p className="font-sans text-sm">
-          <span className="underline"> Read about me</span> or{" "}
-          <span className="underline"> inspect my work</span>.
+          <Link href={"/about"} className="underline">
+            Discover me
+          </Link>{" "}
+          or{" "}
+          <Link href={"/work"} className="underline">
+            View my Work
+          </Link>
+          .
         </p>
       </main>
     </main>
