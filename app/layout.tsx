@@ -21,7 +21,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn(inter.className, "relative bg-background")}>
+      <body
+        className={cn(
+          inter.className,
+          "relative bg-background dark:antialiased",
+        )}
+      >
         <ThemeProvider
           attribute="data-theme"
           defaultTheme="system"
