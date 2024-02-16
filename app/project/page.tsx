@@ -38,21 +38,23 @@ export default function Work() {
       </section>
       <main className="flex h-screen w-[92%] flex-col gap-3 pt-3 selection:bg-orange-400/30 selection:text-orange-600 md:w-[90%] md:pr-[15%] md:pt-8 lg:pl-[23%] lg:pr-[15%] xl:px-[12%]">
         <p className="text-pretty font-sans text-sm">
-          Ventures are projects founded by yours truly, or in collaboration with
-          other great minds. They provoke change, make life more joyful, and aim
-          to reduce day-to-day problems.
+          This section serves as a showcase for the projects I've crafted over
+          the years, underscoring my dedication to hands-on learning and the
+          development of practical, functional solutions that resonate in
+          various domains of application.
         </p>
-        <p className=" text-pretty font-sans text-sm text-black/40 dark:text-white/40 ">
-          if you want to collaborate with me, feel free to reach out
-          <span className="cursor-pointer underline">
-            {" "}
-            <Link href="mailto:v.dalfonso@metrica.dev">
-              v.dalfonso@metrica.dev
-            </Link>
-          </span>
+        <p className="text-pretty font-sans text-sm  text-black/40 dark:text-white/40">
+          For any inquiries regarding these projects or if you are interested in
+          potential collaboration, feel free to reach out to me at{" "}
+          <Link
+            href="mailto:v.dalfonso@metrica.dev"
+            className="cursor-pointer underline"
+          >
+            v.dalfonso@metrica.dev
+          </Link>
         </p>
 
-        <section className="mt-16 pb-16">
+        <section className="mt-8 flex flex-col gap-6 pb-16">
           {projects.map((project: Project, idx: number) => (
             <WorkCard key={idx} {...project} />
           ))}

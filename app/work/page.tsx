@@ -38,17 +38,23 @@ export default function Work() {
       </section>
       <main className="flex h-screen w-[92%] flex-col gap-3 pt-3 selection:bg-orange-400/30 selection:text-orange-600 md:w-[90%] md:pr-[15%] md:pt-16 lg:pl-[23%] lg:pr-[15%] xl:px-[12%] xl:pt-6">
         <p className="text-pretty font-sans text-sm">
-          My work includes research, conception, interface and motion design,
-          and front-end development. I have also worked on brand systems in the
-          past, but my strength lies in forming user-applicable interfaces for
-          mobile and desktop.
+          In this section, you'll find a bunch of projects I've done for
+          clients. They're the result of teamwork, turning ideas into real,
+          impactful solutions. Check them out to see how I blend creativity and
+          tech skills to bring visions to life.
         </p>
         <p className="text-pretty font-sans text-sm  text-black/40 dark:text-white/40">
-          Work archive includes both freelance and studio projects. More
-          projects available upon request.
+          For any inquiries regarding these projects or if you are interested in
+          potential collaboration, feel free to reach out to me at{" "}
+          <Link
+            href="mailto:v.dalfonso@metrica.dev"
+            className="cursor-pointer underline"
+          >
+            v.dalfonso@metrica.dev
+          </Link>
         </p>
 
-        <section className=" mt-5  pb-16">
+        <section className="mt-8 flex flex-col gap-6 pb-16">
           {works.map((work: Work, idx: number) => (
             <WorkCard key={idx} {...work} />
           ))}
