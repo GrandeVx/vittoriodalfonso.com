@@ -58,7 +58,7 @@ export default function DesktopMenu() {
         collapsible
         value={value}
         onValueChange={setValue}
-        className="flex size-full flex-col items-center justify-start gap-2 pt-6 text-sm font-light text-gray-400"
+        className="flex size-full flex-col items-center justify-start gap-2 pt-6 text-sm font-light text-[rgb(98,98,98)]"
       >
         <AccordionItem value="item-1">
           <AccordionTrigger>
