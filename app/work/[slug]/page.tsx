@@ -13,9 +13,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     (work) => work._raw.flattenedPath === "work/" + slug,
   );
   return {
-    title: `${work!.title} | Vittorio D'Alfonso`,
+    title: `${slug} | Vittorio D'Alfonso`,
     description: "Work for client",
-    applicationName: `${work!.title} | Vittorio D'Alfonso`,
+    applicationName: `${slug} | Vittorio D'Alfonso`,
     creator: "Vittorio D'Alfonso",
     publisher: "Vittorio D'Alfonso",
     referrer: "origin-when-cross-origin",
@@ -39,15 +39,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         "max-snippet": -1,
       },
     },
-    openGraph: {
-      images: ["https://vittoriodalfonso-com.vercel.app/" + work!.cover],
-    },
+
     twitter: {
       card: "summary_large_image",
       creator: "@vittoIam",
       title: "Vittorio D'Alfonso",
       description: "All my projects, work and thoughts in one place.",
-      images: ["https://vittoriodalfonso-com.vercel.app/" + work!.cover],
     },
     category: "Portfolio",
   };

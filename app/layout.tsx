@@ -36,7 +36,6 @@ export const metadata: Metadata = {
     creator: "@vittoIam",
     title: "Vittorio D'Alfonso",
     description: "All my projects, work and thoughts in one place.",
-    images: ["http://localhost:3000/assets/work/dash0/cover.webp"],
   },
   category: "Portfolio",
 };
