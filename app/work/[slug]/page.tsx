@@ -14,13 +14,13 @@ export const generateStaticParams = async () =>
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = params.slug;
   const work = allWorks.find(
-    (work) => work._raw.flattenedPath === slug.replace("%2F", "/"),
+    (work) => work._raw.flattenedPath === "work/" + slug.replace("%2F", "/"),
   );
 
   return {
     metadataBase: new URL("https://vittoriodalfonso-com.vercel.app"),
     title: `${work ? work.title : slug} | Vittorio D'Alfonso`,
-    description: "Work for client",
+    description: "Work for client", // add a description in the markdown file
     applicationName: `${work ? work.title : slug}  | Vittorio D'Alfonso`,
     creator: "Vittorio D'Alfonso",
     publisher: "Vittorio D'Alfonso",
