@@ -12,6 +12,7 @@ import DesktopMenu from "@/layouts/DesktopMenu";
 export const metadata: Metadata = {
   metadataBase: new URL("https://vittoriodalfonso-com.vercel.app"),
   title: "Vittorio D'Alfonso",
+  icons: "/favicon.ico",
   description: "All my projects, work and thoughts in one place.",
   generator: "Next.js",
   applicationName: "Vittorio D'Alfonso Portfolio",

@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     twitter: {
       card: "summary_large_image",
       creator: "@vittoIam",
-      title: "Vittorio D'Alfonso",
+      title: `${slug} | Vittorio D'Alfonso`,
       description: "All my projects, work and thoughts in one place.",
     },
     category: "Portfolio",
