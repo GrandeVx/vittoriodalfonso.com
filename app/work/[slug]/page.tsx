@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     metadataBase: new URL("https://vittoriodalfonso-com.vercel.app"),
     title: `${work ? work.title : slug} | Vittorio D'Alfonso`,
-    description: "Work for client", // add a description in the markdown file
+    description: work ? work.description : "work for client",
     applicationName: `${work ? work.title : slug}  | Vittorio D'Alfonso`,
     creator: "Vittorio D'Alfonso",
     publisher: "Vittorio D'Alfonso",
@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       "Portfolio",
       "Developer",
       "Designer",
-      // work!.title,
+      work ? work.title : slug,
     ],
     robots: {
       index: true,
@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       creator: "@vittoIam",
       title: `${work ? work.title : slug}  | Vittorio D'Alfonso`,
-      description: "All my projects, work and thoughts in one place.",
+      description: work ? work.description : "work for client",
       images: [work ? work.cover : ""],
     },
     category: "Portfolio",

@@ -10,14 +10,16 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = params.slug;
-  /* const project = allProjects.find(
-    (project) => project._raw.flattenedPath === "project/" + slug, 
-  );*/
+  const project = allProjects.find(
+    (project) =>
+      project._raw.flattenedPath === "project/" + slug.replace("%2F", "/"),
+  );
+
   return {
     metadataBase: new URL("https://vittoriodalfonso-com.vercel.app"),
-    title: `${slug} | Vittorio D'Alfonso`,
-    description: "Work for client",
-    applicationName: `${slug} | Vittorio D'Alfonso`,
+    title: `${project ? project.title : slug} | Vittorio D'Alfonso`,
+    description: project ? project.description : "project for client",
+    applicationName: `${project ? project.title : slug}  | Vittorio D'Alfonso`,
     creator: "Vittorio D'Alfonso",
     publisher: "Vittorio D'Alfonso",
     referrer: "origin-when-cross-origin",
@@ -26,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       "Portfolio",
       "Developer",
       "Designer",
-      // project!.title,
+      project ? project.title : slug,
     ],
     robots: {
       index: true,
@@ -41,12 +43,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         "max-snippet": -1,
       },
     },
+    openGraph: {
+      images: [project ? project.cover : ""],
+    },
 
     twitter: {
       card: "summary_large_image",
       creator: "@vittoIam",
-      title: `${slug} | Vittorio D'Alfonso`,
-      description: "All my projects, work and thoughts in one place.",
+      title: `${project ? project.title : slug}  | Vittorio D'Alfonso`,
+      description: project ? project.description : "project for client",
+      images: [project ? project.cover : ""],
     },
     category: "Portfolio",
   };

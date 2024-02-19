@@ -1,5 +1,6 @@
 ---
 title: Note di Lettura
+description: My Personal Notes
 type: Work
 date: 2023-02-07
 cover: /test.jpg

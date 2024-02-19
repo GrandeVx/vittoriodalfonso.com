@@ -6,6 +6,7 @@ const Work = defineDocumentType(() => ({
   contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
+    description: { type: "string", required: true },
     date: { type: "date", required: true },
     cover: { type: "string", required: true },
   },
@@ -20,6 +21,7 @@ const Project = defineDocumentType(() => ({
   contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
+    description: { type: "string", required: true },
     date: { type: "date", required: true },
     cover: { type: "string", required: true },
   },
