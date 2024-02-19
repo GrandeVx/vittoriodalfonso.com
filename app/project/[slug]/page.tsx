@@ -9,9 +9,47 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = params.slug;
+  const project = allProjects.find(
+    (project) => project._raw.flattenedPath === "work/" + slug,
+  );
   return {
-    title: `${slug} | Vittorio D'Alfonso`,
+    title: `${project!.title} | Vittorio D'Alfonso`,
     description: "Work for client",
+    applicationName: `${project!.title} | Vittorio D'Alfonso`,
+    creator: "Vittorio D'Alfonso",
+    publisher: "Vittorio D'Alfonso",
+    referrer: "origin-when-cross-origin",
+    keywords: [
+      "Vittorio D'Alfonso",
+      "Portfolio",
+      "Developer",
+      "Designer",
+      project!.title,
+    ],
+    robots: {
+      index: true,
+      follow: true,
+      nocache: true,
+      googleBot: {
+        index: true,
+        follow: false,
+        noimageindex: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+    openGraph: {
+      images: ["https://vittoriodalfonso-com.vercel.app/" + project!.cover],
+    },
+    twitter: {
+      card: "summary_large_image",
+      creator: "@vittoIam",
+      title: "Vittorio D'Alfonso",
+      description: "All my projects, work and thoughts in one place.",
+      images: ["https://vittoriodalfonso-com.vercel.app/" + project!.cover],
+    },
+    category: "Portfolio",
   };
 }
 

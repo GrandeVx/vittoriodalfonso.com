@@ -12,6 +12,33 @@ import DesktopMenu from "@/layouts/DesktopMenu";
 export const metadata: Metadata = {
   title: "Vittorio D'Alfonso",
   description: "All my projects, work and thoughts in one place.",
+  generator: "Next.js",
+  applicationName: "Vittorio D'Alfonso Portfolio",
+  keywords: ["Vittorio D'Alfonso", "Portfolio", "Developer", "Designer"],
+  creator: "Vittorio D'Alfonso",
+  publisher: "Vittorio D'Alfonso",
+  referrer: "origin-when-cross-origin",
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: false,
+      noimageindex: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  twitter: {
+    card: "summary_large_image",
+    creator: "@vittoIam",
+    title: "Vittorio D'Alfonso",
+    description: "All my projects, work and thoughts in one place.",
+    images: ["http://localhost:3000/assets/work/dash0/cover.webp"],
+  },
+  category: "Portfolio",
 };
 
 export default function RootLayout({

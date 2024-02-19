@@ -7,7 +7,8 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Work | Vittorio D'Alfonso",
-  description: "All my Work for clients.",
+  description:
+    'Discover my portfolio of client-centric projects on the "/work" page. From initial concepts to final execution',
 };
 
 function WorkCard(work: Work) {

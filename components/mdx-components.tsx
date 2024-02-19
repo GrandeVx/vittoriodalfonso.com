@@ -1,6 +1,5 @@
 import { useMDXComponent } from "next-contentlayer/hooks";
 import Image, { ImageProps } from "next/image";
-
 const components = {
   Image: (props: ImageProps) => <Image {...props} />,
 };

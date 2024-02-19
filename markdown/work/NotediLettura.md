@@ -1,7 +1,7 @@
 ---
 title: Note di Lettura
 type: Work
-date: 2024-02-07
+date: 2023-02-07
 cover: /test.jpg
 ---
 
