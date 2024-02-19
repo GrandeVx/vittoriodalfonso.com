@@ -3,7 +3,7 @@ title: Note di Lettura
 description: My Personal Notes
 type: Work
 date: 2023-02-07
-cover: /assets/work/cmaviation/cover.webp
+cover: /assets/work/cmaviation/Cover.webp
 ---
 
 ## Note di Lettura
