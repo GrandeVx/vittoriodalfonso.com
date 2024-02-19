@@ -10,6 +10,7 @@ import MobileMenu from "@/layouts/MobileMenu";
 import DesktopMenu from "@/layouts/DesktopMenu";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://vittoriodalfonso-com.vercel.app"),
   title: "Vittorio D'Alfonso",
   description: "All my projects, work and thoughts in one place.",
   generator: "Next.js",
@@ -31,11 +32,15 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  openGraph: {
+    images: "/assets/work/dash0/cover.webp",
+  },
   twitter: {
     card: "summary_large_image",
     creator: "@vittoIam",
     title: "Vittorio D'Alfonso",
     description: "All my projects, work and thoughts in one place.",
+    images: ["/assets/work/dash0/cover.webp"],
   },
   category: "Portfolio",
 };

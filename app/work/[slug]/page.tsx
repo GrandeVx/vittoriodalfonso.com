@@ -1,6 +1,7 @@
 import { allWorks } from "contentlayer/generated";
 import { Mdx } from "@/components/mdx-components";
 import TopBar from "@/layouts/TopBar";
+/*
 import type { Metadata } from "next";
 
 type Props = {
@@ -49,6 +50,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     category: "Portfolio",
   };
 }
+
+*/
 
 export const generateStaticParams = async () =>
   allWorks.map((work) => ({ slug: work._raw.flattenedPath }));

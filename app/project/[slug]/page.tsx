@@ -1,11 +1,13 @@
 import { allProjects } from "contentlayer/generated";
 import { Mdx } from "@/components/mdx-components";
 import TopBar from "@/layouts/TopBar";
+/*
 import type { Metadata } from "next";
 
 type Props = {
   params: { slug: string };
 };
+
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = params.slug;
@@ -49,6 +51,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     category: "Portfolio",
   };
 }
+*/
 
 export const generateStaticParams = async () =>
   allProjects.map((project) => ({ slug: project._raw.flattenedPath }));
