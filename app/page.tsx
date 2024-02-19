@@ -9,13 +9,23 @@ export default function Home() {
       </section>
       <main className="flex h-full w-[92%] flex-col gap-3 pt-4  selection:bg-orange-400/30 selection:text-orange-600 md:w-[90%] md:pr-[15%] md:pt-8 lg:pl-[23%] lg:pr-[15%] xl:px-[12%]">
         <p className=" text-pretty text-start font-sans text-sm">
-          At the intersection of brand awareness, technical understanding, and
-          visual reductiveness, useful software is built and maintained.
+          In computer science, I explore the elegant fusion of creativity and
+          mathematical precision. Coding is an art that follows rules while
+          pushing the boundaries to create something new—a symphony where logic
+          and innovation dance in harmony.
         </p>
         <p className="text-pretty font-sans text-sm">
-          Crafting thoughtful interfaces takes time, and it is only through slow
-          design that we are able to refine, polish, engineer, and successfully
-          launch great products.
+          In my{" "}
+          <Link href={"/work"} className="underline">
+            work
+          </Link>
+          , I concentrate the artistic precision of coding into projects for
+          clients and{" "}
+          <Link href={"project"} className="underline">
+            autonomous pursuits
+          </Link>
+          . Each project is a canvas where creativity meets technology,
+          producing unique and visionary solutions.
         </p>
         <p className="font-sans text-sm">
           <Link href={"/about"} className="underline">

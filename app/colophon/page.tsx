@@ -1,5 +1,6 @@
 import TopBar from "@/layouts/TopBar";
 import { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Colophon | Vittorio D'Alfonso",
@@ -13,19 +14,71 @@ export default function About() {
         <TopBar />
       </section>
       <main className="flex h-full w-[92%] flex-col gap-3 pt-6 selection:bg-orange-400/30 selection:text-orange-600 md:w-[90%] md:pr-[15%] md:pt-8 lg:pl-[23%] lg:pr-[15%] xl:px-[12%]">
-        <p className=" text-pretty text-start font-sans text-sm">
-          At the intersection of brand awareness, technical understanding, and
-          visual reductiveness, useful software is built and maintained.
-        </p>
         <p className="text-pretty font-sans text-sm">
-          Crafting thoughtful interfaces takes time, and it is only through slow
-          design that we are able to refine, polish, engineer, and successfully
-          launch great products.
+          Everything about this website.
         </p>
-        <p className="font-sans text-sm">
-          <span className="underline"> Read about me</span> or{" "}
-          <span className="underline"> inspect my work</span>.
+        <p className="text-sm text-[rgb(98,98,98)]">
+          Last updated Feb 19, 2024
         </p>
+
+        <section className="mt-20 flex flex-col gap-1 text-pretty">
+          <p className="text-sm text-[rgb(98,98,98)]">Technical</p>
+          <p className="text-sm">
+            Built with{" "}
+            <Link href={"https://nextjs.org/"} className="underline">
+              Next-js
+            </Link>
+            ,{" "}
+            <Link href={"https://contentlayer.dev/"} className="underline">
+              Contentlayer
+            </Link>
+            , and{" "}
+            <Link href={"https://tailwindcss.com/"} className="underline">
+              Tailwind
+            </Link>
+            .
+          </p>
+          <p className="text-sm">
+            Deployed and hosted on{" "}
+            <Link href={"https://vercel.com/"} className="underline">
+              Vercel
+            </Link>
+            . The Code is Open Source on{" "}
+            <Link
+              href={"https://github.com/GrandeVx/vittoriodalfonso.com"}
+              className="underline"
+            >
+              Github
+            </Link>
+          </p>
+        </section>
+
+        <section className="mt-20 flex flex-col gap-1 text-pretty">
+          <p className="text-sm text-[rgb(98,98,98)]">Photography</p>
+          <p className=" text-sm">
+            All visuals on this site have been either captured or designed by
+            Vittorio D'Alfonso, unless explicitly mentioned otherwise. I strive
+            to credit the sources of all images; however, the complexities of
+            the internet and various visual inspiration platforms may
+            occasionally pose challenges to this attribution.
+          </p>
+        </section>
+
+        <section className="mt-20 flex flex-col gap-2 text-pretty">
+          <p className="text-sm text-[rgb(98,98,98)]">Inspiration</p>
+          <p className="text-pretty text-sm">
+            The profound inspiration for this website stems from{" "}
+            <Link href={"https://linusrogge.com/"} className="underline">
+              Linus Rogge
+            </Link>
+            . Upon exploring his work, I found a meaningful connection with my
+            creative vision
+          </p>
+          <p className="text-sm">
+            It's crucial to note that while drawing inspiration from his style
+            and approach, I have entirely reimagined the website code section.
+          </p>
+        </section>
       </main>
     </main>
   );

@@ -118,23 +118,6 @@ export default function DesktopMenu() {
           </AccordionContent>
         </AccordionItem>
 
-        {/*
-        <AccordionItem value="item-3">
-          <AccordionTrigger>
-            <div
-              id="timeline"
-              onClick={() => router.push("/timeline")}
-              className="flex w-full cursor-pointer justify-between  gap-24 pl-4 pr-4 hover:text-black  dark:hover:text-white"
-            >
-              <p>Timeline</p>
-              <p>23 entries</p>
-            </div>
-          </AccordionTrigger>
-          <AccordionContent>
-            Yes. It adheres to the WAI-ARIA design pattern.
-          </AccordionContent>
-        </AccordionItem>
-      */}
         <AccordionItem value="item-3">
           <AccordionTrigger>
             <div
@@ -172,24 +155,6 @@ export default function DesktopMenu() {
           </AccordionContent>
         </AccordionItem>
 
-        {/*
-        <AccordionItem value="item-5">
-          <AccordionTrigger>
-            <div
-              id="resources"
-              onClick={() => router.push("/resources")}
-              className="flex w-full cursor-pointer justify-between  gap-24 pl-4 pr-4 hover:text-black  dark:hover:text-white"
-            >
-              <p>Resources</p>
-              <p>9 entries</p>
-            </div>
-          </AccordionTrigger>
-          <AccordionContent>
-            Yes. It adheres to the WAI-ARIA design pattern.
-          </AccordionContent>
-        </AccordionItem>
-        */}
-
         <div className="my-4 w-full px-4">
           <Separator />
         </div>
@@ -200,18 +165,8 @@ export default function DesktopMenu() {
           className="flex w-full cursor-pointer justify-between  gap-24 px-4 hover:text-black dark:hover:text-white"
         >
           <p>Colophon</p>
-          <p>5 topics</p>
+          <p>3 topics</p>
         </div>
-
-        {/* 
-        <div
-          id="imprint"
-          onClick={() => router.push("/imprint")}
-          className="flex w-full cursor-pointer justify-between  gap-24 pl-4 pr-4 hover:text-black  dark:hover:text-white"
-        >
-          <p>Imprint</p>
-        </div>
-        */}
       </Accordion>
     </section>
   );

@@ -1,5 +1,8 @@
 import TopBar from "@/layouts/TopBar";
 import { Metadata } from "next";
+import main from "@/public/assets/about/main.webp";
+import Image from "next/image";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "About | Vittorio D'Alfonso",
@@ -12,19 +15,49 @@ export default function About() {
       <section className="w-[92%] md:h-[4%] md:w-[90%] lg:w-[95%] xl:h-full xl:w-[50%]">
         <TopBar />
       </section>
-      <main className="flex h-full w-[92%] flex-col gap-3 pt-6 selection:bg-orange-400/30 selection:text-orange-600 md:w-[90%] md:pr-[15%] md:pt-8 lg:pl-[23%] lg:pr-[15%] xl:px-[12%]">
-        <p className=" text-pretty text-start font-sans text-sm">
-          At the intersection of brand awareness, technical understanding, and
-          visual reductiveness, useful software is built and maintained.
+      <main className="flex h-full w-[92%] flex-col gap-3 pt-8 selection:bg-orange-400/30 selection:text-orange-600 md:mt-8 md:w-[90%] md:pr-[15%] md:pt-8 lg:mt-0 lg:pl-[23%] lg:pr-[15%] xl:px-[12%]">
+        <p className="text-pretty text-start font-sans text-sm">
+          I am a self-taught Creative Developer with a passion for exploring
+          diverse scenarios within the IT industry. Currently pursuing my
+          studies in IT at{" "}
+          <Link
+            className="underline"
+            href={"https://corsi.unisa.it/Informatica"}
+          >
+            UNISA
+          </Link>
+          , I am actively engaged in working on projects and consistently
+          seeking new opportunities to collaborate with talented individuals.
         </p>
-        <p className="text-pretty font-sans text-sm">
-          Crafting thoughtful interfaces takes time, and it is only through slow
-          design that we are able to refine, polish, engineer, and successfully
-          launch great products.
+
+        <div className="mt-6 flex w-full flex-row gap-4 pr-2 md:flex-col lg:flex-row">
+          <Image
+            src={main}
+            alt="Vittorio D'Alfonso"
+            className="h-full w-1/2 object-scale-down md:w-full lg:w-1/2"
+          />
+          <Image
+            src={main}
+            alt="Vittorio D'Alfonso"
+            className="h-full w-1/2 object-scale-down md:w-full lg:w-1/2"
+          />
+        </div>
+
+        <p className="mt-6 text-pretty text-start font-sans text-sm">
+          As a Digital Creative, I consider computer science my canvas for
+          ongoing exploration and creation. My forte lies in versatile
+          knowledge, and I am driven by a relentless curiosity to experiment and
+          innovate.
         </p>
-        <p className="font-sans text-sm">
-          <span className="underline"> Read about me</span> or{" "}
-          <span className="underline"> inspect my work</span>.
+
+        <p className="text-pretty text-start font-sans text-sm">
+          Challenges are not obstacles but gateways to growth. Prioritizing the
+          journey over the destination, I adapt swiftly to new environments.
+        </p>
+
+        <p className="text-pretty pb-10 text-start font-sans text-sm">
+          Let's embark on a journey of continuous experimentation, pushing
+          boundaries and transforming challenges into rewarding experiences.
         </p>
       </main>
     </main>
