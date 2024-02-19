@@ -1,19 +1,18 @@
 import { allProjects } from "contentlayer/generated";
 import { Mdx } from "@/components/mdx-components";
 import TopBar from "@/layouts/TopBar";
-/*
+
 import type { Metadata } from "next";
 
 type Props = {
   params: { slug: string };
 };
 
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = params.slug;
-  const project = allProjects.find(
-    (project) => project._raw.flattenedPath === "project/" + slug,
-  );
+  /* const project = allProjects.find(
+    (project) => project._raw.flattenedPath === "project/" + slug, 
+  );*/
   return {
     title: `${slug} | Vittorio D'Alfonso`,
     description: "Work for client",
@@ -26,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       "Portfolio",
       "Developer",
       "Designer",
-      project!.title,
+      // project!.title,
     ],
     robots: {
       index: true,
@@ -51,7 +50,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     category: "Portfolio",
   };
 }
-*/
 
 export const generateStaticParams = async () =>
   allProjects.map((project) => ({ slug: project._raw.flattenedPath }));
