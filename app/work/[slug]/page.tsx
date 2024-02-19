@@ -8,17 +8,20 @@ type Props = {
   params: { slug: string };
 };
 
+export const generateStaticParams = async () =>
+  allWorks.map((work) => ({ slug: work._raw.flattenedPath }));
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = params.slug;
-  /*
   const work = allWorks.find(
-    (work) => work._raw.flattenedPath === "work/" + slug,
+    (work) => work._raw.flattenedPath === slug.replace("%2F", "/"),
   );
-  */
+
   return {
-    title: `${slug} | Vittorio D'Alfonso`,
+    metadataBase: new URL("https://vittoriodalfonso-com.vercel.app"),
+    title: `${work ? work.title : slug} | Vittorio D'Alfonso`,
     description: "Work for client",
-    applicationName: `${slug} | Vittorio D'Alfonso`,
+    applicationName: `${work ? work.title : slug}  | Vittorio D'Alfonso`,
     creator: "Vittorio D'Alfonso",
     publisher: "Vittorio D'Alfonso",
     referrer: "origin-when-cross-origin",
@@ -42,19 +45,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         "max-snippet": -1,
       },
     },
-
+    openGraph: {
+      images: [work ? work.cover : ""],
+    },
     twitter: {
       card: "summary_large_image",
       creator: "@vittoIam",
-      title: `${slug} | Vittorio D'Alfonso`,
+      title: `${work ? work.title : slug}  | Vittorio D'Alfonso`,
       description: "All my projects, work and thoughts in one place.",
+      images: [work ? work.cover : ""],
     },
     category: "Portfolio",
   };
 }
-
-export const generateStaticParams = async () =>
-  allWorks.map((work) => ({ slug: work._raw.flattenedPath }));
 
 const workLayout = ({ params }: { params: { slug: string } }) => {
   const work = allWorks.find(

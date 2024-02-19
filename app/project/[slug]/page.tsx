@@ -14,6 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     (project) => project._raw.flattenedPath === "project/" + slug, 
   );*/
   return {
+    metadataBase: new URL("https://vittoriodalfonso-com.vercel.app"),
     title: `${slug} | Vittorio D'Alfonso`,
     description: "Work for client",
     applicationName: `${slug} | Vittorio D'Alfonso`,
