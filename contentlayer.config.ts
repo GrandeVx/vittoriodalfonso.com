@@ -7,6 +7,8 @@ const Work = defineDocumentType(() => ({
   fields: {
     title: { type: "string", required: true },
     description: { type: "string", required: true },
+    attributes: { type: "string", required: false },
+    redirect: { type: "string", required: false },
     date: { type: "date", required: true },
     cover: { type: "string", required: true },
   },
@@ -22,6 +24,8 @@ const Project = defineDocumentType(() => ({
   fields: {
     title: { type: "string", required: true },
     description: { type: "string", required: true },
+    attributes: { type: "string", required: false },
+    redirect: { type: "string", required: false },
     date: { type: "date", required: true },
     cover: { type: "string", required: true },
   },

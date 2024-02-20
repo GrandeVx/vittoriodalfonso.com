@@ -24,8 +24,17 @@ export const metadata: Metadata = {
 
 function WorkCard(work: Work) {
   return (
-    <Link href={work.url} className="flex cursor-pointer flex-col gap-3">
-      <Image src={work.cover} alt={work.title} width={1000} height={1000} />
+    <Link
+      href={work.redirect ? work.redirect : work.url}
+      className="flex cursor-pointer flex-col gap-3"
+    >
+      <Image
+        src={work.cover}
+        alt={work.attributes ? work.attributes : work.title}
+        about={work.attributes ? work.attributes : work.title}
+        width={1000}
+        height={1000}
+      />
       <section className="flex w-full items-center justify-between">
         <p className="mb-1 text-sm">{work.title}</p>
         <time

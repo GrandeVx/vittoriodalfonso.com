@@ -20,24 +20,35 @@ export const metadata: Metadata = {
   },
 };
 
-function WorkCard(work: Project) {
+function ProjectCard(project: Project) {
   return (
-    <Link href={work.url} className="flex cursor-pointer flex-col gap-3">
-      <Image src={work.cover} alt={work.title} width={1000} height={1000} />
+    <Link
+      href={project.redirect ? project.redirect : project.url}
+      className="flex cursor-pointer flex-col gap-3"
+    >
+      <section className="relative">
+        <Image
+          src={project.cover}
+          alt={project.attributes ? project.attributes : project.title}
+          about={project.attributes ? project.attributes : project.title}
+          width={1000}
+          height={1000}
+        />
+      </section>
       <section className="flex w-full items-center justify-between">
-        <p className="mb-1 text-sm">{work.title}</p>
+        <p className="mb-1 text-sm">{project.title}</p>
         <time
-          dateTime={work.date}
+          dateTime={project.date}
           className="mb-2 block text-sm text-gray-400/70"
         >
-          {format(parseISO(work.date), "yyyy")}
+          {format(parseISO(project.date), "yyyy")}
         </time>
       </section>
     </Link>
   );
 }
 
-export default function Work() {
+export default function project() {
   const projects = allProjects.sort((a: Project, b: Project) =>
     compareDesc(new Date(a.date), new Date(b.date)),
   );
@@ -66,7 +77,7 @@ export default function Work() {
 
         <section className="mt-8 flex flex-col gap-6 pb-16">
           {projects.map((project: Project, idx: number) => (
-            <WorkCard key={idx} {...project} />
+            <ProjectCard key={idx} {...project} />
           ))}
         </section>
       </main>
@@ -76,8 +87,8 @@ export default function Work() {
     /*
         <div className="mx-auto max-w-xl py-8">
       <h1 className="mb-8 text-center text-2xl font-black">Next.js + Contentlayer Example</h1>
-      {works.map((work : any, idx : any) => (
-        <WorkCard key={idx} {...work} />
+      {projects.map((project : any, idx : any) => (
+        <projectCard key={idx} {...project} />
       ))}
     </div>
       */
