@@ -27,12 +27,10 @@ export default function About() {
         <p className="text-pretty font-sans text-sm">
           Everything about this website.
         </p>
-        <p className="text-sm text-[rgb(98,98,98)]">
-          Last updated Feb 19, 2024
-        </p>
+        <p className="text-sm text-muted">Last updated Feb 19, 2024</p>
 
         <section className="mt-20 flex flex-col gap-1 text-pretty">
-          <p className="text-sm text-[rgb(98,98,98)]">Technical</p>
+          <p className="text-sm text-muted">Technical</p>
           <p className="text-sm">
             Built with{" "}
             <Link href={"https://nextjs.org/"} className="underline">
@@ -64,7 +62,7 @@ export default function About() {
         </section>
 
         <section className="mt-20 flex flex-col gap-1 text-pretty">
-          <p className="text-sm text-[rgb(98,98,98)]">Photography</p>
+          <p className="text-sm text-muted">Photography</p>
           <p className=" text-sm">
             All visuals on this site have been either captured or designed by
             Vittorio D'Alfonso, unless explicitly mentioned otherwise. I strive
