@@ -5,6 +5,7 @@
 @layer base {
   :root {
     --background: rgb(247, 247, 247);
+    --primary: rgb(0, 0, 0);
     --selected: rgb(255, 132, 68);
     --muted: rgb(162, 162, 162);
     --foreground: 222.2 84% 4.9%;
@@ -14,9 +15,10 @@
 
   [data-theme="dark"] {
     --background: rgb(15, 15, 15);
+    --primary: rgb(247, 247, 247);
     --foreground: 210 40% 98%;
     --selected: rgb(255, 132, 68);
-    --muted: rgb(162, 162, 162);
+    --muted: rgb(98, 98, 98);
     --radius: 0.5rem;
     --border: 0 0% 11%;
   }
