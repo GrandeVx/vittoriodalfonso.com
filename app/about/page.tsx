@@ -6,7 +6,17 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "About | Vittorio D'Alfonso",
-  description: "Everything you need to know about me.",
+  description: "Everything you need to know about me... and more!",
+  openGraph: {
+    images: "/assets/utils/about.webp",
+  },
+  twitter: {
+    card: "summary_large_image",
+    creator: "@vittoIam",
+    title: "About | Vittorio D'Alfonso",
+    description: "Everything you need to know about me... and more!",
+    images: ["/assets/utils/about.webp"],
+  },
 };
 
 export default function About() {
@@ -15,7 +25,7 @@ export default function About() {
       <section className="w-[92%] md:h-[4%] md:w-[90%] lg:w-[95%] xl:h-full xl:w-[50%]">
         <TopBar />
       </section>
-      <main className="flex h-full w-[92%] flex-col gap-3 pt-8 selection:bg-orange-400/30 selection:text-orange-600 md:mt-8 md:w-[90%] md:pr-[15%] md:pt-8 lg:mt-0 lg:pl-[23%] lg:pr-[15%] xl:px-[12%]">
+      <main className="flex h-full w-[92%] flex-col gap-3 pt-8 selection:bg-orange-400/30 selection:text-selected md:mt-8 md:w-[90%] md:pr-[15%] md:pt-8 lg:mt-0 lg:pl-[23%] lg:pr-[15%] xl:px-[12%]">
         <p className="text-pretty text-start font-sans text-sm">
           I am a self-taught Creative Developer with a passion for exploring
           diverse scenarios within the IT industry. Currently pursuing my

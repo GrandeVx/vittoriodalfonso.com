@@ -34,14 +34,14 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    images: "/test.jpg",
+    images: "/assets/utils/home.webp",
   },
   twitter: {
     card: "summary_large_image",
     creator: "@vittoIam",
     title: "Vittorio D'Alfonso",
     description: "All my projects, work and thoughts in one place.",
-    images: ["/test.jpg"],
+    images: ["/assets/utils/home.webp"],
   },
   category: "Portfolio",
 };

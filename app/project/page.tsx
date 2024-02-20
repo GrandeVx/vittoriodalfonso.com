@@ -7,7 +7,17 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Project | Vittorio D'Alfonso",
-  description: "All my Work for clients.",
+  description: "All my Personal Projects...",
+  openGraph: {
+    images: "/assets/utils/project.webp",
+  },
+  twitter: {
+    card: "summary_large_image",
+    creator: "@vittoIam",
+    title: "Project | Vittorio D'Alfonso",
+    description: "All my Personal Projects...",
+    images: ["/assets/utils/project.webp"],
+  },
 };
 
 function WorkCard(work: Project) {
@@ -36,7 +46,7 @@ export default function Work() {
       <section className="w-[92%] md:h-[4%] md:w-[90%] lg:w-[95%] xl:h-full xl:w-[50%]">
         <TopBar />
       </section>
-      <main className="flex h-screen w-[92%] flex-col gap-3 pt-3 selection:bg-orange-400/30 selection:text-orange-600 md:w-[90%] md:pr-[15%] md:pt-8 lg:pl-[23%] lg:pr-[15%] xl:px-[12%]">
+      <main className="flex h-screen w-[92%] flex-col gap-3 pt-3 selection:bg-orange-400/30 selection:text-selected md:w-[90%] md:pr-[15%] md:pt-8 lg:pl-[23%] lg:pr-[15%] xl:px-[12%]">
         <p className="text-pretty font-sans text-sm">
           This section serves as a showcase for the projects I've crafted over
           the years, underscoring my dedication to hands-on learning and the

@@ -5,6 +5,16 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Colophon | Vittorio D'Alfonso",
   description: "All about the tech stack and design choices.",
+  openGraph: {
+    images: "/assets/utils/colophon.webp",
+  },
+  twitter: {
+    card: "summary_large_image",
+    creator: "@vittoIam",
+    title: "Colophon | Vittorio D'Alfonso",
+    description: "All about the tech stack and design choices.",
+    images: ["/assets/utils/colophon.webp"],
+  },
 };
 
 export default function About() {
@@ -13,7 +23,7 @@ export default function About() {
       <section className="w-[92%] md:h-[4%] md:w-[90%] lg:w-[95%] xl:h-full xl:w-[50%]">
         <TopBar />
       </section>
-      <main className="flex h-full w-[92%] flex-col gap-3 pt-6 selection:bg-orange-400/30 selection:text-orange-600 md:w-[90%] md:pr-[15%] md:pt-8 lg:pl-[23%] lg:pr-[15%] xl:px-[12%]">
+      <main className="flex h-full w-[92%] flex-col gap-3 pt-6 selection:bg-orange-400/30 selection:text-selected md:w-[90%] md:pr-[15%] md:pt-8 lg:pl-[23%] lg:pr-[15%] xl:px-[12%]">
         <p className="text-pretty font-sans text-sm">
           Everything about this website.
         </p>

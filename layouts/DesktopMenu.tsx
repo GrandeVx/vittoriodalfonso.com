@@ -138,7 +138,7 @@ export default function DesktopMenu() {
               Curriculum Vitae
             </Link>
             <Link
-              key={1}
+              key={2}
               href="https://twitter.com/vittoIam" // https://github.com/
               className="cursor-pointer hover:text-blue-400 dark:hover:text-blue-400"
             >
@@ -146,7 +146,7 @@ export default function DesktopMenu() {
             </Link>
 
             <Link
-              key={1}
+              key={3}
               href="https://github.com/GrandeVx"
               className="cursor-pointer hover:text-black/60 dark:hover:text-white"
             >

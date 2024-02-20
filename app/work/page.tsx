@@ -9,6 +9,17 @@ export const metadata: Metadata = {
   title: "Work | Vittorio D'Alfonso",
   description:
     'Discover my portfolio of client-centric projects on the "/work" page. From initial concepts to final execution',
+  openGraph: {
+    images: "/assets/utils/work.webp",
+  },
+  twitter: {
+    card: "summary_large_image",
+    creator: "@vittoIam",
+    title: "Work | Vittorio D'Alfonso",
+    description:
+      'Discover my portfolio of client-centric projects on the "/work" page. From initial concepts to final execution',
+    images: ["/assets/utils/work.webp"],
+  },
 };
 
 function WorkCard(work: Work) {
@@ -37,7 +48,7 @@ export default function Work() {
       <section className="w-[92%] md:h-[4%] md:w-[90%] lg:w-[95%] xl:h-full xl:w-[50%]">
         <TopBar />
       </section>
-      <main className="flex h-screen w-[92%] flex-col gap-3 pt-3 selection:bg-orange-400/30 selection:text-orange-600 md:w-[90%] md:pr-[15%] md:pt-16 lg:pl-[23%] lg:pr-[15%] xl:px-[12%] xl:pt-6">
+      <main className="flex h-screen w-[92%] flex-col gap-3 pt-3 selection:bg-orange-400/30 selection:text-selected md:w-[90%] md:pr-[15%] md:pt-16 lg:pl-[23%] lg:pr-[15%] xl:px-[12%] xl:pt-6">
         <p className="text-pretty font-sans text-sm">
           In this section, you'll find a bunch of projects I've done for
           clients. They're the result of teamwork, turning ideas into real,
