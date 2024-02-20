@@ -65,7 +65,7 @@ export default function About() {
           journey over the destination, I adapt swiftly to new environments.
         </p>
 
-        <p className="text-pretty pb-10 text-start font-sans text-sm">
+        <p className="text-pretty pb-16 text-start font-sans text-sm">
           Let's embark on a journey of continuous experimentation, pushing
           boundaries and transforming challenges into rewarding experiences.
         </p>

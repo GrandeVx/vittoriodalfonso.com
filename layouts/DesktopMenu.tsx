@@ -14,7 +14,7 @@ import {
   Project,
   allProjects,
 } from "@/.contentlayer/generated";
-import { compareDesc } from "date-fns";
+import { compareDesc, differenceInYears } from "date-fns";
 import React, { useEffect } from "react";
 import Link from "next/link";
 
@@ -126,7 +126,9 @@ export default function DesktopMenu() {
               className="flex w-full cursor-pointer justify-between  gap-24 px-4 hover:text-black dark:hover:text-white"
             >
               <p>About</p>
-              <p>{new Date().getFullYear() - 2003} years</p>
+              <p>
+                {differenceInYears(new Date(), new Date(2003, 7, 22))} years
+              </p>
             </div>
           </AccordionTrigger>
           <AccordionContent>

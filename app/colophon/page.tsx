@@ -23,13 +23,13 @@ export default function About() {
       <section className="w-[92%] md:h-[4%] md:w-[90%] lg:w-[95%] xl:h-full xl:w-[50%]">
         <TopBar />
       </section>
-      <main className="flex h-full w-[92%] flex-col gap-3 pt-6 selection:bg-orange-400/30 selection:text-selected md:w-[90%] md:pr-[15%] md:pt-8 lg:pl-[23%] lg:pr-[15%] xl:px-[12%]">
+      <main className="flex h-full w-[92%] flex-col gap-3 pb-20 pt-6 selection:bg-orange-400/30 selection:text-selected md:w-[90%] md:pr-[15%] md:pt-8 lg:pl-[23%] lg:pr-[15%] xl:px-[12%]">
         <p className="text-pretty font-sans text-sm">
           Everything about this website.
         </p>
         <p className="text-sm text-muted">Last updated Feb 19, 2024</p>
 
-        <section className="mt-20 flex flex-col gap-1 text-pretty">
+        <section className="mt-10 flex flex-col gap-1 text-pretty md:mt-20">
           <p className="text-sm text-muted">Technical</p>
           <p className="text-sm">
             Built with{" "}
@@ -61,7 +61,7 @@ export default function About() {
           </p>
         </section>
 
-        <section className="mt-20 flex flex-col gap-1 text-pretty">
+        <section className="mt-10 flex flex-col gap-1 text-pretty md:mt-20">
           <p className="text-sm text-muted">Photography</p>
           <p className=" text-sm">
             All visuals on this site have been either captured or designed by
@@ -72,7 +72,7 @@ export default function About() {
           </p>
         </section>
 
-        <section className="mt-20 flex flex-col gap-2 text-pretty">
+        <section className="mt-10 flex flex-col gap-2 text-pretty md:mt-20">
           <p className="text-sm text-[rgb(98,98,98)]">Inspiration</p>
           <p className="text-pretty text-sm">
             The profound inspiration for this website stems from{" "}
