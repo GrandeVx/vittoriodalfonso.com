@@ -1,6 +1,7 @@
 import TopBar from "@/layouts/TopBar";
 import { Metadata } from "next";
 import main from "@/public/assets/about/main.webp";
+import main2 from "@/public/assets/about/main2.webp";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -42,14 +43,14 @@ export default function About() {
 
         <div className="mt-6 flex w-full flex-row gap-4 pr-2 md:flex-col lg:flex-row">
           <Image
-            src={main}
+            src={main2}
             alt="Vittorio D'Alfonso"
-            className="h-full w-1/2 object-scale-down md:w-full lg:w-1/2"
+            className="h-fit w-1/2 md:w-full lg:w-1/2"
           />
           <Image
             src={main}
             alt="Vittorio D'Alfonso"
-            className="h-full w-1/2 object-scale-down md:w-full lg:w-1/2"
+            className="h-full w-1/2 object-fill md:size-full lg:w-1/2"
           />
         </div>
 
