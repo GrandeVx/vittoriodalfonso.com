@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: "Vittorio D'Alfonso",
   icons: "/favicon.ico",
   description:
-    "In computer science, I explore the elegant fusion of creativity andmathematical precision. Coding is an art that follows rules whilepushing the boundaries to create something new—a symphony where logicand innovation dance in harmony",
+    "In computer science, I explore the elegant fusion of creativity and mathematical precision. Coding is an art that follows rules while pushing the boundaries to create something new—a symphony where logic and innovation dance in harmony",
   generator: "Next.js",
   applicationName: "Vittorio D'Alfonso Portfolio",
   keywords: [
