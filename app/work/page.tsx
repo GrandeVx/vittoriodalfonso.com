@@ -34,6 +34,8 @@ function WorkCard(work: Work) {
         about={work.attributes ? work.attributes : work.title}
         width={1000}
         height={1000}
+        loading="lazy"
+        placeholder="blur"
       />
       <section className="flex w-full items-center justify-between">
         <p className="mb-1 text-sm">{work.title}</p>

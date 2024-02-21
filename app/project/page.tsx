@@ -33,6 +33,8 @@ function ProjectCard(project: Project) {
           about={project.attributes ? project.attributes : project.title}
           width={1000}
           height={1000}
+          loading="lazy"
+          placeholder="blur"
         />
       </section>
       <section className="flex w-full items-center justify-between">
