@@ -108,7 +108,9 @@ export default function DesktopMenu() {
                 id={project._id}
                 key={idx}
                 onClick={() => {
-                  router.push("/" + project.url);
+                  router.push(
+                    project.redirect ? project.redirect : "/" + project.url,
+                  );
                 }}
                 className="cursor-pointer hover:text-black dark:hover:text-white"
               >
