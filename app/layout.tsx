@@ -44,6 +44,9 @@ export const metadata: Metadata = {
     images: ["/assets/utils/home.webp"],
   },
   category: "Portfolio",
+  verification: {
+    google: "XRkNZEOjB9ARqZ363IyE_xZ5SUjnLmf6TVVI8y7K76g",
+  },
 };
 
 export default function RootLayout({
