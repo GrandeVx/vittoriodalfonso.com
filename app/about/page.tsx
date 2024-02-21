@@ -47,14 +47,12 @@ export default function About() {
             alt="Vittorio D'Alfonso"
             className="h-fit w-1/2 md:w-full lg:w-1/2"
             loading="lazy"
-            placeholder="blur"
           />
           <Image
             src={main}
             alt="Vittorio D'Alfonso"
             className="h-full w-1/2 object-fill md:size-full lg:w-1/2"
             loading="lazy"
-            placeholder="blur"
           />
         </div>
 
