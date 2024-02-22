@@ -10,7 +10,7 @@ import MobileMenu from "@/layouts/MobileMenu";
 import DesktopMenu from "@/layouts/DesktopMenu";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://vittoriodalfonso-com.vercel.app"),
+  metadataBase: new URL("https://vittoriodalfonso.com"),
   title: "Vittorio D'Alfonso",
   icons: "/favicon.ico",
   description:

@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   );
 
   return {
-    metadataBase: new URL("https://vittoriodalfonso-com.vercel.app"),
+    metadataBase: new URL("https://vittoriodalfonso.com"),
     title: `${project ? project.title : slug} | Vittorio D'Alfonso`,
     description: project ? project.description : "project for client",
     applicationName: `${project ? project.title : slug}  | Vittorio D'Alfonso`,
