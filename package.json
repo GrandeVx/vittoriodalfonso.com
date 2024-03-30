@@ -11,15 +11,18 @@
     "lint:fix": "eslint ./ --fix"
   },
   "dependencies": {
+    "@formatjs/intl-localematcher": "^0.5.4",
     "@heroicons/react": "^2.1.1",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-separator": "^1.0.3",
+    "@types/negotiator": "^0.6.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "contentlayer": "^0.3.4",
     "date-fns": "^3.3.1",
     "lucide-react": "^0.309.0",
+    "negotiator": "^0.6.3",
     "next": "14.0.4",
     "next-contentlayer": "^0.3.4",
     "next-themes": "^0.2.1",

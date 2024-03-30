@@ -1,3 +1,5 @@
+import { getDictionary } from "@/get-dictionary";
+import { Locale } from "@/i18n-config";
 import TopBar from "@/layouts/TopBar";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -17,7 +19,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function About() {
+export default async function Colpohon({
+  params: { lang },
+}: {
+  params: { lang: Locale };
+}) {
+  const dictionary = await getDictionary(lang);
   return (
     <main className="flex h-screen flex-col items-center gap-16 first-line:text-foreground md:gap-0 xl:flex-row">
       <section className="w-[92%] md:h-[4%] md:w-[90%] lg:w-[95%] xl:h-full xl:w-[50%]">
@@ -32,7 +39,7 @@ export default function About() {
         <section className="mt-10 flex flex-col gap-1 text-pretty md:mt-20">
           <p className="text-sm text-muted">Technical</p>
           <p className="text-sm">
-            Built with{" "}
+            {dictionary.colophon.techincal[0]}{" "}
             <Link href={"https://nextjs.org/"} className="underline">
               Next-js
             </Link>
@@ -40,18 +47,18 @@ export default function About() {
             <Link href={"https://contentlayer.dev/"} className="underline">
               Contentlayer
             </Link>
-            , and{" "}
+            , {dictionary.colophon.techincal[1]}{" "}
             <Link href={"https://tailwindcss.com/"} className="underline">
               Tailwind
             </Link>
             .
           </p>
           <p className="text-sm">
-            Deployed and hosted on{" "}
+            {dictionary.colophon.techincal[2]}{" "}
             <Link href={"https://vercel.com/"} className="underline">
               Vercel
             </Link>
-            . The Code is Open Source on{" "}
+            {dictionary.colophon.techincal[3]}{" "}
             <Link
               href={"https://github.com/GrandeVx/vittoriodalfonso.com"}
               className="underline"
@@ -63,29 +70,19 @@ export default function About() {
 
         <section className="mt-10 flex flex-col gap-1 text-pretty md:mt-20">
           <p className="text-sm text-muted">Photography</p>
-          <p className=" text-sm">
-            All visuals on this site have been either captured or designed by
-            Vittorio D'Alfonso, unless explicitly mentioned otherwise. I strive
-            to credit the sources of all images; however, the complexities of
-            the internet and various visual inspiration platforms may
-            occasionally pose challenges to this attribution.
-          </p>
+          <p className=" text-sm">{dictionary.colophon.Photography}</p>
         </section>
 
         <section className="mt-10 flex flex-col gap-2 text-pretty md:mt-20">
           <p className="text-sm text-[rgb(98,98,98)]">Inspiration</p>
           <p className="text-pretty text-sm">
-            The profound inspiration for this website stems from{" "}
+            {dictionary.colophon.Inspiration[0]}{" "}
             <Link href={"https://linusrogge.com/"} className="underline">
               Linus Rogge
             </Link>
-            . Upon exploring his work, I found a meaningful connection with my
-            creative vision
+            {dictionary.colophon.Inspiration[1]}
           </p>
-          <p className="text-sm">
-            It's crucial to note that while drawing inspiration from his style
-            and approach, I have entirely reimagined the website code section.
-          </p>
+          <p className="text-sm">{dictionary.colophon.Inspiration[2]}</p>
         </section>
       </main>
     </main>

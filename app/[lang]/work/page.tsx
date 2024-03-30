@@ -1,9 +1,11 @@
 import Link from "next/link";
-import { compareDesc, format, parseISO } from "date-fns";
+import { format, parseISO } from "date-fns";
 import { allWorks, Work } from "contentlayer/generated";
 import TopBar from "@/layouts/TopBar";
 import Image from "next/image";
 import { Metadata } from "next";
+import { Locale } from "@/i18n-config";
+import { getDictionary } from "@/get-dictionary";
 
 export const metadata: Metadata = {
   title: "Work | Vittorio D'Alfonso",
@@ -48,25 +50,33 @@ function WorkCard(work: Work) {
   );
 }
 
-export default function Work() {
-  const works = allWorks.sort((a: Work, b: Work) =>
-    compareDesc(new Date(a.date), new Date(b.date)),
+export default async function Work({
+  params: { lang },
+}: {
+  params: { lang: Locale };
+}) {
+  const dictionary = await getDictionary(lang);
+
+  // remove duplicates
+  const works = allWorks.filter(
+    (work: Work, idx: number, arr: Work[]) =>
+      arr.findIndex((w: Work) => w.title === work.title) === idx,
   );
+
+  // remove /lang from url
+  works.forEach((work: Work) => {
+    work.url = work._raw.flattenedPath.replace("/en", "");
+    work.url = work._raw.flattenedPath.replace("/it", "");
+  });
   return (
     <main className="flex h-screen flex-col items-center gap-16 first-line:text-foreground md:gap-0 xl:flex-row">
       <section className="w-[92%] md:h-[4%] md:w-[90%] lg:w-[95%] xl:h-full xl:w-[50%]">
         <TopBar />
       </section>
       <main className="flex h-screen w-[92%] flex-col gap-3 pt-3 selection:bg-orange-400/30 selection:text-selected md:w-[90%] md:pr-[15%] md:pt-16 lg:pl-[23%] lg:pr-[15%] xl:px-[12%] xl:pt-6">
-        <p className="text-pretty font-sans text-sm">
-          In this section, you'll find a bunch of projects I've done for
-          clients. They're the result of teamwork, turning ideas into real,
-          impactful solutions. Check them out to see how I blend creativity and
-          tech skills to bring visions to life.
-        </p>
+        <p className="text-pretty font-sans text-sm">{dictionary.work.main} </p>
         <p className="text-pretty font-sans text-sm  text-black/40 dark:text-white/40">
-          For any inquiries regarding these projects or if you are interested in
-          potential collaboration, feel free to reach out to me at{" "}
+          {dictionary.work.sub}{" "}
           <Link
             href="mailto:v.dalfonso@metrica.dev"
             className="cursor-pointer underline"

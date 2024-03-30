@@ -4,6 +4,8 @@ import main from "@/public/assets/about/main.webp";
 import main2 from "@/public/assets/about/main2.webp";
 import Image from "next/image";
 import Link from "next/link";
+import { getDictionary } from "@/get-dictionary";
+import { Locale } from "@/i18n-config";
 
 export const metadata: Metadata = {
   title: "About | Vittorio D'Alfonso",
@@ -20,7 +22,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function About() {
+export default async function About({
+  params: { lang },
+}: {
+  params: { lang: Locale };
+}) {
+  const dictionary = await getDictionary(lang);
   return (
     <main className="flex h-screen flex-col items-center gap-16 first-line:text-foreground md:gap-0 xl:flex-row">
       <section className="w-[92%] md:h-[4%] md:w-[90%] lg:w-[95%] xl:h-full xl:w-[50%]">
@@ -28,17 +35,14 @@ export default function About() {
       </section>
       <main className="flex h-full w-[92%] flex-col gap-3 pt-8 selection:bg-orange-400/30 selection:text-selected md:mt-8 md:w-[90%] md:pr-[15%] md:pt-8 lg:mt-0 lg:pl-[23%] lg:pr-[15%] xl:px-[12%]">
         <p className="text-pretty text-start font-sans text-sm">
-          I am a self-taught Creative Developer with a passion for exploring
-          diverse scenarios within the IT industry. Currently pursuing my
-          studies in IT at{" "}
+          {dictionary.about.intro[0]}{" "}
           <Link
             className="underline"
             href={"https://corsi.unisa.it/Informatica"}
           >
-            UNISA
+            {dictionary.about.intro[1]}
           </Link>
-          , I am actively engaged in working on projects and consistently
-          seeking new opportunities to collaborate with talented individuals.
+          {dictionary.about.intro[2]}
         </p>
 
         <div className="mt-6 flex w-full flex-row gap-4 pr-2 md:flex-col lg:flex-row">
@@ -55,20 +59,15 @@ export default function About() {
         </div>
 
         <p className="mt-6 text-pretty text-start font-sans text-sm">
-          As a Digital Creative, I consider computer science my canvas for
-          ongoing exploration and creation. My forte lies in versatile
-          knowledge, and I am driven by a relentless curiosity to experiment and
-          innovate.
+          {dictionary.about.digitalCreative}
         </p>
 
         <p className="text-pretty text-start font-sans text-sm">
-          Challenges are not obstacles but gateways to growth. Prioritizing the
-          journey over the destination, I adapt swiftly to new environments.
+          {dictionary.about.challenges}
         </p>
 
         <p className="text-pretty pb-16 text-start font-sans text-sm">
-          Let's embark on a journey of continuous experimentation, pushing
-          boundaries and transforming challenges into rewarding experiences.
+          {dictionary.about.journey}
         </p>
       </main>
     </main>

@@ -4,6 +4,8 @@ import { allProjects, Project } from "contentlayer/generated";
 import TopBar from "@/layouts/TopBar";
 import Image from "next/image";
 import { Metadata } from "next";
+import { Locale } from "@/i18n-config";
+import { getDictionary } from "@/get-dictionary";
 
 export const metadata: Metadata = {
   title: "Project | Vittorio D'Alfonso",
@@ -48,7 +50,12 @@ function ProjectCard(project: Project) {
   );
 }
 
-export default function project() {
+export default async function project({
+  params: { lang },
+}: {
+  params: { lang: Locale };
+}) {
+  const dictionary = await getDictionary(lang);
   const projects = allProjects.sort((a: Project, b: Project) =>
     compareDesc(new Date(a.date), new Date(b.date)),
   );
@@ -59,14 +66,10 @@ export default function project() {
       </section>
       <main className="flex h-screen w-[92%] flex-col gap-3 pt-3 selection:bg-orange-400/30 selection:text-selected md:w-[90%] md:pr-[15%] md:pt-8 lg:pl-[23%] lg:pr-[15%] xl:px-[12%]">
         <p className="text-pretty font-sans text-sm">
-          This section serves as a showcase for the projects I've crafted over
-          the years, underscoring my dedication to hands-on learning and the
-          development of practical, functional solutions that resonate in
-          various domains of application.
+          {dictionary.project.main}
         </p>
         <p className="text-pretty font-sans text-sm  text-black/40 dark:text-white/40">
-          For any inquiries regarding these projects or if you are interested in
-          potential collaboration, feel free to reach out to me at{" "}
+          {dictionary.project.sub}{" "}
           <Link
             href="mailto:v.dalfonso@metrica.dev"
             className="cursor-pointer underline"

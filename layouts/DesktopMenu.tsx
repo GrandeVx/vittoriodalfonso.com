@@ -22,7 +22,7 @@ export default function DesktopMenu() {
   const router = useRouter();
   const pathname = usePathname();
   const [value, setValue] = React.useState<string>("");
-  const position = pathname.split("/")[1];
+  const position = pathname.split("/")[2];
 
   useEffect(() => {
     setValue(() => {
@@ -40,9 +40,17 @@ export default function DesktopMenu() {
     });
   }, [pathname]);
 
-  const works = allWorks.sort((a: Work, b: Work) =>
-    compareDesc(new Date(a.date), new Date(b.date)),
+  // remove duplicates
+  const works = allWorks.filter(
+    (work: Work, idx: number, arr: Work[]) =>
+      arr.findIndex((w: Work) => w.title === work.title) === idx,
   );
+
+  // remove /lang from url
+  works.forEach((work: Work) => {
+    work.url = work._raw.flattenedPath.replace("/en", "");
+    work.url = work._raw.flattenedPath.replace("/it", "");
+  });
 
   const projects = allProjects.sort((a: Project, b: Project) =>
     compareDesc(new Date(a.date), new Date(b.date)),

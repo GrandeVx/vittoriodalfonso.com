@@ -1,0 +1,47 @@
+{
+  "home": {
+    "main": "In computer science, I explore the elegant fusion of creativity and mathematical precision. Coding is an art that follows rules while pushing the boundaries to create something new—a symphony where logic and innovation dance in harmony.",
+    "sub": [
+      "In my",
+      "work",
+      ", I concentrate the artistic precision of coding into projects for clients and",
+      "autonomous pursuits",
+      ". Each project is a canvas where creativity meets technology, producing unique and visionary solutions.",
+      "Discover me",
+      "or",
+      "View my Work"
+    ]
+  },
+  "about": {
+    "intro": [
+      "I am a self-taught Creative Developer with a passion for exploring diverse scenarios within the IT industry. Currently pursuing my studies in IT at ",
+      "UNISA",
+      ", I am actively engaged in working on projects and consistently seeking new opportunities to collaborate with talented individuals."
+    ],
+    "digitalCreative": "As a Digital Creative, I consider computer science my canvas for ongoing exploration and creation. My forte lies in versatile knowledge, and I am driven by a relentless curiosity to experiment and innovate.",
+    "challenges": "Challenges are not obstacles but gateways to growth. Prioritizing the journey over the destination, I adapt swiftly to new environments.",
+    "journey": "Let's embark on a journey of continuous experimentation, pushing boundaries and transforming challenges into rewarding experiences."
+  },
+  "project": {
+    "main": "This section serves as a showcase for the projects I've crafted over the years, underscoring my dedication to hands-on learning and the development of practical, functional solutions that resonate in various domains of application.",
+    "sub": "For any inquiries regarding these projects or if you are interested in potential collaboration, feel free to reach out to me at"
+  },
+  "work": {
+    "main": "In this section, you'll find a bunch of projects I've done for clients. They're the result of teamwork, turning ideas into real, impactful solutions. Check them out to see how I blend creativity and tech skills to bring visions to life.",
+    "sub": "For any inquiries regarding these projects or if you are interested in potential collaboration, feel free to reach out to me at"
+  },
+  "colophon": {
+    "techincal": [
+      "Built with",
+      "and",
+      "Deployed and hosted on",
+      ". The Code is Open Source on"
+    ],
+    "Photography": "All visuals on this site have been either captured or designed by Vittorio D'Alfonso, unless explicitly mentioned otherwise. I strive to credit the sources of all images; however, the complexities of the internet and various visual inspiration platforms may occasionally pose challenges to this attribution.",
+    "Inspiration": [
+      "The profound inspiration for this website stems from",
+      ". Upon exploring his work, I found a meaningful connection with my creative vision",
+      "It's crucial to note that while drawing inspiration from his style and approach, I have entirely reimagined the website code section."
+    ]
+  }
+}

@@ -11,6 +11,7 @@ const Work = defineDocumentType(() => ({
     redirect: { type: "string", required: false },
     date: { type: "date", required: true },
     cover: { type: "string", required: true },
+    language: { type: "string", required: true },
   },
   computedFields: {
     url: { type: "string", resolve: (work) => `${work._raw.flattenedPath}` },

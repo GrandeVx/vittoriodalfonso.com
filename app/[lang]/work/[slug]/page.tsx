@@ -5,7 +5,7 @@ import TopBar from "@/layouts/TopBar";
 import type { Metadata } from "next";
 
 type Props = {
-  params: { slug: string };
+  params: { lang: string; slug: string };
 };
 
 export const generateStaticParams = async () =>
@@ -13,8 +13,12 @@ export const generateStaticParams = async () =>
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = params.slug;
+  const lang = params.lang;
+
   const work = allWorks.find(
-    (work) => work._raw.flattenedPath === "work/" + slug.replace("%2F", "/"),
+    (work) =>
+      work._raw.flattenedPath ===
+      "work/" + lang + "/" + slug.replace("%2F", "/"),
   );
 
   return {
@@ -59,9 +63,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-const workLayout = ({ params }: { params: { slug: string } }) => {
+const workLayout = ({ params }: { params: { lang: string; slug: string } }) => {
   const work = allWorks.find(
-    (work) => work._raw.flattenedPath === "work/" + params.slug,
+    (work) =>
+      work._raw.flattenedPath ===
+      "work/" + params.lang + "/" + params.slug.replace("%2F", "/"),
   );
   if (!work) return;
 

@@ -1,0 +1,47 @@
+{
+  "home": {
+    "main": "Nell'informatica, esploro l'elegante fusione di creatività e precisione matematica. La programmazione è un'arte che segue regole pur spingendo i confini per creare qualcosa di nuovo - una sinfonia dove logica e innovazione danzano in armonia.",
+    "sub": [
+      "Nel mio",
+      "lavoro",
+      ", concentro la precisione artistica della programmazione in progetti per clienti e",
+      "progetti personali",
+      ". Ogni progetto è una tela dove la creatività incontra la tecnologia, producendo soluzioni uniche e visionarie.",
+      "Scoprimi",
+      "o",
+      "Visualizza i Miei Lavori"
+    ]
+  },
+  "about": {
+    "intro": [
+      "Sono uno Sviluppatore Creativo autodidatta con una passione per l'esplorazione di scenari diversi all'interno dell'industria IT. Attualmente sto proseguendo i miei studi in IT presso ",
+      "UNISA",
+      ", e sono attivamente impegnato a lavorare su progetti e costantemente alla ricerca di nuove opportunità per collaborare con individui talentuosi."
+    ],
+    "digitalCreative": "Come Creativo Digitale, considero l'informatica la mia tela per un'esplorazione e creazione continua. Il mio forte risiede in una conoscenza versatile, e sono guidato da una curiosità implacabile di sperimentare e innovare.",
+    "challenges": "Le sfide non sono ostacoli ma porte verso la crescita. Dando priorità al viaggio più che alla destinazione, mi adatto rapidamente a nuovi ambienti.",
+    "journey": "Iniziamo un viaggio di sperimentazione continua, spingendo i confini e trasformando le sfide in esperienze gratificanti."
+  },
+  "project": {
+    "main": "Questa sezione funge da vetrina per i progetti che ho realizzato nel corso degli anni, sottolineando la mia dedizione all'apprendimento pratico e allo sviluppo di soluzioni pratiche e funzionali che trovano applicazione in vari domini.",
+    "sub": "Per qualsiasi domanda riguardante questi progetti o se sei interessato a una potenziale collaborazione, non esitare a contattarmi a"
+  },
+  "work": {
+    "main": "Questa sezione è una vetrina dei progetti sviluppati per i miei clienti, frutto di un lavoro di squadra che ha trasformato le idee in soluzioni concrete e significative. Esplora questa collezione per scoprire l'armonia tra creatività e abilità tecniche, che insieme danno vita alle visioni più ambiziose.",
+    "sub": "Per qualsiasi domanda riguardante questi progetti o se sei interessato a una potenziale collaborazione, non esitare a contattarmi a"
+  },
+  "colophon": {
+    "techincal": [
+      "Costruito con",
+      "e",
+      "Distribuito e ospitato su",
+      ". Il codice è Open Source su"
+    ],
+    "Photography": "Tutte le immagini presenti su questo sito sono state catturate o progettate da Vittorio D'Alfonso, a meno che non sia esplicitamente indicato diversamente. Mi impegno a dare credito alle fonti di tutte le immagini; tuttavia, le complessità di internet e le varie piattaforme di ispirazione visiva possono occasionalmente porre sfide a questa attribuzione.",
+    "Inspiration": [
+      "La profonda ispirazione per questo sito web deriva da",
+      ". Esplorando il suo lavoro, ho trovato una connessione significativa con la mia visione creativa.",
+      "È cruciale notare che, pur traendo ispirazione dal suo stile e approccio, ho completamente progettato e sviluppato questo sito web da zero, senza l'uso di modelli o codice preesistente."
+    ]
+  }
+}
