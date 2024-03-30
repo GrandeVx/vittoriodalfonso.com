@@ -48,9 +48,11 @@ export default function DesktopMenu() {
 
   // remove /lang from url
   works.forEach((work: Work) => {
-    work.url = work._raw.flattenedPath.replace("/en", "");
-    work.url = work._raw.flattenedPath.replace("/it", "");
+    work.url = work.url.replace("/en", "");
+    work.url = work.url.replace("/it", "");
   });
+
+  console.log(works);
 
   const projects = allProjects.sort((a: Project, b: Project) =>
     compareDesc(new Date(a.date), new Date(b.date)),

@@ -65,8 +65,8 @@ export default async function Work({
 
   // remove /lang from url
   works.forEach((work: Work) => {
-    work.url = work._raw.flattenedPath.replace("/en", "");
-    work.url = work._raw.flattenedPath.replace("/it", "");
+    work.url = work.url.replace("/en", "");
+    work.url = work.url.replace("/it", "");
   });
   return (
     <main className="flex h-screen flex-col items-center gap-16 first-line:text-foreground md:gap-0 xl:flex-row">
