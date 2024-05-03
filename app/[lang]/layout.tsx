@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     creator: "@vittoIam",
     title: "Vittorio D'Alfonso",
     description: "All my projects, work and thoughts in one place.",
-    images: ["/it/assets/utils/home.webp"],
+    images: ["/assets/utils/home.webp"],
   },
   category: "Portfolio",
   verification: {
