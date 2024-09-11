@@ -5,14 +5,17 @@ import TopBar from "@/layouts/TopBar";
 import type { Metadata } from "next";
 
 type Props = {
-  params: { slug: string };
+  params: { slug: string; lang: string };
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = params.slug;
+  const lang = params.lang;
+
   const project = allProjects.find(
     (project) =>
-      project._raw.flattenedPath === "project/" + slug.replace("%2F", "/"),
+      project._raw.flattenedPath ===
+      "project/" + lang + "/" + slug.replace("%2F", "/"),
   );
 
   return {
@@ -61,9 +64,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export const generateStaticParams = async () =>
   allProjects.map((project) => ({ slug: project._raw.flattenedPath }));
 
-const projectLayout = ({ params }: { params: { slug: string } }) => {
+const projectLayout = ({
+  params,
+}: {
+  params: { slug: string; lang: string };
+}) => {
+  const slug = params.slug;
+  const lang = params.lang;
+
   const project = allProjects.find(
-    (project) => project._raw.flattenedPath === "project/" + params.slug,
+    (project) =>
+      project._raw.flattenedPath ===
+      "project/" + lang + "/" + slug.replace("%2F", "/"),
   );
   if (!project) return;
 

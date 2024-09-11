@@ -56,9 +56,22 @@ export default async function project({
   params: { lang: Locale };
 }) {
   const dictionary = await getDictionary(lang);
-  const projects = allProjects.sort((a: Project, b: Project) =>
+
+  let projects = allProjects.sort((a: Project, b: Project) =>
     compareDesc(new Date(a.date), new Date(b.date)),
   );
+
+  projects = projects.filter(
+    (project: Project, idx: number, self: Project[]) => {
+      return idx === self.findIndex((t) => t.title === project.title);
+    },
+  );
+
+  projects.forEach((project: Project) => {
+    project.url = project.url.replace("/en", "");
+    project.url = project.url.replace("/it", "");
+  });
+
   return (
     <main className="flex h-screen flex-col items-center gap-16 first-line:text-foreground md:gap-0 xl:flex-row">
       <section className="w-[92%] md:h-[4%] md:w-[90%] lg:w-[95%] xl:h-full xl:w-[50%]">

@@ -41,7 +41,26 @@ export function middleware(request: NextRequest) {
     pathname.includes("robots.txt") ||
     pathname.includes("CV")
   ) {
-    return NextResponse.next();
+    // redirect to the url but remove it or en if exist
+    if (pathname.includes("/en/")) {
+      return NextResponse.redirect(
+        new URL(
+          pathname.replace("/en/", "/"),
+          request.url,
+        ),
+      );
+    }
+    if (pathname.includes("/it/")) {
+      return NextResponse.redirect(
+        new URL(
+          pathname.replace("/it/", "/"),
+          request.url,
+        ),
+      );
+    }
+    else {
+      return NextResponse.next();
+    }
   }
 
   if (pathnameIsMissingLocale) {

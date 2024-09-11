@@ -52,10 +52,14 @@ export default function DesktopMenu() {
     work.url = work.url.replace("/it", "");
   });
 
-  console.log(works);
-
-  const projects = allProjects.sort((a: Project, b: Project) =>
+  let projects = allProjects.sort((a: Project, b: Project) =>
     compareDesc(new Date(a.date), new Date(b.date)),
+  );
+
+  projects = projects.filter(
+    (project: Project, idx: number, self: Project[]) => {
+      return idx === self.findIndex((t) => t.title === project.title);
+    },
   );
 
   return (
