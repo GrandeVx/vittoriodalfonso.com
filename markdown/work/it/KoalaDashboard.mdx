@@ -1,0 +1,104 @@
+---
+title: Koala Dashboard
+description: Dashboard avanzata per la gestione e monitoraggio delle comunità energetiche, con analytics real-time e gestione smart dei flussi energetici
+type: Work
+date: 2025-08-20
+cover: /assets/work/KoalaDashboard/Cover.webp
+language: it
+comingSoon: true
+---
+
+<Image
+  src="/assets/work/KoalaDashboard/Cover.webp"
+  width="4000"
+  height="1000"
+  alt="Cover"
+/>
+
+La Koala Dashboard rappresenta il cuore tecnologico dell'ecosistema Koala Energy, una piattaforma web avanzata che permette a comunità energetiche, prosumer e gestori di monitorare, analizzare e ottimizzare i flussi energetici in tempo reale. Il progetto richiedeva la creazione di un'interfaccia complessa capace di gestire enormi volumi di dati mantenendo semplicità d'uso per utenti con diversi livelli di competenza tecnica.
+
+### Panoramica del Progetto
+
+La dashboard doveva servire tre tipologie di utenti con esigenze diverse: membri delle comunità energetiche interessati ai propri consumi e risparmi, gestori di comunità che necessitano di strumenti di amministrazione e reporting, e analisti tecnici che richiedono accesso a dati granulari e modelli predittivi. La sfida era creare un'architettura modulare che potesse adattarsi a questi diversi contesti mantenendo coerenza e performance.
+
+---
+
+<Image
+  src="/assets/work/KoalaDashboard/Overview.webp"
+  width="4000"
+  height="1000"
+  alt="Overview"
+  note="REFERENZA: Dashboard overview con widget real-time produzione/consumo, mappa geografica nodi energetici, KPI principali"
+/>
+
+### Visualizzazione Dati Real-Time
+
+Ho implementato un sistema di visualizzazione dati che combina:
+- Grafici real-time di produzione e consumo energetico con granularità fino al minuto
+- Heatmap geografiche per identificare pattern di consumo territoriali
+- Forecast predittivi basati su dati storici e previsioni meteo
+- Indicatori di performance della comunità con benchmark di settore
+
+Il sistema gestisce stream di dati da migliaia di smart meter, aggregando e processando informazioni in tempo reale senza impattare le performance dell'interfaccia.
+
+---
+
+<Image
+  src="/assets/work/KoalaDashboard/Analytics.webp"
+  width="4000"
+  height="1000"
+  alt="Analytics"
+  note="REFERENZA: Sezione analytics con grafici interattivi, confronti temporali, breakdown per fonte energetica"
+/>
+
+### Gestione Comunità Energetica
+
+La sezione amministrativa permette ai gestori di:
+- Configurare regole di ripartizione benefici economici
+- Gestire onboarding di nuovi membri con workflow guidati
+- Monitorare compliance normativa e certificazioni
+- Generare report automatici per stakeholder e autorità
+- Simulare scenari di espansione e impatto economico
+
+Ogni funzionalità è stata progettata considerando il framework normativo italiano per le CER (Comunità Energetiche Rinnovabili).
+
+---
+
+<Image
+  src="/assets/work/KoalaDashboard/Management.webp"
+  width="4000"
+  height="1000"
+  alt="Gestione"
+  note="REFERENZA: Interfaccia gestione membri con tabelle, form configurazione, workflow approval"
+/>
+
+### Gamification e Engagement
+
+Per incentivare comportamenti virtuosi, ho integrato elementi di gamification:
+- Ranking dei membri più efficienti
+- Badge e achievement per obiettivi di risparmio
+- Challenges comunitari con premi virtuali
+- Visualizzazione dell'impatto ambientale personale (CO2 risparmiata, alberi equivalenti)
+
+Questi elementi hanno aumentato l'engagement del 40% e ridotto i picchi di consumo del 15%.
+
+---
+
+<Image
+  src="/assets/work/KoalaDashboard/Gamification.webp"
+  width="4000"
+  height="1000"
+  alt="Gamification"
+  note="REFERENZA: Sezione profilo utente con badges, progress bars obiettivi, leaderboard comunità"
+/>
+
+### Stack Tecnologico
+
+La dashboard è stata sviluppata con:
+- [React](https://react.dev/) con TypeScript per type safety in un'applicazione complessa
+- [D3.js](https://d3js.org/) e [Recharts](https://recharts.org/) per visualizzazioni dati avanzate
+- WebSocket per aggiornamenti real-time
+- [Redux Toolkit](https://redux-toolkit.js.org/) per gestione stato complesso
+- API REST con caching intelligente per dati storici
+
+L'architettura microservices permette scaling indipendente dei componenti critici, garantendo responsività anche con migliaia di utenti connessi simultaneamente.

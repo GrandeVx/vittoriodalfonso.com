@@ -1,0 +1,98 @@
+---
+title: Balance App
+description: Applicazione mobile React Native/Expo per il money management personale con tracking spese, budgeting avanzato e analytics finanziarie
+type: Project
+date: 2025-03-25
+cover: /assets/project/Balance/Cover.webp
+language: it
+comingSoon: true
+---
+
+<Image
+  src="/assets/project/Balance/Cover.webp"
+  width="4000"
+  height="1000"
+  alt="Cover"
+/>
+
+Balance è un progetto personale di fintech app che ho sviluppato per esplorare il design di interfacce finanziarie intuitive e performanti. L'applicazione combina tracking delle spese, budgeting intelligente, analytics avanzate e gamification per rendere la gestione finanziaria personale più accessibile e coinvolgente. Il progetto utilizza un'architettura monorepo moderna con focus su performance e user experience.
+
+### Panoramica Tecnica
+
+Il progetto è strutturato come monorepo completo:
+- **App Mobile**: React Native con Expo Router per navigazione native
+- **Web App**: Next.js per dashboard web complementare  
+- **Backend Services**: Supabase + servizi microservices
+- **Database**: PostgreSQL con Prisma ORM
+- **Infrastructure**: Docker per deployment e sviluppo
+
+---
+
+<Image
+  src="/assets/project/Balance/Dashboard.webp"
+  width="4000"
+  height="1000"
+  alt="Dashboard"
+  note="REFERENZA: Dashboard principale con widget circolari per spese, budget, analytics finanziarie"
+/>
+
+### Features Finanziarie Avanzate
+
+L'app implementa funzionalità sophisticated per money management:
+- **Multi-Account Support**: Gestione conti correnti, carte di credito, cash
+- **Categorizzazione Intelligente**: Auto-categorizzazione transazioni con ML
+- **Budgeting Dinamico**: Budget flessibili con rollover e limiti intelligenti
+- **Recurring Transactions**: Gestione automatica spese ricorrenti
+- **Investment Tracking**: Monitoraggio portfolio e performance
+
+---
+
+<Image
+  src="/assets/project/Balance/Analytics.webp"
+  width="4000"
+  height="1000"
+  alt="Analytics"
+  note="REFERENZA: Schermata analytics con grafici trends, heatmap spese, insights personalizzati"
+/>
+
+### UI/UX e Performance
+
+Il design system è ottimizzato per chiarezza e velocità:
+- **Typography Custom**: ApfelGrotezk + DM Sans per gerarchia visiva
+- **Chart Library**: Victory Native per grafici performanti
+- **Gesture System**: React Native Gesture Handler per interazioni fluide
+- **Animation Engine**: React Native Reanimated 3 per micro-interactions
+- **Theme System**: Dynamic theming con persistenza preferenze utente
+
+---
+
+<Image
+  src="/assets/project/Balance/Features.webp"
+  width="4000"
+  height="1000"
+  alt="Features"
+  note="REFERENZA: Flow creazione transazioni, categorizzazione, impostazione budget"
+/>
+
+### Architettura e Ottimizzazioni
+
+Il progetto implementa diverse ottimizzazioni avanzate:
+- **State Management**: Zustand per stato globale + React Query per server state
+- **Background Processing**: Background tasks per sync e notifiche
+- **Database Optimization**: Query optimization con indici strategici
+- **Caching Layer**: Multi-level caching per performance offline-first
+- **Security**: Biometric auth + data encryption at rest
+
+### Stack Tecnologico Completo
+
+**Mobile Core:**
+- [React Native](https://reactnative.dev/) con [Expo](https://expo.dev/) SDK 51
+- [NativeWind](https://nativewind.dev/) 4.0 per styling
+- [React Native Reanimated](https://docs.swmansion.com/react-native-reanimated/) 3
+- [MMKV](https://github.com/mrousavy/react-native-mmkv) per storage performante
+
+**Backend & Data:**
+- [Supabase](https://supabase.com/) per auth e real-time features
+- [Prisma](https://prisma.io/) ORM con PostgreSQL
+- Background jobs con cron services
+- [Turbo](https://turbo.build/) monorepo per build optimization

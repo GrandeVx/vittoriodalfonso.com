@@ -2,7 +2,7 @@ import Link from "next/link";
 import { format, parseISO } from "date-fns";
 import { allWorks, Work } from "contentlayer/generated";
 import TopBar from "@/layouts/TopBar";
-import Image from "next/image";
+import SafeImage from "@/components/SafeImage";
 import { Metadata } from "next";
 import { Locale } from "@/i18n-config";
 import { getDictionary } from "@/get-dictionary";
@@ -25,12 +25,40 @@ export const metadata: Metadata = {
 };
 
 function WorkCard(work: Work) {
+  if (work.comingSoon) {
+    return (
+      <div className="flex cursor-not-allowed flex-col gap-3">
+        <section className="relative">
+          <SafeImage
+            src={work.cover}
+            alt={work.attributes ? work.attributes : work.title}
+            about={work.attributes ? work.attributes : work.title}
+            width={1000}
+            height={1000}
+          />
+          <span className="bg-background/90 absolute right-2 top-2 rounded-full px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
+            Coming Soon
+          </span>
+        </section>
+        <section className="flex w-full items-center justify-between">
+          <p className="mb-1 text-sm">{work.title}</p>
+          <time
+            dateTime={work.date}
+            className="mb-2 block text-sm text-gray-400/70"
+          >
+            {format(parseISO(work.date), "yyyy")}
+          </time>
+        </section>
+      </div>
+    );
+  }
+
   return (
     <Link
       href={work.redirect ? work.redirect : work.url}
       className="flex cursor-pointer flex-col gap-3"
     >
-      <Image
+      <SafeImage
         src={work.cover}
         alt={work.attributes ? work.attributes : work.title}
         about={work.attributes ? work.attributes : work.title}
@@ -50,7 +78,7 @@ function WorkCard(work: Work) {
   );
 }
 
-export default async function Work({
+export default async function WorkPage({
   params: { lang },
 }: {
   params: { lang: Locale };

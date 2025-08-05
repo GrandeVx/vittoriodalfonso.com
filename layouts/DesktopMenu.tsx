@@ -64,7 +64,7 @@ export default function DesktopMenu() {
 
   return (
     <section
-      className="md:fixed md:w-[40%] md:px-4 lg:w-[30%] xl:w-[20%]"
+      className="md:fixed md:w-2/5 md:px-4 lg:w-[30%] xl:w-1/5"
       suppressHydrationWarning
     >
       <Accordion
@@ -89,16 +89,30 @@ export default function DesktopMenu() {
           </AccordionTrigger>
           <AccordionContent>
             {works.map((work: Work, idx: number) => (
-              <p
-                id={work._id}
+              <div
                 key={idx}
-                onClick={() => {
-                  router.push("/" + work.url);
-                }}
-                className="cursor-pointer hover:text-black dark:hover:text-white"
+                className="flex items-center justify-between"
               >
-                {work.title}
-              </p>
+                <p
+                  id={work._id}
+                  onClick={() => {
+                    if (!work.comingSoon) {
+                      router.push("/" + work.url);
+                    }
+                  }}
+                  className={`${work.comingSoon
+                    ? "cursor-not-allowed text-muted"
+                    : "cursor-pointer hover:text-black dark:hover:text-white"
+                    }`}
+                >
+                  {work.title}
+                </p>
+                {work.comingSoon && (
+                  <span className="ml-2 rounded-full bg-gray-200 px-2 py-0.5 text-xs text-muted-foreground">
+                    Coming Soon
+                  </span>
+                )}
+              </div>
             ))}
           </AccordionContent>
         </AccordionItem>
@@ -118,18 +132,32 @@ export default function DesktopMenu() {
           </AccordionTrigger>
           <AccordionContent>
             {projects.map((project: Project, idx: number) => (
-              <p
-                id={project._id}
+              <div
                 key={idx}
-                onClick={() => {
-                  router.push(
-                    project.redirect ? project.redirect : "/" + project.url,
-                  );
-                }}
-                className="cursor-pointer hover:text-black dark:hover:text-white"
+                className="flex items-center justify-between"
               >
-                {project.title}
-              </p>
+                <p
+                  id={project._id}
+                  onClick={() => {
+                    if (!project.comingSoon) {
+                      router.push(
+                        project.redirect ? project.redirect : "/" + project.url,
+                      );
+                    }
+                  }}
+                  className={`${project.comingSoon
+                    ? "cursor-not-allowed text-muted"
+                    : "cursor-pointer hover:text-black dark:hover:text-white"
+                    }`}
+                >
+                  {project.title}
+                </p>
+                {project.comingSoon && (
+                  <span className="ml-2 rounded-full bg-gray-200 px-2 py-0.5 text-xs text-muted-foreground">
+                    Coming Soon
+                  </span>
+                )}
+              </div>
             ))}
           </AccordionContent>
         </AccordionItem>
@@ -143,7 +171,7 @@ export default function DesktopMenu() {
             >
               <p>About</p>
               <p>
-                {differenceInYears(new Date(), new Date(2003, 7, 22))} years
+                {differenceInYears(new Date(), new Date(2003, 6, 22))} years
               </p>
             </div>
           </AccordionTrigger>
@@ -151,6 +179,7 @@ export default function DesktopMenu() {
             <Link
               key={1}
               href="/CV.pdf"
+              download="Vittorio_DAlfonso_CV.pdf"
               className="cursor-pointer hover:text-black dark:hover:text-white"
             >
               Curriculum Vitae

@@ -1,0 +1,117 @@
+---
+title: Connecteed SaaS
+description: Connecteed è una piattaforma SaaS per la gestione integrata del business digitale, specializzata in product feed management e sincronizzazione multi-canale
+type: Work
+date: 2025-07-10
+cover: /assets/work/Connecteed/Cover.webp
+language: it
+comingSoon: true
+---
+
+<Image
+  src="/assets/work/Connecteed/Cover.webp"
+  width="4000"
+  height="1000"
+  alt="Cover"
+/>
+
+Connecteed rappresenta una soluzione completa per le aziende che necessitano di gestire la propria presenza digitale su multiple piattaforme. Il progetto ha richiesto una complessa migrazione del software dal suo vecchio ambiente monolitico ad una struttura dockerizzata con permessi e sistema di backup integrato. Il mio intervento ha comportato un refactoring completo del codice dovuto ad una serie di mancanze e parti da migliorare, trasformando una piattaforma instabile in un ecosistema digitale robusto e scalabile.
+
+> Scopri l'ecosistema completo su [connecteed.com](https://connecteed.com/)
+
+### Panoramica del Progetto
+
+La sfida principale era duplice: modernizzare l'infrastruttura tecnica mentre si manteneva il servizio attivo per centinaia di clienti business, e risolvere debt tecnico accumulato che impattava performance e affidabilità. Il progetto richiedeva non solo competenze DevOps avanzate, ma anche una comprensione profonda del business model SaaS e delle esigenze di continuità operativa.
+
+---
+
+<Image
+  src="/assets/work/Connecteed/Dashboard.webp"
+  width="4000"
+  height="1000"
+  alt="Dashboard"
+  note="REFERENZA: Dashboard principale con widgets per feed prodotti, sincronizzazioni, analytics real-time"
+/>
+
+### Migrazione Critica e Refactoring
+
+La migrazione ha richiesto due fasi critiche dovute all'estremo consumo della macchina originale:
+
+**Prima migrazione**: Da 300GB SSD a 9TB HDD per risolvere i problemi di spazio
+**Seconda migrazione**: Verso architettura dockerizzata con Laravel + Vue.js frontend
+
+Il sistema presentava un problema critico di storage con consumi abnormi: ogni file veniva scaricato n volte e le n-1 istanze precedenti non venivano mai cancellate, causando un accumulo esponenziale di dati duplicati.
+
+Ho implementato:
+- Orchestrazione multi-container con Docker Compose
+- Sistema di gestione permessi granulare e backup integrato
+- Cleanup automatico dei file duplicati con sistema di gestione lifecycle
+- Pipeline CI/CD automatizzate per deployment senza downtime
+
+Questa trasformazione ha ridotto del 90% lo spazio occupato su disco e eliminato i problemi di inconsistenza tra ambienti.
+
+---
+
+<Image
+  src="/assets/work/Connecteed/Architecture.webp"
+  width="4000"
+  height="1000"
+  alt="Architettura"
+  note="REFERENZA: Diagramma architettura con microservizi, API gateway, database, servizi esterni"
+/>
+
+### Risoluzione Problematiche Legacy
+
+Il sistema presentava numerose criticità accumulate nel tempo:
+- **Storage abnorme**: File scaricati multiple volte senza cleanup delle versioni precedenti
+- Memory leaks che causavano crash periodici dell'ambiente monolitico
+- Sincronizzazioni fallite per timeout su grandi volumi di dati
+- Inconsistenze nel database per race conditions
+- Performance degradate su query complesse in ambiente Laravel
+
+Ho implementato soluzioni sistematiche:
+- Sistema di cleanup automatico con lifecycle management dei file
+- Refactoring completo del codice Laravel con ottimizzazioni moderne
+- Caching strategico con Redis per ridurre accessi al database
+- Gestione asincrona dei job pesanti con code prioritizzate
+- Sistema di retry intelligente per le sincronizzazioni fallite
+
+---
+
+<Image
+  src="/assets/work/Connecteed/Integrations.webp"
+  width="4000"
+  height="1000"
+  alt="Integrazioni"
+  note="REFERENZA: Grid di integrazioni disponibili con loghi marketplace, e-commerce, ERP"
+/>
+
+### Stack Tecnologico e Ottimizzazioni
+
+La piattaforma utilizza un'architettura separata frontend/backend:
+
+**Frontend:**
+- [Vue.js](https://vuejs.org/) 3 con Composition API
+- [Pinia](https://pinia.vuejs.org/) per state management moderno
+- [Bootstrap](https://getbootstrap.com/) 5 per responsive design
+- [Chart.js](https://chartjs.org/) per visualizzazioni dati avanzate
+- [Vite](https://vitejs.dev/) per build optimization
+
+**Backend:**
+- [Laravel](https://laravel.com/) framework con architettura containerizzata
+- Database PostgreSQL con replica per alta disponibilità
+- Redis per caching e gestione code
+- Sistema di storage ottimizzato con cleanup automatico
+- Elasticsearch per ricerche performanti
+
+**DevOps:**
+- Docker containerization completa
+- Docker Compose per orchestrazione servizi
+- Sistema di monitoring e logging centralizzato
+- Pipeline CI/CD automatizzate
+
+Le ottimizzazioni implementate hanno portato a:
+- Riduzione del 60% nei tempi di risposta API
+- Aumento del 95% nell'uptime del servizio
+- Capacità di gestire 10x il volume di dati precedente
+- Scalabilità orizzontale automatica basata su metriche

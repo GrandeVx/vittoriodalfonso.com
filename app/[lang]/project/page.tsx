@@ -2,7 +2,7 @@ import Link from "next/link";
 import { compareDesc, format, parseISO } from "date-fns";
 import { allProjects, Project } from "contentlayer/generated";
 import TopBar from "@/layouts/TopBar";
-import Image from "next/image";
+import SafeImage from "@/components/SafeImage";
 import { Metadata } from "next";
 import { Locale } from "@/i18n-config";
 import { getDictionary } from "@/get-dictionary";
@@ -23,13 +23,41 @@ export const metadata: Metadata = {
 };
 
 function ProjectCard(project: Project) {
+  if (project.comingSoon) {
+    return (
+      <div className="flex cursor-not-allowed flex-col gap-3 ">
+        <section className="relative">
+          <SafeImage
+            src={project.cover}
+            alt={project.attributes ? project.attributes : project.title}
+            about={project.attributes ? project.attributes : project.title}
+            width={1000}
+            height={1000}
+          />
+          <span className="bg-background/90 absolute right-2 top-2 rounded-full px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
+            Coming Soon
+          </span>
+        </section>
+        <section className="flex w-full items-center justify-between">
+          <p className="mb-1 text-sm">{project.title}</p>
+          <time
+            dateTime={project.date}
+            className="mb-2 block text-sm text-gray-400/70"
+          >
+            {format(parseISO(project.date), "yyyy")}
+          </time>
+        </section>
+      </div>
+    );
+  }
+
   return (
     <Link
       href={project.redirect ? project.redirect : project.url}
       className="flex cursor-pointer flex-col gap-3"
     >
       <section className="relative">
-        <Image
+        <SafeImage
           src={project.cover}
           alt={project.attributes ? project.attributes : project.title}
           about={project.attributes ? project.attributes : project.title}

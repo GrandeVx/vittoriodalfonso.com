@@ -15,7 +15,7 @@ export default function MobileMenu() {
   return (
     <Drawer>
       <DrawerTrigger className="outline-none">
-        <section className="flex min-h-10 w-screen justify-between border-t border-border bg-background p-3 pl-5 outline-none">
+        <section className="flex min-h-10 w-screen justify-between border-t border-gray-200 bg-background p-3 pl-5 outline-none">
           <p className="text-sm text-gray-400">{pathname}</p>
           <div className="flex items-center justify-center gap-2">
             <p className="text-sm">Open Navigation</p>
@@ -39,7 +39,7 @@ export default function MobileMenu() {
       <DrawerContent>
         <DrawerHeader className="w-full">
           <DrawerClose>
-            <section className="flex min-h-10 w-screen justify-between border-t border-border p-3 pl-5 outline-none">
+            <section className="flex min-h-10 w-screen justify-between border-t border-gray-200 p-3 pl-5 outline-none">
               <p className="text-sm text-gray-400">{pathname}</p>
               <div className="flex items-center justify-center gap-2">
                 <p className="text-sm">Close Navigation</p>

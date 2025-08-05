@@ -1,0 +1,89 @@
+---
+title: Wardrobe App
+description: Applicazione mobile React Native/Expo per la gestione del guardaroba digitale con features social e raccomandazioni AI-powered per outfit personalizzati
+type: Project
+date: 2024-05-15
+cover: /assets/project/Wardrobe/Cover.webp
+language: it
+comingSoon: true
+---
+
+<Image
+  src="/assets/project/Wardrobe/Cover.webp"
+  width="4000"
+  height="1000"
+  alt="Cover"
+/>
+
+Wardrobe è un progetto personale di applicazione mobile che ho sviluppato per esplorare le potenzialità di React Native con Expo nel creare un'esperienza social nel mondo della moda. L'app combina gestione del guardaroba digitale, suggerimenti AI per outfit e features social in un'unica piattaforma. Il progetto utilizza un'architettura monorepo con Turbo e include sia l'app mobile che la landing page web.
+
+> Unisciti alla lista d'attesa su [yourwardrobe.app](https://yourwardrobe.app/)
+
+### Panoramica Tecnica
+
+Il progetto è strutturato come monorepo con Turbo, contenente:
+- **App Mobile**: React Native con Expo Router per navigazione file-based
+- **Landing Page**: Next.js 14 con App Router
+- **Backend**: Supabase per autenticazione e database
+- **UI Components**: NativeWind per styling cross-platform con Tailwind
+
+---
+
+<Image
+  src="/assets/project/Wardrobe/Home.webp"
+  width="4000"
+  height="1000"
+  alt="Home"
+  note="REFERENZA: Homepage con mockup iPhone che mostra l'app, design minimal e moderno con palette pastello"
+/>
+
+### Architettura e Features Implementate
+
+L'app mobile utilizza Expo SDK 51 con le seguenti features principali:
+- **Gestione Immagini**: Multiple image picker con compressione automatica
+- **Navigazione**: Tab navigation con bottom sheet modali
+- **Storage**: AsyncStorage per dati offline e sincronizzazione con Supabase
+- **UI/UX**: Componenti custom con React Native Reanimated per animazioni fluide
+- **Onboarding**: Flow guidato per setup iniziale del guardaroba
+
+---
+
+<Image
+  src="/assets/project/Wardrobe/Features.webp"
+  width="4000"
+  height="1000"
+  alt="Features"
+  note="REFERENZA: Sezione features con 3 mockup affiancati che mostrano: catalogo vestiti, suggerimenti outfit, feed social"
+/>
+
+### Componenti e Patterns
+
+Il progetto implementa diversi pattern avanzati di React Native:
+- **Form Management**: React Hook Form con validazione Zod
+- **Image Handling**: Expo Image Picker con upload a Supabase Storage
+- **State Management**: Context API per condivisione stato globale
+- **Typography System**: Custom text components con design tokens
+- **Tab Navigation**: Custom tab bar con animazioni e ottimizzazioni performance
+
+---
+
+<Image
+  src="/assets/project/Wardrobe/Community.webp"
+  width="4000"
+  height="1000"
+  alt="Community"
+  note="REFERENZA: Sezione community con grid di outfit condivisi dagli utenti, interazioni social"
+/>
+
+### Stack Tecnologico Completo
+
+**Mobile App:**
+- [React Native](https://reactnative.dev/) con [Expo](https://expo.dev/) SDK 51
+- [NativeWind](https://nativewind.dev/) per styling Tailwind-compatible
+- [Expo Router](https://docs.expo.dev/router/introduction/) per navigazione
+- [Supabase](https://supabase.com/) per backend-as-a-service
+
+**Web Landing:**
+- [Next.js](https://nextjs.org/) 14 con App Router
+- [Tailwind CSS](https://tailwindcss.com/) per styling
+- Magicui components per animazioni
