@@ -108,7 +108,7 @@ export default function DesktopMenu() {
                   {work.title}
                 </p>
                 {work.comingSoon && (
-                  <span className="ml-2 rounded-full bg-gray-200 px-2 py-0.5 text-xs text-muted-foreground">
+                  <span className="mr-2 rounded-full bg-gray-200 px-2 py-0.5 text-xs text-muted-foreground">
                     Coming Soon
                   </span>
                 )}
@@ -153,7 +153,7 @@ export default function DesktopMenu() {
                   {project.title}
                 </p>
                 {project.comingSoon && (
-                  <span className="ml-2 rounded-full bg-gray-200 px-2 py-0.5 text-xs text-muted-foreground">
+                  <span className="mr-2 rounded-full bg-gray-200 px-2 py-0.5 text-xs text-muted-foreground">
                     Coming Soon
                   </span>
                 )}
