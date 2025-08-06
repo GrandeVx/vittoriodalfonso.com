@@ -95,10 +95,10 @@ export default async function WorkPage({
       arr.findIndex((w: Work) => w.title === work.title) === idx,
   );
 
-  // remove /lang from url
+  // Genera URL corretti basati sulla lingua corrente
   works.forEach((work: Work) => {
-    work.url = work.url.replace("/en", "");
-    work.url = work.url.replace("/it", "");
+    const filename = work._raw.flattenedPath.split('/').pop();
+    work.url = `/${lang}/work/${filename}`;
   });
   return (
     <main className="flex h-screen flex-col items-center gap-16 first-line:text-foreground md:gap-0 xl:flex-row">

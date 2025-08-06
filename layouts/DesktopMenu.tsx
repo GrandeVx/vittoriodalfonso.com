@@ -23,6 +23,7 @@ export default function DesktopMenu() {
   const pathname = usePathname();
   const [value, setValue] = React.useState<string>("");
   const position = pathname.split("/")[2];
+  const lang = pathname.split("/")[1]; // Estrae la lingua dal pathname
 
   useEffect(() => {
     setValue(() => {
@@ -46,10 +47,10 @@ export default function DesktopMenu() {
       arr.findIndex((w: Work) => w.title === work.title) === idx,
   );
 
-  // remove /lang from url
+  // Genera URL corretti basati sulla lingua corrente
   works.forEach((work: Work) => {
-    work.url = work.url.replace("/en", "");
-    work.url = work.url.replace("/it", "");
+    const filename = work._raw.flattenedPath.split('/').pop();
+    work.url = `${lang}/work/${filename}`;
   });
 
   let projects = allProjects.sort((a: Project, b: Project) =>
@@ -61,6 +62,12 @@ export default function DesktopMenu() {
       return idx === self.findIndex((t) => t.title === project.title);
     },
   );
+
+  // Genera URL corretti per i progetti basati sulla lingua corrente
+  projects.forEach((project: Project) => {
+    const filename = project._raw.flattenedPath.split('/').pop();
+    project.url = `${lang}/project/${filename}`;
+  });
 
   return (
     <section
@@ -78,7 +85,7 @@ export default function DesktopMenu() {
           <AccordionTrigger>
             <div
               id="work"
-              onClick={() => router.push("/work")}
+              onClick={() => router.push(`/${lang}/work`)}
               className="flex w-full cursor-pointer justify-between gap-24 px-4 hover:text-black dark:hover:text-white"
             >
               <p className="">Work</p>
@@ -125,7 +132,7 @@ export default function DesktopMenu() {
           <AccordionTrigger>
             <div
               id="projects"
-              onClick={() => router.push("/project")}
+              onClick={() => router.push(`/${lang}/project`)}
               className="flex w-full cursor-pointer justify-between  gap-24 px-4 hover:text-black dark:hover:text-white"
             >
               <p>Projects</p>
@@ -174,7 +181,7 @@ export default function DesktopMenu() {
           <AccordionTrigger>
             <div
               id="about"
-              onClick={() => router.push("/about")}
+              onClick={() => router.push(`/${lang}/about`)}
               className="flex w-full cursor-pointer justify-between  gap-24 px-4 hover:text-black dark:hover:text-white"
             >
               <p>About</p>
@@ -216,7 +223,7 @@ export default function DesktopMenu() {
 
         <div
           id="colophon"
-          onClick={() => router.push("/colophon")}
+          onClick={() => router.push(`/${lang}/colophon`)}
           className="flex w-full cursor-pointer justify-between  gap-24 px-4 hover:text-black dark:hover:text-white"
         >
           <p>Colophon</p>

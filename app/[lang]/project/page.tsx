@@ -100,8 +100,9 @@ export default async function project({
   );
 
   projects.forEach((project: Project) => {
-    project.url = project.url.replace("/en", "");
-    project.url = project.url.replace("/it", "");
+    // Estrae solo il nome del file dal flattenedPath per creare l'URL corretto
+    const filename = project._raw.flattenedPath.split('/').pop();
+    project.url = `/${lang}/project/${filename}`;
   });
 
   return (
