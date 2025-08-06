@@ -1,0 +1,110 @@
+---
+title: Connecteed
+description: Connecteed is a SaaS platform for integrated digital business management, specialized in product feed management and multi-channel synchronization
+type: Work
+date: 2025-07-10
+cover: /assets/work/Connecteed/Cover.webp
+language: en
+comingSoon: false
+comingSoonDark: false
+---
+
+<Image
+  src="/assets/work/Connecteed/Cover.webp"
+  width="4000"
+  height="1000"
+  alt="Cover"
+/>
+
+Connecteed represents a complete solution for companies that need to manage their digital presence on multiple platforms. The project required a complex migration of the software from its old monolithic environment to a dockerized structure with integrated permissions and backup system. My intervention involved a complete code refactoring due to a series of deficiencies and parts to improve, transforming an unstable platform into a robust and scalable digital ecosystem.
+
+> Discover the complete ecosystem on [connecteed.com](https://connecteed.com/)
+
+### Project Overview
+
+The main challenge was twofold: modernize the technical infrastructure while keeping the service active for hundreds of business clients, and resolve accumulated technical debt that impacted performance and reliability. The project required not only advanced DevOps skills, but also a deep understanding of the SaaS business model and operational continuity needs.
+
+---
+
+<Image
+  src="/assets/work/Connecteed/Dashboard.webp"
+  width="4000"
+  height="1000"
+  alt="Dashboard"
+  note="REFERENCE: Main dashboard with widgets for product feeds, synchronizations, real-time analytics"
+/>
+
+### Critical Migration and Refactoring
+
+The migration required two critical phases due to extreme consumption of the original machine:
+
+**First migration**: From 300GB SSD to 9TB HDD to resolve space issues
+**Second migration**: Towards dockerized architecture with Laravel + Vue.js frontend
+
+The system presented a critical storage problem with abnormal consumption: every file was downloaded n times and the n-1 previous instances were never deleted, causing exponential accumulation of duplicate data.
+
+I implemented:
+- Multi-container orchestration with Docker Compose
+- Granular permission management system and integrated backup
+- Automatic cleanup of duplicate files with lifecycle management system
+- Automated CI/CD pipelines for zero-downtime deployment
+
+This transformation reduced disk space usage by 90% and eliminated inconsistency problems between environments.
+
+---
+
+<Image
+  src="/assets/work/Connecteed/Architecture.webp"
+  width="4000"
+  height="1000"
+  alt="Architecture"
+  note="REFERENCE: Architecture diagram with microservices, API gateway, database, external services"
+/>
+
+### Legacy Issues Resolution
+
+The system presented numerous criticalities accumulated over time:
+- **Abnormal storage**: Files downloaded multiple times without cleanup of previous versions
+- Memory leaks causing periodic crashes of the monolithic environment
+- Failed synchronizations due to timeouts on large data volumes
+- Database inconsistencies due to race conditions
+- Degraded performance on complex queries in Laravel environment
+
+I implemented systematic solutions:
+- Automatic cleanup system with file lifecycle management
+- Complete Laravel code refactoring with modern optimizations
+- Strategic caching with Redis to reduce database access
+- Asynchronous management of heavy jobs with prioritized queues
+- Intelligent retry system for failed synchronizations
+
+---
+
+### Technology Stack and Optimizations
+
+The platform uses a separated frontend/backend architecture:
+
+**Frontend:**
+- [Vue.js](https://vuejs.org/) 3 with Composition API
+- [Pinia](https://pinia.vuejs.org/) for modern state management
+- [Bootstrap](https://getbootstrap.com/) 5 for responsive design
+- [Chart.js](https://chartjs.org/) for advanced data visualizations
+- [Vite](https://vitejs.dev/) for build optimization
+
+**Backend:**
+- [Laravel](https://laravel.com/) framework with containerized architecture
+- PostgreSQL database with replica for high availability
+- Redis for caching and queue management
+- Optimized storage system with automatic cleanup
+- Elasticsearch for performant searches
+
+**DevOps:**
+- Complete Docker containerization
+- Docker Compose for service orchestration
+- Centralized monitoring and logging system
+- Automated CI/CD pipelines
+
+The implemented optimizations led to:
+- 60% reduction in API response times
+- 95% increase in service uptime
+- Ability to handle 10x the previous data volume
+- Automatic horizontal scalability based on metrics

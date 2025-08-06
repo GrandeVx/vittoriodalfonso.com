@@ -62,7 +62,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export const generateStaticParams = async () =>
-  allProjects.map((project) => ({ slug: project._raw.flattenedPath }));
+  allProjects.map((project) => ({ 
+    slug: project._raw.flattenedPath.split('/').pop() // Estrae solo il nome del file senza la path completa
+  }));
 
 const projectLayout = ({
   params,

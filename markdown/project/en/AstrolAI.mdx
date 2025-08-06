@@ -1,0 +1,98 @@
+---
+title: Astrol AI
+description: Personal AI horoscope service project with Telegram bot, Next.js landing page and payment system, combining astrology and artificial intelligence
+type: Project
+date: 2024-04-10
+cover: /assets/project/AstrolAI/Cover.webp
+language: en
+comingSoon: false
+---
+
+<Image
+  src="/assets/project/AstrolAI/Cover.webp"
+  width="4000"
+  height="1000"
+  alt="Cover"
+/>
+
+Astrol AI is a personal project I developed to explore the integration between artificial intelligence and conversational services, creating a complete ecosystem for personalized horoscopes. The project combines a Python Telegram bot, a Next.js landing page, Stripe payment system, and an automated pipeline for generating astral content.
+
+> Discover your personalized horoscope on [astrolai.xyz](https://www.astrolai.xyz/en)
+
+### Technical Overview
+
+The project is structured as a multi-component ecosystem:
+- **Telegram Bot**: Python with python-telegram-bot for conversation management
+- **AI Engine**: Claude API for contextual astrological response generation
+- **Landing Page**: Next.js with internationalization and dark/light theme
+- **Payment System**: Stripe for Basic/Premium subscription management
+- **Content Pipeline**: Automated system for visual asset creation
+
+---
+
+<Image
+  src="/assets/project/AstrolAI/Home.webp"
+  width="4000"
+  height="1000"
+  alt="Home"
+  note="REFERENCE: Homepage with cosmic/stellar design, zodiacal elements, modern interface with purple/blue gradients"
+/>
+
+### Bot and AI Architecture
+
+The Telegram bot implements:
+- **Conversation Handler**: Conversation state management with persistence
+- **User Management**: Usage tracking, plan limits, conversation history
+- **AI Integration**: Claude API with prompt engineering for astrological responses
+- **Payment Integration**: Stripe webhooks for subscription status management
+- **Logging System**: Complete performance monitoring and usage analytics
+
+---
+
+<Image
+  src="/assets/project/AstrolAI/Chat.webp"
+  width="4000"
+  height="1000"
+  alt="Chat"
+  note="REFERENCE: Telegram conversation screenshot with examples of astrological questions and answers"
+/>
+
+### Content Generation Pipeline
+
+I developed an automated system for visual content creation:
+- **Template System**: Custom backgrounds for each zodiac sign
+- **Text Overlay**: Text rendering system with custom fonts and shadows
+- **Social Assets**: Automatic image generation for different formats
+- **Daily Generation**: Cron jobs for daily content creation
+- **Image Processing**: Python pipeline with PIL for image manipulation
+
+---
+
+<Image
+  src="/assets/project/AstrolAI/Pricing.webp"
+  width="4000"
+  height="1000"
+  alt="Pricing"
+  note="REFERENCE: Pricing section with Basic and Premium plan cards, clean design with cosmic accents"
+/>
+
+### Technology Stack
+
+The project consists of three main components:
+
+**Telegram Bot (Python):**
+- [python-telegram-bot](https://python-telegram-bot.org/) for conversation management
+- [Anthropic Claude API](https://www.anthropic.com/) for astrological response generation
+- [Supabase](https://supabase.com/) for user management and conversation history
+- Docker deployment with centralized logging
+
+**Landing Page:**
+- [Next.js](https://nextjs.org/) 14 with App Router for optimal performance
+- [Tailwind CSS](https://tailwindcss.com/) with custom dark/light theme
+- Stripe integration for payment and subscription management
+- Complete internationalization (IT/EN)
+
+**Content Generation:**
+- Automated pipeline for horoscope image creation
+- Python scripts for social content generation
+- Customizable template system for each zodiac sign

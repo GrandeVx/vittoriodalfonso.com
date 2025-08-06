@@ -1,0 +1,98 @@
+---
+title: Balance App
+description: React Native/Expo mobile application for personal money management with expense tracking, advanced budgeting and financial analytics
+type: Project
+date: 2025-03-25
+cover: /assets/project/Balance/Cover.webp
+language: en
+comingSoon: true
+---
+
+<Image
+  src="/assets/project/Balance/Cover.webp"
+  width="4000"
+  height="1000"
+  alt="Cover"
+/>
+
+Balance is a personal fintech app project I developed to explore the design of intuitive and performant financial interfaces. The application combines expense tracking, smart budgeting, advanced analytics, and gamification to make personal financial management more accessible and engaging. The project uses a modern monorepo architecture with a focus on performance and user experience.
+
+### Technical Overview
+
+The project is structured as a complete monorepo:
+- **Mobile App**: React Native with Expo Router for native navigation
+- **Web App**: Next.js for complementary web dashboard
+- **Backend Services**: Supabase + microservices architecture
+- **Database**: PostgreSQL with Prisma ORM
+- **Infrastructure**: Docker for deployment and development
+
+---
+
+<Image
+  src="/assets/project/Balance/Dashboard.webp"
+  width="4000"
+  height="1000"
+  alt="Dashboard"
+  note="REFERENCE: Main dashboard with circular widgets for expenses, budgets, financial analytics"
+/>
+
+### Advanced Financial Features
+
+The app implements sophisticated features for money management:
+- **Multi-Account Support**: Managing checking accounts, credit cards, cash
+- **Smart Categorization**: Auto-categorization of transactions with ML
+- **Dynamic Budgeting**: Flexible budgets with rollover and intelligent limits
+- **Recurring Transactions**: Automatic management of recurring expenses
+- **Investment Tracking**: Portfolio monitoring and performance
+
+---
+
+<Image
+  src="/assets/project/Balance/Analytics.webp"
+  width="4000"
+  height="1000"
+  alt="Analytics"
+  note="REFERENCE: Analytics screen with trend charts, expense heatmap, personalized insights"
+/>
+
+### UI/UX and Performance
+
+The design system I developed is optimized for clarity and speed:
+- **Custom Typography**: ApfelGrotezk + DM Sans for visual hierarchy
+- **Chart Library**: Victory Native for performant charts
+- **Gesture System**: React Native Gesture Handler for fluid interactions
+- **Animation Engine**: React Native Reanimated 3 for micro-interactions
+- **Theme System**: Dynamic theming with user preference persistence
+
+---
+
+<Image
+  src="/assets/project/Balance/Features.webp"
+  width="4000"
+  height="1000"
+  alt="Features"
+  note="REFERENCE: Transaction creation flow, categorization, budget setting"
+/>
+
+### Architecture and Optimizations
+
+The project implements several advanced optimizations:
+- **State Management**: Zustand for global state + React Query for server state
+- **Background Processing**: Background tasks for sync and notifications
+- **Database Optimization**: Query optimization with strategic indexes
+- **Caching Layer**: Multi-level caching for offline-first performance
+- **Security**: Biometric auth + data encryption at rest
+
+### Complete Technology Stack
+
+**Mobile Core:**
+- [React Native](https://reactnative.dev/) with [Expo](https://expo.dev/) SDK 51
+- [NativeWind](https://nativewind.dev/) 4.0 for styling
+- [React Native Reanimated](https://docs.swmansion.com/react-native-reanimated/) 3
+- [MMKV](https://github.com/mrousavy/react-native-mmkv) for performant storage
+
+**Backend & Data:**
+- [Supabase](https://supabase.com/) for auth and real-time features
+- [Prisma](https://prisma.io/) ORM with PostgreSQL
+- Background jobs with cron services
+- [Turbo](https://turbo.build/) monorepo for build optimization

@@ -13,6 +13,7 @@ const Work = defineDocumentType(() => ({
     cover: { type: "string", required: true },
     language: { type: "string", required: true },
     comingSoon: { type: "boolean", required: false },
+    comingSoonDark: { type: "boolean", required: false },
   },
   computedFields: {
     url: { type: "string", resolve: (work) => `${work._raw.flattenedPath}` },
@@ -32,6 +33,7 @@ const Project = defineDocumentType(() => ({
     cover: { type: "string", required: true },
     language: { type: "string", required: true },
     comingSoon: { type: "boolean", required: false },
+    comingSoonDark: { type: "boolean", required: false },
   },
   computedFields: {
     url: {

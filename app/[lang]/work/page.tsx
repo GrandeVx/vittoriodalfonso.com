@@ -36,7 +36,11 @@ function WorkCard(work: Work) {
             width={1000}
             height={1000}
           />
-          <span className="bg-background/90 absolute right-2 top-2 rounded-full px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
+          <span className={`absolute right-2 top-2 rounded-full px-3 py-1 text-xs font-medium shadow-sm ${
+            work.comingSoonDark
+              ? "bg-black/60 text-white"
+              : "bg-background/90 text-muted-foreground"
+          }`}>
             Coming Soon
           </span>
         </section>

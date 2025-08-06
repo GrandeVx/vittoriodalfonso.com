@@ -9,7 +9,9 @@ type Props = {
 };
 
 export const generateStaticParams = async () =>
-  allWorks.map((work) => ({ slug: work._raw.flattenedPath }));
+  allWorks.map((work) => ({ 
+    slug: work._raw.flattenedPath.split('/').pop() // Estrae solo il nome del file senza la path completa
+  }));
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = params.slug;

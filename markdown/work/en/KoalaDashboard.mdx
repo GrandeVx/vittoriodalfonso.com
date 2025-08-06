@@ -1,0 +1,104 @@
+---
+title: Koala Dashboard
+description: Advanced dashboard for management and monitoring of energy communities, with real-time analytics and smart energy flow management
+type: Work
+date: 2025-08-20
+cover: /assets/work/KoalaDashboard/Cover.webp
+language: en
+comingSoon: true
+---
+
+<Image
+  src="/assets/work/KoalaDashboard/Cover.webp"
+  width="4000"
+  height="1000"
+  alt="Cover"
+/>
+
+The Koala Dashboard represents the technological heart of the Koala Energy ecosystem, an advanced web platform that allows energy communities, prosumers and managers to monitor, analyze and optimize energy flows in real-time. The project required creating a complex interface capable of handling enormous data volumes while maintaining ease of use for users with different levels of technical expertise.
+
+### Project Overview
+
+The dashboard had to serve three types of users with different needs: energy community members interested in their consumption and savings, community managers who need administration and reporting tools, and technical analysts who require access to granular data and predictive models. The challenge was to create a modular architecture that could adapt to these different contexts while maintaining consistency and performance.
+
+---
+
+<Image
+  src="/assets/work/KoalaDashboard/Overview.webp"
+  width="4000"
+  height="1000"
+  alt="Overview"
+  note="REFERENCE: Dashboard overview with real-time production/consumption widgets, geographic map of energy nodes, main KPIs"
+/>
+
+### Real-Time Data Visualization
+
+I implemented a data visualization system that combines:
+- Real-time charts of energy production and consumption with granularity down to the minute
+- Geographic heatmaps to identify territorial consumption patterns
+- Predictive forecasts based on historical data and weather forecasts
+- Community performance indicators with industry benchmarks
+
+The system handles data streams from thousands of smart meters, aggregating and processing information in real-time without impacting interface performance.
+
+---
+
+<Image
+  src="/assets/work/KoalaDashboard/Analytics.webp"
+  width="4000"
+  height="1000"
+  alt="Analytics"
+  note="REFERENCE: Analytics section with interactive charts, temporal comparisons, breakdown by energy source"
+/>
+
+### Energy Community Management
+
+The administrative section allows managers to:
+- Configure economic benefit distribution rules
+- Manage onboarding of new members with guided workflows
+- Monitor regulatory compliance and certifications
+- Generate automatic reports for stakeholders and authorities
+- Simulate expansion scenarios and economic impact
+
+Each functionality was designed considering the Italian regulatory framework for REC (Renewable Energy Communities).
+
+---
+
+<Image
+  src="/assets/work/KoalaDashboard/Management.webp"
+  width="4000"
+  height="1000"
+  alt="Management"
+  note="REFERENCE: Member management interface with tables, configuration forms, approval workflow"
+/>
+
+### Gamification and Engagement
+
+To incentivize virtuous behaviors, I integrated gamification elements:
+- Ranking of most efficient members
+- Badges and achievements for savings goals
+- Community challenges with virtual rewards
+- Personal environmental impact visualization (CO2 saved, equivalent trees)
+
+These elements increased engagement by 40% and reduced consumption peaks by 15%.
+
+---
+
+<Image
+  src="/assets/work/KoalaDashboard/Gamification.webp"
+  width="4000"
+  height="1000"
+  alt="Gamification"
+  note="REFERENCE: User profile section with badges, goal progress bars, community leaderboard"
+/>
+
+### Technology Stack
+
+The dashboard was developed with:
+- [React](https://react.dev/) with TypeScript for type safety in a complex application
+- [D3.js](https://d3js.org/) and [Recharts](https://recharts.org/) for advanced data visualizations
+- WebSocket for real-time updates
+- [Redux Toolkit](https://redux-toolkit.js.org/) for complex state management
+- REST API with intelligent caching for historical data
+
+The microservices architecture allows independent scaling of critical components, ensuring responsiveness even with thousands of simultaneously connected users.

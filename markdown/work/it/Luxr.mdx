@@ -1,11 +1,12 @@
 ---
 title: luxr.app
-description: Luxr era una web app innovativa per la prenotazione di trasporti di lusso in stile Uber, focalizzata sul segmento premium del mercato della mobilità
+description: Luxr è una web app completa per trasporti di lusso che permette registrazione utenti, prenotazione viaggi (sola andata, andata/ritorno, a ore), tour personalizzati e comunicazione diretta con autisti
 type: Work
 date: 2025-11-15
 cover: /assets/work/Luxr/Cover.webp
 language: it
-comingSoon: true
+comingSoon: false
+comingSoonDark: false
 ---
 
 <Image
@@ -15,13 +16,21 @@ comingSoon: true
   alt="Cover"
 />
 
-Luxr rappresentava un'ambiziosa visione per rivoluzionare il trasporto di lusso, portando la semplicità del modello Uber nel segmento premium. Il progetto mirava a creare una piattaforma che connettesse clienti esigenti con autisti professionali e veicoli di alta gamma. Il mio ruolo si è concentrato sullo sviluppo del frontend dell'applicazione web, creando un'interfaccia elegante e intuitiva che riflettesse il posizionamento luxury del servizio.
+Luxr è una piattaforma completa per il trasporto di lusso che rivoluziona l'esperienza premium attraverso una web app sofisticata. La piattaforma permette agli utenti di registrarsi e accedere a un ecosistema completo di servizi: prenotazione di viaggi solo andata, andata e ritorno, servizi a ore, e tour personalizzabili. Il mio ruolo si è concentrato sullo sviluppo del frontend dell'applicazione web, implementando un'interfaccia elegante che gestisce tutte le funzionalità del servizio.
 
-> Il progetto originale era disponibile su luxr.app - *Nota: il progetto è stato successivamente preso in gestione da altri sviluppatori e potrebbe essere stato modificato o non essere più attivo*
+> Il sito è attualmente online su [luxr.app](https://luxr.app) - *Importante: la versione attualmente live è stata presa in gestione da altri sviluppatori dopo il mio coinvolgimento. Eventuali errori, modifiche o problemi nella versione online non sono correlabili al mio lavoro originale.*
 
 ### Panoramica del Progetto
 
-La sfida principale era tradurre l'esperienza premium in un'interfaccia digitale che fosse al contempo sofisticata e facile da usare. L'applicazione doveva gestire prenotazioni in tempo reale, tracking dei veicoli, pagamenti sicuri e un sistema di rating, mantenendo sempre un'estetica raffinata che distinguesse Luxr dai competitor mainstream.
+La sfida principale era creare un'esperienza utente completa che gestisse tutti gli aspetti del trasporto luxury. L'applicazione doveva permettere agli utenti di:
+
+- **Registrarsi e gestire il proprio profilo** con preferenze personalizzate
+- **Prenotare viaggi flessibili**: solo andata, andata e ritorno, o servizi a ore
+- **Creare tour personalizzati** scegliendo i punti da visitare o selezionando tour preimpostati
+- **Visualizzare lo storico completo** di tutti i viaggi effettuati
+- **Comunicare direttamente** con l'autista durante il servizio
+
+Tutto questo mantenendo un'estetica raffinata che distinguesse Luxr dai competitor mainstream.
 
 ---
 
@@ -30,12 +39,12 @@ La sfida principale era tradurre l'esperienza premium in un'interfaccia digitale
   width="4000"
   height="1000"
   alt="Booking"
-  note="REFERENZA: Interfaccia di prenotazione con mappa elegante, selezione veicoli premium, stima prezzi"
+  note="REFERENZA: Interfaccia prenotazione con opzioni viaggio (andata, andata/ritorno, a ore), selezione veicoli, tour personalizzabili"
 />
 
 ### Design e User Experience
 
-Ho sviluppato un'interfaccia che bilanciava minimalismo e funzionalità, utilizzando una palette di colori scuri con accenti dorati per comunicare esclusività. Il flusso di prenotazione è stato ottimizzato per ridurre i passaggi necessari, permettendo agli utenti di prenotare un trasporto di lusso con la stessa facilità di un ride-sharing tradizionale, ma con opzioni personalizzate per preferenze specifiche.
+L'interfaccia è stata progettata dal team di design per bilanciare minimalismo e funzionalità, utilizzando una palette di colori scuri con accenti dorati per comunicare esclusività. Il flusso di prenotazione è stato ottimizzato per ridurre i passaggi necessari, permettendo agli utenti di prenotare un trasporto di lusso con la stessa facilità di un ride-sharing tradizionale, ma con opzioni personalizzate per preferenze specifiche. Il mio contributo si è focalizzato sull'implementazione tecnica di questa visione design.
 
 ---
 
@@ -47,19 +56,11 @@ Ho sviluppato un'interfaccia che bilanciava minimalismo e funzionalità, utilizz
   note="REFERENZA: Showcase della flotta con carousel di veicoli luxury, specifiche e amenities"
 />
 
-### Integrazione Real-Time
+### Comunicazione e Gestione Viaggi
 
-L'applicazione integrava funzionalità real-time per il tracking dei veicoli sulla mappa, notifiche push per aggiornamenti di stato e un sistema di messaggistica diretta con l'autista. Queste features erano essenziali per mantenere gli standard di servizio elevati che i clienti del segmento luxury si aspettano.
+L'applicazione includeva un sistema di messaggistica diretta con l'autista e notifiche per aggiornamenti di stato dei viaggi. Gli utenti potevano visualizzare lo storico completo dei loro viaggi precedenti con tutti i dettagli delle prenotazioni. Queste features erano essenziali per mantenere gli standard di servizio elevati che i clienti del segmento luxury si aspettano.
 
 ---
-
-<Image
-  src="/assets/work/Luxr/Dashboard.webp"
-  width="4000"
-  height="1000"
-  alt="Dashboard"
-  note="REFERENZA: Dashboard utente con storico viaggi, veicoli preferiti, metodi di pagamento"
-/>
 
 ### Stack Tecnologico
 
@@ -75,9 +76,12 @@ Il progetto utilizzava un'architettura moderna separata:
 - [Stripe](https://stripe.com/) integration per pagamenti sicuri
 
 **Features Implementate:**
-- Sistema di prenotazione multi-step con validazione real-time
-- Integrazione Google Places per autocomplete indirizzi
-- Tracking in tempo reale della posizione del veicolo
-- Sistema di autenticazione completo con gestione profili
-- Dashboard utente con storico viaggi e ricevute
-- Supporto multilingua (IT/EN) con next-intl
+- **Sistema di registrazione e autenticazione** completo con gestione profili utente
+- **Prenotazione viaggi multipli**: solo andata, andata/ritorno, servizi a ore
+- **Tour builder**: creazione tour personalizzati o selezione da template preimpostati
+- **Storico viaggi completo** con dettagli, ricevute e possibilità di riprenotare
+- **Chat real-time** con autisti per comunicazione diretta durante il servizio
+- **Sistema pagamenti** integrato con Stripe per transazioni sicure
+- **Integrazione Google Places** per autocomplete indirizzi e punti di interesse
+- **Dashboard utente** responsive con tutte le funzionalità accessibili
+- **Supporto multilingua** (IT/EN) con next-intl
