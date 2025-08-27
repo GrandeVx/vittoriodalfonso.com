@@ -5,6 +5,7 @@ type: Work
 date: 2025-07-10
 cover: /assets/work/Connecteed/Cover.webp
 language: en
+refer: Connecteed
 comingSoon: false
 comingSoonDark: false
 ---
@@ -44,6 +45,7 @@ The migration required two critical phases due to extreme consumption of the ori
 The system presented a critical storage problem with abnormal consumption: every file was downloaded n times and the n-1 previous instances were never deleted, causing exponential accumulation of duplicate data.
 
 I implemented:
+
 - Multi-container orchestration with Docker Compose
 - Granular permission management system and integrated backup
 - Automatic cleanup of duplicate files with lifecycle management system
@@ -64,6 +66,7 @@ This transformation reduced disk space usage by 90% and eliminated inconsistency
 ### Legacy Issues Resolution
 
 The system presented numerous criticalities accumulated over time:
+
 - **Abnormal storage**: Files downloaded multiple times without cleanup of previous versions
 - Memory leaks causing periodic crashes of the monolithic environment
 - Failed synchronizations due to timeouts on large data volumes
@@ -71,6 +74,7 @@ The system presented numerous criticalities accumulated over time:
 - Degraded performance on complex queries in Laravel environment
 
 I implemented systematic solutions:
+
 - Automatic cleanup system with file lifecycle management
 - Complete Laravel code refactoring with modern optimizations
 - Strategic caching with Redis to reduce database access
@@ -84,6 +88,7 @@ I implemented systematic solutions:
 The platform uses a separated frontend/backend architecture:
 
 **Frontend:**
+
 - [Vue.js](https://vuejs.org/) 3 with Composition API
 - [Pinia](https://pinia.vuejs.org/) for modern state management
 - [Bootstrap](https://getbootstrap.com/) 5 for responsive design
@@ -91,6 +96,7 @@ The platform uses a separated frontend/backend architecture:
 - [Vite](https://vitejs.dev/) for build optimization
 
 **Backend:**
+
 - [Laravel](https://laravel.com/) framework with containerized architecture
 - PostgreSQL database with replica for high availability
 - Redis for caching and queue management
@@ -98,12 +104,14 @@ The platform uses a separated frontend/backend architecture:
 - Elasticsearch for performant searches
 
 **DevOps:**
+
 - Complete Docker containerization
 - Docker Compose for service orchestration
 - Centralized monitoring and logging system
 - Automated CI/CD pipelines
 
 The implemented optimizations led to:
+
 - 60% reduction in API response times
 - 95% increase in service uptime
 - Ability to handle 10x the previous data volume

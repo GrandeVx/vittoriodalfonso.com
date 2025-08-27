@@ -6,6 +6,7 @@ import SafeImage from "@/components/SafeImage";
 import { Metadata } from "next";
 import { Locale } from "@/i18n-config";
 import { getDictionary } from "@/get-dictionary";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 export const metadata: Metadata = {
   title: "Work | Vittorio D'Alfonso",
@@ -24,7 +25,40 @@ export const metadata: Metadata = {
   },
 };
 
-function WorkCard(work: Work) {
+function WorkCard(props: Work & { dictionary: any }) {
+  const { dictionary, ...work } = props;
+  const renderBadge = () => {
+    if (work.comingSoon) {
+      return (
+        <span className={`absolute right-2 top-2 rounded-full px-3 py-1 text-xs font-medium shadow-sm ${work.comingSoonDark
+          ? "bg-black/60 text-white"
+          : "bg-background/90 text-muted-foreground"
+          }`}>
+          Coming Soon
+        </span>
+      );
+    }
+
+    if (work.refer) {
+      return (
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <span className="absolute right-2 top-2 rounded-full px-3 py-1 text-xs font-medium shadow-sm bg-blue-500/40 text-white cursor-help">
+                {dictionary.work.agencyBadge}
+              </span>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>{dictionary.work.agencyTooltip} {work.refer}</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      );
+    }
+
+    return null;
+  };
+
   if (work.comingSoon) {
     return (
       <div className="flex cursor-not-allowed flex-col gap-3">
@@ -36,13 +70,7 @@ function WorkCard(work: Work) {
             width={1000}
             height={1000}
           />
-          <span className={`absolute right-2 top-2 rounded-full px-3 py-1 text-xs font-medium shadow-sm ${
-            work.comingSoonDark
-              ? "bg-black/60 text-white"
-              : "bg-background/90 text-muted-foreground"
-          }`}>
-            Coming Soon
-          </span>
+          {renderBadge()}
         </section>
         <section className="flex w-full items-center justify-between">
           <p className="mb-1 text-sm">{work.title}</p>
@@ -62,13 +90,16 @@ function WorkCard(work: Work) {
       href={work.redirect ? work.redirect : work.url}
       className="flex cursor-pointer flex-col gap-3"
     >
-      <SafeImage
-        src={work.cover}
-        alt={work.attributes ? work.attributes : work.title}
-        about={work.attributes ? work.attributes : work.title}
-        width={1000}
-        height={1000}
-      />
+      <section className="relative">
+        <SafeImage
+          src={work.cover}
+          alt={work.attributes ? work.attributes : work.title}
+          about={work.attributes ? work.attributes : work.title}
+          width={1000}
+          height={1000}
+        />
+        {renderBadge()}
+      </section>
       <section className="flex w-full items-center justify-between">
         <p className="mb-1 text-sm">{work.title}</p>
         <time
@@ -119,7 +150,7 @@ export default async function WorkPage({
 
         <section className="mt-8 flex flex-col gap-6 pb-16">
           {works.map((work: Work, idx: number) => (
-            <WorkCard key={idx} {...work} />
+            <WorkCard key={idx} {...work} dictionary={dictionary} />
           ))}
         </section>
       </main>

@@ -28,7 +28,9 @@
   },
   "work": {
     "main": "Questa sezione è una vetrina dei progetti sviluppati per i miei clienti, frutto di un lavoro di squadra che ha trasformato le idee in soluzioni concrete e significative. Esplora questa collezione per scoprire l'armonia tra creatività e abilità tecniche, che insieme danno vita alle visioni più ambiziose.",
-    "sub": "Per qualsiasi domanda riguardante questi progetti o se sei interessato a una potenziale collaborazione, non esitare a contattarmi a"
+    "sub": "Per qualsiasi domanda riguardante questi progetti o se sei interessato a una potenziale collaborazione, non esitare a contattarmi a",
+    "agencyBadge": "Agenzia",
+    "agencyTooltip": "Lavoro realizzato per"
   },
   "colophon": {
     "techincal": [

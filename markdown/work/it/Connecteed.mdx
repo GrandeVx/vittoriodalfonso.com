@@ -5,6 +5,7 @@ type: Work
 date: 2025-07-10
 cover: /assets/work/Connecteed/Cover.webp
 language: it
+refer: Connecteed
 comingSoon: false
 comingSoonDark: false
 ---
@@ -44,6 +45,7 @@ La migrazione ha richiesto due fasi critiche dovute all'estremo consumo della ma
 Il sistema presentava un problema critico di storage con consumi abnormi: ogni file veniva scaricato n volte e le n-1 istanze precedenti non venivano mai cancellate, causando un accumulo esponenziale di dati duplicati.
 
 Ho implementato:
+
 - Orchestrazione multi-container con Docker Compose
 - Sistema di gestione permessi granulare e backup integrato
 - Cleanup automatico dei file duplicati con sistema di gestione lifecycle
@@ -64,6 +66,7 @@ Questa trasformazione ha ridotto del 90% lo spazio occupato su disco e eliminato
 ### Risoluzione Problematiche Legacy
 
 Il sistema presentava numerose criticità accumulate nel tempo:
+
 - **Storage abnorme**: File scaricati multiple volte senza cleanup delle versioni precedenti
 - Memory leaks che causavano crash periodici dell'ambiente monolitico
 - Sincronizzazioni fallite per timeout su grandi volumi di dati
@@ -71,6 +74,7 @@ Il sistema presentava numerose criticità accumulate nel tempo:
 - Performance degradate su query complesse in ambiente Laravel
 
 Ho implementato soluzioni sistematiche:
+
 - Sistema di cleanup automatico con lifecycle management dei file
 - Refactoring completo del codice Laravel con ottimizzazioni moderne
 - Caching strategico con Redis per ridurre accessi al database
@@ -84,6 +88,7 @@ Ho implementato soluzioni sistematiche:
 La piattaforma utilizza un'architettura separata frontend/backend:
 
 **Frontend:**
+
 - [Vue.js](https://vuejs.org/) 3 con Composition API
 - [Pinia](https://pinia.vuejs.org/) per state management moderno
 - [Bootstrap](https://getbootstrap.com/) 5 per responsive design
@@ -91,6 +96,7 @@ La piattaforma utilizza un'architettura separata frontend/backend:
 - [Vite](https://vitejs.dev/) per build optimization
 
 **Backend:**
+
 - [Laravel](https://laravel.com/) framework con architettura containerizzata
 - Database PostgreSQL con replica per alta disponibilità
 - Redis per caching e gestione code
@@ -98,12 +104,14 @@ La piattaforma utilizza un'architettura separata frontend/backend:
 - Elasticsearch per ricerche performanti
 
 **DevOps:**
+
 - Docker containerization completa
 - Docker Compose per orchestrazione servizi
 - Sistema di monitoring e logging centralizzato
 - Pipeline CI/CD automatizzate
 
 Le ottimizzazioni implementate hanno portato a:
+
 - Riduzione del 60% nei tempi di risposta API
 - Aumento del 95% nell'uptime del servizio
 - Capacità di gestire 10x il volume di dati precedente

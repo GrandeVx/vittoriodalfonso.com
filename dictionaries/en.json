@@ -28,7 +28,9 @@
   },
   "work": {
     "main": "In this section, you'll find a bunch of projects I've done for clients. They're the result of teamwork, turning ideas into real, impactful solutions. Check them out to see how I blend creativity and tech skills to bring visions to life.",
-    "sub": "For any inquiries regarding these projects or if you are interested in potential collaboration, feel free to reach out to me at"
+    "sub": "For any inquiries regarding these projects or if you are interested in potential collaboration, feel free to reach out to me at",
+    "agencyBadge": "Agency",
+    "agencyTooltip": "Work done made for"
   },
   "colophon": {
     "techincal": [

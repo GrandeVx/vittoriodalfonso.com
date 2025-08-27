@@ -12,6 +12,7 @@ const Work = defineDocumentType(() => ({
     date: { type: "date", required: true },
     cover: { type: "string", required: true },
     language: { type: "string", required: true },
+    refer: { type: "string", required: false },
     comingSoon: { type: "boolean", required: false },
     comingSoonDark: { type: "boolean", required: false },
   },
