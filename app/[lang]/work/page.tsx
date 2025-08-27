@@ -25,8 +25,9 @@ export const metadata: Metadata = {
   },
 };
 
-function WorkCard(props: Work & { dictionary: any }) {
-  const { dictionary, ...work } = props;
+async function WorkCard(props: Work & { lang: Locale }) {
+  const { lang, ...work } = props;
+  const dictionary = await getDictionary(lang);
   const renderBadge = () => {
     if (work.comingSoon) {
       return (
@@ -150,7 +151,7 @@ export default async function WorkPage({
 
         <section className="mt-8 flex flex-col gap-6 pb-16">
           {works.map((work: Work, idx: number) => (
-            <WorkCard key={idx} {...work} dictionary={dictionary} />
+            <WorkCard key={idx} {...work} lang={lang} />
           ))}
         </section>
       </main>
