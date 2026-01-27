@@ -1,0 +1,90 @@
+---
+title: luxr.app
+description: Luxr è una web app completa per trasporti di lusso che permette registrazione utenti, prenotazione viaggi (sola andata, andata/ritorno, a ore), tour personalizzati e comunicazione diretta con autisti
+type: Work
+date: 2025-11-15
+cover: /assets/work/Luxr/Cover.webp
+language: it
+refer: Connecteed
+comingSoon: false
+comingSoonDark: false
+---
+
+<Image
+  src="/assets/work/Luxr/Cover.webp"
+  width="4000"
+  height="1000"
+  alt="Cover"
+/>
+
+Luxr è una piattaforma completa per il trasporto di lusso che rivoluziona l'esperienza premium attraverso una web app sofisticata. La piattaforma permette agli utenti di registrarsi e accedere a un ecosistema completo di servizi: prenotazione di viaggi solo andata, andata e ritorno, servizi a ore, e tour personalizzabili. Il mio ruolo si è concentrato sullo sviluppo del frontend dell'applicazione web, implementando un'interfaccia elegante che gestisce tutte le funzionalità del servizio.
+
+> Il sito è attualmente online su [luxr.app](https://luxr.app) - _Importante: la versione attualmente live è stata presa in gestione da altri sviluppatori dopo il mio coinvolgimento. Eventuali errori, modifiche o problemi nella versione online non sono correlabili al mio lavoro originale._
+
+### Panoramica del Progetto
+
+La sfida principale era creare un'esperienza utente completa che gestisse tutti gli aspetti del trasporto luxury. L'applicazione doveva permettere agli utenti di:
+
+- **Registrarsi e gestire il proprio profilo** con preferenze personalizzate
+- **Prenotare viaggi flessibili**: solo andata, andata e ritorno, o servizi a ore
+- **Creare tour personalizzati** scegliendo i punti da visitare o selezionando tour preimpostati
+- **Visualizzare lo storico completo** di tutti i viaggi effettuati
+- **Comunicare direttamente** con l'autista durante il servizio
+
+Tutto questo mantenendo un'estetica raffinata che distinguesse Luxr dai competitor mainstream.
+
+---
+
+<Image
+  src="/assets/work/Luxr/Booking.webp"
+  width="4000"
+  height="1000"
+  alt="Booking"
+  note="REFERENZA: Interfaccia prenotazione con opzioni viaggio (andata, andata/ritorno, a ore), selezione veicoli, tour personalizzabili"
+/>
+
+### Design e User Experience
+
+L'interfaccia è stata progettata dal team di design per bilanciare minimalismo e funzionalità, utilizzando una palette di colori scuri con accenti dorati per comunicare esclusività. Il flusso di prenotazione è stato ottimizzato per ridurre i passaggi necessari, permettendo agli utenti di prenotare un trasporto di lusso con la stessa facilità di un ride-sharing tradizionale, ma con opzioni personalizzate per preferenze specifiche. Il mio contributo si è focalizzato sull'implementazione tecnica di questa visione design.
+
+---
+
+<Image
+  src="/assets/work/Luxr/Fleet.webp"
+  width="4000"
+  height="1000"
+  alt="Flotta"
+  note="REFERENZA: Showcase della flotta con carousel di veicoli luxury, specifiche e amenities"
+/>
+
+### Comunicazione e Gestione Viaggi
+
+L'applicazione includeva un sistema di messaggistica diretta con l'autista e notifiche per aggiornamenti di stato dei viaggi. Gli utenti potevano visualizzare lo storico completo dei loro viaggi precedenti con tutti i dettagli delle prenotazioni. Queste features erano essenziali per mantenere gli standard di servizio elevati che i clienti del segmento luxury si aspettano.
+
+---
+
+### Stack Tecnologico
+
+Il progetto utilizzava un'architettura moderna separata:
+
+**Frontend (Next.js):**
+
+- [Next.js](https://nextjs.org/) 14 con App Router per SSR ottimizzato
+- [Tailwind CSS](https://tailwindcss.com/) con Radix UI per componenti base
+- [tRPC](https://trpc.io/) per type-safe API communication
+- [Google Maps API](https://developers.google.com/maps) per geolocalizzazione e tracking
+- [Zustand](https://zustand-demo.pmnd.rs/) per state management globale
+- [Framer Motion](https://framer.com/motion) per animazioni premium
+- [Stripe](https://stripe.com/) integration per pagamenti sicuri
+
+**Features Implementate:**
+
+- **Sistema di registrazione e autenticazione** completo con gestione profili utente
+- **Prenotazione viaggi multipli**: solo andata, andata/ritorno, servizi a ore
+- **Tour builder**: creazione tour personalizzati o selezione da template preimpostati
+- **Storico viaggi completo** con dettagli, ricevute e possibilità di riprenotare
+- **Chat real-time** con autisti per comunicazione diretta durante il servizio
+- **Sistema pagamenti** integrato con Stripe per transazioni sicure
+- **Integrazione Google Places** per autocomplete indirizzi e punti di interesse
+- **Dashboard utente** responsive con tutte le funzionalità accessibili
+- **Supporto multilingua** (IT/EN) con next-intl

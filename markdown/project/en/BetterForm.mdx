@@ -1,0 +1,103 @@
+---
+title: Better Form
+description: The most powerful form wizard library for React. Schema-driven multi-step forms with validation, conditional logic, and full TypeScript support.
+type: Project
+date: 2025-01-15
+cover: /assets/project/BetterForm/Cover.webp
+language: en
+comingSoon: false
+---
+
+<Image
+  src="/assets/project/BetterForm/Cover.webp"
+  width="1200"
+  height="630"
+  alt="Better Form - React Form Wizard Library"
+/>
+
+Building multi-step forms in React is notoriously complex. Managing step state, validation, conditional logic, and navigation requires significant boilerplate code. Better Form solves this by providing a declarative, schema-driven approach to form wizards.
+
+> Explore the documentation at [docs.better-form.eu](https://docs.better-form.eu)
+
+---
+
+### The Problem
+
+Traditional form libraries like React Hook Form excel at simple forms but fall short with complex wizards. Developers face:
+
+- Manual step state management
+- Imperative conditional logic for showing/hiding fields
+- Repeated validation boilerplate
+- No standardized navigation patterns
+- Poor TypeScript inference
+
+### The Solution
+
+Better Form provides a complete, batteries-included solution:
+
+- **Schema-Driven Architecture** - Define entire forms with JSON/TypeScript configuration
+- **30+ Field Types** - Text, select, date, file upload, address autocomplete, and more
+- **Advanced Conditional Logic** - Show/hide fields and steps declaratively
+- **Built-in Validation** - Required, pattern, min/max, custom validators
+- **Full TypeScript Support** - Type-safe configuration with excellent inference
+- **Plugin System** - Extensible architecture for custom field types
+- **Headless Mode** - Use your own UI components (shadcn/ui, Chakra, etc.)
+
+---
+
+### Technical Architecture
+
+The library is built as a monorepo with modular exports:
+
+- **@better_form/core** - Main package with components, hooks, and validation
+- **@better_form/plugin-google-places** - Google Places address autocomplete plugin
+- **Tree-shakeable exports** - Import only what you need
+
+Key architectural decisions:
+
+- **Radix UI primitives** for accessibility-first components
+- **Context-based state management** via WizardProvider
+- **Reducer pattern** for predictable state updates
+- **Plugin factory pattern** for extensibility
+
+---
+
+### Documentation & Testing
+
+The project includes comprehensive documentation built with Nextra:
+
+- Quick start guides for React, Next.js, Remix, and Astro
+- Core concepts: validation, conditional logic, theming
+- Custom UI integration guide
+- Full API reference
+
+Quality is ensured with **248+ unit tests** covering:
+- Validation logic
+- Conditional field visibility
+- Step navigation
+- Plugin system
+
+---
+
+### Technology Stack
+
+**Core:**
+- [React 18+](https://react.dev) - UI library
+- [TypeScript 5.7+](https://www.typescriptlang.org) - Type safety
+- [Radix UI](https://www.radix-ui.com) - Accessible component primitives
+
+**Styling:**
+- [Tailwind CSS](https://tailwindcss.com) - Utility-first CSS
+- CSS Variables - Theming system
+
+**Build & Test:**
+- [Turbo](https://turbo.build) - Monorepo management
+- [Vitest](https://vitest.dev) - Testing framework
+- [Biome](https://biomejs.dev) - Linting and formatting
+- [tsdown](https://github.com/nicepkg/tsdown) - TypeScript compiler
+
+**Documentation:**
+- [Nextra](https://nextra.site) - Documentation framework
+- [Next.js](https://nextjs.org) - React framework
+
+The architecture prioritizes developer experience with minimal boilerplate, strong typing, and comprehensive documentation. The plugin system allows extending functionality without modifying core code, following the open-closed principle.

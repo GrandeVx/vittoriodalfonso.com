@@ -1,0 +1,103 @@
+---
+title: Better Form
+description: La libreria più potente per form wizard in React. Form multi-step schema-driven con validazione, logica condizionale e supporto TypeScript completo.
+type: Project
+date: 2025-01-15
+cover: /assets/project/BetterForm/Cover.webp
+language: it
+comingSoon: false
+---
+
+<Image
+  src="/assets/project/BetterForm/Cover.webp"
+  width="1200"
+  height="630"
+  alt="Better Form - Libreria React per Form Wizard"
+/>
+
+Costruire form multi-step in React è notoriamente complesso. Gestire lo stato degli step, validazione, logica condizionale e navigazione richiede una quantità significativa di codice boilerplate. Better Form risolve questo problema fornendo un approccio dichiarativo e schema-driven ai form wizard.
+
+> Esplora la documentazione su [docs.better-form.eu](https://docs.better-form.eu)
+
+---
+
+### Il Problema
+
+Le librerie form tradizionali come React Hook Form eccellono nei form semplici ma non sono adatte per wizard complessi. Gli sviluppatori affrontano:
+
+- Gestione manuale dello stato degli step
+- Logica condizionale imperativa per mostrare/nascondere campi
+- Boilerplate di validazione ripetuto
+- Nessun pattern di navigazione standardizzato
+- Inferenza TypeScript insufficiente
+
+### La Soluzione
+
+Better Form fornisce una soluzione completa e pronta all'uso:
+
+- **Architettura Schema-Driven** - Definisci interi form con configurazione JSON/TypeScript
+- **30+ Tipi di Campo** - Text, select, date, file upload, address autocomplete e altro
+- **Logica Condizionale Avanzata** - Mostra/nascondi campi e step in modo dichiarativo
+- **Validazione Integrata** - Required, pattern, min/max, validatori custom
+- **Supporto TypeScript Completo** - Configurazione type-safe con eccellente inferenza
+- **Sistema Plugin** - Architettura estensibile per tipi di campo custom
+- **Modalità Headless** - Usa i tuoi componenti UI (shadcn/ui, Chakra, ecc.)
+
+---
+
+### Architettura Tecnica
+
+La libreria è costruita come monorepo con export modulari:
+
+- **@better_form/core** - Package principale con componenti, hook e validazione
+- **@better_form/plugin-google-places** - Plugin per autocomplete indirizzi Google Places
+- **Export tree-shakeable** - Importa solo ciò che ti serve
+
+Decisioni architetturali chiave:
+
+- **Primitive Radix UI** per componenti accessibility-first
+- **Gestione stato basata su Context** via WizardProvider
+- **Pattern Reducer** per aggiornamenti di stato prevedibili
+- **Pattern Plugin Factory** per estensibilità
+
+---
+
+### Documentazione & Testing
+
+Il progetto include documentazione completa costruita con Nextra:
+
+- Guide quick start per React, Next.js, Remix e Astro
+- Concetti core: validazione, logica condizionale, theming
+- Guida integrazione UI custom
+- Riferimento API completo
+
+La qualità è garantita da **248+ unit test** che coprono:
+- Logica di validazione
+- Visibilità campi condizionale
+- Navigazione step
+- Sistema plugin
+
+---
+
+### Stack Tecnologico
+
+**Core:**
+- [React 18+](https://react.dev) - Libreria UI
+- [TypeScript 5.7+](https://www.typescriptlang.org) - Type safety
+- [Radix UI](https://www.radix-ui.com) - Primitive componenti accessibili
+
+**Styling:**
+- [Tailwind CSS](https://tailwindcss.com) - CSS utility-first
+- CSS Variables - Sistema di theming
+
+**Build & Test:**
+- [Turbo](https://turbo.build) - Gestione monorepo
+- [Vitest](https://vitest.dev) - Framework di testing
+- [Biome](https://biomejs.dev) - Linting e formatting
+- [tsdown](https://github.com/nicepkg/tsdown) - Compilatore TypeScript
+
+**Documentazione:**
+- [Nextra](https://nextra.site) - Framework documentazione
+- [Next.js](https://nextjs.org) - Framework React
+
+L'architettura privilegia la developer experience con boilerplate minimo, tipizzazione forte e documentazione completa. Il sistema plugin permette di estendere le funzionalità senza modificare il codice core, seguendo il principio open-closed.
