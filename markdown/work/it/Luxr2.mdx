@@ -1,0 +1,104 @@
+---
+title: luxr.app 2.0
+description: Ho ripreso LUXR in prima persona, riscrivendo l'intera piattaforma da zero - frontend e backend - con un nuovo stack moderno. 297 commit, architettura full-stack, sistema di pagamenti, email transazionali, pricing engine dinamico e dashboard admin completa.
+type: Work
+date: 2026-02-05
+cover: /assets/work/Luxr2/Cover.png
+language: it
+comingSoon: false
+comingSoonDark: false
+---
+
+<Image
+  src="/assets/work/Luxr2/Cover.png"
+  width="4000"
+  height="1000"
+  alt="Cover"
+/>
+
+Dopo aver lavorato alla prima versione di LUXR come frontend developer per conto di Connecteed, ho deciso di riprendere il progetto in prima persona. La piattaforma era stata affidata ad altri sviluppatori e necessitava di una riscrittura completa. Ho rifatto tutto da zero: architettura, backend, frontend, sistema di pagamenti, email, pricing - ogni singolo aspetto. 297 commit su un unico branch, gestendo in autonomia sia il frontend che il backend.
+
+> Il sito è live su [luxr.app](https://luxr.app)
+
+### Da Frontend a Full-Stack
+
+Nella prima versione il mio ruolo si limitava all'implementazione frontend. Con LUXR 2.0 ho gestito l'intero ecosistema tecnico: dalla progettazione del database alla logica di pricing, dal sistema di autenticazione alle email transazionali. Non si tratta di un aggiornamento incrementale, ma di una riscrittura completa su uno stack completamente diverso.
+
+L'architettura e stata ripensata come monorepo con tre package principali: l'applicazione Next.js per il frontend, un package API basato su tRPC per il backend, e un package database con Prisma e BetterAuth per la persistenza e l'autenticazione.
+
+---
+
+<Image
+  src="/assets/work/Luxr/Booking.webp"
+  width="4000"
+  height="1000"
+  alt="Booking"
+  note="Sistema di prenotazione multi-step con calcolo prezzi in tempo reale, integrazione Google Maps e pagamento Stripe"
+/>
+
+### Sistema di Prenotazione
+
+Il cuore della piattaforma e il flusso di prenotazione multi-step: selezione origine/destinazione con Google Places autocomplete, scelta del tipo di viaggio (solo andata, andata/ritorno, a ore, tour), calcolo del prezzo in tempo reale basato su zone geografiche, e pagamento integrato con Stripe. La mappa mostra il percorso con stile dark personalizzato coerente con il brand.
+
+Il pricing engine utilizza un sistema a zone con calcolo della distanza tramite formula di Haversine, supportando quattro modalita di pricing: zone-based, fixed route, kilometric e hourly. I modificatori stagionali e i supplementi (notturno, short notice, seggiolini, bagagli extra) vengono applicati automaticamente.
+
+---
+
+<Image
+  src="/assets/work/Luxr/Fleet.webp"
+  width="4000"
+  height="1000"
+  alt="Fleet"
+  note="Dashboard admin per gestione prenotazioni, autisti e configurazione pricing"
+/>
+
+### Backend e Dashboard Admin
+
+Ho costruito un backend completo con tRPC che gestisce tutte le operazioni: prenotazioni, pagamenti, assegnazione autisti, e notifiche email. La dashboard admin permette di gestire ogni aspetto operativo: confermare o rifiutare prenotazioni, assegnare autisti, gestire rimborsi Stripe, monitorare le autorizzazioni carta per pagamenti in contanti, ed esportare dati in CSV.
+
+Il sistema di autenticazione utilizza BetterAuth con supporto per login email/password e Google OAuth, sessioni sicure e gestione ruoli (utente, admin, autista). Le email transazionali sono costruite con React Email e inviate tramite Resend: welcome, conferma prenotazione, completamento, cancellazione, assegnazione autista - tutte con supporto multilingua in italiano, inglese e spagnolo.
+
+---
+
+### Stack Tecnologico
+
+Il progetto e stato costruito come monorepo gestito con Turborepo:
+
+**Frontend:**
+
+- [Next.js](https://nextjs.org/) 14 con App Router
+- [Tailwind CSS](https://tailwindcss.com/) con [Radix UI](https://www.radix-ui.com/) per i componenti
+- [tRPC](https://trpc.io/) client per comunicazione type-safe con il backend
+- [Google Maps API](https://developers.google.com/maps) per mappe, autocomplete e calcolo percorsi
+- [Stripe.js](https://stripe.com/) per il flusso di pagamento lato client
+- [Zustand](https://zustand-demo.pmnd.rs/) per state management
+- [Framer Motion](https://framer.com/motion) per animazioni
+- [next-intl](https://next-intl.dev/) per internazionalizzazione (IT/EN/ES)
+
+**Backend:**
+
+- [tRPC](https://trpc.io/) per API tipizzate end-to-end
+- [Prisma](https://www.prisma.io/) ORM con PostgreSQL
+- [BetterAuth](https://better-auth.com/) per autenticazione e sessioni
+- [Stripe](https://stripe.com/) per pagamenti, rimborsi e autorizzazioni carta
+- [React Email](https://react.email/) + [Resend](https://resend.com/) per email transazionali
+- Pricing engine custom con calcolo zone Haversine
+
+**Infrastruttura:**
+
+- [Turborepo](https://turbo.build/) per orchestrazione monorepo
+- [Docker](https://www.docker.com/) per deployment production
+- PostgreSQL come database
+- Cron endpoints per automazioni (assegnazione autisti, autorizzazioni carta)
+
+**Funzionalita implementate:**
+
+- **Autenticazione completa** con email/password e Google OAuth
+- **Prenotazione multi-step** con 4 tipologie di viaggio
+- **Pricing engine dinamico** con zone, tratte fisse, tariffe chilometriche e orarie
+- **Pagamenti Stripe** con gestione rimborsi e autorizzazioni carta per pagamenti cash
+- **6+ template email** transazionali multilingua (React Email + Resend)
+- **Dashboard admin** con gestione prenotazioni, autisti, pricing e esportazione CSV
+- **Sistema autisti** con assegnazione automatica via cron e notifiche email
+- **Supporto trilingue** completo (italiano, inglese, spagnolo)
+- **Mappa dark theme** personalizzata con Google Maps

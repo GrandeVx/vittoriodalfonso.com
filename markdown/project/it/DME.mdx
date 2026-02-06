@@ -1,0 +1,98 @@
+---
+title: dme.chat
+description: Ottieni chat anonime con le persone attorno a te
+type: Project
+date: 2025-03-25
+cover: /assets/project/DME/Cover.webp
+language: it
+comingSoon: true
+---
+
+<Image
+  src="/assets/project/DME/Cover.webp"
+  width="4000"
+  height="1000"
+  alt="Cover"
+/>
+
+dme.chat è un progetto che ho sviluppato per esplorare il design di interfacce anonime e performanti. L'applicazione combina chat anonima, chat con le persone attorno a te, advanced analytics, e gamification per rendere la gestione finanziaria personale più accessibile e coinvolgente. Il progetto utilizza un'architettura monorepo moderna con focus su performance e user experience.
+
+### Technical Overview
+
+The project is structured as a complete monorepo:
+- **Mobile App**: React Native with Expo Router for native navigation
+- **Web App**: Next.js for complementary web dashboard
+- **Backend Services**: Supabase + microservices architecture
+- **Database**: PostgreSQL with Prisma ORM
+- **Infrastructure**: Docker for deployment and development
+
+---
+
+<Image
+  src="/assets/project/Balance/Dashboard.webp"
+  width="4000"
+  height="1000"
+  alt="Dashboard"
+  note="REFERENCE: Main dashboard with circular widgets for expenses, budgets, financial analytics"
+/>
+
+### Advanced Financial Features
+
+The app implements sophisticated features for money management:
+- **Multi-Account Support**: Managing checking accounts, credit cards, cash
+- **Smart Categorization**: Auto-categorization of transactions with ML
+- **Dynamic Budgeting**: Flexible budgets with rollover and intelligent limits
+- **Recurring Transactions**: Automatic management of recurring expenses
+- **Investment Tracking**: Portfolio monitoring and performance
+
+---
+
+<Image
+  src="/assets/project/Balance/Analytics.webp"
+  width="4000"
+  height="1000"
+  alt="Analytics"
+  note="REFERENCE: Analytics screen with trend charts, expense heatmap, personalized insights"
+/>
+
+### UI/UX and Performance
+
+The design system I developed is optimized for clarity and speed:
+- **Custom Typography**: ApfelGrotezk + DM Sans for visual hierarchy
+- **Chart Library**: Victory Native for performant charts
+- **Gesture System**: React Native Gesture Handler for fluid interactions
+- **Animation Engine**: React Native Reanimated 3 for micro-interactions
+- **Theme System**: Dynamic theming with user preference persistence
+
+---
+
+<Image
+  src="/assets/project/Balance/Features.webp"
+  width="4000"
+  height="1000"
+  alt="Features"
+  note="REFERENCE: Transaction creation flow, categorization, budget setting"
+/>
+
+### Architecture and Optimizations
+
+The project implements several advanced optimizations:
+- **State Management**: Zustand for global state + React Query for server state
+- **Background Processing**: Background tasks for sync and notifications
+- **Database Optimization**: Query optimization with strategic indexes
+- **Caching Layer**: Multi-level caching for offline-first performance
+- **Security**: Biometric auth + data encryption at rest
+
+### Complete Technology Stack
+
+**Mobile Core:**
+- [React Native](https://reactnative.dev/) with [Expo](https://expo.dev/) SDK 51
+- [NativeWind](https://nativewind.dev/) 4.0 for styling
+- [React Native Reanimated](https://docs.swmansion.com/react-native-reanimated/) 3
+- [MMKV](https://github.com/mrousavy/react-native-mmkv) for performant storage
+
+**Backend & Data:**
+- [Supabase](https://supabase.com/) for auth and real-time features
+- [Prisma](https://prisma.io/) ORM with PostgreSQL
+- Background jobs with cron services
+- [Turbo](https://turbo.build/) monorepo for build optimization
