@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { format, parseISO } from "date-fns";
+import { compareDesc, format, parseISO } from "date-fns";
 import { allWorks, Work } from "contentlayer/generated";
 import TopBar from "@/layouts/TopBar";
 import SafeImage from "@/components/SafeImage";
@@ -121,11 +121,13 @@ export default async function WorkPage({
 }) {
   const dictionary = await getDictionary(lang);
 
-  // remove duplicates
-  const works = allWorks.filter(
-    (work: Work, idx: number, arr: Work[]) =>
-      arr.findIndex((w: Work) => w.title === work.title) === idx,
-  );
+  // sort by date (newest first) and remove duplicates
+  const works = [...allWorks]
+    .sort((a: Work, b: Work) => compareDesc(new Date(a.date), new Date(b.date)))
+    .filter(
+      (work: Work, idx: number, arr: Work[]) =>
+        arr.findIndex((w: Work) => w.title === work.title) === idx,
+    );
 
   // Genera URL corretti basati sulla lingua corrente
   works.forEach((work: Work) => {

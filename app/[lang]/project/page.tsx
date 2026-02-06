@@ -89,7 +89,7 @@ export default async function project({
 }) {
   const dictionary = await getDictionary(lang);
 
-  let projects = allProjects.sort((a: Project, b: Project) =>
+  let projects = [...allProjects].sort((a: Project, b: Project) =>
     compareDesc(new Date(a.date), new Date(b.date)),
   );
 
