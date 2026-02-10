@@ -9,16 +9,21 @@ import {
 
 import { usePathname } from "next/navigation";
 import DesktopMenu from "./DesktopMenu";
+import enDict from "@/dictionaries/en.json";
+import itDict from "@/dictionaries/it.json";
 
 export default function MobileMenu() {
   const pathname = usePathname();
+  const lang = pathname.split("/")[1];
+  const dict = lang === "it" ? itDict : enDict;
+
   return (
     <Drawer>
       <DrawerTrigger className="outline-none">
         <section className="flex min-h-10 w-screen justify-between border-t border-gray-200 bg-background p-3 pl-5 outline-none">
           <p className="text-sm text-gray-400">{pathname}</p>
           <div className="flex items-center justify-center gap-2">
-            <p className="text-sm">Open Navigation</p>
+            <p className="text-sm">{dict.menu.openNav}</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -42,7 +47,7 @@ export default function MobileMenu() {
             <section className="flex min-h-10 w-screen justify-between border-t border-gray-200 p-3 pl-5 outline-none">
               <p className="text-sm text-gray-400">{pathname}</p>
               <div className="flex items-center justify-center gap-2">
-                <p className="text-sm">Close Navigation</p>
+                <p className="text-sm">{dict.menu.closeNav}</p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

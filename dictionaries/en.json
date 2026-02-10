@@ -20,7 +20,24 @@
     ],
     "digitalCreative": "As a Digital Creative, I consider computer science my canvas for ongoing exploration and creation. My forte lies in versatile knowledge, and I am driven by a relentless curiosity to experiment and innovate.",
     "challenges": "Challenges are not obstacles but gateways to growth. Prioritizing the journey over the destination, I adapt swiftly to new environments.",
-    "journey": "Let's embark on a journey of continuous experimentation, pushing boundaries and transforming challenges into rewarding experiences."
+    "journey": "Let's embark on a journey of continuous experimentation, pushing boundaries and transforming challenges into rewarding experiences.",
+    "contactMe": "Contact me"
+  },
+  "menu": {
+    "work": "Work",
+    "works": "works",
+    "workSingular": "work",
+    "projects": "Projects",
+    "projectsPlural": "projects",
+    "projectSingular": "project",
+    "about": "About",
+    "years": "years",
+    "colophon": "Colophon",
+    "topics": "topics",
+    "comingSoon": "Coming Soon",
+    "openNav": "Open Navigation",
+    "closeNav": "Close Navigation",
+    "cv": "Curriculum Vitae"
   },
   "project": {
     "main": "This section serves as a showcase for the projects I've crafted over the years, underscoring my dedication to hands-on learning and the development of practical, functional solutions that resonate in various domains of application.",

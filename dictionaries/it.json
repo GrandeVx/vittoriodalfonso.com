@@ -20,7 +20,24 @@
     ],
     "digitalCreative": "Come Creativo Digitale, considero l'informatica la mia tela per un'esplorazione e creazione continua. Il mio forte risiede in una conoscenza versatile, e sono guidato da una curiosità implacabile di sperimentare e innovare.",
     "challenges": "Le sfide non sono ostacoli ma porte verso la crescita. Dando priorità al viaggio più che alla destinazione, mi adatto rapidamente a nuovi ambienti.",
-    "journey": "Iniziamo un viaggio di sperimentazione continua, spingendo i confini e trasformando le sfide in esperienze gratificanti."
+    "journey": "Iniziamo un viaggio di sperimentazione continua, spingendo i confini e trasformando le sfide in esperienze gratificanti.",
+    "contactMe": "Contattami"
+  },
+  "menu": {
+    "work": "Lavori",
+    "works": "lavori",
+    "workSingular": "lavoro",
+    "projects": "Progetti",
+    "projectsPlural": "progetti",
+    "projectSingular": "progetto",
+    "about": "Chi sono",
+    "years": "anni",
+    "colophon": "Colophon",
+    "topics": "argomenti",
+    "comingSoon": "In Arrivo",
+    "openNav": "Apri Navigazione",
+    "closeNav": "Chiudi Navigazione",
+    "cv": "Curriculum Vitae"
   },
   "project": {
     "main": "Questa sezione funge da vetrina per i progetti che ho realizzato nel corso degli anni, sottolineando la mia dedizione all'apprendimento pratico e allo sviluppo di soluzioni pratiche e funzionali che trovano applicazione in vari domini.",

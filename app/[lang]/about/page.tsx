@@ -66,9 +66,42 @@ export default async function About({
           {dictionary.about.challenges}
         </p>
 
-        <p className="text-pretty pb-16 text-start font-sans text-sm">
+        <p className="text-pretty text-start font-sans text-sm">
           {dictionary.about.journey}
         </p>
+
+        <div className="flex items-center gap-4 pb-16 pt-6">
+          <a
+            href="mailto:v.dalfonso@metrica.dev"
+            className="text-sm underline hover:text-black dark:hover:text-white"
+          >
+            {dictionary.about.contactMe}
+          </a>
+          <a
+            href="https://instagram.com/vittodalfo"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-muted hover:text-black dark:hover:text-white"
+          >
+            Instagram
+          </a>
+          <a
+            href="https://twitter.com/vittoIam"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-muted hover:text-black dark:hover:text-white"
+          >
+            X
+          </a>
+          <a
+            href="https://github.com/GrandeVx"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-muted hover:text-black dark:hover:text-white"
+          >
+            GitHub
+          </a>
+        </div>
       </main>
     </main>
   );

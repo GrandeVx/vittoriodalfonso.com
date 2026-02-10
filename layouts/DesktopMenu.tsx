@@ -17,6 +17,8 @@ import {
 import { compareDesc, differenceInYears } from "date-fns";
 import React, { useEffect } from "react";
 import Link from "next/link";
+import enDict from "@/dictionaries/en.json";
+import itDict from "@/dictionaries/it.json";
 
 export default function DesktopMenu() {
   const router = useRouter();
@@ -24,6 +26,7 @@ export default function DesktopMenu() {
   const [value, setValue] = React.useState<string>("");
   const position = pathname.split("/")[2];
   const lang = pathname.split("/")[1]; // Estrae la lingua dal pathname
+  const dict = lang === "it" ? itDict : enDict;
 
   useEffect(() => {
     setValue(() => {
@@ -41,11 +44,13 @@ export default function DesktopMenu() {
     });
   }, [pathname]);
 
-  // remove duplicates
-  const works = allWorks.filter(
-    (work: Work, idx: number, arr: Work[]) =>
-      arr.findIndex((w: Work) => w.title === work.title) === idx,
-  );
+  // sort by date (newest first) and remove duplicates
+  const works = [...allWorks]
+    .sort((a: Work, b: Work) => compareDesc(new Date(a.date), new Date(b.date)))
+    .filter(
+      (work: Work, idx: number, arr: Work[]) =>
+        arr.findIndex((w: Work) => w.title === work.title) === idx,
+    );
 
   // Genera URL corretti basati sulla lingua corrente
   works.forEach((work: Work) => {
@@ -53,15 +58,12 @@ export default function DesktopMenu() {
     work.url = `${lang}/work/${filename}`;
   });
 
-  let projects = allProjects.sort((a: Project, b: Project) =>
-    compareDesc(new Date(a.date), new Date(b.date)),
-  );
-
-  projects = projects.filter(
-    (project: Project, idx: number, self: Project[]) => {
-      return idx === self.findIndex((t) => t.title === project.title);
-    },
-  );
+  const projects = [...allProjects]
+    .sort((a: Project, b: Project) => compareDesc(new Date(a.date), new Date(b.date)))
+    .filter(
+      (project: Project, idx: number, self: Project[]) =>
+        idx === self.findIndex((t) => t.title === project.title),
+    );
 
   // Genera URL corretti per i progetti basati sulla lingua corrente
   projects.forEach((project: Project) => {
@@ -88,9 +90,9 @@ export default function DesktopMenu() {
               onClick={() => router.push(`/${lang}/work`)}
               className="flex w-full cursor-pointer justify-between gap-24 px-4 hover:text-black dark:hover:text-white"
             >
-              <p className="">Work</p>
+              <p className="">{dict.menu.work}</p>
               <p>
-                {works.length} {works.length > 1 ? "works" : "work"}
+                {works.length} {works.length > 1 ? dict.menu.works : dict.menu.workSingular}
               </p>
             </div>
           </AccordionTrigger>
@@ -120,7 +122,7 @@ export default function DesktopMenu() {
                       ? "bg-white/20 text-white"
                       : "bg-gray-200 text-muted-foreground"
                   }`}>
-                    Coming Soon
+                    {dict.menu.comingSoon}
                   </span>
                 )}
               </div>
@@ -135,9 +137,9 @@ export default function DesktopMenu() {
               onClick={() => router.push(`/${lang}/project`)}
               className="flex w-full cursor-pointer justify-between  gap-24 px-4 hover:text-black dark:hover:text-white"
             >
-              <p>Projects</p>
+              <p>{dict.menu.projects}</p>
               <p>
-                {projects.length} {projects.length > 1 ? "projects" : "project"}
+                {projects.length} {projects.length > 1 ? dict.menu.projectsPlural : dict.menu.projectSingular}
               </p>
             </div>
           </AccordionTrigger>
@@ -169,7 +171,7 @@ export default function DesktopMenu() {
                       ? "bg-white/20 text-white"
                       : "bg-gray-200 text-muted-foreground"
                   }`}>
-                    Coming Soon
+                    {dict.menu.comingSoon}
                   </span>
                 )}
               </div>
@@ -184,31 +186,48 @@ export default function DesktopMenu() {
               onClick={() => router.push(`/${lang}/about`)}
               className="flex w-full cursor-pointer justify-between  gap-24 px-4 hover:text-black dark:hover:text-white"
             >
-              <p>About</p>
+              <p>{dict.menu.about}</p>
               <p>
-                {differenceInYears(new Date(), new Date(2003, 6, 22))} years
+                {differenceInYears(new Date(), new Date(2003, 6, 22))} {dict.menu.years}
               </p>
             </div>
           </AccordionTrigger>
           <AccordionContent>
-            <Link
+            <a
               key={1}
               href="/CV.pdf"
               download="Vittorio_DAlfonso_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="cursor-pointer hover:text-black dark:hover:text-white"
             >
-              Curriculum Vitae
-            </Link>
-            <Link
+              {dict.menu.cv}
+            </a>
+            <a
               key={2}
-              href="https://twitter.com/vittoIam" // https://github.com/
+              href="https://instagram.com/vittodalfo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cursor-pointer hover:text-pink-500 dark:hover:text-pink-400"
+            >
+              Instagram
+            </a>
+            <a
+              key={3}
+              href="mailto:v.dalfonso@metrica.dev"
+              className="cursor-pointer hover:text-black dark:hover:text-white"
+            >
+              {dict.about.contactMe}
+            </a>
+            <Link
+              key={4}
+              href="https://twitter.com/vittoIam"
               className="cursor-pointer hover:text-blue-400 dark:hover:text-blue-400"
             >
               Twitter
             </Link>
-
             <Link
-              key={3}
+              key={5}
               href="https://github.com/GrandeVx"
               className="cursor-pointer hover:text-black/60 dark:hover:text-white"
             >
@@ -226,8 +245,8 @@ export default function DesktopMenu() {
           onClick={() => router.push(`/${lang}/colophon`)}
           className="flex w-full cursor-pointer justify-between  gap-24 px-4 hover:text-black dark:hover:text-white"
         >
-          <p>Colophon</p>
-          <p>3 topics</p>
+          <p>{dict.menu.colophon}</p>
+          <p>3 {dict.menu.topics}</p>
         </div>
       </Accordion>
     </section>
