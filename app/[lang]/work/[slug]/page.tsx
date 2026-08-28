@@ -1,30 +1,28 @@
-import { allWorks } from "contentlayer/generated";
+import { getWork, getWorks } from "@/lib/content";
 import { Mdx } from "@/components/mdx-components";
 import TopBar from "@/layouts/TopBar";
+import { notFound } from "next/navigation";
+import { getSiteUrl } from "@/lib/site-url";
 
 import type { Metadata } from "next";
 
 type Props = {
-  params: { lang: string; slug: string };
+  params: Promise<{ lang: string; slug: string }>;
 };
 
 export const generateStaticParams = async () =>
-  allWorks.map((work) => ({ 
-    slug: work._raw.flattenedPath.split('/').pop() // Estrae solo il nome del file senza la path completa
+  getWorks().map((work) => ({
+    lang: work.language,
+    slug: work.slug,
   }));
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const slug = params.slug;
-  const lang = params.lang;
+  const { slug, lang } = await params;
 
-  const work = allWorks.find(
-    (work) =>
-      work._raw.flattenedPath ===
-      "work/" + lang + "/" + slug.replace("%2F", "/"),
-  );
+  const work = getWork(lang, slug.replace("%2F", "/"));
 
   return {
-    metadataBase: new URL("https://vittoriodalfonso.com"),
+    metadataBase: getSiteUrl(),
     title: `${work ? work.title : slug} | Vittorio D'Alfonso`,
     description: work ? work.description : "work for client",
     applicationName: `${work ? work.title : slug}  | Vittorio D'Alfonso`,
@@ -65,13 +63,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-const workLayout = ({ params }: { params: { lang: string; slug: string } }) => {
-  const work = allWorks.find(
-    (work) =>
-      work._raw.flattenedPath ===
-      "work/" + params.lang + "/" + params.slug.replace("%2F", "/"),
-  );
-  if (!work) return;
+const workLayout = async ({ params }: Props) => {
+  const { lang, slug } = await params;
+  const work = getWork(lang, slug.replace("%2F", "/"));
+  if (!work) notFound();
 
   return (
     <main className="flex h-screen flex-col items-center gap-16 first-line:text-foreground md:gap-0 xl:flex-row">
@@ -79,7 +74,7 @@ const workLayout = ({ params }: { params: { lang: string; slug: string } }) => {
         <TopBar />
       </section>
       <main className="flex h-screen w-[92%] flex-col pt-3 selection:bg-orange-400/30 selection:text-selected  md:w-[90%] md:pr-[15%] md:pt-16 lg:pl-[23%] lg:pr-[15%]  xl:px-[3%] xl:pt-8">
-        <Mdx code={work.body.code} />
+        <Mdx source={work.body} />
       </main>
     </main>
   );

@@ -20,10 +20,11 @@ export const metadata: Metadata = {
 };
 
 export default async function Colpohon({
-  params: { lang },
+  params,
 }: {
-  params: { lang: Locale };
+  params: Promise<{ lang: Locale }>;
 }) {
+  const { lang } = await params;
   const dictionary = await getDictionary(lang);
   return (
     <main className="flex h-screen flex-col items-center gap-16 first-line:text-foreground md:gap-0 xl:flex-row">
@@ -34,7 +35,7 @@ export default async function Colpohon({
         <p className="text-pretty font-sans text-sm">
           Everything about this website.
         </p>
-        <p className="text-sm text-muted">Last updated Feb 19, 2024</p>
+        <p className="text-sm text-muted">Last updated Aug 28, 2026</p>
 
         <section className="mt-10 flex flex-col gap-1 text-pretty md:mt-20">
           <p className="text-sm text-muted">Technical</p>
@@ -44,8 +45,8 @@ export default async function Colpohon({
               Next-js
             </Link>
             ,{" "}
-            <Link href={"https://contentlayer.dev/"} className="underline">
-              Contentlayer
+            <Link href={"https://mdxjs.com/"} className="underline">
+              MDX
             </Link>
             , {dictionary.colophon.techincal[1]}{" "}
             <Link href={"https://tailwindcss.com/"} className="underline">

@@ -10,7 +10,45 @@
       "Scoprimi",
       "o",
       "Visualizza i Miei Lavori"
-    ]
+    ],
+    "journey": {
+      "eyebrow": "Novità · The Journey",
+      "entries": "contenuti",
+      "description": "Paper annotati, esperimenti e appunti sull’intelligenza artificiale.",
+      "startWith": "Inizia da"
+    },
+    "navigation": {
+      "sources": "aree",
+      "followUps": "Follow-ups",
+      "questions": [
+        "Quali lavori ho realizzato per i clienti?",
+        "Quali progetti personali sto costruendo?",
+        "Cosa sto studiando in The Journey?",
+        "Chi sono e come lavoro?"
+      ]
+    },
+    "recommendation": {
+      "title": "Da dove vuoi iniziare?",
+      "explore": "Scopri",
+      "alternatives": "Alternative",
+      "otherOptions": "Altri percorsi",
+      "open": "Apri",
+      "close": "Chiudi suggerimento",
+      "options": [
+        {
+          "eyebrow": "Per clienti",
+          "description": "Una selezione di prodotti e identità digitali sviluppati insieme ai miei clienti."
+        },
+        {
+          "eyebrow": "Laboratorio",
+          "description": "Esperimenti e prodotti personali in cui esploro nuove idee attraverso il codice."
+        },
+        {
+          "eyebrow": "Profilo",
+          "description": "Il mio percorso, il modo in cui lavoro e le idee che guidano la mia pratica."
+        }
+      ]
+    }
   },
   "about": {
     "intro": [
@@ -30,6 +68,9 @@
     "projects": "Progetti",
     "projectsPlural": "progetti",
     "projectSingular": "progetto",
+    "journey": "The Journey",
+    "paper": "paper",
+    "papers": "paper",
     "about": "Chi sono",
     "years": "anni",
     "colophon": "Colophon",
@@ -48,6 +89,29 @@
     "sub": "Per qualsiasi domanda riguardante questi progetti o se sei interessato a una potenziale collaborazione, non esitare a contattarmi a",
     "agencyBadge": "Agenzia",
     "agencyTooltip": "Lavoro realizzato per"
+  },
+  "journey": {
+    "eyebrow": "Appunti di ricerca",
+    "title": "The Journey",
+    "intro": "Una raccolta viva di esperimenti con l’AI, paper letti e note che mettono in relazione l’idea originale con ciò che mi rimane dopo averla studiata.",
+    "sub": "Per qualsiasi domanda su questi appunti o se sei interessato a confrontarti e collaborare, non esitare a contattarmi a",
+    "context": "Contesto",
+    "insight": "Insight",
+    "paper": "Paper",
+    "papers": "paper",
+    "openReader": "Apri il reader",
+    "source": "Fonte",
+    "annotations": "annotazioni",
+    "readingTime": "Lettura e commenti",
+    "back": "Torna a The Journey",
+    "notes": "Note e annotazioni",
+    "analysis": "Analisi",
+    "whyItMatters": "Perché è importante",
+    "openAnalysis": "Apri analisi",
+    "closeAnalysis": "Chiudi analisi",
+    "resizeAnalysis": "Ridimensiona",
+    "page": "Pagina",
+    "loadError": "Non è stato possibile caricare il PDF. Verifica che il paper esportato sia disponibile."
   },
   "colophon": {
     "techincal": [

@@ -1,0 +1,900 @@
+{
+  "version": 1,
+  "source": "Research",
+  "sourceId": "01KZ3MDD246Z48B5EARXSKTYYJ",
+  "title": "Attention Is All You Need",
+  "pdf": "/journey/papers/attention-is-all-you-need.pdf",
+  "annotationCount": 19,
+  "commentCount": 18,
+  "annotations": [
+    {
+      "id": "01KZC1QCMXNCQP0YZC0FVEXZS3",
+      "type": "text",
+      "color": "#f2c94c",
+      "content": {
+        "text": "he best performing models also connect the encoder and decoder through an attention mechanism",
+        "image": null
+      },
+      "position": {
+        "page": 1,
+        "boundingRect": {
+          "page": 1,
+          "x": 0.2350948509485095,
+          "y": 0.5341742318435754,
+          "width": 0.5297098960979845,
+          "height": 0.04228133729050279
+        },
+        "rects": [
+          {
+            "page": 1,
+            "x": 0.7142866594681572,
+            "y": 0.5341742318435754,
+            "width": 0.05050353176871612,
+            "height": 0.014664804469273743
+          },
+          {
+            "page": 1,
+            "x": 0.2350948509485095,
+            "y": 0.5486753666201117,
+            "width": 0.5297098960979845,
+            "height": 0.01361731843575419
+          },
+          {
+            "page": 1,
+            "x": 0.2350948509485095,
+            "y": 0.5617907646648045,
+            "width": 0.08004272791751355,
+            "height": 0.014664804469273743
+          }
+        ]
+      },
+      "comments": [],
+      "commentCount": 0,
+      "createdAt": "2026-08-06T17:25:21.693Z",
+      "updatedAt": "2026-08-06T17:25:21.693Z"
+    },
+    {
+      "id": "01KZC1RBYP76MV0M71ZQ6JMRVA",
+      "type": "text",
+      "color": "#57c785",
+      "content": {
+        "text": "based solely on attention mechanisms",
+        "image": null
+      },
+      "position": {
+        "page": 1,
+        "boundingRect": {
+          "page": 1,
+          "x": 0.23509510869565217,
+          "y": 0.575247815860215,
+          "width": 0.24202519955842391,
+          "height": 0.014112903225806451
+        },
+        "rects": [
+          {
+            "page": 1,
+            "x": 0.23509510869565217,
+            "y": 0.575247815860215,
+            "width": 0.24202519955842391,
+            "height": 0.014112903225806451
+          }
+        ]
+      },
+      "comments": [],
+      "commentCount": 0,
+      "createdAt": "2026-08-06T17:25:53.751Z",
+      "updatedAt": "2026-08-06T17:25:53.751Z"
+    },
+    {
+      "id": "01KZEAEK9X9EQAFRAVQPFBT013",
+      "type": "text",
+      "color": "#57c785",
+      "content": {
+        "text": "the Transformer, a model architecture eschewing recurrence and instead relying entirely on an attention mechanism to draw global dependencies between input and output.",
+        "image": null
+      },
+      "position": {
+        "page": 2,
+        "boundingRect": {
+          "page": 2,
+          "x": 0.17649686406067677,
+          "y": 0.37859276375112716,
+          "width": 0.6497307046291569,
+          "height": 0.027776995040577096
+        },
+        "rects": [
+          {
+            "page": 2,
+            "x": 0.33855549512972216,
+            "y": 0.37859276375112716,
+            "width": 0.48482542805799667,
+            "height": 0.013976555455365193
+          },
+          {
+            "page": 2,
+            "x": 0.17649686406067677,
+            "y": 0.39239320333633904,
+            "width": 0.6497307046291569,
+            "height": 0.013976555455365193
+          }
+        ]
+      },
+      "comments": [],
+      "commentCount": 0,
+      "createdAt": "2026-08-07T14:36:19.645Z",
+      "updatedAt": "2026-08-07T14:36:19.645Z"
+    },
+    {
+      "id": "01KZEAH5HN49H3N29QJW102WH4",
+      "type": "text",
+      "color": "#f2c94c",
+      "content": {
+        "text": "ByteNet [ 18 ] and ConvS2S [ 9], all of which use convolutional neural networks as basic building block, computing hidden representations in parallel for all input and output positions. In these models, the number of operations required to relate signals from two arbitrary input or output positions grows in the distance between positions, linearly for ConvS2S and logarithmically for ByteNet. This makes it more difficult to learn dependencies between distant positions [12 ]",
+        "image": null
+      },
+      "position": {
+        "page": 2,
+        "boundingRect": {
+          "page": 2,
+          "x": 0.17649686406067677,
+          "y": 0.5039943079350766,
+          "width": 0.6489227900288069,
+          "height": 0.06907968890892696
+        },
+        "rects": [
+          {
+            "page": 2,
+            "x": 0.21066839692194794,
+            "y": 0.5039943079350766,
+            "width": 0.6127828199638091,
+            "height": 0.013976555455365193
+          },
+          {
+            "page": 2,
+            "x": 0.17649686406067677,
+            "y": 0.518245604147881,
+            "width": 0.6489227900288069,
+            "height": 0.013074842200180343
+          },
+          {
+            "page": 2,
+            "x": 0.17649686406067677,
+            "y": 0.5320460437330928,
+            "width": 0.6468960952313667,
+            "height": 0.013074842200180343
+          },
+          {
+            "page": 2,
+            "x": 0.17649686406067677,
+            "y": 0.5457478584310189,
+            "width": 0.6468925342537558,
+            "height": 0.013074842200180343
+          },
+          {
+            "page": 2,
+            "x": 0.17649686406067677,
+            "y": 0.5590974413886384,
+            "width": 0.4622797749006345,
+            "height": 0.013976555455365193
+          }
+        ]
+      },
+      "comments": [
+        {
+          "id": "01KZEAKEJNEEMWC96PYWMCNQBG",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>Le CNN sono portate a valorizzare <strong>il legame tra informazioni “vicine”</strong> tra loro mirando a comprenderne approfonditamente la relazione.</p>",
+          "text": "Le CNN sono portate a valorizzare il legame tra informazioni “vicine” tra loro mirando a comprenderne approfonditamente la relazione.",
+          "createdAt": "2026-08-07T14:38:58.645Z",
+          "updatedAt": "2026-08-07T14:38:58.645Z",
+          "replies": []
+        },
+        {
+          "id": "01KZEAN8QMEETXPYRZRE0WZT55",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>Ma tendono.a perdere <strong>attenzione </strong>verso le informazioni “lontane”</p>",
+          "text": "Ma tendono.a perdere attenzione verso le informazioni “lontane”",
+          "createdAt": "2026-08-07T14:39:58.196Z",
+          "updatedAt": "2026-08-07T14:39:58.196Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 2,
+      "createdAt": "2026-08-07T14:37:43.861Z",
+      "updatedAt": "2026-08-07T14:37:43.861Z"
+    },
+    {
+      "id": "01KZEAQYDZSTGDAR94H2N8RNZ3",
+      "type": "text",
+      "color": "#57c785",
+      "content": {
+        "text": "Most competitive neural sequence transduction models have an encoder-decoder structure",
+        "image": null
+      },
+      "position": {
+        "page": 2,
+        "boundingRect": {
+          "page": 2,
+          "x": 0.17649686406067677,
+          "y": 0.8429962240757439,
+          "width": 0.5836371084633898,
+          "height": 0.013976555455365193
+        },
+        "rects": [
+          {
+            "page": 2,
+            "x": 0.17649686406067677,
+            "y": 0.8429962240757439,
+            "width": 0.5836371084633898,
+            "height": 0.013976555455365193
+          }
+        ]
+      },
+      "comments": [],
+      "commentCount": 0,
+      "createdAt": "2026-08-07T14:41:25.951Z",
+      "updatedAt": "2026-08-07T14:41:27.704Z"
+    },
+    {
+      "id": "01KZEAY67NMDJ7T6GVQCQRMPFM",
+      "type": "text",
+      "color": "#f2c94c",
+      "content": {
+        "text": "The first is a multi-head self-attention mechanism",
+        "image": null
+      },
+      "position": {
+        "page": 3,
+        "boundingRect": {
+          "page": 3,
+          "x": 0.2528420681423611,
+          "y": 0.6474656357388316,
+          "width": 0.32485986328125,
+          "height": 0.01443298969072165
+        },
+        "rects": [
+          {
+            "page": 3,
+            "x": 0.2528420681423611,
+            "y": 0.6474656357388316,
+            "width": 0.32485986328125,
+            "height": 0.01443298969072165
+          }
+        ]
+      },
+      "comments": [
+        {
+          "id": "01KZEAYBVZ8YM9474JJ755QF68",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>costruisce le relazioni tra i token.</p>",
+          "text": "costruisce le relazioni tra i token.",
+          "createdAt": "2026-08-07T14:44:56.320Z",
+          "updatedAt": "2026-08-07T14:44:56.320Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 1,
+      "createdAt": "2026-08-07T14:44:50.550Z",
+      "updatedAt": "2026-08-07T14:44:50.550Z"
+    },
+    {
+      "id": "01KZEAYHN8WEB6ZS09W7FFAN58",
+      "type": "text",
+      "color": "#f2c94c",
+      "content": {
+        "text": "position- wise fully connected feed-forward network.",
+        "image": null
+      },
+      "position": {
+        "page": 3,
+        "boundingRect": {
+          "page": 3,
+          "x": 0.17589112512124153,
+          "y": 0.6468913980509745,
+          "width": 0.650202487534857,
+          "height": 0.028790292353823087
+        },
+        "rects": [
+          {
+            "page": 3,
+            "x": 0.7693632405204291,
+            "y": 0.6468913980509745,
+            "width": 0.056730372135669255,
+            "height": 0.014992503748125937
+          },
+          {
+            "page": 3,
+            "x": 0.17589112512124153,
+            "y": 0.6606891866566716,
+            "width": 0.28803662393534796,
+            "height": 0.014992503748125937
+          }
+        ]
+      },
+      "comments": [
+        {
+          "id": "01KZEAYR3NDZBGJV8DBEJV60RW",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>prende il nuovo embedding contestualizzato di ciascun token e lo <strong>trasforma</strong>, estraendo caratteristiche più complesse.</p>",
+          "text": "prende il nuovo embedding contestualizzato di ciascun token e lo trasforma, estraendo caratteristiche più complesse.",
+          "createdAt": "2026-08-07T14:45:08.853Z",
+          "updatedAt": "2026-08-07T14:45:08.853Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 1,
+      "createdAt": "2026-08-07T14:45:02.249Z",
+      "updatedAt": "2026-08-07T14:45:02.249Z"
+    },
+    {
+      "id": "01KZEB2AD7MXHX98J96NFNTZJK",
+      "type": "text",
+      "color": "#f2c94c",
+      "content": {
+        "text": "the decoder inserts a third sub-layer, which performs multi-head attention over the output of the encoder stack",
+        "image": null
+      },
+      "position": {
+        "page": 3,
+        "boundingRect": {
+          "page": 3,
+          "x": 0.17649733268671192,
+          "y": 0.7587963830584707,
+          "width": 0.646885454712506,
+          "height": 0.0286965892053973
+        },
+        "rects": [
+          {
+            "page": 3,
+            "x": 0.3963760982776128,
+            "y": 0.7587963830584707,
+            "width": 0.4270066891216052,
+            "height": 0.014992503748125937
+          },
+          {
+            "page": 3,
+            "x": 0.17649733268671192,
+            "y": 0.7725004685157422,
+            "width": 0.2885517227661251,
+            "height": 0.014992503748125937
+          }
+        ]
+      },
+      "comments": [
+        {
+          "id": "01KZEBHSK2ZKF9MHE2HHETF5QM",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>Qui stiamo affermando che il decoder quando arriva a dover generare il token X può interpellare la funzione di attenzione effettuata sull’input dell’Encoder per identificare quale componente della frase di input deve prendere in considerazione per elaborare il token risultante</p>",
+          "text": "Qui stiamo affermando che il decoder quando arriva a dover generare il token X può interpellare la funzione di attenzione effettuata sull’input dell’Encoder per identificare quale componente della frase di input deve prendere in considerazione per elaborare il token risultante",
+          "createdAt": "2026-08-07T14:55:32.962Z",
+          "updatedAt": "2026-08-07T14:55:32.962Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 1,
+      "createdAt": "2026-08-07T14:47:05.895Z",
+      "updatedAt": "2026-08-07T14:54:03.491Z"
+    },
+    {
+      "id": "01KZEBD78MBEASCPRX46PJC3XA",
+      "type": "text",
+      "color": "#f2c94c",
+      "content": {
+        "text": "We also modify the self-attention sub-layer in the decoder stack to prevent positions from attending to subsequent positions",
+        "image": null
+      },
+      "position": {
+        "page": 3,
+        "boundingRect": {
+          "page": 3,
+          "x": 0.17649733268671192,
+          "y": 0.7862982571214393,
+          "width": 0.6468762787190834,
+          "height": 0.028790292353823087
+        },
+        "rects": [
+          {
+            "page": 3,
+            "x": 0.6028066463081959,
+            "y": 0.7862982571214393,
+            "width": 0.2205669650975994,
+            "height": 0.014992503748125937
+          },
+          {
+            "page": 3,
+            "x": 0.17649733268671192,
+            "y": 0.8000960457271364,
+            "width": 0.6094986095113967,
+            "height": 0.014992503748125937
+          }
+        ]
+      },
+      "comments": [
+        {
+          "id": "01KZEBDHFJCZQXE9RAGWQJDR1R",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>Per predire la parola in posizione \\(i\\), il decoder può usare <strong>solo le parole precedenti</strong>, mai quelle successive. </p>",
+          "text": "Per predire la parola in posizione \\(i\\), il decoder può usare solo le parole precedenti, mai quelle successive.",
+          "createdAt": "2026-08-07T14:53:13.586Z",
+          "updatedAt": "2026-08-07T14:53:13.586Z",
+          "replies": []
+        },
+        {
+          "id": "01KZEBEHCVVG7VAVD52R5J4XXJ",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>Quindi l’idea è quella di oscurare l’accesso a queste parole al modello</p>",
+          "text": "Quindi l’idea è quella di oscurare l’accesso a queste parole al modello",
+          "createdAt": "2026-08-07T14:53:46.267Z",
+          "updatedAt": "2026-08-07T14:53:46.267Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 2,
+      "createdAt": "2026-08-07T14:53:03.124Z",
+      "updatedAt": "2026-08-07T14:53:03.124Z"
+    },
+    {
+      "id": "01KZEBVXKP1H8HHSNN7Q3FQH53",
+      "type": "text",
+      "color": "#f2c94c",
+      "content": {
+        "text": "Q",
+        "image": null
+      },
+      "position": {
+        "page": 4,
+        "boundingRect": {
+          "page": 4,
+          "x": 0.263995110330993,
+          "y": 0.5414244186046512,
+          "width": 0.012658841392341086,
+          "height": 0.013953488372093023
+        },
+        "rects": [
+          {
+            "page": 4,
+            "x": 0.263995110330993,
+            "y": 0.5414244186046512,
+            "width": 0.012658841392341086,
+            "height": 0.013953488372093023
+          }
+        ]
+      },
+      "comments": [
+        {
+          "id": "01KZECAKKG5PTSYA38V4SJ77BM",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>Quali informazioni sto cercando?</p>",
+          "text": "Quali informazioni sto cercando?",
+          "createdAt": "2026-08-07T15:09:06.032Z",
+          "updatedAt": "2026-08-07T15:10:01.394Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 1,
+      "createdAt": "2026-08-07T15:01:04.758Z",
+      "updatedAt": "2026-08-07T15:01:04.758Z"
+    },
+    {
+      "id": "01KZEBWPHF85N1FY9YJ7W6R2GR",
+      "type": "text",
+      "color": "#f2c94c",
+      "content": {
+        "text": "K",
+        "image": null
+      },
+      "position": {
+        "page": 4,
+        "boundingRect": {
+          "page": 4,
+          "x": 0.6728811553030303,
+          "y": 0.540771484375,
+          "width": 0.01085501006155303,
+          "height": 0.0146484375
+        },
+        "rects": [
+          {
+            "page": 4,
+            "x": 0.6728811553030303,
+            "y": 0.540771484375,
+            "width": 0.01085501006155303,
+            "height": 0.0146484375
+          }
+        ]
+      },
+      "comments": [
+        {
+          "id": "01KZECC55P7GBWW7K2AAE2ZF46",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>Questa è l'informazione che verrà trasferita se qualcuno decide di prestarmi attenzione.</p>",
+          "text": "Questa è l'informazione che verrà trasferita se qualcuno decide di prestarmi attenzione.",
+          "createdAt": "2026-08-07T15:09:56.791Z",
+          "updatedAt": "2026-08-07T15:09:56.791Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 1,
+      "createdAt": "2026-08-07T15:01:30.287Z",
+      "updatedAt": "2026-08-07T15:01:30.287Z"
+    },
+    {
+      "id": "01KZEBX69F7X1446V47ZRV77NZ",
+      "type": "text",
+      "color": "#f2c94c",
+      "content": {
+        "text": "V",
+        "image": null
+      },
+      "position": {
+        "page": 4,
+        "boundingRect": {
+          "page": 4,
+          "x": 0.7195974072312084,
+          "y": 0.5407284007352942,
+          "width": 0.010854966066543768,
+          "height": 0.014705882352941176
+        },
+        "rects": [
+          {
+            "page": 4,
+            "x": 0.7195974072312084,
+            "y": 0.5407284007352942,
+            "width": 0.010854966066543768,
+            "height": 0.014705882352941176
+          }
+        ]
+      },
+      "comments": [
+        {
+          "id": "01KZECC7PYF2QP7358M6F9HMG4",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>Che informazioni posso offrire alle altre parole?</p>",
+          "text": "Che informazioni posso offrire alle altre parole?",
+          "createdAt": "2026-08-07T15:09:59.390Z",
+          "updatedAt": "2026-08-07T15:09:59.390Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 1,
+      "createdAt": "2026-08-07T15:01:46.415Z",
+      "updatedAt": "2026-08-07T15:01:46.415Z"
+    },
+    {
+      "id": "01KZEC5F6HF0521HSCB4JDY99J",
+      "type": "area",
+      "color": "#f2c94c",
+      "content": {
+        "text": null,
+        "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAtkAAACQCAYAAADdhXcTAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAC2aADAAQAAAABAAAAkAAAAAAGG4AiAAA6eUlEQVR4Ae2dBbgkxdWGC3cJGoLr4m6LuwZCsOC6geCLLhogOItLEgi2yBJCAsFhcQlBgrtk0cAGC8Et9H/eSqr/mrk9c7tneubOvfPV89w7LWX9dnf16dOnzhkrseSUREAEREAEREAEREAEREAESiMwdmk1qSIREAEREAEREAEREAEREAFPQEK2LgQREAEREAEREAEREAERKJmAhOySgao6ERABERABERABERABEZCQrWtABERABERABERABERABEomICG7ZKCqTgREQAREQAREQAREQAQkZOsaEAEREAEREAEREAEREIGSCUjILhmoqhMBERABERABERABERABCdm6BkRABERABERABERABESgZAISsksGqupEQAREQAREQAREQAREQEK2rgEREAEREAEREAEREAERKJmAhOySgao6ERABERABERABERABEZCQrWtABERABERABERABERABEomICG7ZKCqTgREQAREQAREQAREQAQkZOsaEAEREAEREAEREAEREIGSCUjILhmoqhMBERABERABERABERABCdm6BkRABERABERABERABESgZAISsksGqupEQAREQAREQAREQAREQEK2rgEREAEREAEREAEREAERKJmAhOySgao6ERABERABERABERABEZCQrWtABERABERABERABERABEomICG7ZKCqTgREQAREQAREQAREQAQkZOsaEAEREAEREAEREAEREIGSCUjILhmoqhMBERABERABERABERABCdm6BkRABERABERABERABESgZAISsksGqupEQAREQAREQAREQAREQEK2rgEREAEREAEREAEREAERKJmAhOySgao6ERABERABERABERABEZCQrWtABERABERABERABERABEomICG7ZKCqTgREQAREQAREQAREQAQkZOsaEAEREAEREAEREAEREIGSCUjILhmoqhMBERABERABERABERABCdm6BkRABERABERABERABESgZAISsksGqupEQAREQAREQAREQAREQEK2rgEREAEREAEREAEREAERKJmAhOySgao6ERABERABERABERABEZCQrWtABERABERABERABERABEomICG7ZKCqTgREQAREQAREQAREQAQkZOsaEAEREAEREAEREAEREIGSCUjILhmoqhMBERABERABERABERABCdm6BkRABERABERABERABESgZAISsksGqupEQAREQAREQAREQAREYFwhEAEREAEREAEREIFuJzBixAj37rvvNoxhtdVWc0svvXTD5VVw4BGQkD3wzqmOSAREQAREQAREoACBV155xe2www6+xKSTTuoWX3xxx+9EE03kPvjgA3fvvff6fTPOOKMXpMcee2z33XffuTfffNM98cQTft8RRxwhIduT0L9AQEJ2IKFfERABERABERCBriRwxRVX+OM+9thj3f777+8mnHDClMO1116bCtnnnXeeW3/99dN9LJx//vlu1113dXPNNVfFdq2IgGyydQ2IgAiIgAiIgAh0NQGE7J133tkddthhFQI2UO655x7PZtxxx3Urr7yyX47/bbnlln5VQnZMRcsQkCZb14EIiIAIiIAIiEDXEnjkkUfc6NGj3ahRozIZBCF7ySWX9CYk1Zm++eYbv0lCdjUZrUvI1jUgAiIgAiIgAiLQNIG3337bPffcc+61117zEwhnnnlmt/DCC7sFF1zQTTzxxE3X36oK/vSnP7kNN9zQzT777D2a+PDDD90zzzzjt6+66qo99rPhrbfeclNMMYWbbrrpMvdrY/cSkJDdvedeRy4CIiACIiACTRH48ssv3ZVXXukuvfRSd99997kkSdyPfvQjN9VUU7mXX37ZoeVlkuBaa63lTj/9dDfvvPPmbo/yP//5z33+CSaYwPE3/vjj+/Wvv/7a8Uf9bL/lllvcOOOMU1E3fdlkk00cgnIoP95447mvvvrKffHFF27jjTd2e++9t9tpp51qvgQw4ZF6SKussor/rf4333zzuZtvvrl6s9ZFQOYiugZEQAREQAREQASKE7jxxhvdXnvt5V5//XU37bTTenvm3XbbzQvZ1IYA/MADD7ghQ4a4W2+91d15553uhBNO8BML87SG0Dz11FO7zz77zL366qteQx7KYR+N+QbC/JxzztlDwCYfwvG3337rHnroId+XUBaPIZRF004aNGhQ2NXjN5iKIJwvv/zyPfazAQF+ueWWy9yn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8XZk5dJkd+RpUac6mQA+bW0ijddwSgDr5DPVWN8sCIsbOnSo/8qg89sYQ5XqXAKdPn4NHz7cz4OwCKRNC9icBQuWlJ6MvrbH1tiSnoquWZAmu2tOtQ5UBERABERABDqXgEXXdGY/7d2kErjLIo/m7ixabwu57ielm19wZ5F0vQtUvkgRFAgzNQJgKYlAOwmM287G1JYIiIAIiIAIiIAIZBE4/fTTHVFysR3PK2B//vnnDq33lVde6SaeeGK3+OKLO+rBr/bIkSO9gE1bnWCPnXXM2jawCchcZGCfXx2dCIiACIiACHQ8gY8//tgH5cIWe9iwYbn6i43zSiut5Cx2gRs8eLB76aWX3L333ussMqubddZZnfkGT+vpa1ORtCNa6CoCErK76nTrYEVABERABESg8wgQ/fCTTz5xW2+9tTcZ6a2Hr776qltmmWWchV73piDXXHNNqv1Go83E9DhJyI5paLldBGST3S7SakcEREAEREAERKAHAUw+0DybT2xnkR7doEGDeuSp3rDWWmu522+/3QcIQ3uNJrs64f7P4hF44RuvJVnpjjvucGeccYazCLvugw8+cKuuuqq78MILs7JqmwgUJiBNdmFkKiACIiACIiACIlBNALvoqaaayvv+r95Xbx1vTR9++KGzwE+5BOxrr73WC9jUudlmm2UK2G+88YYXsMlTzx57sskm8/7wX3nlFffaa6/JZSfAlEojICG7NJSqSAREQAREQAS6j8DXX3/tdtttN7fVVlt5bTTBZCwibi4QX331lTvllFN8wKfDDjus1zK0td9++6X5dtxxx3Q5Xsjrug+TEwKBhSSzkkBCv2UQkJBdBkXVIQIiIAIiIAJdSADXecstt5y7/PLL06NnQiJa7TzpoosucmPGjHEbbLCB1yj3VubRRx/1QWrIR9TcWlrqvEI29Tz11FOOiZfjjDOOW2GFFdikJAKlEJCQXQpGVSICIiACIiAC3Ufg0EMP9dEZn3zySbfNNtukAE499dR0udYC2u6TTz7Z786jxSbjY489lla3+uqre5vsdEO0EITsGWaYwc0zzzzRnp6L2HSTcP+H+YiSCJRFQEJ2WSRVjwiIgAiIgAh0GQHClj/00ENuzjnndAcccEB69E8//bQbNWpUup61gPYb22kCxyy99NJZWXpsw5tISLW0zngeIQANqZamO9TB7z333ONX8+T1GfVPBHISkJCdE5SyiYAIiIAIiIAIVBKYYIIJvD01WxdZZBEvMIcc2FrXSt9//7078cQT/e7DDz+8VrYe25999tl0Wy3BPGixyRhsrJMkcXvuuWcqfIdK6Md9993nV0NeVjCDOeaYY9yyyy7rNtpoox7lQnn9ikA9AhKy69HRPhEQAREQAREQgdwEDjzwwDQvLvbQaGelq6++2r388sveBpqAMnlTbM4x11xzZRa788470+1BcMac5dxzz/URJdOdtkD/cB0Y22PjvYQJkd99951bfvnl3XXXXeeKvAjE9Wu5uwlIyO7u86+jFwEREAEREIHSCGD6gUY7pCzbbLTKxx9/vM9SVHidY445QtVeCE5X/reAn+3rr7/er00//fSpS8CbbrrJzTTTTOl6KBfssRdddFE3xRRTeO317rvv7m644QZ39NFHu1tvvdVnxee2kggUJSAhuygx5RcBERABERABEahJYP/990/34WWkOhAMAiwa5CWXXNKtvfbaad48C5tvvnmaDU8jcXrzzTfdOuus47788ku/ee655/a/CPWXXHKJi8uGcsEee4kllnBDhgxxV111lbcxD6YoRx11lNt3333dwQcfHIroVwRyE1DEx9yolFEEREAEREAERKA3AngNQeP89ttv+6wHHXSQw3d2SJhiPPLIIw6zDOydiyQE5tVWW81PVsTM5LbbbvM24TfeeKO3uZ555pm9qcc555zjZpllFh9BkmU05kyaXGihhdLmqGuaaaZxH330kd8244wzOuy5g3CeZtSCCDRIQEJ2g+BUTAREQAREQAREIJsAkx6DfTZmGHj7wJ4aO21Coi+44IJemz3WWGNlV1Bn6yeffOK23XZbbxYy8cQT+5wEtUETPXz4cMdkxi233NKbeow77rh+HbOVoUOHVtSKf2zMREhornEPiOC93nrruTPPPNO/KFQU0IoIFCQgIbsgMGUXAREQAREQARGoTwBBGK0yv6TTTjvNm10wERE76JEjR3pBuH4t9fe+8MILqaBOQBxsrkNCWH7wwQcdJiS0ib/s6nTWWWe5ffbZx5utYHrCBMjtt9/e22MPHjzYl68uo3URKEJAQnYRWsorAiIgAiIgAiKQiwCa7ODGb9ZZZ3UjRozwAi/mGAjIePToy7Txxht7kxX8e6MBJ911112OIDcTTTRR6olkjz32cJiSEHhHSQSKENDExyK0lFcEREAEREAERCAXAbTE4403ns9L0Bk0yqRDDjmkzwVsNN1Z/rE/++wz38cQJfLTTz91l112mVtxxRX9dv0TgSIEJGQXoaW8IiACIiACIiACuQhgvrHFFltU5GUyYhx+vWJnG1eeeeYZ9+GHH3phPxagF1hgAd8L7LpJTNicf/75JWR7GvpXlICE7KLElF8EREAEREAERCAXgTjUOgWGDRuWardzVdCiTO+9956vGZd/k08+edoK4eHpI/62eUm45pprHG4IlUSgEQKyyW6EmsqIgAiIgAiIgAjkIoAv7FGjRvnJh6NHj3YTTjhhrnKtzIS5CFEg8XISTFri9j7++GM/aXLhhReON2tZBAoRGLdQbmUWAREQAREQAREQgQIEiJxIQBomDnaCgE3XcR242GKL1TwKIjwqymNNPNqRk4A02TlBKZsIiIAIiIAIiIAIiIAI5CUgm+y8pJRPBERABERABERABERABHISkJCdE5SyiYAIiIAIiIAIiIAIiEBeAhKy85JSPhEQAREQAREQAREQARHISUBCdk5QyiYCIiACIiACIiACIiACeQlIyM5LSvlEQAREQAREQAREQAREICcBCdk5QSmbCIiACIiACIiACIiACOQlICE7LynlEwEREAEREAEREAEREIGcBCRk5wSlbCIgAiIgAiIgAiIgAiKQl4CE7LyklE8EREAEREAEREAEREAEchKQkJ0TlLKJgAiIgAiIgAiIgAiIQF4CErLzklI+ERABERABERABERABEchJQEJ2TlDKJgIiIAIiIAIiIAIiIAJ5CUjIzktK+URABERABERABERABEQgJwEJ2TlBKZsIiIAIiIAIiIAIiIAI5CUgITsvKeUTAREQAREQAREQAREQgZwEJGTnBKVsIiACIiACIiACIiACIpCXwP8BhMSCbn8KM8kAAAAASUVORK5CYII="
+      },
+      "position": {
+        "page": 4,
+        "boundingRect": {
+          "page": 4,
+          "x": 0.3337372145575642,
+          "y": 0.5725815716911765,
+          "width": 0.34704671146527116,
+          "height": 0.05276022518382353
+        },
+        "rects": []
+      },
+      "comments": [
+        {
+          "id": "01KZECA1VTSR91RGT9V147X4QV",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<ul><li><p><strong>QKᵀ</strong> → calcola gli score di compatibilità tra Query e Key.</p></li><li><p><strong>÷ √dk</strong> → riduce l'ampiezza degli score per rendere stabile l'addestramento.</p></li><li><p><strong>Softmax</strong> → trasforma gli score in pesi di attenzione.</p></li><li><p><strong>× V</strong> → usa quei pesi per combinare le informazioni contenute nei Value e ottenere il nuovo embedding contestualizzato.</p></li></ul>",
+          "text": "QKᵀ → calcola gli score di compatibilità tra Query e Key.\n\n÷ √dk → riduce l'ampiezza degli score per rendere stabile l'addestramento.\n\nSoftmax → trasforma gli score in pesi di attenzione.\n\n× V → usa quei pesi per combinare le informazioni contenute nei Value e ottenere il nuovo embedding contestualizzato.",
+          "createdAt": "2026-08-07T15:08:47.866Z",
+          "updatedAt": "2026-08-07T15:08:47.866Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 1,
+      "createdAt": "2026-08-07T15:06:17.681Z",
+      "updatedAt": "2026-08-07T15:06:17.681Z"
+    },
+    {
+      "id": "01KZECHZJMPBSKW51DNSE42PDN",
+      "type": "text",
+      "color": "#f2c94c",
+      "content": {
+        "text": "gradients",
+        "image": null
+      },
+      "position": {
+        "page": 4,
+        "boundingRect": {
+          "page": 4,
+          "x": 0.283746305251504,
+          "y": 0.7621560254408938,
+          "width": 0.06101113385695187,
+          "height": 0.014862023144504804
+        },
+        "rects": [
+          {
+            "page": 4,
+            "x": 0.283746305251504,
+            "y": 0.7621560254408938,
+            "width": 0.06101113385695187,
+            "height": 0.014862023144504804
+          }
+        ]
+      },
+      "comments": [
+        {
+          "id": "01KZECJ2AVQDW77FJ2N4PMT0BM",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<blockquote><p><strong>Il gradiente è il vettore delle derivate parziali della funzione di loss rispetto a tutti i parametri del modello. Esso indica in quale direzione e con quale intensità bisogna modificare ciascun parametro per ridurre l'errore.</strong></p></blockquote>",
+          "text": "Il gradiente è il vettore delle derivate parziali della funzione di loss rispetto a tutti i parametri del modello. Esso indica in quale direzione e con quale intensità bisogna modificare ciascun parametro per ridurre l'errore.",
+          "createdAt": "2026-08-07T15:13:10.492Z",
+          "updatedAt": "2026-08-07T15:13:10.492Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 1,
+      "createdAt": "2026-08-07T15:13:07.668Z",
+      "updatedAt": "2026-08-07T15:13:07.668Z"
+    },
+    {
+      "id": "01KZEDN5F69V9V3E8C784N5BHV",
+      "type": "text",
+      "color": "#f2c94c",
+      "content": {
+        "text": "Multi-head attention allows the model to jointly attend to information from different representation subspaces at different positions. With a single attention head, averaging inhibits this.",
+        "image": null
+      },
+      "position": {
+        "page": 5,
+        "boundingRect": {
+          "page": 5,
+          "x": 0.1764871987951807,
+          "y": 0.12722001164596272,
+          "width": 0.6468847803322666,
+          "height": 0.027780473602484472
+        },
+        "rects": [
+          {
+            "page": 5,
+            "x": 0.1764871987951807,
+            "y": 0.12722001164596272,
+            "width": 0.6468847803322666,
+            "height": 0.013975155279503106
+          },
+          {
+            "page": 5,
+            "x": 0.1764871987951807,
+            "y": 0.1410253299689441,
+            "width": 0.5508269038066328,
+            "height": 0.013975155279503106
+          }
+        ]
+      },
+      "comments": [
+        {
+          "id": "01KZEDP7AZ0KT7P9XWTW1ZP3KX",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>L’idea è quella di concedere al modello più punti di attenzione per potersi concentrare su più componenti che potrebbero generare “relazione” </p>",
+          "text": "L’idea è quella di concedere al modello più punti di attenzione per potersi concentrare su più componenti che potrebbero generare “relazione”",
+          "createdAt": "2026-08-07T15:32:55.263Z",
+          "updatedAt": "2026-08-07T15:32:55.263Z",
+          "replies": []
+        },
+        {
+          "id": "01KZEDPZB2M2YRHW1FFZ5RNWWY",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>Immaginiamo la frase:</p><blockquote><p><strong>The animal didn't cross the street because it was too tired.</strong></p></blockquote><p>La parola <strong>it</strong> può richiedere di osservare relazioni diverse:</p><ul><li><p>una testa potrebbe voler capire <strong>a chi si riferisce</strong> (\"animal\");</p></li><li><p>un'altra potrebbe concentrarsi sulla <strong>struttura grammaticale</strong>;</p></li><li><p>un'altra ancora potrebbe guardare il <strong>verbo</strong> (\"cross\").</p></li></ul><p>Con una sola attenzione sei costretto a \"mediare\" tutte queste informazioni in un unico meccanismo.</p>",
+          "text": "Immaginiamo la frase:\n\nThe animal didn't cross the street because it was too tired.\n\nLa parola it può richiedere di osservare relazioni diverse:\n\nuna testa potrebbe voler capire a chi si riferisce (\"animal\");\n\nun'altra potrebbe concentrarsi sulla struttura grammaticale;\n\nun'altra ancora potrebbe guardare il verbo (\"cross\").\n\nCon una sola attenzione sei costretto a \"mediare\" tutte queste informazioni in un unico meccanismo.",
+          "createdAt": "2026-08-07T15:33:19.843Z",
+          "updatedAt": "2026-08-07T15:33:19.843Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 2,
+      "createdAt": "2026-08-07T15:32:20.582Z",
+      "updatedAt": "2026-08-07T15:32:20.582Z"
+    },
+    {
+      "id": "01KZEDSNYGT4PHT613438RXRXD",
+      "type": "text",
+      "color": "#f2c94c",
+      "content": {
+        "text": "In this work we employ h = 8 parallel attention layers, or heads",
+        "image": null
+      },
+      "position": {
+        "page": 5,
+        "boundingRect": {
+          "page": 5,
+          "x": 0.1764871987951807,
+          "y": 0.29484908773291924,
+          "width": 0.4562309908579631,
+          "height": 0.013975155279503106
+        },
+        "rects": [
+          {
+            "page": 5,
+            "x": 0.1764871987951807,
+            "y": 0.29484908773291924,
+            "width": 0.4562309908579631,
+            "height": 0.013975155279503106
+          }
+        ]
+      },
+      "comments": [
+        {
+          "id": "01KZEDSS3WPHFZAQ58R78S69PE",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>Quindi la stessa frase viene analizzata <strong>otto volte in parallelo</strong>.</p>",
+          "text": "Quindi la stessa frase viene analizzata otto volte in parallelo.",
+          "createdAt": "2026-08-07T15:34:51.772Z",
+          "updatedAt": "2026-08-07T15:34:51.772Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 1,
+      "createdAt": "2026-08-07T15:34:48.529Z",
+      "updatedAt": "2026-08-07T15:34:48.529Z"
+    },
+    {
+      "id": "01KZEEFGR4T3G52M0VW2EQ56JH",
+      "type": "text",
+      "color": "#f2c94c",
+      "content": {
+        "text": "path length between long-range dependencies in the network",
+        "image": null
+      },
+      "position": {
+        "page": 6,
+        "boundingRect": {
+          "page": 6,
+          "x": 0.2779605972719001,
+          "y": 0.7679177989130435,
+          "width": 0.4042269542035329,
+          "height": 0.013975155279503106
+        },
+        "rects": [
+          {
+            "page": 6,
+            "x": 0.2779605972719001,
+            "y": 0.7679177989130435,
+            "width": 0.4042269542035329,
+            "height": 0.013975155279503106
+          }
+        ]
+      },
+      "comments": [
+        {
+          "id": "01KZEEFJTNSGB0TA7VYG2YRWBF",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>quanti \"passaggi\" deve attraversare l'informazione per andare da una parola a un'altra.</p>",
+          "text": "quanti \"passaggi\" deve attraversare l'informazione per andare da una parola a un'altra.",
+          "createdAt": "2026-08-07T15:46:46.229Z",
+          "updatedAt": "2026-08-07T15:46:46.229Z",
+          "replies": []
+        },
+        {
+          "id": "01KZEEH4A8BZ03ZM5V50VTH4T3",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>Questo perchè nel training noi stiamo andando a porre attenzione su tutti i token presenti nel contesto del token preso in analisi e quindi abbiamo il valore <strong>pre calcolato</strong></p>",
+          "text": "Questo perchè nel training noi stiamo andando a porre attenzione su tutti i token presenti nel contesto del token preso in analisi e quindi abbiamo il valore pre calcolato",
+          "createdAt": "2026-08-07T15:47:36.904Z",
+          "updatedAt": "2026-08-07T15:47:36.904Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 2,
+      "createdAt": "2026-08-07T15:46:44.100Z",
+      "updatedAt": "2026-08-07T15:46:44.100Z"
+    },
+    {
+      "id": "01KZEEJXMDQRTCXHPDWNB3HP19",
+      "type": "text",
+      "color": "#f2c94c",
+      "content": {
+        "text": "Why Self-Attention",
+        "image": null
+      },
+      "position": {
+        "page": 6,
+        "boundingRect": {
+          "page": 6,
+          "x": 0.20579191767068272,
+          "y": 0.6258249223602484,
+          "width": 0.16200715949736447,
+          "height": 0.017080745341614908
+        },
+        "rects": [
+          {
+            "page": 6,
+            "x": 0.20579191767068272,
+            "y": 0.6258249223602484,
+            "width": 0.16200715949736447,
+            "height": 0.017080745341614908
+          }
+        ]
+      },
+      "comments": [
+        {
+          "id": "01KZEEK1ZTQBN2SCWEQ0C23PPW",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<ul><li><p><strong>Maggiore parallelizzazione</strong>, perché tutti i token possono essere elaborati contemporaneamente.</p></li><li><p><strong>Percorsi molto più brevi tra parole lontane</strong>, facilitando l'apprendimento delle dipendenze a lungo raggio.</p></li><li><p><strong>Buona efficienza computazionale</strong> nelle configurazioni tipiche della traduzione automatica, oltre a una maggiore interpretabilità grazie alla possibilità di ispezionare le mappe di attenzione.</p></li></ul>",
+          "text": "Maggiore parallelizzazione, perché tutti i token possono essere elaborati contemporaneamente.\n\nPercorsi molto più brevi tra parole lontane, facilitando l'apprendimento delle dipendenze a lungo raggio.\n\nBuona efficienza computazionale nelle configurazioni tipiche della traduzione automatica, oltre a una maggiore interpretabilità grazie alla possibilità di ispezionare le mappe di attenzione.",
+          "createdAt": "2026-08-07T15:48:40.058Z",
+          "updatedAt": "2026-08-07T15:48:40.058Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 1,
+      "createdAt": "2026-08-07T15:48:35.598Z",
+      "updatedAt": "2026-08-07T15:48:35.598Z"
+    },
+    {
+      "id": "01KZEEN01YFY3B3MA5A5V71JX1",
+      "type": "text",
+      "color": "#57c785",
+      "content": {
+        "text": "As side benefit, self-attention could yield more interpretable models",
+        "image": null
+      },
+      "position": {
+        "page": 7,
+        "boundingRect": {
+          "page": 7,
+          "x": 0.1758910642570281,
+          "y": 0.29955599767080743,
+          "width": 0.42921141352519454,
+          "height": 0.013975155279503106
+        },
+        "rects": [
+          {
+            "page": 7,
+            "x": 0.1758910642570281,
+            "y": 0.29955599767080743,
+            "width": 0.42921141352519454,
+            "height": 0.013975155279503106
+          }
+        ]
+      },
+      "comments": [],
+      "commentCount": 0,
+      "createdAt": "2026-08-07T15:49:43.614Z",
+      "updatedAt": "2026-08-07T15:49:43.614Z"
+    }
+  ]
+}

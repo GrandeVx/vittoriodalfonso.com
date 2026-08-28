@@ -10,7 +10,45 @@
       "Discover me",
       "or",
       "View my Work"
-    ]
+    ],
+    "journey": {
+      "eyebrow": "New · The Journey",
+      "entries": "entries",
+      "description": "Annotated papers, experiments, and notes on artificial intelligence.",
+      "startWith": "Start with"
+    },
+    "navigation": {
+      "sources": "sources",
+      "followUps": "Follow-ups",
+      "questions": [
+        "Which client work have I delivered?",
+        "Which independent projects am I building?",
+        "What am I studying in The Journey?",
+        "Who am I and how do I work?"
+      ]
+    },
+    "recommendation": {
+      "title": "Where would you like to start?",
+      "explore": "Explore",
+      "alternatives": "Alternatives",
+      "otherOptions": "Other paths",
+      "open": "Open",
+      "close": "Close suggestion",
+      "options": [
+        {
+          "eyebrow": "Client work",
+          "description": "A selection of digital products and identities developed together with my clients."
+        },
+        {
+          "eyebrow": "Laboratory",
+          "description": "Independent experiments and products where I explore new ideas through code."
+        },
+        {
+          "eyebrow": "Profile",
+          "description": "My path, the way I work, and the ideas that guide my practice."
+        }
+      ]
+    }
   },
   "about": {
     "intro": [
@@ -30,6 +68,9 @@
     "projects": "Projects",
     "projectsPlural": "projects",
     "projectSingular": "project",
+    "journey": "The Journey",
+    "paper": "paper",
+    "papers": "papers",
     "about": "About",
     "years": "years",
     "colophon": "Colophon",
@@ -48,6 +89,29 @@
     "sub": "For any inquiries regarding these projects or if you are interested in potential collaboration, feel free to reach out to me at",
     "agencyBadge": "Agency",
     "agencyTooltip": "Work done made for"
+  },
+  "journey": {
+    "eyebrow": "Research notes",
+    "title": "The Journey",
+    "intro": "A living collection of AI experiments, papers I read, and notes that connect the original idea with what stays with me after studying it.",
+    "sub": "For any questions about these notes, or if you are interested in exchanging ideas and collaborating, feel free to contact me at",
+    "context": "Context",
+    "insight": "Insight",
+    "paper": "Paper",
+    "papers": "papers",
+    "openReader": "Open reader",
+    "source": "Source",
+    "annotations": "annotations",
+    "readingTime": "Reading & notes",
+    "back": "Back to The Journey",
+    "notes": "Notes & annotations",
+    "analysis": "Analysis",
+    "whyItMatters": "Why it matters",
+    "openAnalysis": "Open analysis",
+    "closeAnalysis": "Close analysis",
+    "resizeAnalysis": "Resize",
+    "page": "Page",
+    "loadError": "This PDF could not be loaded. Check that the exported paper is available."
   },
   "colophon": {
     "techincal": [

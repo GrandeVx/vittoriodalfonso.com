@@ -23,10 +23,11 @@ export const metadata: Metadata = {
 };
 
 export default async function About({
-  params: { lang },
+  params,
 }: {
-  params: { lang: Locale };
+  params: Promise<{ lang: Locale }>;
 }) {
+  const { lang } = await params;
   const dictionary = await getDictionary(lang);
   return (
     <main className="flex h-screen flex-col items-center gap-16 first-line:text-foreground md:gap-0 xl:flex-row">

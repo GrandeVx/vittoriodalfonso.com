@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { compareDesc, format, parseISO } from "date-fns";
-import { allProjects, Project } from "contentlayer/generated";
+import { getProjects, type Project } from "@/lib/content";
 import TopBar from "@/layouts/TopBar";
 import SafeImage from "@/components/SafeImage";
 import { Metadata } from "next";
@@ -34,11 +34,13 @@ function ProjectCard(project: Project) {
             width={1000}
             height={1000}
           />
-          <span className={`absolute right-2 top-2 rounded-full px-3 py-1 text-xs font-medium shadow-sm ${
-            project.comingSoonDark
-              ? "bg-black/60 text-white"
-              : "bg-background/90 text-muted-foreground"
-          }`}>
+          <span
+            className={`absolute right-2 top-2 rounded-full px-3 py-1 text-xs font-medium shadow-sm ${
+              project.comingSoonDark
+                ? "bg-black/60 text-white"
+                : "bg-background/90 text-muted-foreground"
+            }`}
+          >
             Coming Soon
           </span>
         </section>
@@ -83,15 +85,18 @@ function ProjectCard(project: Project) {
 }
 
 export default async function project({
-  params: { lang },
+  params,
 }: {
-  params: { lang: Locale };
+  params: Promise<{ lang: Locale }>;
 }) {
+  const { lang } = await params;
   const dictionary = await getDictionary(lang);
 
-  let projects = [...allProjects].sort((a: Project, b: Project) =>
-    compareDesc(new Date(a.date), new Date(b.date)),
-  );
+  let projects = getProjects()
+    .filter((project) => project.language === lang)
+    .sort((a: Project, b: Project) =>
+      compareDesc(new Date(a.date), new Date(b.date)),
+    );
 
   projects = projects.filter(
     (project: Project, idx: number, self: Project[]) => {
@@ -99,18 +104,12 @@ export default async function project({
     },
   );
 
-  projects.forEach((project: Project) => {
-    // Estrae solo il nome del file dal flattenedPath per creare l'URL corretto
-    const filename = project._raw.flattenedPath.split('/').pop();
-    project.url = `/${lang}/project/${filename}`;
-  });
-
   return (
     <main className="flex h-screen flex-col items-center gap-16 first-line:text-foreground md:gap-0 xl:flex-row">
-      <section className="w-[92%] md:h-[4%] md:w-[90%] lg:w-[95%] xl:h-full xl:w-[50%]">
+      <section className="w-[92%] md:h-[4%] md:w-[90%] lg:w-[95%] xl:h-full xl:w-1/2">
         <TopBar />
       </section>
-      <main className="flex h-screen w-[92%] flex-col gap-3 pt-3 selection:bg-orange-400/30 selection:text-selected md:w-[90%] md:pr-[15%] md:pt-8 lg:pl-[23%] lg:pr-[15%] xl:px-[12%]">
+      <main className="flex h-screen w-[92%] flex-col gap-3 pt-3 selection:bg-orange-400/30 selection:text-selected md:w-[90%] md:pr-[15%] md:pt-12 lg:pl-[23%] lg:pr-[15%] xl:px-[12%]">
         <p className="text-pretty font-sans text-sm">
           {dictionary.project.main}
         </p>
