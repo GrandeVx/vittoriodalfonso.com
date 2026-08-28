@@ -13,9 +13,37 @@ date: "2026-08-03"
 order: 4
 authors: []
 ---
-## Perché è importante
+### Il cambiamento vero
 
-GPT-2 amplia la stessa ricetta: più scala e dati fanno emergere capacità zero-shot, anticipando il passaggio dai modelli specializzati ai foundation model.
+GPT-2 viene spesso raccontato come “GPT-1, ma più grande”. La scala conta, ma leggendo il paper il cambiamento più interessante è un altro: si sposta il luogo in cui viene definita la task. Nei sistemi precedenti la task era incorporata nel dataset, nel fine-tuning e spesso in una testa specifica. Qui l’ipotesi è che possa essere espressa direttamente nel linguaggio e riconosciuta dal modello come parte della sequenza.
+
+Il punto di partenza è una critica ai sistemi NLP dell’epoca, descritti come esperti ristretti. Un modello per la traduzione, uno per le domande, uno per la classificazione. GPT-2 prova a capire se un solo language model, addestrato su testo sufficientemente vario, possa imparare implicitamente le task che incontra mentre cerca di prevedere il token successivo.
+
+### Perché la next-token prediction può diventare multitask
+
+Il testo sul web non contiene soltanto frasi: contiene domande e risposte, traduzioni affiancate, riassunti, dialoghi, istruzioni e dimostrazioni. Per modellare bene queste sequenze, un sistema con abbastanza capacità deve riconoscere anche la struttura della task che le ha prodotte. La next-token prediction rimane l’unico obiettivo esplicito, ma per ottimizzarlo il modello è spinto ad apprendere comportamenti che assomigliano a molte task diverse.
+
+WebText serve proprio a esporlo a questa varietà. Il paper scala il decoder Transformer fino a 1,5 miliardi di parametri e osserva che le prestazioni migliorano in modo abbastanza regolare con la dimensione. La frase secondo cui anche il modello più grande è ancora in underfitting rispetto a WebText è storicamente importante: suggerisce che dati e modello non sono ancora saturi e che aumentare la capacità potrebbe continuare a produrre miglioramenti.
+
+### Il linguaggio come interfaccia
+
+L’esperimento sulla traduzione rende concreta l’idea. Non viene creata una testa per tradurre e non vengono aggiornati i pesi. Si costruisce un contesto che mostra o suggerisce la relazione tra le lingue e si lascia che GPT-2 continui la sequenza. Il problema viene trasformato in completamento testuale.
+
+Qui è utile distinguere i termini. Nel fine-tuning modifico i pesi con esempi della nuova task. Nel few-shot lascio invariati i pesi ma inserisco alcuni esempi nel contesto. Nel zero-shot non fornisco esempi della task e mi affido soltanto alla descrizione o al formato della richiesta. Nel paper il confine non è sempre identico all’uso moderno di queste parole, ma la direzione è già chiarissima: il prompt sta diventando il livello con cui programmiamo il comportamento.
+
+### Risultati, contaminazione e memoria
+
+GPT-2 non risolve allo stesso livello tutte le task. È molto forte su alcuni benchmark di language modeling e mostra capacità sorprendenti su dipendenze a lungo raggio, question answering, riassunto e traduzione, ma in diversi casi resta lontano dai sistemi supervisionati. Il valore del risultato non è quindi “un modello sa fare tutto”, bensì che alcune competenze compaiono senza essere state allenate con una loss dedicata.
+
+Il paper affronta anche il dubbio che i risultati dipendano dalla memorizzazione dei benchmark presenti in WebText. Usa Bloom filter su sequenze di otto token per misurare la sovrapposizione tra training e test. Una contaminazione esiste, ma quando vengono rimossi gli esempi sovrapposti l’accuratezza su LAMBADA passa soltanto dal 63,2% al 62,9%. Non basta quindi a spiegare il risultato.
+
+L’analisi sulla generazione racconta una storia simile. La copia letterale esiste, ma non sembra essere il comportamento dominante. Con il sampling il modello può seguire per un tratto un testo visto e poi deviare, spesso dopo 100-200 token, continuando nello stesso stile. Per me questa distinzione è centrale: generalizzare non significa non memorizzare nulla, ma non dipendere soltanto dalla ripetizione del training set.
+
+### Quello che mi rimane
+
+GPT-2 è il momento in cui il language model smette di essere soltanto una base da specializzare e comincia a essere osservato come un sistema generale. La task può vivere nel contesto, alcune capacità emergono dalla scala e il linguaggio stesso diventa l’interfaccia tra persona e modello.
+
+È ancora una promessa, non una conclusione. Le capacità zero-shot sono irregolari, il modello non segue istruzioni con l’affidabilità dei sistemi successivi e “più grande” non equivale automaticamente a “più intelligente”. Ma il paper rende credibile una traiettoria precisa: se la previsione del prossimo token viene allenata su dati abbastanza ampi e con sufficiente capacità, il modello è costretto ad apprendere molto più della sola grammatica superficiale.
 
 ## Appunti di lettura
 

@@ -5,7 +5,12 @@ import type { Metadata } from "next";
 import { getJourneys } from "@/lib/content";
 import { getDictionary } from "@/get-dictionary";
 import type { Locale } from "@/i18n-config";
-import { findJourney, getJourneyPath, type JourneyParams } from "@/lib/journey";
+import {
+  findJourney,
+  getJourneyAnalysis,
+  getJourneyPath,
+  type JourneyParams,
+} from "@/lib/journey";
 import PaperReader from "@/components/journey/PaperReaderClient";
 import type { ResearchAnnotation } from "@/components/journey/PaperReader";
 import { Mdx } from "@/components/mdx-components";
@@ -168,9 +173,8 @@ export default async function JourneyPaperPage({ params }: Props) {
           source: dictionary.journey.source,
         }}
         analysis={
-          <section aria-label={dictionary.journey.analysis} className="prose">
-            <h2>{dictionary.journey.whyItMatters}</h2>
-            <p>{journey.abstract ?? journey.description}</p>
+          <section aria-label={dictionary.journey.analysis}>
+            <Mdx source={getJourneyAnalysis(journey.body)} variant="analysis" />
           </section>
         }
         year={journey.paperYear}

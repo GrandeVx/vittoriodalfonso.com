@@ -13,9 +13,29 @@ date: "2026-08-03"
 order: 3
 authors: []
 ---
-## Why it matters
+### The bridge from Transformer to GPT
 
-Dopo il Transformer e in parallelo a BERT, GPT mostra che il pre-training generativo autoregressivo può essere adattato con fine-tuning a numerosi compiti linguistici.
+I read GPT-1 after BERT, even though it comes earlier chronologically. That order makes the split very clear: BERT uses the Transformer to build bidirectional representations, while GPT preserves the decoder’s causality and starts from a naturally generative objective. Every token can only observe the tokens before it, and the model learns by predicting the next one.
+
+The paper’s thesis is simple but decisive: labeled data for individual tasks is scarce, while unlabeled text is abundant. Learning should therefore be divided into two stages. First, train a high-capacity language model on a general corpus; then adapt it through supervised fine-tuning to specific problems.
+
+### What gets transferred
+
+Pre-training does not directly teach sentiment analysis, entailment, or question answering. It teaches a language representation that captures structures and dependencies shared by those tasks. During fine-tuning, a linear head is added and the Transformer parameters are updated together with the head.
+
+The paper also keeps language modeling as an auxiliary objective during fine-tuning. I find this detail especially important: while the model specializes on a small dataset, it continues to be rewarded for the behavior learned during pre-training. The final loss combines the supervised task with next-token prediction, reducing the risk that specialization will quickly erase too much of the model’s general language ability.
+
+### Turning tasks into text
+
+GPT-1 still needs to adapt very different tasks to a single causal architecture. The paper does this through input transformations: premise and hypothesis are delimited for entailment; sentence pairs are processed in both orders for similarity; in multiple choice, every candidate answer is concatenated with the context and evaluated separately.
+
+The special `[Extract]` token placed at the end is particularly intuitive. Through causal self-attention it can see everything before it and becomes a summary of the context and the candidate answer. A linear head then uses that representation to assign a score. The model remains the same; what changes is how the problem is serialized and the point from which the answer is read.
+
+### What stays with me
+
+GPT-1 demonstrates that generative pre-training is useful for more than completing sentences. Representations learned through next-token prediction can transfer to very different understanding tasks, producing strong results on nine of the twelve benchmarks studied.
+
+This is not yet a general model that receives a request and simply carries it out. It still needs fine-tuning, labeled data, task-specific input formats, and output heads. But the paper builds the essential bridge: instead of training every system from scratch, we begin with a general language capability. GPT-2 will try to remove part of that adaptation as well.
 
 ## Reading notes
 

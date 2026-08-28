@@ -7,7 +7,7 @@
  *   node scripts/import-research.mjs
  *   node scripts/import-research.mjs --db /path/to/data.db --research-root /path/to/Research
  */
-import { copyFile, mkdir, writeFile, access } from 'node:fs/promises'
+import { access, copyFile, mkdir, readFile, writeFile } from 'node:fs/promises'
 import { constants } from 'node:fs'
 import { basename, dirname, join, resolve } from 'node:path'
 import { execFileSync } from 'node:child_process'
@@ -179,7 +179,7 @@ function selectedText(annotation) {
   return content.text || (content.image ? 'Image annotation' : '')
 }
 
-function markdownBody(item, annotations, comments, language) {
+function markdownBody(item, annotations, comments, language, existingMemo = '') {
   const description = item.abstract?.trim() || 'Imported from Research.'
   const notes = annotations.flatMap((annotation) => {
     const annotationComments = comments.filter((comment) => comment.annotation_id === annotation.id)
@@ -191,9 +191,13 @@ function markdownBody(item, annotations, comments, language) {
     }))
   }).filter((note) => note.text)
 
-  const intro = language === 'it'
+  const fallbackMemo = language === 'it'
     ? `## Perché è importante\n\n${description}\n\n## Appunti di lettura\n\nLe note seguenti sono importate da Research e restano collegate alle coordinate del PDF nel file delle annotazioni.`
     : `## Why it matters\n\n${description}\n\n## Reading notes\n\nThe notes below are imported from Research. Their original Italian wording remains linked to PDF coordinates in the annotations payload.`
+  const notesHeading = language === 'it'
+    ? '## Appunti di lettura\n\nLe note seguenti sono importate da Research e restano collegate alle coordinate del PDF nel file delle annotazioni.'
+    : '## Reading notes\n\nThe notes below are imported from Research. Their original Italian wording remains linked to PDF coordinates in the annotations payload.'
+  const intro = existingMemo ? `${existingMemo}\n\n${notesHeading}` : fallbackMemo
   const notesMarkdown = notes.length
     ? notes.map((note) => {
       const prompt = note.prompt ? `**${note.prompt}**\n\n` : ''
@@ -209,7 +213,7 @@ function markdownBody(item, annotations, comments, language) {
   return `${intro}\n\n${notesMarkdown}${source ? `\n\n## Fonte\n\n[Paper originale](${source})` : ''}\n`
 }
 
-function makeMdx(item, authors, slug, order, language, annotations, comments) {
+function makeMdx(item, authors, slug, order, language, annotations, comments, existingMemo) {
   const date = (item.date || item.created_at || '').slice(0, 10)
   const description = item.abstract?.trim() || 'Imported from Research.'
   const frontmatter = [
@@ -230,7 +234,7 @@ function makeMdx(item, authors, slug, order, language, annotations, comments) {
     '---',
     '',
   ].join('\n')
-  return frontmatter + markdownBody(item, annotations, comments, language)
+  return frontmatter + markdownBody(item, annotations, comments, language, existingMemo)
 }
 
 async function fileExists(path) {
@@ -240,6 +244,19 @@ async function fileExists(path) {
   } catch {
     return false
   }
+}
+
+async function readExistingMemo(filePath, language) {
+  if (!(await fileExists(filePath))) return ''
+
+  const source = await readFile(filePath, 'utf8')
+  const frontmatterEnd = source.indexOf('\n---\n', 4)
+  if (frontmatterEnd < 0) return ''
+
+  const body = source.slice(frontmatterEnd + 5).trim()
+  const notesHeading = language === 'it' ? '## Appunti di lettura' : '## Reading notes'
+  const notesIndex = body.indexOf(`\n${notesHeading}`)
+  return (notesIndex < 0 ? body : body.slice(0, notesIndex)).trim()
 }
 
 async function main() {
@@ -309,6 +326,12 @@ async function main() {
       .filter((author) => author.item_id === item.id)
       .map((author) => [author.first_name, author.last_name].filter(Boolean).join(' ').trim())
       .filter((author) => author && author.toLowerCase() !== 'unknown')
+    const italianMdxPath = join(projectRoot, 'markdown/journey/it', `${slug}.mdx`)
+    const englishMdxPath = join(projectRoot, 'markdown/journey/en', `${slug}.mdx`)
+    const [italianMemo, englishMemo] = await Promise.all([
+      readExistingMemo(italianMdxPath, 'it'),
+      readExistingMemo(englishMdxPath, 'en'),
+    ])
 
     const machineAnnotations = itemAnnotations.map((annotation) => {
       const position = parseJson(annotation.position, {})
@@ -345,8 +368,8 @@ async function main() {
     await Promise.all([
       copyFile(attachmentPath, join(projectRoot, 'public/journey/papers', `${slug}.pdf`)),
       writeFile(join(projectRoot, 'public/journey/data', `${slug}.json`), `${JSON.stringify(payload, null, 2)}\n`),
-      writeFile(join(projectRoot, 'markdown/journey/it', `${slug}.mdx`), makeMdx(item, authors, slug, index + 1, 'it', itemAnnotations, itemComments)),
-      writeFile(join(projectRoot, 'markdown/journey/en', `${slug}.mdx`), makeMdx(item, authors, slug, index + 1, 'en', itemAnnotations, itemComments)),
+      writeFile(italianMdxPath, makeMdx(item, authors, slug, index + 1, 'it', itemAnnotations, itemComments, italianMemo)),
+      writeFile(englishMdxPath, makeMdx(item, authors, slug, index + 1, 'en', itemAnnotations, itemComments, englishMemo)),
     ])
     console.log(`${String(index + 1).padStart(2, '0')} ${slug}: ${machineAnnotations.length} annotations, ${payload.commentCount} comments`)
   }
