@@ -13,9 +13,37 @@ date: "2026-08-03"
 order: 4
 authors: []
 ---
-## Why it matters
+### The real change
 
-GPT-2 amplia la stessa ricetta: più scala e dati fanno emergere capacità zero-shot, anticipando il passaggio dai modelli specializzati ai foundation model.
+GPT-2 is often described as “GPT-1, but larger.” Scale matters, but the more interesting change in the paper is where the task is defined. In earlier systems, the task lived in the dataset, the fine-tuning procedure, and often a specialized head. Here, the hypothesis is that the task can be expressed directly through language and recognized by the model as part of the sequence.
+
+The starting point is a criticism of the NLP systems of the time, described as narrow experts. One model for translation, another for questions, another for classification. GPT-2 asks whether a single language model, trained on sufficiently varied text, can implicitly learn the tasks it encounters while trying to predict the next token.
+
+### Why next-token prediction can become multitask learning
+
+Text on the web contains more than sentences: it contains questions and answers, side-by-side translations, summaries, dialogues, instructions, and demonstrations. To model these sequences well, a system with enough capacity must also recognize the structure of the task that produced them. Next-token prediction remains the only explicit objective, but optimizing it pushes the model to learn behaviors resembling many different tasks.
+
+WebText is meant to provide this variety. The paper scales the Transformer decoder up to 1.5 billion parameters and observes that performance improves quite consistently with size. The statement that even the largest model is still underfitting WebText is historically important: it suggests that neither the data nor the model has saturated and that increasing capacity may continue to produce gains.
+
+### Language as an interface
+
+The translation experiment makes the idea concrete. No translation head is created and the weights are not updated. Instead, the context is shaped to show or suggest the relationship between the languages, and GPT-2 is allowed to continue the sequence. The problem is turned into text completion.
+
+The terminology matters here. With fine-tuning, I change the weights using examples from the new task. In few-shot learning, I keep the weights fixed but provide a few examples in the context. In zero-shot learning, I provide no examples and rely only on the description or format of the request. The boundary in the paper is not always identical to the way these terms are used today, but the direction is already clear: the prompt is becoming the layer through which behavior is programmed.
+
+### Results, contamination, and memory
+
+GPT-2 does not solve every task at the same level. It is very strong on some language-modeling benchmarks and shows surprising abilities in long-range dependency tests, question answering, summarization, and translation, but it remains far from supervised systems in several cases. The important result is not that “one model can do everything,” but that some abilities appear without being trained through a dedicated loss.
+
+The paper also addresses the possibility that results come from memorizing benchmark examples present in WebText. It uses Bloom filters over eight-token sequences to measure overlap between training and test data. Some contamination exists, but after overlapping examples are removed, LAMBADA accuracy only falls from 63.2% to 62.9%. Contamination alone cannot explain the result.
+
+The generation analysis tells a similar story. Verbatim copying exists, but it does not appear to be the dominant behavior. With sampling, the model may follow a seen text for a while and then drift, often after 100-200 tokens, while maintaining a similar style. This distinction matters to me: generalization does not mean memorizing nothing, but it does mean not depending exclusively on repetition of the training set.
+
+### What stays with me
+
+GPT-2 is the moment when the language model stops being seen only as a base to specialize and begins to look like a general system. The task can live in the context, some abilities emerge with scale, and language itself becomes the interface between person and model.
+
+It is still a promise, not a conclusion. Zero-shot abilities are uneven, the model does not follow instructions with the reliability of later systems, and “larger” does not automatically mean “more intelligent.” But the paper makes a specific trajectory credible: when next-token prediction is trained on sufficiently broad data with enough capacity, the model is forced to learn much more than surface-level grammar.
 
 ## Reading notes
 

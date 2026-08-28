@@ -13,9 +13,29 @@ date: "2026-08-03"
 order: 1
 authors: []
 ---
-## Why it matters
+### The starting point
 
-Il punto di partenza: sostituisce ricorrenza e convoluzioni con la self-attention, introducendo l’architettura Transformer su cui si costruiscono i paper successivi.
+What stays with me after reading this paper is not simply that the Transformer “uses attention.” The real change is that attention stops being a supporting mechanism placed on top of a recurrent network and becomes the structure through which almost all reasoning about the sequence flows. The paper removes recurrence and convolution not just to make the model more elegant, but to eliminate the sequential bottleneck that forced tokens to be processed one after another.
+
+In an RNN, connecting two distant words requires information to cross many intermediate states. A CNN also tends to build local relationships first and expand its field of view through additional layers. Self-attention changes this geometry: every position can compare itself directly with every other position. The path between two tokens becomes constant, training becomes far more parallelizable, and long-range dependencies become easier to learn.
+
+### How I understand attention
+
+The most useful interpretation for me is to treat Query, Key, and Value as three different roles. The Query expresses what a token is looking for; the Key describes how every other token can be matched against that search; the Value contains the information that will actually be transferred. The product of Query and Key produces a compatibility score, dividing by the square root of the dimension prevents those scores from making the softmax too extreme, and the softmax turns them into weights used to combine the Values. The result is no longer an isolated word embedding, but an embedding rewritten by its context.
+
+Multi-head attention adds another important intuition: a sentence does not contain only one kind of relationship. One head may follow a reference, another may focus on grammar, and another on a semantic dependency. This does not mean that every head always develops a clean, readable role, but it means that the model is not forced to compress every relationship into a single point of view.
+
+### Encoder, decoder, and order
+
+In the encoder, every token can observe the full sequence. In the decoder, masking prevents access to future words: while generating the current position, it can only use what has already been produced. The decoder’s third attention layer then connects the output being constructed to the encoder representations, allowing it to decide which part of the input matters for the next token.
+
+Removing recurrence and convolution creates a problem, however: attention alone does not know order. Positional encodings put position back into the representation. After attention, feed-forward networks transform each contextualized embedding separately, while residual connections and layer normalization make the deep stack trainable.
+
+### What stays with me
+
+The translation result is important, but to me it is almost the least interesting consequence. The paper demonstrates that a sequence can be treated as a system of global relationships computed in parallel. That choice is what makes the line leading to BERT and GPT possible.
+
+The tradeoff is already visible: comparing every token with every other token has quadratic cost in sequence length. In 2017, at the lengths typical of machine translation, the advantage was enormous; on very long contexts, that cost would become one of the central problems of later research. The Transformer does not solve every language problem. It defines a much more scalable platform on which those problems can be addressed.
 
 ## Reading notes
 

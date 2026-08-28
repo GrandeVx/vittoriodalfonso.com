@@ -13,9 +13,29 @@ date: "2026-08-03"
 order: 3
 authors: []
 ---
-## Perché è importante
+### Il ponte tra Transformer e GPT
 
-Dopo il Transformer e in parallelo a BERT, GPT mostra che il pre-training generativo autoregressivo può essere adattato con fine-tuning a numerosi compiti linguistici.
+Ho letto GPT-1 dopo BERT, anche se cronologicamente viene prima. Questo ordine rende molto chiara la biforcazione: BERT userà il Transformer per costruire rappresentazioni bidirezionali, mentre GPT mantiene la causalità del decoder e nasce con un obiettivo naturalmente generativo. Ogni token può osservare soltanto quelli precedenti e il modello impara prevedendo il successivo.
+
+La tesi del paper è semplice ma decisiva: i dati etichettati per le singole task sono pochi, mentre il testo non etichettato è enorme. Conviene quindi dividere l’apprendimento in due fasi. Prima si costruisce un language model ad alta capacità su un corpus generale; poi lo si adatta con fine-tuning supervisionato ai problemi specifici.
+
+### Che cosa viene trasferito
+
+Il pre-training non insegna direttamente sentiment analysis, entailment o question answering. Insegna una rappresentazione del linguaggio utile a riconoscere strutture e dipendenze che quelle task condividono. Durante il fine-tuning viene aggiunta una testa lineare e si aggiornano i parametri del Transformer insieme a quelli della testa.
+
+Il paper mantiene anche il language modeling come obiettivo ausiliario durante il fine-tuning. È un dettaglio che trovo molto importante: mentre il modello si specializza su un dataset piccolo, continua a essere ricompensato per ciò che aveva imparato nel pre-training. La loss finale combina quindi la task supervisionata con la previsione del token successivo, riducendo il rischio che la specializzazione cancelli troppo velocemente la competenza linguistica generale.
+
+### Trasformare le task in testo
+
+GPT-1 deve comunque adattare task molto diverse a un’unica architettura causale. Il paper lo fa attraverso input transformations: premise e hypothesis vengono delimitate per l’entailment; le due frasi vengono processate in entrambi gli ordini per la similarità; nel multiple choice ogni risposta candidata viene concatenata al contesto e valutata separatamente.
+
+Il token speciale `[Extract]`, posto alla fine, è particolarmente intuitivo. Grazie alla causal self-attention può vedere tutto ciò che lo precede e diventa una sintesi del contesto e della risposta candidata. Una testa lineare usa poi quella rappresentazione per assegnare uno score. Il modello rimane lo stesso; cambia il modo in cui il problema viene serializzato e il punto da cui leggiamo la risposta.
+
+### Quello che mi rimane
+
+GPT-1 dimostra che il pre-training generativo non serve soltanto a completare frasi. Le rappresentazioni apprese attraverso la next-token prediction possono essere trasferite e migliorare task di comprensione molto diverse, con risultati forti in nove dei dodici benchmark studiati.
+
+Non siamo ancora davanti al modello generale che riceve una richiesta e la esegue. Servono fine-tuning, dati etichettati, formati di input progettati per ogni task e teste di output specifiche. Ma il paper costruisce il ponte fondamentale: invece di addestrare ogni sistema da zero, si parte da una competenza linguistica generale. GPT-2 proverà a eliminare anche una parte di quell’adattamento.
 
 ## Appunti di lettura
 

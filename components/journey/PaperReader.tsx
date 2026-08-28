@@ -884,7 +884,7 @@ export function PaperReader({
             {panelTab === "analysis" ? (
               <div
                 aria-labelledby="journey-tab-analysis"
-                className="journey-analysis p-3"
+                className="journey-analysis p-4"
                 id="journey-panel-analysis"
                 role="tabpanel"
               >

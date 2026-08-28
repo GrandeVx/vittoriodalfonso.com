@@ -13,9 +13,29 @@ date: "2026-08-03"
 order: 2
 authors: []
 ---
-## Why it matters
+### A change in perspective
 
-Dal Transformer nasce BERT: la self-attention diventa bidirezionale e il pre-training produce rappresentazioni linguistiche riutilizzabili per molti compiti.
+If the Transformer shows how to relate every token, BERT uses that ability to build representations that account for what comes both before and after a token at the same time. The point is not merely having “more context.” Every layer can fuse left and right context, so the meaning of a token is progressively reconstructed from the whole sentence.
+
+In my reading, this is the step that weakens the image of the model as a simple parrot associating words in one direction. It does not prove that BERT understands language like a person, but it shows that its representation is not a static copy of a word: it changes according to the relationships that word forms within its context.
+
+### How it is trained
+
+A bidirectional language model cannot be trained by simply asking it to predict the next token, because it would already see the answer on its right. BERT solves this with the Masked Language Model: it selects some tokens and asks the model to reconstruct them using both sides of the sentence. Not every selected token is replaced with `[MASK]`; some remain unchanged or are swapped, reducing the gap between pre-training and real use.
+
+The second objective is Next Sentence Prediction, where the model must recognize whether one sentence actually follows another. In the paper, this provides an explicit notion of the relationship between segments. Token, segment, and positional embeddings are added together; `[CLS]` becomes the aggregate representation used for classification, while `[SEP]` delimits sentences and text pairs.
+
+### From the general to the specific
+
+BERT’s strongest idea is the relationship between pre-training and fine-tuning. The model first learns from large amounts of unlabeled text, then all of its parameters are adapted with a relatively small supervised dataset for the final task. The task-specific head can remain simple because the difficult part - building a deep contextual representation - has already been learned.
+
+Question answering makes this particularly clear. BERT is not born knowing what a question or an answer is. During fine-tuning, two vectors are added to learn how the beginning and end of an answer look inside the text. A new system is not rebuilt for the task; the model learns how to query a rich general representation it already has.
+
+### What stays with me
+
+BERT demonstrates that a single pre-trained model can become the basis of many NLP systems with very small architectural changes. It is a decisive move away from models built for one benchmark and toward reusable representations.
+
+It is still a model designed primarily for understanding and classification, not for free-form generation: it can look in both directions precisely because it does not need to produce text causally. `[MASK]` is also an artifact present during pre-training but absent in normal use. The paper’s historical value is not that it found the final objective, but that it showed how far a model can go when general language is learned before the specific task.
 
 ## Reading notes
 

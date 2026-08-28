@@ -19,7 +19,7 @@ export default async function Home({
     journeys.find((journey) => journey.order === 1) ?? journeys[0];
 
   return (
-    <main className="flex min-h-screen flex-col items-center gap-16 first-line:text-foreground md:gap-0 xl:flex-row">
+    <main className="flex min-h-screen flex-col items-center gap-16 first-line:text-foreground md:gap-0 xl:flex-row xl:items-start">
       <section className="w-[92%] md:h-[4%] md:w-[90%] lg:w-[95%] xl:h-full xl:w-[50%]">
         <TopBar />
       </section>
