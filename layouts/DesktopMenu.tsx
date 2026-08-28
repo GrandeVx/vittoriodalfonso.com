@@ -8,79 +8,94 @@ import {
 } from "@/components/ui/accordion";
 
 import { useRouter, usePathname } from "next/navigation";
-import {
-  Work,
-  allWorks,
-  Project,
-  allProjects,
-} from "@/.contentlayer/generated";
 import { compareDesc, differenceInYears } from "date-fns";
-import React, { useEffect } from "react";
 import Link from "next/link";
 import enDict from "@/dictionaries/en.json";
 import itDict from "@/dictionaries/it.json";
 
-export default function DesktopMenu() {
+export type MenuPortfolioItem = {
+  _id: string;
+  title: string;
+  date: string;
+  url: string;
+  redirect?: string;
+  comingSoon: boolean;
+  comingSoonDark: boolean;
+};
+
+export type MenuJourneyItem = {
+  _id: string;
+  title: string;
+  date: string;
+  order: number;
+  url: string;
+};
+
+export type DesktopMenuProps = {
+  works: MenuPortfolioItem[];
+  projects: MenuPortfolioItem[];
+  journeys: MenuJourneyItem[];
+};
+
+function accordionItemFor(position: string | undefined) {
+  switch (position) {
+    case "work":
+      return "item-1";
+    case "project":
+      return "item-2";
+    case "journey":
+      return "item-3";
+    case "about":
+      return "item-4";
+    default:
+      return "";
+  }
+}
+
+export default function DesktopMenu({
+  works: workItems,
+  projects: projectItems,
+  journeys: journeyItems,
+}: DesktopMenuProps) {
   const router = useRouter();
   const pathname = usePathname();
-  const [value, setValue] = React.useState<string>("");
   const position = pathname.split("/")[2];
   const lang = pathname.split("/")[1]; // Estrae la lingua dal pathname
   const dict = lang === "it" ? itDict : enDict;
 
-  useEffect(() => {
-    setValue(() => {
-      switch (position) {
-        case "work":
-          return "item-1";
-        case "project":
-          return "item-2";
-        case "about":
-          return "item-3";
-
-        default:
-          return "";
-      }
-    });
-  }, [pathname]);
-
   // sort by date (newest first) and remove duplicates
-  const works = [...allWorks]
-    .sort((a: Work, b: Work) => compareDesc(new Date(a.date), new Date(b.date)))
+  const works = [...workItems]
+    .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
     .filter(
-      (work: Work, idx: number, arr: Work[]) =>
-        arr.findIndex((w: Work) => w.title === work.title) === idx,
+      (work, idx, arr) =>
+        arr.findIndex((candidate) => candidate.title === work.title) === idx,
     );
 
-  // Genera URL corretti basati sulla lingua corrente
-  works.forEach((work: Work) => {
-    const filename = work._raw.flattenedPath.split('/').pop();
-    work.url = `${lang}/work/${filename}`;
-  });
-
-  const projects = [...allProjects]
-    .sort((a: Project, b: Project) => compareDesc(new Date(a.date), new Date(b.date)))
+  const projects = [...projectItems]
+    .sort((a, b) =>
+      compareDesc(new Date(a.date), new Date(b.date)),
+    )
     .filter(
-      (project: Project, idx: number, self: Project[]) =>
-        idx === self.findIndex((t) => t.title === project.title),
+      (project, idx, items) =>
+        idx === items.findIndex((candidate) => candidate.title === project.title),
     );
 
-  // Genera URL corretti per i progetti basati sulla lingua corrente
-  projects.forEach((project: Project) => {
-    const filename = project._raw.flattenedPath.split('/').pop();
-    project.url = `${lang}/project/${filename}`;
-  });
+  const journeys = [...journeyItems]
+    .sort(
+      (a, b) =>
+        b.date.localeCompare(a.date) || b.order - a.order,
+    );
 
   return (
     <section
-      className="md:fixed md:w-2/5 md:px-4 lg:w-[30%] xl:w-1/5"
+      className="size-full overflow-x-hidden px-4"
       suppressHydrationWarning
     >
       <Accordion
+        key={position}
         type="single"
         collapsible
-        value={value}
-        onValueChange={setValue}
+        defaultValue={accordionItemFor(position)}
         className="flex size-full flex-col items-center justify-start gap-2 pt-6 text-sm font-light text-muted"
       >
         <AccordionItem value="item-1">
@@ -88,40 +103,45 @@ export default function DesktopMenu() {
             <div
               id="work"
               onClick={() => router.push(`/${lang}/work`)}
-              className="flex w-full cursor-pointer justify-between gap-24 px-4 hover:text-black dark:hover:text-white"
+              className="grid w-full cursor-pointer grid-cols-[minmax(0,1fr)_auto] gap-5 px-4 text-left hover:text-black dark:hover:text-white"
             >
               <p className="">{dict.menu.work}</p>
-              <p>
-                {works.length} {works.length > 1 ? dict.menu.works : dict.menu.workSingular}
+              <p className="whitespace-nowrap text-right">
+                {works.length}{" "}
+                {works.length > 1 ? dict.menu.works : dict.menu.workSingular}
               </p>
             </div>
           </AccordionTrigger>
-          <AccordionContent>
-            {works.map((work: Work, idx: number) => (
+          <AccordionContent className="min-w-0 pr-4">
+            {works.map((work, idx) => (
               <div
                 key={idx}
-                className="flex items-center justify-between"
+                className="grid min-w-0 grid-cols-[minmax(0,1fr)_auto] items-center gap-2"
               >
                 <p
                   id={work._id}
+                  title={work.title}
                   onClick={() => {
                     if (!work.comingSoon) {
-                      router.push("/" + work.url);
+                      router.push(work.url);
                     }
                   }}
-                  className={`${work.comingSoon
-                    ? "cursor-not-allowed text-muted"
-                    : "cursor-pointer hover:text-black dark:hover:text-white"
-                    }`}
+                  className={`truncate ${
+                    work.comingSoon
+                      ? "cursor-not-allowed text-muted"
+                      : "cursor-pointer hover:text-black dark:hover:text-white"
+                  }`}
                 >
                   {work.title}
                 </p>
                 {work.comingSoon && (
-                  <span className={`mr-2 rounded-full px-2 py-0.5 text-xs ${
-                    work.comingSoonDark
-                      ? "bg-white/20 text-white"
-                      : "bg-gray-200 text-muted-foreground"
-                  }`}>
+                  <span
+                    className={`mr-2 shrink-0 rounded-full px-2 py-0.5 text-xs ${
+                      work.comingSoonDark
+                        ? "bg-white/20 text-white"
+                        : "bg-gray-200 text-muted-foreground"
+                    }`}
+                  >
                     {dict.menu.comingSoon}
                   </span>
                 )}
@@ -135,42 +155,49 @@ export default function DesktopMenu() {
             <div
               id="projects"
               onClick={() => router.push(`/${lang}/project`)}
-              className="flex w-full cursor-pointer justify-between  gap-24 px-4 hover:text-black dark:hover:text-white"
+              className="grid w-full cursor-pointer grid-cols-[minmax(0,1fr)_auto] gap-5 px-4 text-left hover:text-black dark:hover:text-white"
             >
               <p>{dict.menu.projects}</p>
-              <p>
-                {projects.length} {projects.length > 1 ? dict.menu.projectsPlural : dict.menu.projectSingular}
+              <p className="whitespace-nowrap text-right">
+                {projects.length}{" "}
+                {projects.length > 1
+                  ? dict.menu.projectsPlural
+                  : dict.menu.projectSingular}
               </p>
             </div>
           </AccordionTrigger>
-          <AccordionContent>
-            {projects.map((project: Project, idx: number) => (
+          <AccordionContent className="min-w-0 pr-4">
+            {projects.map((project, idx) => (
               <div
                 key={idx}
-                className="flex items-center justify-between"
+                className="grid min-w-0 grid-cols-[minmax(0,1fr)_auto] items-center gap-2"
               >
                 <p
                   id={project._id}
+                  title={project.title}
                   onClick={() => {
                     if (!project.comingSoon) {
                       router.push(
-                        project.redirect ? project.redirect : "/" + project.url,
+                        project.redirect ? project.redirect : project.url,
                       );
                     }
                   }}
-                  className={`${project.comingSoon
-                    ? "cursor-not-allowed text-muted"
-                    : "cursor-pointer hover:text-black dark:hover:text-white"
-                    }`}
+                  className={`truncate ${
+                    project.comingSoon
+                      ? "cursor-not-allowed text-muted"
+                      : "cursor-pointer hover:text-black dark:hover:text-white"
+                  }`}
                 >
                   {project.title}
                 </p>
                 {project.comingSoon && (
-                  <span className={`mr-2 rounded-full px-2 py-0.5 text-xs ${
-                    project.comingSoonDark
-                      ? "bg-white/20 text-white"
-                      : "bg-gray-200 text-muted-foreground"
-                  }`}>
+                  <span
+                    className={`mr-2 shrink-0 rounded-full px-2 py-0.5 text-xs ${
+                      project.comingSoonDark
+                        ? "bg-white/20 text-white"
+                        : "bg-gray-200 text-muted-foreground"
+                    }`}
+                  >
                     {dict.menu.comingSoon}
                   </span>
                 )}
@@ -182,13 +209,46 @@ export default function DesktopMenu() {
         <AccordionItem value="item-3">
           <AccordionTrigger>
             <div
+              id="journey"
+              onClick={() => router.push(`/${lang}/journey`)}
+              className="grid w-full cursor-pointer grid-cols-[minmax(0,1fr)_auto] gap-5 px-4 text-left hover:text-black dark:hover:text-white"
+            >
+              <p>{dict.menu.journey}</p>
+              <p className="whitespace-nowrap text-right">
+                {journeys.length}{" "}
+                {journeys.length === 1 ? dict.menu.paper : dict.menu.papers}
+              </p>
+            </div>
+          </AccordionTrigger>
+          <AccordionContent className="min-w-0 pr-4">
+            {journeys.map((journey) => {
+              return (
+                <button
+                  key={journey._id}
+                  type="button"
+                  onClick={() => router.push(journey.url)}
+                  aria-label={journey.title}
+                  className="block w-full min-w-0 cursor-pointer truncate text-left hover:text-black dark:hover:text-white"
+                  title={journey.title}
+                >
+                  {journey.title}
+                </button>
+              );
+            })}
+          </AccordionContent>
+        </AccordionItem>
+
+        <AccordionItem value="item-4">
+          <AccordionTrigger>
+            <div
               id="about"
               onClick={() => router.push(`/${lang}/about`)}
-              className="flex w-full cursor-pointer justify-between  gap-24 px-4 hover:text-black dark:hover:text-white"
+              className="grid w-full cursor-pointer grid-cols-[minmax(0,1fr)_auto] gap-5 px-4 text-left hover:text-black dark:hover:text-white"
             >
               <p>{dict.menu.about}</p>
-              <p>
-                {differenceInYears(new Date(), new Date(2003, 6, 22))} {dict.menu.years}
+              <p className="whitespace-nowrap text-right">
+                {differenceInYears(new Date(), new Date(2003, 6, 22))}{" "}
+                {dict.menu.years}
               </p>
             </div>
           </AccordionTrigger>
@@ -243,10 +303,10 @@ export default function DesktopMenu() {
         <div
           id="colophon"
           onClick={() => router.push(`/${lang}/colophon`)}
-          className="flex w-full cursor-pointer justify-between  gap-24 px-4 hover:text-black dark:hover:text-white"
+          className="grid w-full cursor-pointer grid-cols-[minmax(0,1fr)_auto] gap-5 px-4 text-left hover:text-black dark:hover:text-white"
         >
           <p>{dict.menu.colophon}</p>
-          <p>3 {dict.menu.topics}</p>
+          <p className="whitespace-nowrap text-right">3 {dict.menu.topics}</p>
         </div>
       </Accordion>
     </section>

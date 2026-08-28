@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { compareDesc, format, parseISO } from "date-fns";
-import { allWorks, Work } from "contentlayer/generated";
+import { getWorks, type Work } from "@/lib/content";
 import TopBar from "@/layouts/TopBar";
 import SafeImage from "@/components/SafeImage";
 import { Metadata } from "next";
@@ -115,25 +115,22 @@ async function WorkCard(props: Work & { lang: Locale }) {
 }
 
 export default async function WorkPage({
-  params: { lang },
+  params,
 }: {
-  params: { lang: Locale };
+  params: Promise<{ lang: Locale }>;
 }) {
+  const { lang } = await params;
   const dictionary = await getDictionary(lang);
 
   // sort by date (newest first) and remove duplicates
-  const works = [...allWorks]
+  const works = getWorks()
+    .filter((work) => work.language === lang)
     .sort((a: Work, b: Work) => compareDesc(new Date(a.date), new Date(b.date)))
     .filter(
       (work: Work, idx: number, arr: Work[]) =>
         arr.findIndex((w: Work) => w.title === work.title) === idx,
     );
 
-  // Genera URL corretti basati sulla lingua corrente
-  works.forEach((work: Work) => {
-    const filename = work._raw.flattenedPath.split('/').pop();
-    work.url = `/${lang}/work/${filename}`;
-  });
   return (
     <main className="flex h-screen flex-col items-center gap-16 first-line:text-foreground md:gap-0 xl:flex-row">
       <section className="w-[92%] md:h-[4%] md:w-[90%] lg:w-[95%] xl:h-full xl:w-[50%]">

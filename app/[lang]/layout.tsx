@@ -8,9 +8,11 @@ const inter = Inter({ subsets: ["latin"] });
 
 import MobileMenu from "@/layouts/MobileMenu";
 import DesktopMenu from "@/layouts/DesktopMenu";
+import { getJourneys, getProjects, getWorks } from "@/lib/content";
+import { getSiteUrl } from "@/lib/site-url";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://vittoriodalfonso.com"),
+  metadataBase: getSiteUrl(),
   title: "Vittorio D'Alfonso",
   icons: "/favicon.ico",
   description:
@@ -57,13 +59,50 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<{ lang: string }>;
 }) {
+  const { lang } = await params;
+  const menuProps = {
+    works: getWorks()
+      .filter((work) => work.language === lang)
+      .map(({ _id, title, date, url, redirect, comingSoon, comingSoonDark }) => ({
+        _id,
+        title,
+        date,
+        url,
+        redirect,
+        comingSoon,
+        comingSoonDark,
+      })),
+    projects: getProjects()
+      .filter((project) => project.language === lang)
+      .map(({ _id, title, date, url, redirect, comingSoon, comingSoonDark }) => ({
+        _id,
+        title,
+        date,
+        url,
+        redirect,
+        comingSoon,
+        comingSoonDark,
+      })),
+    journeys: getJourneys()
+      .filter((journey) => journey.language === lang)
+      .map(({ _id, title, date, order, url }) => ({
+        _id,
+        title,
+        date,
+        order,
+        url,
+      })),
+  };
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={lang} suppressHydrationWarning>
       <body
         className={cn(
           inter.className,
@@ -77,36 +116,36 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {/* Mobile View */}
-          <main className="md:hidden">
+          <main className="site-mobile-shell md:hidden">
             <section className="no-scrollbar overflow-y-scroll">
               {children}
             </section>
-            <span className="absolute bottom-0">
-              <MobileMenu />
+            <span className="site-mobile-nav absolute bottom-0">
+              <MobileMenu {...menuProps} />
             </span>
           </main>
 
           {/* md-Desktop View */}
-          <main className="hidden h-screen md:flex lg:hidden">
-            <section className="w-[60%]">{children}</section>
-            <section className="w-[40%] ">
-              <DesktopMenu />
+          <main className="site-shell hidden h-screen md:flex lg:hidden">
+            <section className="site-page-pane w-3/5">{children}</section>
+            <section className="site-nav-pane w-2/5 ">
+              <DesktopMenu {...menuProps} />
             </section>
           </main>
 
           {/* lg-Desktop View */}
-          <main className="hidden h-screen lg:flex xl:hidden">
-            <section className="w-[70%]">{children}</section>
-            <section className="w-[30%] ">
-              <DesktopMenu />
+          <main className="site-shell hidden h-screen lg:flex xl:hidden">
+            <section className="site-page-pane w-[70%]">{children}</section>
+            <section className="site-nav-pane w-[30%] ">
+              <DesktopMenu {...menuProps} />
             </section>
           </main>
 
           {/* xl-Desktop View */}
-          <main className="hidden h-screen xl:flex">
-            <section className="w-[80%]">{children}</section>
-            <section className="w-[20%] ">
-              <DesktopMenu />
+          <main className="site-shell hidden h-screen xl:flex">
+            <section className="site-page-pane w-4/5">{children}</section>
+            <section className="site-nav-pane w-1/5 ">
+              <DesktopMenu {...menuProps} />
             </section>
           </main>
         </ThemeProvider>

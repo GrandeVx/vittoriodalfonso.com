@@ -1,0 +1,156 @@
+---
+title: "Attention Is All You Need"
+description: "Il punto di partenza: sostituisce ricorrenza e convoluzioni con la self-attention, introducendo l’architettura Transformer su cui si costruiscono i paper successivi."
+abstract: "Il punto di partenza: sostituisce ricorrenza e convoluzioni con la self-attention, introducendo l’architettura Transformer su cui si costruiscono i paper successivi."
+kind: "paper"
+paperYear: 2017
+sourceId: "01KZ3MDD246Z48B5EARXSKTYYJ"
+pdf: "/journey/papers/attention-is-all-you-need.pdf"
+annotations: "/journey/data/attention-is-all-you-need.json"
+sourceUrl: "https://arxiv.org/pdf/1706.03762"
+language: "it"
+date: "2026-08-03"
+order: 1
+authors: []
+---
+## Perché è importante
+
+Il punto di partenza: sostituisce ricorrenza e convoluzioni con la self-attention, introducendo l’architettura Transformer su cui si costruiscono i paper successivi.
+
+## Appunti di lettura
+
+Le note seguenti sono importate da Research e restano collegate alle coordinate del PDF nel file delle annotazioni.
+
+### Nota · pagina 2
+
+> ByteNet [ 18 ] and ConvS2S [ 9], all of which use convolutional neural networks as basic building block, computing hidden representations in parallel for all input and output positions. In these models, the number of operations required to relate signals from two arbitrary input or output positions grows in the distance between positions, linearly for ConvS2S and logarithmically for ByteNet. This makes it more difficult to learn dependencies between distant positions [12 ]
+
+Le CNN sono portate a valorizzare il legame tra informazioni “vicine” tra loro mirando a comprenderne approfonditamente la relazione.
+
+### Nota · pagina 2
+
+> ByteNet [ 18 ] and ConvS2S [ 9], all of which use convolutional neural networks as basic building block, computing hidden representations in parallel for all input and output positions. In these models, the number of operations required to relate signals from two arbitrary input or output positions grows in the distance between positions, linearly for ConvS2S and logarithmically for ByteNet. This makes it more difficult to learn dependencies between distant positions [12 ]
+
+Ma tendono.a perdere attenzione verso le informazioni “lontane”
+
+### Nota · pagina 3
+
+> The first is a multi-head self-attention mechanism
+
+costruisce le relazioni tra i token.
+
+### Nota · pagina 3
+
+> position- wise fully connected feed-forward network.
+
+prende il nuovo embedding contestualizzato di ciascun token e lo trasforma, estraendo caratteristiche più complesse.
+
+### Nota · pagina 3
+
+> the decoder inserts a third sub-layer, which performs multi-head attention over the output of the encoder stack
+
+Qui stiamo affermando che il decoder quando arriva a dover generare il token X può interpellare la funzione di attenzione effettuata sull’input dell’Encoder per identificare quale componente della frase di input deve prendere in considerazione per elaborare il token risultante
+
+### Nota · pagina 3
+
+> We also modify the self-attention sub-layer in the decoder stack to prevent positions from attending to subsequent positions
+
+Per predire la parola in posizione \(i\), il decoder può usare solo le parole precedenti, mai quelle successive.
+
+### Nota · pagina 3
+
+> We also modify the self-attention sub-layer in the decoder stack to prevent positions from attending to subsequent positions
+
+Quindi l’idea è quella di oscurare l’accesso a queste parole al modello
+
+### Nota · pagina 4
+
+> Q
+
+Quali informazioni sto cercando?
+
+### Nota · pagina 4
+
+> K
+
+Questa è l'informazione che verrà trasferita se qualcuno decide di prestarmi attenzione.
+
+### Nota · pagina 4
+
+> V
+
+Che informazioni posso offrire alle altre parole?
+
+### Nota · pagina 4
+
+> Image annotation
+
+QKᵀ → calcola gli score di compatibilità tra Query e Key.
+
+÷ √dk → riduce l'ampiezza degli score per rendere stabile l'addestramento.
+
+Softmax → trasforma gli score in pesi di attenzione.
+
+× V → usa quei pesi per combinare le informazioni contenute nei Value e ottenere il nuovo embedding contestualizzato.
+
+### Nota · pagina 4
+
+> gradients
+
+Il gradiente è il vettore delle derivate parziali della funzione di loss rispetto a tutti i parametri del modello. Esso indica in quale direzione e con quale intensità bisogna modificare ciascun parametro per ridurre l'errore.
+
+### Nota · pagina 5
+
+> Multi-head attention allows the model to jointly attend to information from different representation subspaces at different positions. With a single attention head, averaging inhibits this.
+
+L’idea è quella di concedere al modello più punti di attenzione per potersi concentrare su più componenti che potrebbero generare “relazione”
+
+### Nota · pagina 5
+
+> Multi-head attention allows the model to jointly attend to information from different representation subspaces at different positions. With a single attention head, averaging inhibits this.
+
+Immaginiamo la frase:
+
+The animal didn't cross the street because it was too tired.
+
+La parola it può richiedere di osservare relazioni diverse:
+
+una testa potrebbe voler capire a chi si riferisce ("animal");
+
+un'altra potrebbe concentrarsi sulla struttura grammaticale;
+
+un'altra ancora potrebbe guardare il verbo ("cross").
+
+Con una sola attenzione sei costretto a "mediare" tutte queste informazioni in un unico meccanismo.
+
+### Nota · pagina 5
+
+> In this work we employ h = 8 parallel attention layers, or heads
+
+Quindi la stessa frase viene analizzata otto volte in parallelo.
+
+### Nota · pagina 6
+
+> path length between long-range dependencies in the network
+
+quanti "passaggi" deve attraversare l'informazione per andare da una parola a un'altra.
+
+### Nota · pagina 6
+
+> path length between long-range dependencies in the network
+
+Questo perchè nel training noi stiamo andando a porre attenzione su tutti i token presenti nel contesto del token preso in analisi e quindi abbiamo il valore pre calcolato
+
+### Nota · pagina 6
+
+> Why Self-Attention
+
+Maggiore parallelizzazione, perché tutti i token possono essere elaborati contemporaneamente.
+
+Percorsi molto più brevi tra parole lontane, facilitando l'apprendimento delle dipendenze a lungo raggio.
+
+Buona efficienza computazionale nelle configurazioni tipiche della traduzione automatica, oltre a una maggiore interpretabilità grazie alla possibilità di ispezionare le mappe di attenzione.
+
+## Fonte
+
+[Paper originale](https://arxiv.org/pdf/1706.03762)

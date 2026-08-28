@@ -1,0 +1,128 @@
+---
+title: "Improving Language Understanding by Generative Pre-Training — GPT-1"
+description: "Dopo il Transformer e in parallelo a BERT, GPT mostra che il pre-training generativo autoregressivo può essere adattato con fine-tuning a numerosi compiti linguistici."
+abstract: "Dopo il Transformer e in parallelo a BERT, GPT mostra che il pre-training generativo autoregressivo può essere adattato con fine-tuning a numerosi compiti linguistici."
+kind: "paper"
+paperYear: 2018
+sourceId: "01KZ3MP5AWN8C8X9PKQ0PE0Q0T"
+pdf: "/journey/papers/improving-language-understanding-by-generative-pre-training-gpt-1.pdf"
+annotations: "/journey/data/improving-language-understanding-by-generative-pre-training-gpt-1.json"
+sourceUrl: "https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf"
+language: "en"
+date: "2026-08-03"
+order: 3
+authors: []
+---
+## Why it matters
+
+Dopo il Transformer e in parallelo a BERT, GPT mostra che il pre-training generativo autoregressivo può essere adattato con fine-tuning a numerosi compiti linguistici.
+
+## Reading notes
+
+The notes below are imported from Research. Their original Italian wording remains linked to PDF coordinates in the annotations payload.
+
+### Note · page 2
+
+> In this paper, we explore a semi-supervised approach for language understanding tasks using a combination of unsupervised pre-training and supervised fine-tuning.
+
+Il fine della ricerca
+
+### Note · page 2
+
+> For our model architecture, we use the Transformer [62], which has been shown to perform strongly on various tasks such as machine translation [ 62 ], document generation [34 ], and syntactic parsing [29].
+
+Referenza al lavoro del Team Google che ha “sbloccato” tutta questa area
+
+### Note · page 3
+
+> The first stage is learning a high-capacity language model on a large corpus of text. This is followed by a fine-tuning stage, where we adapt the model to a discriminative task with labeled data.
+
+In piena linea con l’approccio BERT che segue il pre-training con il focus verso la “predizione” del token x e poi la specializzazione per essere cosciente su N problemi.
+
+### Note · page 3
+
+> This model applies a multi-headed self-attention operation over the input context tokens followed by position-wise feedforward layers to produce an output distribution over target tokens
+
+Ogni token può fare self-attention solo sui token precedenti, tramite causal masking.
+
+### Note · page 3
+
+> This model applies a multi-headed self-attention operation over the input context tokens followed by position-wise feedforward layers to produce an output distribution over target tokens
+
+FIno a prima del trasformer ci concetravamo su ciò che c’era attorno… ora col trasformer GPT vede tuttò ciò che c’è prima a differenza di BERT che invece vedrà porzioni di presente e futuro con delle [MASK]
+
+### Note · page 3
+
+> This model applies a multi-headed self-attention operation over the input context tokens followed by position-wise feedforward layers to produce an output distribution over target tokens
+
+GPT nasce già con una struttura naturalmente generativa, mentre BERT nasce per produrre rappresentazioni profonde del testo utili alla comprensione.
+
+### Note · page 3
+
+> which is then fed into an added linear output layer with parameters Wy to predict y:
+
+Anche qui abbiamo sempre la testa aggiunta nella fase di fine-tuning per rispondere alle varie task e quindi ai vari test di valutazione
+
+### Note · page 3
+
+> which is then fed into an added linear output layer with parameters Wy to predict y:
+
+Anche qui abbiamo sempre la testa aggiunta nella fase di fine-tuning per rispondere alle varie task e quindi ai vari test di valutazione
+
+### Note · page 3
+
+> We additionally found that including language modeling as an auxiliary objective to the fine-tuning helped learning by (a) improving generalization of the supervised model, and (b) accelerating convergence
+
+"Durante il fine-tuning supervisionato, non vogliamo che il modello smetta completamente di fare ciò per cui è stato pre-addestrato."
+
+### Note · page 3
+
+> We additionally found that including language modeling as an auxiliary objective to the fine-tuning helped learning by (a) improving generalization of the supervised model, and (b) accelerating convergence
+
+Per evitare che durante il fine-tuning il modello si specializzi troppo velocemente sul piccolo dataset supervisionato e perda parte delle rappresentazioni linguistiche generali apprese nel pre-training.
+
+### Note · page 3
+
+> Image annotation
+
+Qui abbiamo proprio la definizione del Loss (da Ottimizzare verso 0) come la somma della Loss della task di fine-tuining + la loss della task generica di “previsione del prossimo token” che viene accompagnata da  "lambda” che guida il peso di quest'ultima
+
+### Note · page 4
+
+> Image annotation
+
+Answer 1 → Transformer → Linear →  4.7
+Answer 2 → Transformer → Linear → -1.2
+Answer 3 → Transformer → Linear →  0.3
+
+### Note · page 4
+
+> Image annotation
+
+Per ogni token GPT produce un hidden state:
+
+h_1,h_2,…,h_m
+
+Ma qui interessa soprattutto quello associato al token speciale [Extract] alla fine.
+
+Perché è importante?
+
+Grazie alla causal self-attention, [Extract] può vedere tutto quello che viene prima:
+
+Context + Answer
+       ↓
+   Transformer
+       ↓
+h_[Extract]
+
+Quindi Extract diventa una rappresentazione vettoriale che incorpora sia il contesto sia quella specifica risposta candidata.
+
+### Note · page 4
+
+> we are given a context document z, a question q, and a set of possible answers
+
+anche in questo caso delimitano le risposte per essere in linea con l'architettura
+
+## Fonte
+
+[Paper originale](https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf)

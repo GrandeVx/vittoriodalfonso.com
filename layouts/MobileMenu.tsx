@@ -8,11 +8,11 @@ import {
 } from "@/components/ui/drawer";
 
 import { usePathname } from "next/navigation";
-import DesktopMenu from "./DesktopMenu";
+import DesktopMenu, { type DesktopMenuProps } from "./DesktopMenu";
 import enDict from "@/dictionaries/en.json";
 import itDict from "@/dictionaries/it.json";
 
-export default function MobileMenu() {
+export default function MobileMenu(menuProps: DesktopMenuProps) {
   const pathname = usePathname();
   const lang = pathname.split("/")[1];
   const dict = lang === "it" ? itDict : enDict;
@@ -66,7 +66,7 @@ export default function MobileMenu() {
             </section>
           </DrawerClose>
         </DrawerHeader>
-        <DesktopMenu />
+        <DesktopMenu {...menuProps} />
       </DrawerContent>
     </Drawer>
   );

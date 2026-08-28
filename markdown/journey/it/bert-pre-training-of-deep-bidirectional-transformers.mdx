@@ -1,0 +1,78 @@
+---
+title: "BERT: Pre-training of Deep Bidirectional Transformers"
+description: "Dal Transformer nasce BERT: la self-attention diventa bidirezionale e il pre-training produce rappresentazioni linguistiche riutilizzabili per molti compiti."
+abstract: "Dal Transformer nasce BERT: la self-attention diventa bidirezionale e il pre-training produce rappresentazioni linguistiche riutilizzabili per molti compiti."
+kind: "paper"
+paperYear: 2018
+sourceId: "01KZ3MH0W68NXCYR77MS5DNPB2"
+pdf: "/journey/papers/bert-pre-training-of-deep-bidirectional-transformers.pdf"
+annotations: "/journey/data/bert-pre-training-of-deep-bidirectional-transformers.json"
+sourceUrl: ""
+language: "it"
+date: "2026-08-03"
+order: 2
+authors: []
+---
+## Perché è importante
+
+Dal Transformer nasce BERT: la self-attention diventa bidirezionale e il pre-training produce rappresentazioni linguistiche riutilizzabili per molti compiti.
+
+## Appunti di lettura
+
+Le note seguenti sono importate da Research e restano collegate alle coordinate del PDF nel file delle annotazioni.
+
+### Nota · pagina 1
+
+> BERT is designed to pre- train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers
+
+La vera chiave di svolta che ha iniziato a far allontanare i modelli dalla concezione di "Pappagallo Stocastico"
+
+### Nota · pagina 1
+
+> BERT is designed to pre- train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers
+
+**Why it matters?**
+
+**Core innovation:** Bidirectional context conditioning
+- Solves unidirectional limitation (e.g., OpenAI GPT)
+- Enables deeper context fusion across layers
+- Allows fine-tuning with minimal task-specific architecture changes
+**Impact:** Foundation for SOTA results across NLP tasks
+
+### Nota · pagina 3
+
+> For fine- tuning, the BERT model is first initialized with the pre-trained parameters, and all of the param- eters are fine-tuned using labeled data from the downstream tasks.
+
+Fine-tuning supervisionato
+
+### Nota · pagina 3
+
+> In this work, we denote the number of layers (i.e., Transformer blocks) as L, the hidden size as H, and the number of self-attention heads as A.3
+
+Denotazioni utili alla comprensione
+
+### Nota · pagina 4
+
+> we pre-train BERT using two unsuper- vised tasks
+
+Il MLM insegna al modello la struttura della lingua e il significato dei token nel contesto.
+
+Il NSP insegna a comprendere le relazioni tra frasi.
+
+### Nota · pagina 5
+
+> Fine-tuning is straightforward since the self- attention mechanism in the Transformer al- lows BERT to model many downstrea
+
+Il fine tuning risulta “semplice” poichè il sistema Trasformer ha dato al modello una grande capacità di comprensione profonda del testo tale per cui la specializzazione verso “Classificatore Mail Spam” risulta una “semplice” task supervisionata che da grandi risultati poichè il modello ha grandi capacità nel comprendere affondo la relazione tra i singoli token e quindi sviluppare una certa attitutidine nell’identificare i classici stili di scrittura delle mail spam per esempio
+
+### Nota · pagina 6
+
+> Image annotation
+
+BERT di base non sa cosa sia una risposta o una domanda. Per questo, durante il fine-tuning, gli scienziati "incollano" sopra BERT due vettori di numeri casuali, chiamati \(S\) (Start) ed \(E\) (End).
+
+Questi due vettori sono come due fari da ricerca o "modelli ideali":
+
+Il vettore \(S\) rappresenta l'identikit matematico di come dovrebbe apparire il vettore di una parola che inizia una risposta.
+
+Il vettore \(E\) rappresenta l'identikit di una parola che finisce una risposta.

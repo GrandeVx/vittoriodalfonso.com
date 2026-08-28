@@ -1,0 +1,262 @@
+---
+title: "Language Models are Unsupervised Multitask Learners — GPT-2"
+description: "GPT-2 amplia la stessa ricetta: più scala e dati fanno emergere capacità zero-shot, anticipando il passaggio dai modelli specializzati ai foundation model."
+abstract: "GPT-2 amplia la stessa ricetta: più scala e dati fanno emergere capacità zero-shot, anticipando il passaggio dai modelli specializzati ai foundation model."
+kind: "paper"
+paperYear: 2019
+sourceId: "01KZ3MV76R5CX317RQXR2AFFRM"
+pdf: "/journey/papers/language-models-are-unsupervised-multitask-learners-gpt-2.pdf"
+annotations: "/journey/data/language-models-are-unsupervised-multitask-learners-gpt-2.json"
+sourceUrl: "https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf"
+language: "it"
+date: "2026-08-03"
+order: 4
+authors: []
+---
+## Perché è importante
+
+GPT-2 amplia la stessa ricetta: più scala e dati fanno emergere capacità zero-shot, anticipando il passaggio dai modelli specializzati ai foundation model.
+
+## Appunti di lettura
+
+Le note seguenti sono importate da Research e restano collegate alle coordinate del PDF nel file delle annotazioni.
+
+### Nota · pagina 1
+
+> Current sys- tems are better characterized as narrow experts
+
+Visione dei modelli attuali come tanti singoli esperti e non come una mente capace di tutto (MoE)
+
+### Nota · pagina 1
+
+> We would like to move towards more general systems which can perform many tasks – eventually without the need to manually create and label a training dataset for each one.
+
+l’idea era quella di spostare la capacità di eseguire una task dall’allenamento per la singola task ad saperla eseguire poiché allenato sul “generale"
+
+### Nota · pagina 2
+
+> utilize a combination of pre-training and supervised fine- tuning. This approach has a long history with a trend to- wards more flexible forms of transfer.
+
+BERT + GPT-1 si basano su questo approccio
+
+### Nota · pagina 2
+
+> We demonstrate this approach shows potential by highlighting the ability of language models to perform a wide range of tasks in a zero-shot setting. We achieve promising, competitive, and state of the art results depending on the task.
+
+Il “semplice" pre-training come language model ha fatto emergere capacità che possiamo utilizzare direttamente per risolvere task che non abbiamo esplicitamente insegnato al modello tramite fine-tuning.
+
+### Nota · pagina 2
+
+> We demonstrate this approach shows potential by highlighting the ability of language models to perform a wide range of tasks in a zero-shot setting. We achieve promising, competitive, and state of the art results depending on the task.
+
+Ed è importante distinguere tre termini:
+
+Fine-tuning → modifico i pesi usando esempi della nuova task.
+
+Few-shot → non modifico necessariamente i pesi, ma mostro nel prompt alcuni esempi di come svolgere la task.
+
+Zero-shot → non modifico i pesi e non fornisco esempi della task; gli descrivo/chiedo semplicemente cosa deve fare.
+
+### Nota · pagina 2
+
+> Image annotation
+
+Qui abbiamo un cambiamento importante, quello che si dice è che di base fino ad ora i modelli lavoravano su vari fine-tuning mirati a singole task per poi avere necessità di specifiche “teste” per risolvere le task. I progressi nell’ambito del Multi task learning seguivano dei filoni tecnici tra (Architetture specifiche / Algoritmi) per rendere il modello capace di “allenarsi” su varie task.
+
+Il cambiamento pero è quello di utilizzare il linguaggio stesso come sistema di specifica (della task) vedendo un interazione linguistica classica tra due sogetti x,y -> x chiedrebbe a y di tradurre un testo dicendo esplicitamente “traduci in inglese [TESTO]” perchè non farlo anche con le macchine ?
+
+### Nota · pagina 3
+
+> Our speculation is that a language model with sufficient capacity will begin to learn to infer and perform the tasks demonstrated in natural language sequences in order to better predict them, regardless of their method of procurement. If a language model is able to do this it will be, in effect, performing unsupervised multitask learning. We test whether this is the case by analyzing the performance of language models in a zero-shot setting on a wide variety of tasks
+
+Se facciamo diventare il language model sufficientemente grande e lo addestriamo su abbastanza testo, per diventare bravo nella semplice next-token prediction sarà costretto a riconoscere le task presenti nel testo.
+
+### Nota · pagina 4
+
+> Image annotation
+
+quando passi da 12 a 24 a 36 a 48 layer, non basta semplicemente "aggiungere layer". Devi iniziare a preoccuparti seriamente di come segnale e gradiente attraversano una rete così profonda.
+
+### Nota · pagina 5
+
+> Image annotation
+
+aumentando la capacità del language model, aumenta spontaneamente anche la capacità di generalizzare a dati e domini diversi.
+
+### Nota · pagina 5
+
+> Large improvements are also noticed on datasets created to measure long-term dependencies like LAMBADA
+
+LAMBADA è stato progettato per verificare dipendenze a lungo raggio.
+
+### Nota · pagina 5
+
+> Image annotation
+
+Se un language model ha abbastanza capacità e viene addestrato su testo sufficientemente vario, alcune capacità di generalizzazione emergono semplicemente dal language modeling.
+
+### Nota · pagina 6
+
+> Image annotation
+
+Qui fanno una cosa molto interessante: non fanno fine-tuning per la traduzione. Cercano di "spiegare" a GPT-2 cosa deve fare attraverso il contesto.
+
+### Nota · pagina 6
+
+> Image annotation
+
+Prendono GPT-2 già pre-addestrato e gli danno un prompt costruito più o meno così:
+
+the cat is on the table = le chat est sur la table
+I like music = j'aime la musique
+the house is beautiful = la maison est belle
+I went to school = je suis allé à l'école
+
+the dog is sleeping =
+
+### Nota · pagina 6
+
+> Image annotation
+
+E poi gpt-2 deve continuare il testo
+
+### Nota · pagina 6
+
+> with greedy decoding and use the first generated sentence as the translation
+
+Significa che, a ogni passo, prendono semplicemente il token con probabilità più alta fino a ottenere la prima frase generata, che considerano la traduzione.
+
+### Nota · pagina 8
+
+> 8-grams
+
+Un 8-gram è semplicemente una sequenza di otto token consecutivi.
+
+### Nota · pagina 8
+
+> Bloom filters
+
+Un Bloom filter è una struttura dati probabilistica estremamente efficiente per rispondere alla domanda:
+
+"Ho già visto questo elemento?"
+
+### Nota · pagina 8
+
+> Bloom filters
+
+**Explanation**
+
+### Bloom Filters in GPT-2 Memorization Analysis
+**Purpose**:
+- Detect overlap between test datasets and WebText training data.
+- Quantify potential memorization (vs. generalization) in GPT-2.
+
+**Method**:
+- Stored 8-grams (8-token sequences) from WebText training in Bloom filters.
+- False-positive rate capped at \(10^{-8}\) for reliability.
+- Measured % of test-set 8-grams appearing in training.
+
+**Key Findings**:
+- Common NLP test sets (e.g., PTB, WikiText-2) had **1–6% overlap** with WebText.
+- Overlap was comparable to standard train-test splits (e.g., WikiText-103: 9.09% internal overlap).
+- Minimal impact on GPT-2’s zero-shot performance (e.g., LAMBADA accuracy dropped only 0.3% after removing overlapping examples).
+
+**Connection to Core Argument**:
+Supports the claim that GPT-2’s success stems from **generalization** (learning tasks from diverse data) rather than data memorization. Low contamination validates its zero-shot capabilities.
+
+---
+**Note**: Bloom filters enabled efficient large-scale duplication analysis without exhaustive searches.
+
+### Nota · pagina 8
+
+> . The Bloom filters were constructed such that the false positive rate is upper bounded by 1 108 . We further verified the low false positive rate by generating 1M strings, of which zero were found by the filter.
+
+Ha la particolarità che può produrre falsi positivi, ma non falsi negativi nella configurazione standard.
+
+Loro configurano la probabilità di falso positivo a meno di:
+
+1 / 10^8
+
+quindi estremamente bassa.
+
+### Nota · pagina 8
+
+> Common LM datasets’ test sets have between 1-6% overlap with Web- Text train, with an average of overlap of 3.2%. Somewhat surprisingly, many datasets have larger overlaps with their own training splits, with an average of 5.9% overlap.
+
+Mediamente i test set dei benchmark hanno circa:
+
+3.2%
+
+di overlap con WebText.
+
+Quindi sì:
+
+una certa contaminazione esiste.
+
+### Nota · pagina 8
+
+> Image annotation
+
+cercano di misurare quanto questa contaminazione migliori effettivamente i risultati.
+
+### Nota · pagina 8
+
+> Recalculating metrics when excluding all examples with any overlap shifts results from 8.6 to 8.7 perplexity and reduces accuracy from 63.2% to 62.9%. This very small change in overall results
+
+Overlap medio:
+
+1.2%
+
+GPT-2 originale:
+
+perplexity: 8.6
+
+accuracy: 63.2%
+
+Rimuovendo tutti gli esempi con qualsiasi overlap:
+
+perplexity: 8.7
+
+accuracy: 62.9%
+
+Quindi praticamente:
+
+63.2% -> 62.9%
+
+Una differenza molto piccola.
+
+Questo suggerisce:
+
+"Sì, esiste contaminazione, ma non sembra spiegare il risultato di GPT-2 su LAMBADA."
+
+### Nota · pagina 8
+
+> This suggests even GPT-2 is still underfitting on WebText in many ways.
+
+"Persino GPT-2 da 1.5 miliardi di parametri non ha ancora capacità sufficiente per sfruttare completamente WebText."
+
+Ed è una frase storicamente interessante, perché suggerisce:
+
+modello più grande -> potenzialmente ancora risultati migliori
+
+### Nota · pagina 13
+
+> The results of this analysis are shown below and suggest that GPT-2 repeats text from the training set less often then the baseline rate of held-out articles
+
+La memorizzazione verbatim esiste, ma non sembra essere il comportamento dominante della generazione di GPT-2.
+
+### Nota · pagina 13
+
+> sampling
+
+Vuol dire che, invece di scegliere sempre il token con probabilità più alta, il modello estrae casualmente il prossimo token dalla distribuzione di probabilità che ha calcolato.
+
+### Nota · pagina 13
+
+> we find that the model copies the speech for awhile before drifting, albeit in a similar style. It typically drifts within 100-200 tokens, and displays widening diversity once it drifts
+
+Se invece di scegliere sempre il token più probabile fanno sampling, GPT-2 inizialmente continua a riprodurre il discorso, poi tipicamente dopo circa 100–200 token devia. Da quel momento genera qualcosa di nuovo, però mantenendo uno stile simile.
+
+## Fonte
+
+[Paper originale](https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf)
