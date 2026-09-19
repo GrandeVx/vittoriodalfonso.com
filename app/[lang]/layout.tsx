@@ -116,11 +116,11 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           {/* Mobile View */}
-          <main className="site-mobile-shell md:hidden">
+          <main className="site-mobile-shell min-h-dvh pb-[calc(4rem+env(safe-area-inset-bottom))] md:hidden">
             <section className="no-scrollbar overflow-y-scroll">
               {children}
             </section>
-            <span className="site-mobile-nav absolute bottom-0">
+            <span className="site-mobile-nav fixed inset-x-0 bottom-0 z-40">
               <MobileMenu {...menuProps} />
             </span>
           </main>
