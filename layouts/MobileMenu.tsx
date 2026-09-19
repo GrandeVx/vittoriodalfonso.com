@@ -20,7 +20,7 @@ export default function MobileMenu(menuProps: DesktopMenuProps) {
   return (
     <Drawer>
       <DrawerTrigger className="outline-none">
-        <section className="flex min-h-10 w-screen justify-between border-t border-gray-200 bg-background p-3 pl-5 outline-none">
+        <section className="flex min-h-10 w-screen justify-between border-t border-gray-200 bg-background p-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] pl-5 outline-none">
           <p className="text-sm text-gray-400">{pathname}</p>
           <div className="flex items-center justify-center gap-2">
             <p className="text-sm">{dict.menu.openNav}</p>

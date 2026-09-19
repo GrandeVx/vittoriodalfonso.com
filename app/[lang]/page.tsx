@@ -1,9 +1,7 @@
 import TopBar from "@/layouts/TopBar";
 import { Locale } from "i18n-config";
 import { getDictionary } from "@/get-dictionary";
-import { getJourneys } from "@/lib/content";
 import PortfolioIntroduction from "@/components/home/PortfolioIntroduction";
-import RecommendationCard from "@/components/home/RecommendationCard";
 
 export default async function Home({
   params,
@@ -12,11 +10,6 @@ export default async function Home({
 }) {
   const { lang } = await params;
   const dictionary = await getDictionary(lang);
-  const journeys = getJourneys().filter(
-    (journey) => journey.language === lang,
-  );
-  const startingJourney =
-    journeys.find((journey) => journey.order === 1) ?? journeys[0];
 
   return (
     <main className="flex min-h-screen flex-col items-center gap-16 first-line:text-foreground md:gap-0 xl:flex-row xl:items-start">
@@ -34,58 +27,6 @@ export default async function Home({
             about: dictionary.menu.about,
           }}
         />
-
-        {startingJourney ? (
-          <RecommendationCard
-            title={dictionary.home.recommendation.title}
-            exploreLabel={dictionary.home.recommendation.explore}
-            alternativesLabel={dictionary.home.recommendation.alternatives}
-            otherOptionsLabel={dictionary.home.recommendation.otherOptions}
-            openLabel={dictionary.home.recommendation.open}
-            closeLabel={dictionary.home.recommendation.close}
-            options={[
-              {
-                key: "journey",
-                href: startingJourney.url,
-                eyebrow: dictionary.home.journey.eyebrow,
-                title: dictionary.menu.journey,
-                description: `${dictionary.home.journey.startWith} “${startingJourney.title}”. ${dictionary.home.journey.description}`,
-                signal: 3,
-                icon: "journey",
-              },
-              {
-                key: "work",
-                href: `/${lang}/work`,
-                eyebrow: dictionary.home.recommendation.options[0].eyebrow,
-                title: dictionary.menu.work,
-                description:
-                  dictionary.home.recommendation.options[0].description,
-                signal: 2,
-                icon: "work",
-              },
-              {
-                key: "projects",
-                href: `/${lang}/project`,
-                eyebrow: dictionary.home.recommendation.options[1].eyebrow,
-                title: dictionary.menu.projects,
-                description:
-                  dictionary.home.recommendation.options[1].description,
-                signal: 2,
-                icon: "projects",
-              },
-              {
-                key: "about",
-                href: `/${lang}/about`,
-                eyebrow: dictionary.home.recommendation.options[2].eyebrow,
-                title: dictionary.menu.about,
-                description:
-                  dictionary.home.recommendation.options[2].description,
-                signal: 1,
-                icon: "about",
-              },
-            ]}
-          />
-        ) : null}
       </main>
     </main>
   );
