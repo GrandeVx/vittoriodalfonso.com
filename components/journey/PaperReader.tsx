@@ -242,7 +242,7 @@ function calloutText(annotation: ResearchAnnotation) {
 
 function estimatedCalloutHeight(annotation: ResearchAnnotation) {
   const text = calloutText(annotation);
-  const lines = Math.min(4, Math.max(1, Math.ceil(text.length / 30)));
+  const lines = Math.max(1, Math.ceil(text.length / 30));
   const hasComment = commentTexts(annotation.comments ?? []).length > 0;
   return 56 + lines * 23 + (hasComment && annotationText(annotation) ? 56 : 0);
 }
@@ -250,6 +250,7 @@ function estimatedCalloutHeight(annotation: ResearchAnnotation) {
 function layoutFloatingAnnotations(
   entries: PositionedAnnotation[],
   pageHeight: number,
+  measuredHeights: Readonly<Record<string, number>>,
 ) {
   const nextSlot = { left: 12, right: 12 };
 
@@ -265,7 +266,9 @@ function layoutFloatingAnnotations(
         nextSlot[alternateSide] < nextSlot[preferredSide]
           ? alternateSide
           : preferredSide;
-      const height = estimatedCalloutHeight(entry.annotation);
+      const height =
+        measuredHeights[entry.annotation.id] ??
+        estimatedCalloutHeight(entry.annotation);
       const top = Math.max(12, desiredTop - 18, nextSlot[side]);
       nextSlot[side] = top + height + CALLOUT_GAP;
 
@@ -294,7 +297,7 @@ function FloatingAnnotationCard({
   return (
     <button
       aria-pressed={selected}
-      className={`${compact ? "w-[min(18rem,82vw)] shrink-0" : "w-64"} rounded-xl border bg-background p-3 text-left shadow-[0_12px_36px_rgba(0,0,0,0.2)] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-selected ${selected ? "border-selected" : "border-border hover:border-muted"}`}
+      className={`${compact ? "max-h-[min(60vh,28rem)] w-[min(18rem,82vw)] shrink-0 overflow-y-auto" : "w-64"} rounded-xl border bg-background p-3 text-left shadow-[0_12px_36px_rgba(0,0,0,0.2)] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-selected ${selected ? "border-selected" : "border-border hover:border-muted"}`}
       onClick={onSelect}
       type="button"
     >
@@ -306,7 +309,7 @@ function FloatingAnnotationCard({
         />
         {labels.notes} · {labels.page} {entry.page}
       </span>
-      <span className="mt-2 line-clamp-4 text-sm leading-relaxed text-primary">
+      <span className="mt-2 block text-sm leading-relaxed text-primary">
         {text}
       </span>
       {comments.length && quote ? (
@@ -315,6 +318,54 @@ function FloatingAnnotationCard({
         </span>
       ) : null}
     </button>
+  );
+}
+
+function MeasuredFloatingAnnotation({
+  entry,
+  labels,
+  onHeightChange,
+  onSelect,
+  selected,
+}: {
+  entry: FloatingAnnotation;
+  labels: PaperReaderLabels;
+  onHeightChange: (id: string, height: number) => void;
+  onSelect: () => void;
+  selected: boolean;
+}) {
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const element = wrapperRef.current;
+    if (!element) return;
+
+    const updateHeight = () =>
+      onHeightChange(entry.annotation.id, Math.ceil(element.offsetHeight));
+    updateHeight();
+
+    const observer = new ResizeObserver(updateHeight);
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [entry.annotation.id, onHeightChange]);
+
+  return (
+    <div
+      className="absolute z-20"
+      ref={wrapperRef}
+      style={
+        entry.side === "left"
+          ? { left: 0, top: entry.top }
+          : { right: 0, top: entry.top }
+      }
+    >
+      <FloatingAnnotationCard
+        entry={entry}
+        labels={labels}
+        onSelect={onSelect}
+        selected={selected}
+      />
+    </div>
   );
 }
 
@@ -374,6 +425,9 @@ export function PaperReader({
   const [pageCount, setPageCount] = useState(0);
   const [pageNumber, setPageNumber] = useState(1);
   const [viewerWidth, setViewerWidth] = useState(900);
+  const [calloutHeights, setCalloutHeights] = useState<Record<string, number>>(
+    {},
+  );
   const [zoom, setZoom] = useState(1);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [panelOpen, setPanelOpen] = useState(false);
@@ -481,6 +535,12 @@ export function PaperReader({
     },
     [pageNumber, scrollToPage],
   );
+
+  const updateCalloutHeight = useCallback((id: string, height: number) => {
+    setCalloutHeights((current) =>
+      current[id] === height ? current : { ...current, [id]: height },
+    );
+  }, []);
 
   const changePage = useCallback(
     (nextPage: number) => {
@@ -667,6 +727,7 @@ export function PaperReader({
                   const floatingAnnotations = layoutFloatingAnnotations(
                     pageAnnotations,
                     pageHeight,
+                    calloutHeights,
                   );
                   const sideRail = showSideAnnotations ? CALLOUT_WIDTH + 48 : 0;
                   const stageWidth = pageWidth + sideRail * 2;
@@ -781,24 +842,16 @@ export function PaperReader({
 
                       {showSideAnnotations
                         ? floatingAnnotations.map((entry) => (
-                            <div
-                              className="absolute z-20"
+                            <MeasuredFloatingAnnotation
+                              entry={entry}
                               key={`callout-${entry.annotation.id}`}
-                              style={
-                                entry.side === "left"
-                                  ? { left: 0, top: entry.top }
-                                  : { right: 0, top: entry.top }
+                              labels={labels}
+                              onHeightChange={updateCalloutHeight}
+                              onSelect={() =>
+                                selectAnnotation(entry.annotation)
                               }
-                            >
-                              <FloatingAnnotationCard
-                                entry={entry}
-                                labels={labels}
-                                onSelect={() =>
-                                  selectAnnotation(entry.annotation)
-                                }
-                                selected={entry.annotation.id === selectedId}
-                              />
-                            </div>
+                              selected={entry.annotation.id === selectedId}
+                            />
                           ))
                         : null}
                     </div>
