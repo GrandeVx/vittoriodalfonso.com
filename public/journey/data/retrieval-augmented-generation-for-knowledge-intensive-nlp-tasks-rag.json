@@ -1,0 +1,715 @@
+{
+  "version": 1,
+  "source": "Research",
+  "sourceId": "01KZ3S6DZNECZMZ0QG9XVF3RF1",
+  "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks — RAG",
+  "pdf": "/journey/papers/retrieval-augmented-generation-for-knowledge-intensive-nlp-tasks-rag.pdf",
+  "annotationCount": 14,
+  "commentCount": 15,
+  "annotations": [
+    {
+      "id": "01M34H9QHEJHGRWP7D97HGKDWB",
+      "type": "text",
+      "color": "#f2c94c",
+      "content": {
+        "text": "uch models do have down- sides: They cannot easily expand or revise their memory, can’t straightforwardly provide insight into their predictions",
+        "image": null
+      },
+      "position": {
+        "page": 1,
+        "boundingRect": {
+          "page": 1,
+          "x": 0.17649032205595316,
+          "y": 0.8125942684766214,
+          "width": 0.6496208751829864,
+          "height": 0.04217728758169935
+        },
+        "rects": [
+          {
+            "page": 1,
+            "x": 0.6445081384444128,
+            "y": 0.8125942684766214,
+            "width": 0.18160305879452668,
+            "height": 0.014580191050779286
+          },
+          {
+            "page": 1,
+            "x": 0.17649032205595316,
+            "y": 0.8268916540975364,
+            "width": 0.6468914878314086,
+            "height": 0.013574660633484163
+          },
+          {
+            "page": 1,
+            "x": 0.17649032205595316,
+            "y": 0.8401913650075414,
+            "width": 0.10871898127439818,
+            "height": 0.014580191050779286
+          }
+        ]
+      },
+      "comments": [
+        {
+          "id": "01M34HAARJ06ZCF2GB61VNMNQM",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>i modelli sono limitati alla sola conoscenza intrinseca durante la fase di pre-training </p>",
+          "text": "i modelli sono limitati alla sola conoscenza intrinseca durante la fase di pre-training",
+          "createdAt": "2026-09-22T12:26:42.834Z",
+          "updatedAt": "2026-09-22T12:26:42.834Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 1,
+      "createdAt": "2026-09-22T12:26:23.151Z",
+      "updatedAt": "2026-09-22T12:26:23.151Z"
+    },
+    {
+      "id": "01M34HGSNF6V5F5MB6T11M7T5W",
+      "type": "text",
+      "color": "#57c785",
+      "content": {
+        "text": "We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever.",
+        "image": null
+      },
+      "position": {
+        "page": 1,
+        "boundingRect": {
+          "page": 1,
+          "x": 0.2346901431359792,
+          "y": 0.5697900955253896,
+          "width": 0.5301150717204782,
+          "height": 0.04208301910507793
+        },
+        "rects": [
+          {
+            "page": 1,
+            "x": 0.4321713171458198,
+            "y": 0.5697900955253896,
+            "width": 0.3326308797068152,
+            "height": 0.014580191050779286
+          },
+          {
+            "page": 1,
+            "x": 0.23509677944046845,
+            "y": 0.5839932126696833,
+            "width": 0.5297084354159889,
+            "height": 0.013574660633484163
+          },
+          {
+            "page": 1,
+            "x": 0.2346901431359792,
+            "y": 0.5972929235796883,
+            "width": 0.4689221453496056,
+            "height": 0.014580191050779286
+          }
+        ]
+      },
+      "comments": [
+        {
+          "id": "01M34HGWC2AXPQFMW5C9YQF6YB",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>stanno introducendo proprio l'idea moderna di affiancare alla conoscenza contenuta nei pesi del modello una <strong>memoria esterna interrogabile</strong></p>",
+          "text": "stanno introducendo proprio l'idea moderna di affiancare alla conoscenza contenuta nei pesi del modello una memoria esterna interrogabile",
+          "createdAt": "2026-09-22T12:30:17.474Z",
+          "updatedAt": "2026-09-22T12:30:17.474Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 1,
+      "createdAt": "2026-09-22T12:30:14.703Z",
+      "updatedAt": "2026-09-22T12:30:14.703Z"
+    },
+    {
+      "id": "01M34HHPMVFGT7AN87T8AVAGB8",
+      "type": "text",
+      "color": "#f2c94c",
+      "content": {
+        "text": "parametric-memory",
+        "image": null
+      },
+      "position": {
+        "page": 2,
+        "boundingRect": {
+          "page": 2,
+          "x": 0.3247148145230156,
+          "y": 0.3578902714932127,
+          "width": 0.12542780204182255,
+          "height": 0.014580191050779286
+        },
+        "rects": [
+          {
+            "page": 2,
+            "x": 0.3247148145230156,
+            "y": 0.3578902714932127,
+            "width": 0.12542780204182255,
+            "height": 0.014580191050779286
+          }
+        ]
+      },
+      "comments": [
+        {
+          "id": "01M34HHX9S015RG20FDRN1N4Z6",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>La <strong>parametric memory</strong> è la conoscenza che il modello ha imparato durante il training e che è quindi implicitamente codificata nei suoi pesi</p>",
+          "text": "La parametric memory è la conoscenza che il modello ha imparato durante il training e che è quindi implicitamente codificata nei suoi pesi",
+          "createdAt": "2026-09-22T12:30:51.193Z",
+          "updatedAt": "2026-09-22T12:30:51.193Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 1,
+      "createdAt": "2026-09-22T12:30:44.379Z",
+      "updatedAt": "2026-09-22T12:30:44.379Z"
+    },
+    {
+      "id": "01M34HJ5Y45YHS6AP0FSV6DTFB",
+      "type": "text",
+      "color": "#f2c94c",
+      "content": {
+        "text": "non-parametric memory",
+        "image": null
+      },
+      "position": {
+        "page": 2,
+        "boundingRect": {
+          "page": 2,
+          "x": 0.6175714615652448,
+          "y": 0.3578902714932127,
+          "width": 0.15304495936178433,
+          "height": 0.014580191050779286
+        },
+        "rects": [
+          {
+            "page": 2,
+            "x": 0.6175714615652448,
+            "y": 0.3578902714932127,
+            "width": 0.15304495936178433,
+            "height": 0.014580191050779286
+          }
+        ]
+      },
+      "comments": [
+        {
+          "id": "01M34HJ8CVPPVPFEB4Y61PE4MT",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>La <strong>non-parametric memory</strong>, invece, è un database esterno.</p>",
+          "text": "La non-parametric memory, invece, è un database esterno.",
+          "createdAt": "2026-09-22T12:31:02.555Z",
+          "updatedAt": "2026-09-22T12:31:02.555Z",
+          "replies": []
+        },
+        {
+          "id": "01M34HJHPDF9NJB4XVY663TSAA",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>Nel loro esperimento è <strong>Wikipedia</strong>, trasformata in una grande collezione di passaggi indicizzati come vettori</p>",
+          "text": "Nel loro esperimento è Wikipedia, trasformata in una grande collezione di passaggi indicizzati come vettori",
+          "createdAt": "2026-09-22T12:31:12.077Z",
+          "updatedAt": "2026-09-22T12:31:12.077Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 2,
+      "createdAt": "2026-09-22T12:31:00.036Z",
+      "updatedAt": "2026-09-22T12:31:00.036Z"
+    },
+    {
+      "id": "01M34HN3MWNGVRSDQ94TA8JGRK",
+      "type": "text",
+      "color": "#f2c94c",
+      "content": {
+        "text": "equence-to-sequence",
+        "image": null
+      },
+      "position": {
+        "page": 2,
+        "boundingRect": {
+          "page": 2,
+          "x": 0.5629442819311158,
+          "y": 0.33719048516842637,
+          "width": 0.14441481858937866,
+          "height": 0.014580191050779286
+        },
+        "rects": [
+          {
+            "page": 2,
+            "x": 0.5629442819311158,
+            "y": 0.33719048516842637,
+            "width": 0.14441481858937866,
+            "height": 0.014580191050779286
+          }
+        ]
+      },
+      "comments": [
+        {
+          "id": "01M34HNJW6468K58H593K80MT5",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>modelli <strong>Sequence-to-Sequence</strong> (Seq2Seq) sono un'architettura di apprendimento automatico progettata per <strong>convertire una sequenza di dati di input in una sequenza di output di lunghezza variabile</strong></p>",
+          "text": "modelli Sequence-to-Sequence (Seq2Seq) sono un'architettura di apprendimento automatico progettata per convertire una sequenza di dati di input in una sequenza di output di lunghezza variabile",
+          "createdAt": "2026-09-22T12:32:51.590Z",
+          "updatedAt": "2026-09-22T12:32:51.590Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 1,
+      "createdAt": "2026-09-22T12:32:35.996Z",
+      "updatedAt": "2026-09-22T12:32:35.996Z"
+    },
+    {
+      "id": "01M34HPZ1BAT3N4E94VADS41H5",
+      "type": "text",
+      "color": "#f2c94c",
+      "content": {
+        "text": "Dense Passage Retriever",
+        "image": null
+      },
+      "position": {
+        "page": 2,
+        "boundingRect": {
+          "page": 2,
+          "x": 0.23699481670673078,
+          "y": 0.4263986013986014,
+          "width": 0.16397589083710407,
+          "height": 0.014685314685314685
+        },
+        "rects": [
+          {
+            "page": 2,
+            "x": 0.23699481670673078,
+            "y": 0.4263986013986014,
+            "width": 0.16397589083710407,
+            "height": 0.014685314685314685
+          }
+        ]
+      },
+      "comments": [
+        {
+          "id": "01M34HQM868207RTD1KKT4AJ0D",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>Usano <strong>Dense Passage Retriever (DPR)</strong>.</p><p>La query:</p><blockquote><p>\"Who discovered penicillin?\"</p></blockquote><p>viene trasformata in un embedding:</p><p>q(x)</p><p>Anche i passaggi di Wikipedia hanno embedding:</p><p>d(z_1),d(z_2),...,d(z_n)</p><p>e fanno essentially una similarity search:</p><p>q(x)^T d(z)</p><p>ottenendo i <strong>top-K passaggi più rilevanti</strong>.</p>",
+          "text": "Usano Dense Passage Retriever (DPR).\n\nLa query:\n\n\"Who discovered penicillin?\"\n\nviene trasformata in un embedding:\n\nq(x)\n\nAnche i passaggi di Wikipedia hanno embedding:\n\nd(z_1),d(z_2),...,d(z_n)\n\ne fanno essentially una similarity search:\n\nq(x)^T d(z)\n\nottenendo i top-K passaggi più rilevanti.",
+          "createdAt": "2026-09-22T12:33:58.534Z",
+          "updatedAt": "2026-09-22T12:33:58.534Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 1,
+      "createdAt": "2026-09-22T12:33:36.812Z",
+      "updatedAt": "2026-09-22T12:33:36.812Z"
+    },
+    {
+      "id": "01M34HRZ64GZ78QED343A3GMPJ",
+      "type": "text",
+      "color": "#57c785",
+      "content": {
+        "text": "provides latent documents conditioned on the input, and the seq2seq mode",
+        "image": null
+      },
+      "position": {
+        "page": 2,
+        "boundingRect": {
+          "page": 2,
+          "x": 0.17649886877828055,
+          "y": 0.4263986013986014,
+          "width": 0.6469002425940328,
+          "height": 0.02838723776223776
+        },
+        "rects": [
+          {
+            "page": 2,
+            "x": 0.5505341266614819,
+            "y": 0.4263986013986014,
+            "width": 0.2728649847108314,
+            "height": 0.014685314685314685
+          },
+          {
+            "page": 2,
+            "x": 0.17649886877828055,
+            "y": 0.4401005244755245,
+            "width": 0.20758531665370475,
+            "height": 0.014685314685314685
+          }
+        ]
+      },
+      "comments": [
+        {
+          "id": "01M34HTPQA56DDY298DM4TRJJ7",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>qual è la probabilità della risposta <em>y</em>, data la domanda <em>x</em> <strong>e il documento recuperato <em>z</em></strong>?</p>",
+          "text": "qual è la probabilità della risposta y, data la domanda x e il documento recuperato z?",
+          "createdAt": "2026-09-22T12:35:39.370Z",
+          "updatedAt": "2026-09-22T12:35:39.370Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 1,
+      "createdAt": "2026-09-22T12:34:42.500Z",
+      "updatedAt": "2026-09-22T12:34:42.500Z"
+    },
+    {
+      "id": "01M34J09FTG01J8NTGXM2P0P0E",
+      "type": "text",
+      "color": "#f2c94c",
+      "content": {
+        "text": "top-K approximation",
+        "image": null
+      },
+      "position": {
+        "page": 2,
+        "boundingRect": {
+          "page": 2,
+          "x": 0.6825217406674208,
+          "y": 0.4539007867132867,
+          "width": 0.1392187610470871,
+          "height": 0.014685314685314685
+        },
+        "rects": [
+          {
+            "page": 2,
+            "x": 0.6825217406674208,
+            "y": 0.4539007867132867,
+            "width": 0.1392187610470871,
+            "height": 0.014685314685314685
+          }
+        ]
+      },
+      "comments": [
+        {
+          "id": "01M34J0CM5B1Q58F5MQGADCHTZ",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>Il documento è una <strong>variabile latente</strong>: non dici esplicitamente al sistema <em>\"questo è il documento corretto\"</em>. Il sistema considera diversi documenti recuperati e pesa quanto ciascuno spiega bene la risposta.</p>",
+          "text": "Il documento è una variabile latente: non dici esplicitamente al sistema \"questo è il documento corretto\". Il sistema considera diversi documenti recuperati e pesa quanto ciascuno spiega bene la risposta.",
+          "createdAt": "2026-09-22T12:38:45.637Z",
+          "updatedAt": "2026-09-22T12:38:45.637Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 1,
+      "createdAt": "2026-09-22T12:38:42.427Z",
+      "updatedAt": "2026-09-22T12:38:42.427Z"
+    },
+    {
+      "id": "01M34J3BETJF4A65B9H2EW8KD4",
+      "type": "text",
+      "color": "#f2c94c",
+      "content": {
+        "text": "both the generator and retriever are jointly learned",
+        "image": null
+      },
+      "position": {
+        "page": 2,
+        "boundingRect": {
+          "page": 2,
+          "x": 0.4889475826763999,
+          "y": 0.4951923076923077,
+          "width": 0.32863777816565326,
+          "height": 0.014685314685314685
+        },
+        "rects": [
+          {
+            "page": 2,
+            "x": 0.4889475826763999,
+            "y": 0.4951923076923077,
+            "width": 0.32863777816565326,
+            "height": 0.014685314685314685
+          }
+        ]
+      },
+      "comments": [
+        {
+          "id": "01M34J49H71N8FG3EADBJQA1W9",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>Durante il fine-tuning il segnale della task influenza <strong>anche il retriever</strong>.</p><p>Quindi se stiamo facendo Question Answering e DPR recupera documenti inutili:</p><p>Loss_{generation</p><p>produce un segnale che porta il sistema a migliorare:</p><p>P(z|x)</p><p>cioè <strong>quali documenti dovrebbe recuperare</strong>.</p>",
+          "text": "Durante il fine-tuning il segnale della task influenza anche il retriever.\n\nQuindi se stiamo facendo Question Answering e DPR recupera documenti inutili:\n\nLoss_{generation\n\nproduce un segnale che porta il sistema a migliorare:\n\nP(z|x)\n\ncioè quali documenti dovrebbe recuperare.",
+          "createdAt": "2026-09-22T12:40:53.543Z",
+          "updatedAt": "2026-09-22T12:41:07.861Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 1,
+      "createdAt": "2026-09-22T12:40:22.746Z",
+      "updatedAt": "2026-09-22T12:40:22.746Z"
+    },
+    {
+      "id": "01M34J70TY0SJ7K31VFQB7H6S0",
+      "type": "text",
+      "color": "#57c785",
+      "content": {
+        "text": "Our RAG models achieve state-of-the-art results on open Natural Questions [ 29 ], WebQuestions [ 3] and CuratedTrec [ 2 ] and strongly outperform recent approaches that use specialised pre-training objectives on TriviaQA [ 24].",
+        "image": null
+      },
+      "position": {
+        "page": 2,
+        "boundingRect": {
+          "page": 2,
+          "x": 0.17649886877828055,
+          "y": 0.6329982517482518,
+          "width": 0.6469878459947681,
+          "height": 0.04228583916083916
+        },
+        "rects": [
+          {
+            "page": 2,
+            "x": 0.5018638645361991,
+            "y": 0.6329982517482518,
+            "width": 0.3215049778174491,
+            "height": 0.014685314685314685
+          },
+          {
+            "page": 2,
+            "x": 0.17649886877828055,
+            "y": 0.6474978146853146,
+            "width": 0.6469878459947681,
+            "height": 0.013286713286713287
+          },
+          {
+            "page": 2,
+            "x": 0.17649886877828055,
+            "y": 0.6605987762237763,
+            "width": 0.5181531258837669,
+            "height": 0.014685314685314685
+          }
+        ]
+      },
+      "comments": [
+        {
+          "id": "01M34J8DE3P6TF4RM641TEKG7Z",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>Il modello come viene logico pensare si porta ad essere lo <strong>stato dell'arte</strong> rispetto tutti i benchmark che includono task strettamente correlate alle “informazioni”,</p><p>ovvero tutte quelle task che richiedono conoscenza di avvenimenti storici e così via.</p>",
+          "text": "Il modello come viene logico pensare si porta ad essere lo stato dell'arte rispetto tutti i benchmark che includono task strettamente correlate alle “informazioni”,\n\novvero tutte quelle task che richiedono conoscenza di avvenimenti storici e così via.",
+          "createdAt": "2026-09-22T12:43:08.611Z",
+          "updatedAt": "2026-09-22T12:43:33.633Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 1,
+      "createdAt": "2026-09-22T12:42:22.942Z",
+      "updatedAt": "2026-09-22T12:42:22.942Z"
+    },
+    {
+      "id": "01M34JAJ10TT3TRPRKETC680TE",
+      "type": "text",
+      "color": "#f2c94c",
+      "content": {
+        "text": "RAG-Sequence, the model uses the same document to predict each target token.",
+        "image": null
+      },
+      "position": {
+        "page": 3,
+        "boundingRect": {
+          "page": 3,
+          "x": 0.17648684823091249,
+          "y": 0.15406767458603313,
+          "width": 0.6470027191900897,
+          "height": 0.028212742980561555
+        },
+        "rects": [
+          {
+            "page": 3,
+            "x": 0.4962901536312849,
+            "y": 0.15406767458603313,
+            "width": 0.3271994137897172,
+            "height": 0.014398848092152628
+          },
+          {
+            "page": 3,
+            "x": 0.17648684823091249,
+            "y": 0.16788156947444205,
+            "width": 0.18123755996675686,
+            "height": 0.014398848092152628
+          }
+        ]
+      },
+      "comments": [
+        {
+          "id": "01M34JB0270HB3EM7F0TT4Z8NE",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>Assumono che <strong>un documento sia responsabile dell'intera risposta</strong>.</p>",
+          "text": "Assumono che un documento sia responsabile dell'intera risposta.",
+          "createdAt": "2026-09-22T12:44:33.223Z",
+          "updatedAt": "2026-09-22T12:44:33.223Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 1,
+      "createdAt": "2026-09-22T12:44:18.848Z",
+      "updatedAt": "2026-09-22T12:44:18.848Z"
+    },
+    {
+      "id": "01M34JB9F7J4A5YJ1EARXRCGHP",
+      "type": "text",
+      "color": "#f2c94c",
+      "content": {
+        "text": "RAG-Token, can predict each target token based on a different document",
+        "image": null
+      },
+      "position": {
+        "page": 3,
+        "boundingRect": {
+          "page": 3,
+          "x": 0.17648684823091249,
+          "y": 0.16788156947444205,
+          "width": 0.647005049210021,
+          "height": 0.02820149388048956
+        },
+        "rects": [
+          {
+            "page": 3,
+            "x": 0.5108967644320298,
+            "y": 0.16788156947444205,
+            "width": 0.3125951330089036,
+            "height": 0.014398848092152628
+          },
+          {
+            "page": 3,
+            "x": 0.17648684823091249,
+            "y": 0.18168421526277898,
+            "width": 0.15711960890217644,
+            "height": 0.014398848092152628
+          }
+        ]
+      },
+      "comments": [
+        {
+          "id": "01M34JBRDRYF0YZQJPAJKHVT10",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>Qui fanno una cosa ancora più interessante.</p><p>Ogni token può essere supportato da <strong>documenti differenti</strong>:</p><p></p><p>token 1 ← documento A<br>token 2 ← documento A<br>token 3 ← documento B<br>token 4 ← documento C<br>...</p>",
+          "text": "Qui fanno una cosa ancora più interessante.\n\nOgni token può essere supportato da documenti differenti:\n\ntoken 1 ← documento A\ntoken 2 ← documento A\ntoken 3 ← documento B\ntoken 4 ← documento C\n...",
+          "createdAt": "2026-09-22T12:44:58.168Z",
+          "updatedAt": "2026-09-22T12:44:58.168Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 1,
+      "createdAt": "2026-09-22T12:44:42.855Z",
+      "updatedAt": "2026-09-22T12:44:42.855Z"
+    },
+    {
+      "id": "01M34JEGTYE2RQJB39VXNESH1P",
+      "type": "text",
+      "color": "#f2c94c",
+      "content": {
+        "text": "n the RAG-Token model we can draw a different latent document for each target token and marginalize accordingly.",
+        "image": null
+      },
+      "position": {
+        "page": 3,
+        "boundingRect": {
+          "page": 3,
+          "x": 0.17648684823091249,
+          "y": 0.3804333153347732,
+          "width": 0.6469514871664775,
+          "height": 0.02820149388048956
+        },
+        "rects": [
+          {
+            "page": 3,
+            "x": 0.3281678212199575,
+            "y": 0.3804333153347732,
+            "width": 0.4952705141774325,
+            "height": 0.014398848092152628
+          },
+          {
+            "page": 3,
+            "x": 0.17648684823091249,
+            "y": 0.39423596112311016,
+            "width": 0.26906930934117496,
+            "height": 0.014398848092152628
+          }
+        ]
+      },
+      "comments": [
+        {
+          "id": "01M34JQAAYW081QP6DJB7WJ1GK",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>nel RAG-Token originale <strong>NON rifanno una nuova ricerca con una query diversa a ogni token</strong>.</p><p></p><p>La differenza di RAG-Token è <strong>come vengono combinati</strong>.</p><p></p><p>Non scegliamo prima quale documento è quello giusto. Facciamo predire il prossimo token al modello usando ciascun documento, pesiamo ogni previsione in base a quanto il retriever ritiene rilevante quel documento e sommiamo tutto.</p>",
+          "text": "nel RAG-Token originale NON rifanno una nuova ricerca con una query diversa a ogni token.\n\nLa differenza di RAG-Token è come vengono combinati.\n\nNon scegliamo prima quale documento è quello giusto. Facciamo predire il prossimo token al modello usando ciascun documento, pesiamo ogni previsione in base a quanto il retriever ritiene rilevante quel documento e sommiamo tutto.",
+          "createdAt": "2026-09-22T12:51:16.958Z",
+          "updatedAt": "2026-09-22T12:51:16.958Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 1,
+      "createdAt": "2026-09-22T12:46:28.702Z",
+      "updatedAt": "2026-09-22T12:46:28.702Z"
+    },
+    {
+      "id": "01M34K3Z781HDWQ516KZC0HRQQ",
+      "type": "text",
+      "color": "#57c785",
+      "content": {
+        "text": "We also note that some MSMARCO questions cannot be answered using Wikipedia alone. Here, RAG can rely on parametric knowledge to generate reasonable responses",
+        "image": null
+      },
+      "position": {
+        "page": 5,
+        "boundingRect": {
+          "page": 5,
+          "x": 0.1756866852886406,
+          "y": 0.13334683225341973,
+          "width": 0.649690596085021,
+          "height": 0.028212742980561555
+        },
+        "rects": [
+          {
+            "page": 5,
+            "x": 0.1756866852886406,
+            "y": 0.13334683225341973,
+            "width": 0.649690596085021,
+            "height": 0.014398848092152628
+          },
+          {
+            "page": 5,
+            "x": 0.17648684823091249,
+            "y": 0.14716072714182865,
+            "width": 0.47643167790531893,
+            "height": 0.014398848092152628
+          }
+        ]
+      },
+      "comments": [
+        {
+          "id": "01M34K4C1SXSTF1KM4VE2K7P06",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>Se Wikipedia contiene informazioni utili → RAG le recupera.</p><p>Se Wikipedia non le contiene → il generator può comunque sfruttare ciò che ha appreso durante il pre-training.</p><p></p><p>Quindi questo esperimento serve a dimostrare che RAG non è semplicemente:</p><p></p><blockquote><p><strong>“retrieval → copia la risposta”</strong></p></blockquote><p></p><p>ma:</p><p></p><blockquote><p><strong>“retrieval → usa le informazioni recuperate insieme alla conoscenza interna → genera liberamente una risposta.”</strong></p><p></p></blockquote><p>Ed è proprio il significato di <strong>Retrieval-Augmented Generation</strong>: il retrieval <strong>aumenta</strong> il modello generativo, non lo sostituisce.</p>",
+          "text": "Se Wikipedia contiene informazioni utili → RAG le recupera.\n\nSe Wikipedia non le contiene → il generator può comunque sfruttare ciò che ha appreso durante il pre-training.\n\nQuindi questo esperimento serve a dimostrare che RAG non è semplicemente:\n\n“retrieval → copia la risposta”\n\nma:\n\n“retrieval → usa le informazioni recuperate insieme alla conoscenza interna → genera liberamente una risposta.”\n\nEd è proprio il significato di Retrieval-Augmented Generation: il retrieval aumenta il modello generativo, non lo sostituisce.",
+          "createdAt": "2026-09-22T12:58:24.697Z",
+          "updatedAt": "2026-09-22T12:58:24.697Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 1,
+      "createdAt": "2026-09-22T12:58:11.560Z",
+      "updatedAt": "2026-09-22T12:58:11.560Z"
+    }
+  ]
+}

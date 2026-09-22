@@ -1,0 +1,129 @@
+---
+title: "Fast Transformer Decoding: One Write-Head Is All You Need — MQA"
+description: "MQA riduce il costo della generazione condividendo key e value tra le teste: meno memoria e banda per la cache KV, con decoding più rapido."
+abstract: "MQA riduce il costo della generazione condividendo key e value tra le teste: meno memoria e banda per la cache KV, con decoding più rapido."
+kind: "paper"
+paperYear: 2019
+sourceId: "01KZ3RH3307S1YK56K9718P7Q6"
+pdf: "/journey/papers/fast-transformer-decoding-one-write-head-is-all-you-need-mqa.pdf"
+annotations: "/journey/data/fast-transformer-decoding-one-write-head-is-all-you-need-mqa.json"
+sourceUrl: "https://arxiv.org/pdf/1911.02150"
+language: "it"
+date: "2026-08-03"
+order: 7
+authors: ["Noam Shazeer"]
+---
+## Perché è importante
+
+MQA riduce il costo della generazione condividendo key e value tra le teste: meno memoria e banda per la cache KV, con decoding più rapido.
+
+## Appunti di lettura
+
+Le note seguenti sono importate da Research e restano collegate alle coordinate del PDF nel file delle annotazioni.
+
+### Nota · pagina 1
+
+> . One major challenge with Transformer is the speed of incremental inference
+
+Incremental inference = inferenza autoregressiva in cui l'output viene costruito incrementalmente, un token alla volta, usando a ogni passo tutti i token precedentemente disponibili.
+
+### Nota · pagina 2
+
+> l o g i t s = t f . einsum ( " k , mk−>m" , q , K)
+
+score di compatibilità per ciascun token precedente.
+
+### Nota · pagina 3
+
+> l o g i t s = t f . einsum ( " bhnk , bhmk−>bhnm " , Q, K)
+
+Per ogni sequenza, per ogni head, per ogni Query, calcola contemporaneamente la compatibilità con tutte le Key.
+
+### Nota · pagina 3
+
+> O( 1 k + 1 bn )
+
+carico relativamente pochi dati dalla memoria → faccio tantissimo calcolo con quei dati.
+
+### Nota · pagina 3
+
+> bhnk , bhmk−>bhnm
+
+"Prendi Q [batch, head, query, dimensione-vettore] e K [batch, head, key, dimensione-vettore]; fai il prodotto scalare sulla dimensione ke restituiscimi, per ogni batch, head, query e key, il relativo score."
+
+### Nota · pagina 4
+
+> when generating from the trained model, the output of the self-attention layer at a particular position affects the token that is generated at the next position
+
+Le tecniche sopra citate possono essere utili in fase di training ma quando andiamo ad inferenziare il modello finale la generazione dei token sarà sempre progressiva e non distribuibile.
+
+### Nota · pagina 5
+
+> Multi-head attention consists of multiple attention layers (heads) in parallel with different linear transformations on the queries, keys, values and output
+
+Questa è la referenza all’approccio del paper originale che citava il multi head mirato proprio al concedere al modello la possibilità di “cocentrarsi” su differenti caratteristiche del testo.
+
+### Nota · pagina 5
+
+> Multi-query attention is identical except that the different heads share a single set of keys and value
+
+Il nuovo sistema proposto non cambia l’idea di avere “N” teste ma si assicura che queste condividano gli stessi vettori di referenza per K e V andando quindi tutti ad operare su quest’utlimi
+
+### Nota · pagina 5
+
+> Multi-query attention is identical except that the different heads share a single set of keys and value
+
+Quindi la backpropagation deve far sì che quelle K e V condivise diventino rappresentazioni utili contemporaneamente alle diverse Query.
+
+### Nota · pagina 4
+
+> Image annotation
+
+Nell’incremental self-attention cambia soprattutto una cosa: non ricalcoli K e V di tutti i token precedenti. Li tieni in cache e aggiungi solo quelli del nuovo token.
+
+### Nota · pagina 7
+
+> we find that the amortized inference time is 1.7μs per token for the encoder and a much larger 46μs per token for the decoder
+
+il decoder incrementale diventa circa 12× più veloce.
+
+### Nota · pagina 8
+
+> Image annotation
+
+se costringi tutte le head a condividere K e V fin dal training, il modello riesce ad adattarsi a questo vincolo perdendo sorprendentemente poca qualità.
+
+### Nota · pagina 8
+
+> Image annotation
+
+Tutte hanno consultato le stesse Key, ma facendo domande diverse tramite Query diverse hanno ottenuto distribuzioni di attenzione completamente diverse.
+
+### Nota · pagina 8
+
+> Image annotation
+
+**Explanation**
+
+**Page 8 Annotation: Key Performance Results**  
+- **Inference speed:** MQA reduces decoder latency from **46 μs/token** (MHA) to just **3.8 μs/token**—a **12x speedup**.  
+- **Quality retention:**  
+  - BLEU (WMT14): **28.5** (MQA) vs 28.3 (MHA baseline)  
+  - Perplexity (Billion-Word LM): **54.8** (MQA) vs 54.6 (MHA)  
+- **Takeaway:** Validates MQA's core claim—drastically faster Transformer decoding (*especially for autoregressive tasks*) with minimal quality loss, by sharing keys/values across heads.
+
+### Nota · pagina 8
+
+> Conclusion
+
+Hanno scoperto empiricamente che il modello non ha bisogno di tutta quella libertà separata su K e V per mantenere quasi la stessa qualità: può imparare K/V condivisi sufficientemente ricchi, lasciando alle diverse Query il compito di estrarne informazioni differenti.
+
+### Nota · pagina 7
+
+> raining a
+
+La backpropagation porta W_K e W_V condivise ad apprendere rappresentazioni che siano complessivamente utili alle diverse query prodotte da tutte le attention head.
+
+## Fonte
+
+[Paper originale](https://arxiv.org/pdf/1911.02150)

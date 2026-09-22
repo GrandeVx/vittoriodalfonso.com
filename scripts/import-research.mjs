@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Read-only export of the first four items in Research's "The Journey" category.
+ * Read-only export of annotated items in Research's "The Journey" category.
  *
  * Usage:
  *   node scripts/import-research.mjs
@@ -267,14 +267,14 @@ async function main() {
   if (!database) throw new Error(`Research database not found. Checked: ${databaseCandidates.join(', ')}`)
 
   const items = query(database, `
-    SELECT id, title, year, date, link, doi, abstract, ai_summary, created_at
-    FROM items
-    WHERE category_id = (SELECT id FROM categories WHERE name = 'The Journey' LIMIT 1)
-    ORDER BY id
-    LIMIT 4
+    SELECT i.id, i.title, i.year, i.date, i.link, i.doi, i.abstract, i.ai_summary, i.created_at
+    FROM items i
+    WHERE i.category_id = (SELECT id FROM categories WHERE name = 'The Journey' LIMIT 1)
+      AND EXISTS (SELECT 1 FROM annotations a WHERE a.item_id = i.id)
+    ORDER BY i.id
   `)
-  if (items.length !== 4) {
-    throw new Error(`Expected at least four items in The Journey; found ${items.length}.`)
+  if (items.length === 0) {
+    throw new Error('No annotated items found in The Journey.')
   }
 
   const ids = items.map((item) => `'${item.id.replace(/'/g, "''")}'`).join(', ')

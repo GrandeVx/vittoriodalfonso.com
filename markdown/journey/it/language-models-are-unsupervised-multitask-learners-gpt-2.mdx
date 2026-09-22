@@ -174,25 +174,25 @@ Un Bloom filter è una struttura dati probabilistica estremamente efficiente per
 
 **Explanation**
 
-### Bloom Filters in GPT-2 Memorization Analysis
-**Purpose**:
-- Detect overlap between test datasets and WebText training data.
-- Quantify potential memorization (vs. generalization) in GPT-2.
+### Bloom Filters in GPT-2 Memorization Analysis  
+**Purpose**:  
+- Detect overlap between test datasets and WebText training data.  
+- Quantify potential memorization (vs. generalization) in GPT-2.  
 
-**Method**:
-- Stored 8-grams (8-token sequences) from WebText training in Bloom filters.
-- False-positive rate capped at \(10^{-8}\) for reliability.
-- Measured % of test-set 8-grams appearing in training.
+**Method**:  
+- Stored 8-grams (8-token sequences) from WebText training in Bloom filters.  
+- False-positive rate capped at \(10^{-8}\) for reliability.  
+- Measured % of test-set 8-grams appearing in training.  
 
-**Key Findings**:
-- Common NLP test sets (e.g., PTB, WikiText-2) had **1–6% overlap** with WebText.
-- Overlap was comparable to standard train-test splits (e.g., WikiText-103: 9.09% internal overlap).
-- Minimal impact on GPT-2’s zero-shot performance (e.g., LAMBADA accuracy dropped only 0.3% after removing overlapping examples).
+**Key Findings**:  
+- Common NLP test sets (e.g., PTB, WikiText-2) had **1–6% overlap** with WebText.  
+- Overlap was comparable to standard train-test splits (e.g., WikiText-103: 9.09% internal overlap).  
+- Minimal impact on GPT-2’s zero-shot performance (e.g., LAMBADA accuracy dropped only 0.3% after removing overlapping examples).  
 
-**Connection to Core Argument**:
-Supports the claim that GPT-2’s success stems from **generalization** (learning tasks from diverse data) rather than data memorization. Low contamination validates its zero-shot capabilities.
+**Connection to Core Argument**:  
+Supports the claim that GPT-2’s success stems from **generalization** (learning tasks from diverse data) rather than data memorization. Low contamination validates its zero-shot capabilities.  
 
----
+---  
 **Note**: Bloom filters enabled efficient large-scale duplication analysis without exhaustive searches.
 
 ### Nota · pagina 8

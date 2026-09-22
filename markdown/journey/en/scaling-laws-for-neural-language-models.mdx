@@ -1,0 +1,174 @@
+---
+title: "Scaling Laws for Neural Language Models"
+description: "Dopo GPT-2, le scaling laws quantificano come prestazioni, parametri, dati e calcolo si leghino, trasformando la crescita dei modelli in una disciplina prevedibile."
+abstract: "Dopo GPT-2, le scaling laws quantificano come prestazioni, parametri, dati e calcolo si leghino, trasformando la crescita dei modelli in una disciplina prevedibile."
+kind: "paper"
+paperYear: 2020
+sourceId: "01KZ3MXD83ZYG3V096KGQX513S"
+pdf: "/journey/papers/scaling-laws-for-neural-language-models.pdf"
+annotations: "/journey/data/scaling-laws-for-neural-language-models.json"
+sourceUrl: "https://arxiv.org/pdf/2001.08361"
+language: "en"
+date: "2026-08-03"
+order: 5
+authors: []
+---
+## Why it matters
+
+Dopo GPT-2, le scaling laws quantificano come prestazioni, parametri, dati e calcolo si leghino, trasformando la crescita dei modelli in una disciplina prevedibile.
+
+## Reading notes
+
+The notes below are imported from Research. Their original Italian wording remains linked to PDF coordinates in the annotations payload.
+
+### Note · page 1
+
+> Image annotation
+
+Se continuo ad aumentare modello, dati e compute, posso prevedere matematicamente quanto migliorerà il language model?
+
+### Note · page 1
+
+> anguage model performance on the cross-entropy loss. The loss scales as a power-law with model size, dataset size, and the amount of compute used for training, with some trends spanning more than seven orders of magnitude.
+
+Studiano principalmente:
+
+N = numero di parametri del modello 
+
+D = quantità di dati/token
+
+C = compute utilizzato per il training
+
+e misurano come cambia la cross-entropy loss L.
+
+### Note · page 3
+
+> Language modeling performance improves smoothly as we increase the model size, datasetset size, and amount of compute2 used for training. For optimal performance all three factors must be scaled up in tandem.
+
+Per ottenere prestazioni ottimali, dimensione del modello N, quantità di dati D e compute C devono crescere insieme, in proporzioni adeguate.
+
+### Note · page 3
+
+> epends most strongly on scale
+
+Definizione di “SCALE” come la crescita dei parametri sopra citati in maniera correlata
+
+### Note · page 3
+
+> when not bottlenecked by the other two
+
+Se aumenti N all'infinito lasciando pochissimi dati, prima o poi i dati diventano il collo di bottiglia.
+
+### Note · page 3
+
+> Image annotation
+
+Se aumentiamo il modello di 8×, basta aumentare i dati di circa 5× per mantenere un rapporto adeguato secondo queste scaling laws.
+
+### Note · page 3
+
+> Universality of training
+
+Già osservando la prima parte della curva, le power law permettono di stimare:
+
+"Se continuo il training altre 10 volte, più o meno dove arriverà la loss?"
+
+Quindi non devi necessariamente spendere tutto il compute prima di capire se l'esperimento sta andando nella direzione prevista.
+
+Questo diventerà importantissimo quando addestrare un modello costa milioni.
+
+### Note · page 3
+
+> Image annotation
+
+migliorare il language modeling sulla distribuzione originale tende a migliorare anche la generalizzazione verso distribuzioni differenti.
+
+### Note · page 3
+
+> Image annotation
+
+Questo è essenziale per il Trasfer learning poiché renderà costante la sua “potenza”
+
+### Note · page 3
+
+> Image annotation
+
+È meglio spendere il compute allenando un modello enorme per relativamente poco tempo piuttosto che spremere fino alla convergenza un modello piccolo.
+
+### Note · page 3
+
+> Image annotation
+
+Questo è esattamente il risultato che Chinchilla correggerà pesantemente nel 2022.
+
+### Note · page 4
+
+> When training with a limited amount of compute, a sufficiently large dataset, an optimally-sized model, and a sufficiently small batch size (making optimal3 use of compute):
+
+Questo ti fa anche capire quanto sia costoso migliorare i language model: essendo l'esponente molto piccolo, per ottenere miglioramenti relativamente modesti della loss devi aumentare enormemente il compute.
+
+### Note · page 5
+
+> Image annotation
+
+esiste una dimensione del batch oltre la quale aumentare ulteriormente il batch produce sempre meno vantaggi.
+
+### Note · page 5
+
+> Image annotation
+
+oltre una certa dimensione, aggiungere altri esempi non ti dà abbastanza informazione aggiuntiva da giustificare il compute.
+
+### Note · page 5
+
+> Image annotation
+
+Questo rappresenta la correlazione tra modello e dati e questo valore ci dice -> continuare ad aumentare il modello non serve più perché sei data-limited.
+
+### Note · page 5
+
+> Image annotation
+
+Viceversa,se hai dati infiniti ma modello piccolo, domina il termine relativo a N.
+
+### Note · page 5
+
+> Image annotation
+
+Da questo escono i colli di bottiglia come overfitting ecc...
+
+### Note · page 5
+
+> Image annotation
+
+Se il tuo budget computazionale aumenta enormemente, secondo Kaplan dovresti spendere la maggior parte dell'incremento su :
+
+N -> cioè rendere il modello più grande.
+
+B -> cioè batch più grandi
+
+S -> cioè allenarlo più a lungo.
+
+### Note · page 5
+
+> Image annotation
+
+perchè:
+
+0.73 >> 0.24 >> 0.03
+
+### Note · page 17
+
+> The most obvious interpretation is that our scaling laws break down at or before we reach this point
+
+Le nostre scaling laws semplicemente smetteranno di essere valide prima di arrivare lì.
+
+### Note · page 18
+
+> If we cannot increase the model size beyond N ∗ without qualitatively different data requirements, perhaps this means that once we reach C∗ min and N ∗, we have extracted all of the reliable information available in natural language data
+
+Potrebbe essere il punto in cui il modello ha estratto praticamente tutta l'informazione prevedibile disponibile nel linguaggio naturale.
+
+## Fonte
+
+[Paper originale](https://arxiv.org/pdf/2001.08361)

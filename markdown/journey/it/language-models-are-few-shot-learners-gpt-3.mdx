@@ -1,0 +1,174 @@
+---
+title: "Language Models are Few-Shot Learners — GPT-3"
+description: "GPT-3 applica le scaling laws su vasta scala: il modello apprende nuovi compiti dal prompt, senza aggiornare i pesi, inaugurando il paradigma few-shot."
+abstract: "GPT-3 applica le scaling laws su vasta scala: il modello apprende nuovi compiti dal prompt, senza aggiornare i pesi, inaugurando il paradigma few-shot."
+kind: "paper"
+paperYear: 2020
+sourceId: "01KZ3N0A0ZKQMXHH7BW005K7G0"
+pdf: "/journey/papers/language-models-are-few-shot-learners-gpt-3.pdf"
+annotations: "/journey/data/language-models-are-few-shot-learners-gpt-3.json"
+sourceUrl: "https://arxiv.org/pdf/2005.14165"
+language: "it"
+date: "2026-08-03"
+order: 6
+authors: []
+---
+## Perché è importante
+
+GPT-3 applica le scaling laws su vasta scala: il modello apprende nuovi compiti dal prompt, senza aggiornare i pesi, inaugurando il paradigma few-shot.
+
+## Appunti di lettura
+
+Le note seguenti sono importate da Research e restano collegate alle coordinate del PDF nel file delle annotazioni.
+
+### Nota · pagina 1
+
+> Here we show that scaling up language models greatly improves task-agnostic, few-shot performance, sometimes even reaching competitiveness with prior state-of-the-art fine- tuning approaches. Specifically, we train GPT-3, an autoregressive language model with 175 billion parameters, 10x more than any previous non-sparse language model, and test its performance in the few-shot setting
+
+Pensiero chiaramente derivante dall’ultimo paper dove sono arrivati alla conclusione che investire in più parametri avrebbe migliorato il modello.
+
+### Nota · pagina 1
+
+> GPT-3 is applied without any gradient updates or fine-tuning, with tasks and few-shot demonstrations specified purely via text interaction with the model. GPT-3 achieves strong performance on many NLP datasets, including translation, question-answering, and cloze tasks, as well as several tasks that require on-the-fly reasoning or domain adaptation, such as unscrambling words, using a novel word in a sentence, or performing 3-digit arithmetic.
+
+Il modello inizia ad essere superiore ai precedenti modelli adattati alle singole task senza mai aver però avuto lo stesso fine-tuning di quest’ultimi sulla specifica task.
+
+Dimostrando che la conoscenza generale che possiamo estrapolare dalla fase di training distribuita su più parametri concede al modello la capacità di generalizzare e quindi di sfruttrare le conoscenze intrinseche per affrontare le “task” senza necessari “accrocchi”
+
+### Nota · pagina 1
+
+> Finally, we find that GPT-3 can generate samples of news articles which human evaluators have difficulty distinguishing from articles written by humans.
+
+Il modello nasce già con capacità che dato l’approccio di OpenAI ai tempi ovvero completamente predisposta alla generazione di modelli che fossero “sicuri” risultano da attenzionare per via dei possibili utilizzi che potrebbero essere fatti di quest’ultimo
+
+### Nota · pagina 3
+
+> First, from a practical perspective, the need for a large dataset of labeled examples for every new task limits the applicability of language models.
+
+Seguire questa direzione sarebbe voluto dire correre verso N narrowed AI che avrebbero richiesto un infinito lavoro nella generazione di infiniti dataset per ogni singola task che volevamo affrontare in maniera AI-Driven
+
+### Nota · pagina 3
+
+> Second, the potential to exploit spurious correlations in training data fundamentally grows with the expressiveness of the model and the narrowness of the training distribution. This can create problems for the pre-training plus fine-tuning paradigm, where models are designed to be large to absorb information during pre-training, but are then fine-tuned on very narrow task distributions. For instance [ HLW+20 ] observe that larger models do not necessarily generalize better out-of-distribution.
+
+Aumentare la capacità del modello aumenta la capacità di apprendere pattern, ma non garantisce che siano i pattern che generalizzano. Se il fine-tuning avviene su una distribuzione stretta, un modello molto espressivo può sfruttare correlazioni accidentali del dataset e ottenere ottime metriche in-distribution senza diventare altrettanto robusto fuori distribuzione.
+
+### Nota · pagina 3
+
+> Third, humans do not require large supervised datasets to learn most language task
+
+Noi non abbiamo bisogno di essere “seguiti” su tante delle task che siamo però capaci di affrontare con il passare degli anni di istruzione.
+
+### Nota · pagina 4
+
+> Image annotation
+
+cioè le curve dei modelli grandi migliorano più rapidamente all'aumentare dell'informazione fornita nel contesto.
+
+### Nota · pagina 4
+
+> or large models demonstrate improved ability to learn a task from contextual information.
+
+è un risultato molto importante di GPT-3: scalando il modello non migliora soltanto ciò che è memorizzato nei parametri; migliora anche la capacità di dedurre al volo una task dagli esempi presenti nel prompt.
+
+### Nota · pagina 4
+
+> we would someday like our NLP systems to have this same fluidity and generality.
+
+La via del Few-Shot è mirata verso la capacità di rendere il modello capace di “risolvere” N task nello stesso flusso operativo, in maniera molto simile a quello che facciamo noi quotidianamente.
+
+### Nota · pagina 1
+
+> few-shot demonstrations
+
+un modello sufficientemente grande può imparare a svolgere una nuova task vedendo soltanto pochi esempi nel contesto, senza fare fine-tuning e senza modificare i pesi. 
+
+Da questo: few-show learning
+
+### Nota · pagina 4
+
+> Since in-context learning involves absorbing many skills and tasks within the parameters of the model, it is plausible that in-context learning abilities might show similarly strong gains with scale.
+
+Se l'in-context learning richiede che il modello abbia assorbito moltissimi pattern e task nei propri parametri, forse aumentando enormemente la dimensione del modello migliorerà anche questa capacità.
+
+### Nota · pagina 4
+
+> meta-learning
+
+Durante il pre-training il modello non impara soltanto contenuti e singole task; sviluppa una capacità generale di utilizzare il contesto per riconoscere/adattarsi rapidamente alla task richiesta durante l'inference.
+
+### Nota · pagina 5
+
+> We emphasize that these “learning” curves involve no gradient updates or fine-tuning, just increasing numbers of demonstrations given as conditioning
+
+Già GPT-3 evidenzia un principio oggi centrale nel prompting: a parità di parametri, la qualità della risposta dipende anche dalla qualità con cui la task viene rappresentata nel contesto. 
+
+Una task ben esplicitata e accompagnata da esempi consente al modello di sfruttare meglio le capacità apprese durante il pre-training.
+
+### Nota · pagina 6
+
+> larger models are more proficient meta-learners
+
+Modelli più grandi sono più portarti ad imparare ad imparare
+
+### Nota · pagina 6
+
+> GPT-3 can be fine-tuned in principle and this is a promising direction for future work.
+
+Il loro focus attuale è quello di essere generali, e quindi non seguire la linea di quel tempo che puntava sul fine tuning ma questo non vieta a modelli come gpt-3 che acquisiscono una grande capacità risolutiva senza fine-tuning di poterne usufruire e migliorare ancora di più.
+
+### Nota · pagina 6
+
+> We typically set K in the range of 10 to 100 as this is how many examples can fit in the model’s context window (nctx = 2048)
+
+per le task danno al modello nel contesto dai 10 ai 100 esempi risolutivi.
+
+### Nota · pagina 6
+
+> We typically set K in the range of 10 to 100 as this is how many examples can fit in the model’s context window (nctx = 2048)
+
+Dati i limiti di contesto del tempo che si atteneva sui 2048 token
+
+### Nota · pagina 8
+
+> Image annotation
+
+Da notare l’incredibile mole di dati con cui già GPT-3 era stato allenato… 45TB di puro testo
+
+### Nota · pagina 9
+
+> igure 2.2: Total compute used during training. Based on the analysis in Scaling Laws For Neural Language Models [KMH+20] we train much larger models on many fewer tokens than is typical. As a consequence, although GPT-3 3B is almost 10x larger than RoBERTa-Large (355M params), both models took roughly 50 petaflop/s-days of compute during pre-training. Methodology for these calculations can be found in Appendix
+
+Un modello 10× più grande non deve necessariamente richiedere 10× il compute complessivo se viene allenato per molti meno token.
+
+### Nota · pagina 9
+
+> igure 2.2: Total compute used during training. Based on the analysis in Scaling Laws For Neural Language Models [KMH+20] we train much larger models on many fewer tokens than is typical. As a consequence, although GPT-3 3B is almost 10x larger than RoBERTa-Large (355M params), both models took roughly 50 petaflop/s-days of compute during pre-training. Methodology for these calculations can be found in Appendix
+
+una conseguenza pratica delle Scaling Laws di Kaplan che abbiamo appena studiato.
+
+### Nota · pagina 9
+
+> Image annotation
+
+RoBERTa-Large: 355M parametri
+
+ha richiesto -> 50 PF-days
+
+### Nota · pagina 9
+
+> Image annotation
+
+GPT-3 3B: 3 miliardi di parametri → quasi 10× più grande
+
+Ha richiesto come RoBERTa-Large 50 PF-days
+
+### Nota · pagina 36
+
+> In our investigation of gender bias in GPT-3, we focused on associations between gender and occupation. We found that occupations in general have a higher probability of being followed by a male gender identifier than a female one (in other words, they are male leaning) when given a context such as "The {occupation} was a" (Neutral Variant). 83% of the 388 occupations we tested were more likely to be followed by a male identifier by GPT-3.
+
+Il modello tende più al Maschile
+
+## Fonte
+
+[Paper originale](https://arxiv.org/pdf/2005.14165)
