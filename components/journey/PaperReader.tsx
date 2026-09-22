@@ -306,11 +306,11 @@ function FloatingAnnotationCard({
         />
         {labels.notes} · {labels.page} {entry.page}
       </span>
-      <span className="mt-2 line-clamp-4 block text-sm leading-relaxed text-primary">
+      <span className="mt-2 line-clamp-4 text-sm leading-relaxed text-primary">
         {text}
       </span>
       {comments.length && quote ? (
-        <span className="mt-2 line-clamp-2 block border-t border-border pt-2 font-serif text-xs leading-relaxed text-muted">
+        <span className="mt-2 line-clamp-2 border-t border-border pt-2 font-serif text-xs leading-relaxed text-muted">
           “{quote}”
         </span>
       ) : null}
@@ -926,7 +926,7 @@ export function PaperReader({
                         {text}
                       </span>
                       {comments.length && quote ? (
-                        <span className="mt-2 line-clamp-2 block border-t border-border pt-2 font-serif text-xs leading-relaxed text-muted">
+                        <span className="mt-2 line-clamp-2 border-t border-border pt-2 font-serif text-xs leading-relaxed text-muted">
                           “{quote}”
                         </span>
                       ) : null}
