@@ -1,0 +1,170 @@
+---
+title: "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks — RAG"
+description: "RAG collega il modello parametrico a una memoria esterna: recupera documenti e genera risposte fondate, aggiornabili e più verificabili."
+abstract: "RAG collega il modello parametrico a una memoria esterna: recupera documenti e genera risposte fondate, aggiornabili e più verificabili."
+kind: "paper"
+paperYear: 2020
+sourceId: "01KZ3S6DZNECZMZ0QG9XVF3RF1"
+pdf: "/journey/papers/retrieval-augmented-generation-for-knowledge-intensive-nlp-tasks-rag.pdf"
+annotations: "/journey/data/retrieval-augmented-generation-for-knowledge-intensive-nlp-tasks-rag.json"
+sourceUrl: "https://arxiv.org/pdf/2005.11401"
+language: "en"
+date: "2026-08-03"
+order: 8
+authors: ["Naman Goyal","Vladimir Karpukhin","Douwe Kiela","Heinrich Küttler","Mike Lewis","Patrick Lewis","Ethan Perez","Fabio Petroni","Aleksandra Piktus","Sebastian Riedel","Tim Rocktäschel","Wen-tau Yih"]
+---
+## Why it matters
+
+RAG collega il modello parametrico a una memoria esterna: recupera documenti e genera risposte fondate, aggiornabili e più verificabili.
+
+## Reading notes
+
+The notes below are imported from Research. Their original Italian wording remains linked to PDF coordinates in the annotations payload.
+
+### Note · page 1
+
+> uch models do have down- sides: They cannot easily expand or revise their memory, can’t straightforwardly provide insight into their predictions
+
+i modelli sono limitati alla sola conoscenza intrinseca durante la fase di pre-training
+
+### Note · page 1
+
+> We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever.
+
+stanno introducendo proprio l'idea moderna di affiancare alla conoscenza contenuta nei pesi del modello una memoria esterna interrogabile
+
+### Note · page 2
+
+> parametric-memory
+
+La parametric memory è la conoscenza che il modello ha imparato durante il training e che è quindi implicitamente codificata nei suoi pesi
+
+### Note · page 2
+
+> non-parametric memory
+
+La non-parametric memory, invece, è un database esterno.
+
+### Note · page 2
+
+> non-parametric memory
+
+Nel loro esperimento è Wikipedia, trasformata in una grande collezione di passaggi indicizzati come vettori
+
+### Note · page 2
+
+> equence-to-sequence
+
+modelli Sequence-to-Sequence (Seq2Seq) sono un'architettura di apprendimento automatico progettata per convertire una sequenza di dati di input in una sequenza di output di lunghezza variabile
+
+### Note · page 2
+
+> Dense Passage Retriever
+
+Usano Dense Passage Retriever (DPR).
+
+La query:
+
+"Who discovered penicillin?"
+
+viene trasformata in un embedding:
+
+q(x)
+
+Anche i passaggi di Wikipedia hanno embedding:
+
+d(z_1),d(z_2),...,d(z_n)
+
+e fanno essentially una similarity search:
+
+q(x)^T d(z)
+
+ottenendo i top-K passaggi più rilevanti.
+
+### Note · page 2
+
+> provides latent documents conditioned on the input, and the seq2seq mode
+
+qual è la probabilità della risposta y, data la domanda x e il documento recuperato z?
+
+### Note · page 2
+
+> top-K approximation
+
+Il documento è una variabile latente: non dici esplicitamente al sistema "questo è il documento corretto". Il sistema considera diversi documenti recuperati e pesa quanto ciascuno spiega bene la risposta.
+
+### Note · page 2
+
+> both the generator and retriever are jointly learned
+
+Durante il fine-tuning il segnale della task influenza anche il retriever.
+
+Quindi se stiamo facendo Question Answering e DPR recupera documenti inutili:
+
+Loss_{generation
+
+produce un segnale che porta il sistema a migliorare:
+
+P(z|x)
+
+cioè quali documenti dovrebbe recuperare.
+
+### Note · page 2
+
+> Our RAG models achieve state-of-the-art results on open Natural Questions [ 29 ], WebQuestions [ 3] and CuratedTrec [ 2 ] and strongly outperform recent approaches that use specialised pre-training objectives on TriviaQA [ 24].
+
+Il modello come viene logico pensare si porta ad essere lo stato dell'arte rispetto tutti i benchmark che includono task strettamente correlate alle “informazioni”,
+
+ovvero tutte quelle task che richiedono conoscenza di avvenimenti storici e così via.
+
+### Note · page 3
+
+> RAG-Sequence, the model uses the same document to predict each target token.
+
+Assumono che un documento sia responsabile dell'intera risposta.
+
+### Note · page 3
+
+> RAG-Token, can predict each target token based on a different document
+
+Qui fanno una cosa ancora più interessante.
+
+Ogni token può essere supportato da documenti differenti:
+
+token 1 ← documento A
+token 2 ← documento A
+token 3 ← documento B
+token 4 ← documento C
+...
+
+### Note · page 3
+
+> n the RAG-Token model we can draw a different latent document for each target token and marginalize accordingly.
+
+nel RAG-Token originale NON rifanno una nuova ricerca con una query diversa a ogni token.
+
+La differenza di RAG-Token è come vengono combinati.
+
+Non scegliamo prima quale documento è quello giusto. Facciamo predire il prossimo token al modello usando ciascun documento, pesiamo ogni previsione in base a quanto il retriever ritiene rilevante quel documento e sommiamo tutto.
+
+### Note · page 5
+
+> We also note that some MSMARCO questions cannot be answered using Wikipedia alone. Here, RAG can rely on parametric knowledge to generate reasonable responses
+
+Se Wikipedia contiene informazioni utili → RAG le recupera.
+
+Se Wikipedia non le contiene → il generator può comunque sfruttare ciò che ha appreso durante il pre-training.
+
+Quindi questo esperimento serve a dimostrare che RAG non è semplicemente:
+
+“retrieval → copia la risposta”
+
+ma:
+
+“retrieval → usa le informazioni recuperate insieme alla conoscenza interna → genera liberamente una risposta.”
+
+Ed è proprio il significato di Retrieval-Augmented Generation: il retrieval aumenta il modello generativo, non lo sostituisce.
+
+## Fonte
+
+[Paper originale](https://arxiv.org/pdf/2005.11401)
