@@ -1,0 +1,80 @@
+---
+title: "The Pile: An 800GB Dataset of Diverse Text for Language Modeling"
+description: "Dopo aver visto l’effetto della scala, The Pile sposta l’attenzione sui dati: un corpus ampio e diversificato diventa infrastruttura per addestrare modelli aperti."
+abstract: "Dopo aver visto l’effetto della scala, The Pile sposta l’attenzione sui dati: un corpus ampio e diversificato diventa infrastruttura per addestrare modelli aperti."
+kind: "paper"
+paperYear: 2021
+sourceId: "01KZ3N2P9WGCP0ZPFR93TB9242"
+pdf: "/journey/papers/the-pile-an-800gb-dataset-of-diverse-text-for-language-modeling.pdf"
+annotations: "/journey/data/the-pile-an-800gb-dataset-of-diverse-text-for-language-modeling.json"
+sourceUrl: "https://arxiv.org/pdf/2101.00027"
+language: "it"
+date: "2026-10-16"
+order: 7
+authors: []
+---
+## Perché è importante
+
+Dopo aver visto l’effetto della scala, The Pile sposta l’attenzione sui dati: un corpus ampio e diversificato diventa infrastruttura per addestrare modelli aperti.
+
+## Appunti di lettura
+
+Le note seguenti sono importate da Research e restano collegate alle coordinate del PDF nel file delle annotazioni.
+
+### Nota · pagina 7
+
+> Ideally we would train a GPT-3 model from scratch on the Pile and compare the difference in loss per dataset with that of the original GPT-3. Because of resource constraints, we instead use a GPT-2 model trained from scratch on the Pile
+
+GPT-3 è stato il primo modello di OpenAI a non essere stato rilasciato interamente.
+
+### Nota · pagina 7
+
+> Since GPT2-Pile was trained on both OWT2 and the dataset we are evaluating, we expect the second term in ∆set to reflect the difference in the intrinsic difficulty of the two datasets. Thus the total value of ∆set reflects how much harder the dataset we are evaluating was for GPT-3 than OWT2, minus the relative difficulty of the two tasks. As GPT-3 was trained on data very similar to OWT2, this gives us a proxy for how much better GPT-3 would do if it were trained on the Pile.
+
+L’approccio seguito è quindi quello di una simil “proporzione” dove si lavora su GPT-2 con dati in linea con quelli usati da OpenAi per confrontarlo con GPT-2 allenato con “The-Pile” da questo si va a proiettare qundi il “progresso” verso un ipotetico “progresso” che GPT-3 potrebbe avere con lo stesso approccio.
+
+### Nota · pagina 6
+
+> Image annotation
+
+gli autori di The Pile lo preferiscono: vogliono utilizzare il dataset come benchmark comune per modelli con architetture e tokenizer differenti, senza introdurre un vantaggio artificiale dovuto al modo in cui ciascun modello suddivide il testo.
+
+### Nota · pagina 6
+
+> Image annotation
+
+il BPB è sostanzialmente la Negative Log-Likelihood normalizzata per byte ed espressa in bit.
+
+### Nota · pagina 6
+
+> Image annotation
+
+collegamento con le Scaling Laws:
+
+Aumentando il numero di parametri, generalmente la loss diminuiva.
+
+Poiché il BPB è una trasformazione della negative log-likelihood, anche il BPB tende a diminuire quando migliora la capacità predittiva del modello.
+
+### Nota · pagina 6
+
+> likelihood
+
+La Log-Likelihood è una misura di quanto un modello probabilistico considera probabili i dati che osserva.
+
+### Nota · pagina 6
+
+> likelihood
+
+Perché utilizziamo il logaritmo?
+
+Un Language Model non deve prevedere soltanto un token, ma un'intera sequenza e la  probabilità dell'intera sequenza si calcola utilizzando la regola della catena:
+
+\[ P_\theta(x_1,\ldots,x_T) = \prod_{t=1}^{T}P_\theta(x_t\mid x_{<t}) \]
+
+Ma con migliaia di token il prodotto diventa estremamente piccolo, avvicinandosi rapidamente a zero.
+
+Per questo utilizziamo il logaritmo naturale.
+
+## Fonte
+
+[Paper originale](https://arxiv.org/pdf/2101.00027)

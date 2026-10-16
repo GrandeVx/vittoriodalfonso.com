@@ -1,0 +1,358 @@
+{
+  "version": 1,
+  "source": "Research",
+  "sourceId": "01KZ3QSES750TCDWS52QNQETCB",
+  "title": "LoRA: Low-Rank Adaptation of Large Language Models",
+  "pdf": "/journey/papers/lora-low-rank-adaptation-of-large-language-models.pdf",
+  "annotationCount": 6,
+  "commentCount": 6,
+  "annotations": [
+    {
+      "id": "01M52S8E1BC2E2S5RAVV87PDXW",
+      "type": "text",
+      "color": "#f2c94c",
+      "content": {
+        "text": "which freezes the pre- trained model weights and injects trainable rank decomposition matrices into each layer of the Transformer architecture, greatly reducing the number of trainable pa- rameters for downstream tasks",
+        "image": null
+      },
+      "position": {
+        "page": 1,
+        "boundingRect": {
+          "page": 1,
+          "x": 0.23508968609865472,
+          "y": 0.40509058599167824,
+          "width": 0.5297566366837164,
+          "height": 0.056085298196948685
+        },
+        "rects": [
+          {
+            "page": 1,
+            "x": 0.6154454526345291,
+            "y": 0.40509058599167824,
+            "width": 0.14940087014784192,
+            "height": 0.014563106796116505
+          },
+          {
+            "page": 1,
+            "x": 0.23508968609865472,
+            "y": 0.4195886789181692,
+            "width": 0.5297284455577355,
+            "height": 0.013522884882108182
+          },
+          {
+            "page": 1,
+            "x": 0.23508968609865472,
+            "y": 0.4335016470180305,
+            "width": 0.5297223694121357,
+            "height": 0.013522884882108182
+          },
+          {
+            "page": 1,
+            "x": 0.23508968609865472,
+            "y": 0.44661277739251043,
+            "width": 0.20388878792390694,
+            "height": 0.014563106796116505
+          }
+        ]
+      },
+      "comments": [
+        {
+          "id": "01M52S8G92A3574DMCRD9GJ4QV",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>Anche se il modello ha miliardi di parametri, per adattarlo a una nuova task potrebbe essere sufficiente muoversi lungo poche direzioni significative nello spazio dei parametri.</p>",
+          "text": "Anche se il modello ha miliardi di parametri, per adattarlo a una nuova task potrebbe essere sufficiente muoversi lungo poche direzioni significative nello spazio dei parametri.",
+          "createdAt": "2026-10-16T16:38:26.338Z",
+          "updatedAt": "2026-10-16T16:38:26.338Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 1,
+      "createdAt": "2026-10-16T16:38:24.044Z",
+      "updatedAt": "2026-10-16T16:38:24.044Z"
+    },
+    {
+      "id": "01M52SJR70F4AJD0XC2GGSD9S4",
+      "type": "text",
+      "color": "#57c785",
+      "content": {
+        "text": "LoRA performs on-par or better than fine- tuning in model quality on RoBERTa, DeBERTa, GPT-2, and GPT-3, despite hav- ing fewer trainable parameters, a higher training throughput, and, unlike adapters, no additional inference latency.",
+        "image": null
+      },
+      "position": {
+        "page": 1,
+        "boundingRect": {
+          "page": 1,
+          "x": 0.23508968609865472,
+          "y": 0.47434119278779474,
+          "width": 0.5297271317965246,
+          "height": 0.056085298196948685
+        },
+        "rects": [
+          {
+            "page": 1,
+            "x": 0.4902743899768778,
+            "y": 0.47434119278779474,
+            "width": 0.27452748388452913,
+            "height": 0.014563106796116505
+          },
+          {
+            "page": 1,
+            "x": 0.23508968609865472,
+            "y": 0.4888392857142857,
+            "width": 0.5297211651310257,
+            "height": 0.013522884882108182
+          },
+          {
+            "page": 1,
+            "x": 0.23508968609865472,
+            "y": 0.5026547330097088,
+            "width": 0.5297271317965246,
+            "height": 0.013522884882108182
+          },
+          {
+            "page": 1,
+            "x": 0.23508968609865472,
+            "y": 0.5158633841886269,
+            "width": 0.21038068420683856,
+            "height": 0.014563106796116505
+          }
+        ]
+      },
+      "comments": [
+        {
+          "id": "01M52SJYDDXSQS1FWWMMDY1BC4",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>Con LoRA recuperiamo la filosofia del pre-training generale seguito da una specializzazione per task, già centrale in GPT-1 e BERT. La novità è che, invece di aggiornare tutti i pesi del modello, impariamo piccole modifiche a basso rango da applicare alle trasformazioni interne. In questo modo possiamo mantenere un backbone condiviso e sviluppare adattamenti specifici senza dover conservare o riaddestrare una copia completa del modello.</p>",
+          "text": "Con LoRA recuperiamo la filosofia del pre-training generale seguito da una specializzazione per task, già centrale in GPT-1 e BERT. La novità è che, invece di aggiornare tutti i pesi del modello, impariamo piccole modifiche a basso rango da applicare alle trasformazioni interne. In questo modo possiamo mantenere un backbone condiviso e sviluppare adattamenti specifici senza dover conservare o riaddestrare una copia completa del modello.",
+          "createdAt": "2026-10-16T16:44:08.493Z",
+          "updatedAt": "2026-10-16T16:44:08.493Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 1,
+      "createdAt": "2026-10-16T16:44:02.144Z",
+      "updatedAt": "2026-10-16T16:44:02.144Z"
+    },
+    {
+      "id": "01M52SQSMDKY0J065ERF1TF19A",
+      "type": "text",
+      "color": "#57c785",
+      "content": {
+        "text": "pre-trained model can be shared and used to build many small LoRA modules for dif- ferent tasks",
+        "image": null
+      },
+      "position": {
+        "page": 2,
+        "boundingRect": {
+          "page": 2,
+          "x": 0.23508968609865472,
+          "y": 0.31472130721220526,
+          "width": 0.5882311081137892,
+          "height": 0.02847607489597781
+        },
+        "rects": [
+          {
+            "page": 2,
+            "x": 0.23986159525644618,
+            "y": 0.31472130721220526,
+            "width": 0.5834591989559977,
+            "height": 0.014563106796116505
+          },
+          {
+            "page": 2,
+            "x": 0.23508968609865472,
+            "y": 0.32863427531206657,
+            "width": 0.07704054486056615,
+            "height": 0.014563106796116505
+          }
+        ]
+      },
+      "comments": [
+        {
+          "id": "01M52SS09MDEKYCQ83T50BKVHS",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>Un Grande lavoro di generalizzazione poi può essere seguito da tanti piccola LoRA per andare a specializzare i modelli in determinati ambienti o renderli <strong>personalizzabili.</strong></p>",
+          "text": "Un Grande lavoro di generalizzazione poi può essere seguito da tanti piccola LoRA per andare a specializzare i modelli in determinati ambienti o renderli personalizzabili.",
+          "createdAt": "2026-10-16T16:47:27.029Z",
+          "updatedAt": "2026-10-16T16:47:54.045Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 1,
+      "createdAt": "2026-10-16T16:46:47.437Z",
+      "updatedAt": "2026-10-16T16:46:47.437Z"
+    },
+    {
+      "id": "01M52ST2HMF18WMYHDJF8RWHCP",
+      "type": "text",
+      "color": "#57c785",
+      "content": {
+        "text": "LoRA makes training more efficient and lowers the hardware barrier to entry by up to 3 times when using adaptive optimizers since we do not need to calculate the gradients or maintain the optimizer states for most parameters",
+        "image": null
+      },
+      "position": {
+        "page": 2,
+        "boundingRect": {
+          "page": 2,
+          "x": 0.23059238040393779,
+          "y": 0.3789658460471567,
+          "width": 0.5928124397859446,
+          "height": 0.04229152219140083
+        },
+        "rects": [
+          {
+            "page": 2,
+            "x": 0.23059238040393779,
+            "y": 0.3789658460471567,
+            "width": 0.5927349005044843,
+            "height": 0.014563106796116505
+          },
+          {
+            "page": 2,
+            "x": 0.23508968609865472,
+            "y": 0.3934747746185853,
+            "width": 0.5883151340912276,
+            "height": 0.013522884882108182
+          },
+          {
+            "page": 2,
+            "x": 0.23508968609865472,
+            "y": 0.40669426144244103,
+            "width": 0.32826042688480944,
+            "height": 0.014563106796116505
+          }
+        ]
+      },
+      "comments": [
+        {
+          "id": "01M52STV0AP6TMR03YG7K46R58",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>Con il full fine-tuning dobbiamo mantenere per tutti i parametri allenabili:</p><ul><li><p>pesi;</p></li><li><p>gradienti;</p></li><li><p>stati dell'ottimizzatore;</p></li><li><p>eventuali copie dei pesi a precisione maggiore.</p></li></ul><p>Con LoRA, invece, i pesi originali rimangono congelati.</p><p>Quindi gradienti e stati di Adam vengono mantenuti soltanto per le matrici A e B.</p>",
+          "text": "Con il full fine-tuning dobbiamo mantenere per tutti i parametri allenabili:\n\npesi;\n\ngradienti;\n\nstati dell'ottimizzatore;\n\neventuali copie dei pesi a precisione maggiore.\n\nCon LoRA, invece, i pesi originali rimangono congelati.\n\nQuindi gradienti e stati di Adam vengono mantenuti soltanto per le matrici A e B.",
+          "createdAt": "2026-10-16T16:48:27.146Z",
+          "updatedAt": "2026-10-16T16:48:27.146Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 1,
+      "createdAt": "2026-10-16T16:48:02.100Z",
+      "updatedAt": "2026-10-16T16:48:02.100Z"
+    },
+    {
+      "id": "01M52V0HYFVH0G4XWM4KCZX3W7",
+      "type": "area",
+      "color": "#57c785",
+      "content": {
+        "text": null,
+        "image": "data:image/png;base64,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"
+      },
+      "position": {
+        "page": 10,
+        "boundingRect": {
+          "page": 10,
+          "x": 0.678065442825112,
+          "y": 0.33042757454923716,
+          "width": 0.14484655269058297,
+          "height": 0.06484320821775312
+        },
+        "rects": []
+      },
+      "comments": [
+        {
+          "id": "01M52V0MJVRB8DMZZQN9CAEY1H",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>A parità di parametri allenabili, può essere più efficace applicare LoRA a più matrici del Transformer con rank basso, piuttosto che concentrarsi su una sola matrice con rank elevato.</p>",
+          "text": "A parità di parametri allenabili, può essere più efficace applicare LoRA a più matrici del Transformer con rank basso, piuttosto che concentrarsi su una sola matrice con rank elevato.",
+          "createdAt": "2026-10-16T17:09:05.755Z",
+          "updatedAt": "2026-10-16T17:09:05.755Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 1,
+      "createdAt": "2026-10-16T17:09:03.055Z",
+      "updatedAt": "2026-10-16T17:09:03.055Z"
+    },
+    {
+      "id": "01M52V42TNBGFYQSGKJC0HV18E",
+      "type": "text",
+      "color": "#f2c94c",
+      "content": {
+        "text": "Table 6 shows that, surprisingly, LoRA already performs competitively with a very small r (more so for {Wq , Wv } than just Wq ). This suggests the update matrix ∆W could have a very small “intrinsic rank”.6",
+        "image": null
+      },
+      "position": {
+        "page": 10,
+        "boundingRect": {
+          "page": 10,
+          "x": 0.1764994394618834,
+          "y": 0.8056627080443828,
+          "width": 0.6470657143357623,
+          "height": 0.04319088072122053
+        },
+        "rects": [
+          {
+            "page": 10,
+            "x": 0.1764994394618834,
+            "y": 0.8056627080443828,
+            "width": 0.6470657143357623,
+            "height": 0.014563106796116505
+          },
+          {
+            "page": 10,
+            "x": 0.1764994394618834,
+            "y": 0.8209626386962552,
+            "width": 0.6469834947799888,
+            "height": 0.012482662968099861
+          },
+          {
+            "page": 10,
+            "x": 0.24559977578475337,
+            "y": 0.8258711858529819,
+            "width": 0.0063340807174887895,
+            "height": 0.008321775312066574
+          },
+          {
+            "page": 10,
+            "x": 0.1764994394618834,
+            "y": 0.8342363037447988,
+            "width": 0.11153294858376542,
+            "height": 0.012482662968099861
+          },
+          {
+            "page": 10,
+            "x": 0.1764994394618834,
+            "y": 0.8363709257975035,
+            "width": 0.10522094179161995,
+            "height": 0.012482662968099861
+          }
+        ]
+      },
+      "comments": [
+        {
+          "id": "01M52V447NGN64Z02TWG4E4F26",
+          "parentId": null,
+          "isAi": false,
+          "prompt": null,
+          "html": "<p>Anche se una matrice del Transformer contiene milioni di parametri, la modifica necessaria per adattarla a una task potrebbe essere rappresentabile attraverso poche direzioni indipendenti.</p>",
+          "text": "Anche se una matrice del Transformer contiene milioni di parametri, la modifica necessaria per adattarla a una task potrebbe essere rappresentabile attraverso poche direzioni indipendenti.",
+          "createdAt": "2026-10-16T17:11:00.085Z",
+          "updatedAt": "2026-10-16T17:11:00.085Z",
+          "replies": []
+        }
+      ],
+      "commentCount": 1,
+      "createdAt": "2026-10-16T17:10:58.645Z",
+      "updatedAt": "2026-10-16T17:10:58.645Z"
+    }
+  ]
+}

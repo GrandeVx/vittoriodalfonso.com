@@ -22,6 +22,7 @@ import {
   X,
 } from "lucide-react";
 import { Document, Page, pdfjs } from "react-pdf";
+import MathText from "./MathText";
 
 // Served locally to avoid Next 14 transforming import.meta.url in the client bundle.
 pdfjs.GlobalWorkerOptions.workerSrc = "/assets/journey/pdf.worker.min.mjs";
@@ -310,11 +311,11 @@ function FloatingAnnotationCard({
         {labels.notes} · {labels.page} {entry.page}
       </span>
       <span className="mt-2 block text-sm leading-relaxed text-primary">
-        {text}
+        <MathText text={text} />
       </span>
       {comments.length && quote ? (
         <span className="mt-2 line-clamp-2 border-t border-border pt-2 font-serif text-xs leading-relaxed text-muted">
-          “{quote}”
+          “<MathText text={quote} />”
         </span>
       ) : null}
     </button>
@@ -976,11 +977,11 @@ export function PaperReader({
                         {labels.page} {entry.page}
                       </span>
                       <span className="mt-2 block text-[13px] leading-normal text-primary">
-                        {text}
+                        <MathText text={text} />
                       </span>
                       {comments.length && quote ? (
                         <span className="mt-2 line-clamp-2 border-t border-border pt-2 font-serif text-xs leading-relaxed text-muted">
-                          “{quote}”
+                          “<MathText text={quote} />”
                         </span>
                       ) : null}
                     </button>
