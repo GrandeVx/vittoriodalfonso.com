@@ -1,0 +1,74 @@
+---
+title: "LoRA: Low-Rank Adaptation of Large Language Models"
+description: "LoRA affronta il costo del fine-tuning: congela il modello e apprende piccoli aggiornamenti a basso rango, rendendo pratico specializzare grandi LLM."
+abstract: "LoRA affronta il costo del fine-tuning: congela il modello e apprende piccoli aggiornamenti a basso rango, rendendo pratico specializzare grandi LLM."
+kind: "paper"
+paperYear: 2021
+sourceId: "01KZ3QSES750TCDWS52QNQETCB"
+pdf: "/journey/papers/lora-low-rank-adaptation-of-large-language-models.pdf"
+annotations: "/journey/data/lora-low-rank-adaptation-of-large-language-models.json"
+sourceUrl: "https://arxiv.org/pdf/2106.09685"
+language: "en"
+date: "2026-10-16"
+order: 8
+authors: ["Zeyuan Allen-Zhu","Weizhu Chen","Edward J. Hu","Yuanzhi Li","Yelong Shen","Phillip Wallis","Lu Wang","Shean Wang"]
+---
+## Why it matters
+
+LoRA affronta il costo del fine-tuning: congela il modello e apprende piccoli aggiornamenti a basso rango, rendendo pratico specializzare grandi LLM.
+
+## Reading notes
+
+The notes below are imported from Research. Their original Italian wording remains linked to PDF coordinates in the annotations payload.
+
+### Note · page 1
+
+> which freezes the pre- trained model weights and injects trainable rank decomposition matrices into each layer of the Transformer architecture, greatly reducing the number of trainable pa- rameters for downstream tasks
+
+Anche se il modello ha miliardi di parametri, per adattarlo a una nuova task potrebbe essere sufficiente muoversi lungo poche direzioni significative nello spazio dei parametri.
+
+### Note · page 1
+
+> LoRA performs on-par or better than fine- tuning in model quality on RoBERTa, DeBERTa, GPT-2, and GPT-3, despite hav- ing fewer trainable parameters, a higher training throughput, and, unlike adapters, no additional inference latency.
+
+Con LoRA recuperiamo la filosofia del pre-training generale seguito da una specializzazione per task, già centrale in GPT-1 e BERT. La novità è che, invece di aggiornare tutti i pesi del modello, impariamo piccole modifiche a basso rango da applicare alle trasformazioni interne. In questo modo possiamo mantenere un backbone condiviso e sviluppare adattamenti specifici senza dover conservare o riaddestrare una copia completa del modello.
+
+### Note · page 2
+
+> pre-trained model can be shared and used to build many small LoRA modules for dif- ferent tasks
+
+Un Grande lavoro di generalizzazione poi può essere seguito da tanti piccola LoRA per andare a specializzare i modelli in determinati ambienti o renderli personalizzabili.
+
+### Note · page 2
+
+> LoRA makes training more efficient and lowers the hardware barrier to entry by up to 3 times when using adaptive optimizers since we do not need to calculate the gradients or maintain the optimizer states for most parameters
+
+Con il full fine-tuning dobbiamo mantenere per tutti i parametri allenabili:
+
+pesi;
+
+gradienti;
+
+stati dell'ottimizzatore;
+
+eventuali copie dei pesi a precisione maggiore.
+
+Con LoRA, invece, i pesi originali rimangono congelati.
+
+Quindi gradienti e stati di Adam vengono mantenuti soltanto per le matrici A e B.
+
+### Note · page 10
+
+> Image annotation
+
+A parità di parametri allenabili, può essere più efficace applicare LoRA a più matrici del Transformer con rank basso, piuttosto che concentrarsi su una sola matrice con rank elevato.
+
+### Note · page 10
+
+> Table 6 shows that, surprisingly, LoRA already performs competitively with a very small r (more so for {Wq , Wv } than just Wq ). This suggests the update matrix ∆W could have a very small “intrinsic rank”.6
+
+Anche se una matrice del Transformer contiene milioni di parametri, la modifica necessaria per adattarla a una task potrebbe essere rappresentabile attraverso poche direzioni indipendenti.
+
+## Fonte
+
+[Paper originale](https://arxiv.org/pdf/2106.09685)

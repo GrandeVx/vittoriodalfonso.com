@@ -213,8 +213,8 @@ function markdownBody(item, annotations, comments, language, existingMemo = '') 
   return `${intro}\n\n${notesMarkdown}${source ? `\n\n## Fonte\n\n[Paper originale](${source})` : ''}\n`
 }
 
-function makeMdx(item, authors, slug, order, language, annotations, comments, existingMemo) {
-  const date = (item.date || item.created_at || '').slice(0, 10)
+function makeMdx(item, authors, slug, order, language, annotations, comments, existingPost) {
+  const date = existingPost.date || new Date().toISOString().slice(0, 10)
   const description = item.abstract?.trim() || 'Imported from Research.'
   const frontmatter = [
     '---',
@@ -234,7 +234,7 @@ function makeMdx(item, authors, slug, order, language, annotations, comments, ex
     '---',
     '',
   ].join('\n')
-  return frontmatter + markdownBody(item, annotations, comments, language, existingMemo)
+  return frontmatter + markdownBody(item, annotations, comments, language, existingPost.memo)
 }
 
 async function fileExists(path) {
@@ -246,17 +246,18 @@ async function fileExists(path) {
   }
 }
 
-async function readExistingMemo(filePath, language) {
-  if (!(await fileExists(filePath))) return ''
+async function readExistingPost(filePath, language) {
+  if (!(await fileExists(filePath))) return { memo: '', date: '' }
 
   const source = await readFile(filePath, 'utf8')
   const frontmatterEnd = source.indexOf('\n---\n', 4)
-  if (frontmatterEnd < 0) return ''
+  if (frontmatterEnd < 0) return { memo: '', date: '' }
 
   const body = source.slice(frontmatterEnd + 5).trim()
   const notesHeading = language === 'it' ? '## Appunti di lettura' : '## Reading notes'
   const notesIndex = body.indexOf(`\n${notesHeading}`)
-  return (notesIndex < 0 ? body : body.slice(0, notesIndex)).trim()
+  const date = source.slice(0, frontmatterEnd).match(/^date:\s*["']?(\d{4}-\d{2}-\d{2})/m)?.[1] || ''
+  return { memo: (notesIndex < 0 ? body : body.slice(0, notesIndex)).trim(), date }
 }
 
 async function main() {
@@ -328,9 +329,9 @@ async function main() {
       .filter((author) => author && author.toLowerCase() !== 'unknown')
     const italianMdxPath = join(projectRoot, 'markdown/journey/it', `${slug}.mdx`)
     const englishMdxPath = join(projectRoot, 'markdown/journey/en', `${slug}.mdx`)
-    const [italianMemo, englishMemo] = await Promise.all([
-      readExistingMemo(italianMdxPath, 'it'),
-      readExistingMemo(englishMdxPath, 'en'),
+    const [italianPost, englishPost] = await Promise.all([
+      readExistingPost(italianMdxPath, 'it'),
+      readExistingPost(englishMdxPath, 'en'),
     ])
 
     const machineAnnotations = itemAnnotations.map((annotation) => {
@@ -368,8 +369,8 @@ async function main() {
     await Promise.all([
       copyFile(attachmentPath, join(projectRoot, 'public/journey/papers', `${slug}.pdf`)),
       writeFile(join(projectRoot, 'public/journey/data', `${slug}.json`), `${JSON.stringify(payload, null, 2)}\n`),
-      writeFile(italianMdxPath, makeMdx(item, authors, slug, index + 1, 'it', itemAnnotations, itemComments, italianMemo)),
-      writeFile(englishMdxPath, makeMdx(item, authors, slug, index + 1, 'en', itemAnnotations, itemComments, englishMemo)),
+      writeFile(italianMdxPath, makeMdx(item, authors, slug, index + 1, 'it', itemAnnotations, itemComments, italianPost)),
+      writeFile(englishMdxPath, makeMdx(item, authors, slug, index + 1, 'en', itemAnnotations, itemComments, englishPost)),
     ])
     console.log(`${String(index + 1).padStart(2, '0')} ${slug}: ${machineAnnotations.length} annotations, ${payload.commentCount} comments`)
   }
