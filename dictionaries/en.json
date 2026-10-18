@@ -7,8 +7,8 @@
       ", I concentrate the artistic precision of coding into projects for clients and",
       "autonomous pursuits",
       ". Each project is a canvas where creativity meets technology, producing unique and visionary solutions.",
-      "Discover me",
-      "or",
+      "Read more about me in",
+      "or explore",
       "View my Work"
     ],
     "journey": {
@@ -18,7 +18,7 @@
       "startWith": "Start with"
     },
     "navigation": {
-      "sources": "sources",
+      "sources": "Site sections",
       "followUps": "Follow-ups",
       "questions": [
         "Which client work have I delivered?",
@@ -99,6 +99,10 @@
     "insight": "Insight",
     "paper": "Paper",
     "papers": "papers",
+    "note": "Note",
+    "experiment": "Experiment",
+    "article": "Article",
+    "openEntry": "Open entry",
     "openReader": "Open reader",
     "source": "Source",
     "annotations": "annotations",

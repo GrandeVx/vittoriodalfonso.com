@@ -29,6 +29,7 @@ export function proxy(request: NextRequest) {
     pathname.includes("/assets/") ||
     pathname.startsWith("/journey/papers/") ||
     pathname.startsWith("/journey/data/") ||
+    pathname.startsWith("/journey/previews/") ||
     pathname.includes("/_next/") ||
     pathname.includes("/favicon.ico") ||
     pathname.includes("sitemap.xml") ||

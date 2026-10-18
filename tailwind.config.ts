@@ -27,6 +27,7 @@ const config = {
         border: "hsl(var(--border))",
         selected: "var(--selected)",
         background: "var(--background)",
+        surface: "var(--surface)",
         foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "var(--primary)",

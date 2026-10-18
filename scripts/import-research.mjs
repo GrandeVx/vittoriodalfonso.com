@@ -307,6 +307,7 @@ async function main() {
 
   await Promise.all([
     mkdir(join(projectRoot, 'public/journey/papers'), { recursive: true }),
+    mkdir(join(projectRoot, 'public/journey/previews'), { recursive: true }),
     mkdir(join(projectRoot, 'public/journey/data'), { recursive: true }),
     mkdir(join(projectRoot, 'markdown/journey/it'), { recursive: true }),
     mkdir(join(projectRoot, 'markdown/journey/en'), { recursive: true }),
@@ -372,6 +373,23 @@ async function main() {
       writeFile(italianMdxPath, makeMdx(item, authors, slug, index + 1, 'it', itemAnnotations, itemComments, italianPost)),
       writeFile(englishMdxPath, makeMdx(item, authors, slug, index + 1, 'en', itemAnnotations, itemComments, englishPost)),
     ])
+    execFileSync(
+      'sips',
+      [
+        '-s',
+        'format',
+        'jpeg',
+        '-s',
+        'formatOptions',
+        '82',
+        '-Z',
+        '900',
+        attachmentPath,
+        '--out',
+        join(projectRoot, 'public/journey/previews', `${slug}.jpg`),
+      ],
+      { stdio: 'ignore' },
+    )
     console.log(`${String(index + 1).padStart(2, '0')} ${slug}: ${machineAnnotations.length} annotations, ${payload.commentCount} comments`)
   }
 }

@@ -27,7 +27,8 @@ It generates:
 
 - editable editorial content in `markdown/journey/{it,en}/*.mdx`;
 - normalized annotation geometry in `public/journey/data/*.json`;
-- the matching PDFs in `public/journey/papers/*.pdf`.
+- the matching PDFs in `public/journey/papers/*.pdf`;
+- first-page JPEG previews in `public/journey/previews/*.jpg` (rendered with macOS `sips`).
 
 The MDX files remain the human-readable editorial source. JSON is a derived
 payload used only to keep highlights and comments aligned with PDF pages.
