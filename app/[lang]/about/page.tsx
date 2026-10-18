@@ -2,10 +2,10 @@ import TopBar from "@/layouts/TopBar";
 import { Metadata } from "next";
 import main from "@/public/assets/about/main.webp";
 import main2 from "@/public/assets/about/main2.webp";
-import Image from "next/image";
 import Link from "next/link";
 import { getDictionary } from "@/get-dictionary";
 import { Locale } from "@/i18n-config";
+import PortraitReveal from "@/components/about/PortraitReveal";
 
 export const metadata: Metadata = {
   title: "About | Vittorio D'Alfonso",
@@ -46,16 +46,25 @@ export default async function About({
           {dictionary.about.intro[2]}
         </p>
 
-        <div className="mt-6 flex w-full flex-row gap-4 pr-2 md:flex-col lg:flex-row">
-          <Image
+        <div className="mt-6 flex w-full gap-4 pr-2">
+          <PortraitReveal
             src={main2}
-            alt="Vittorio D'Alfonso"
-            className="h-fit w-1/2 md:w-full lg:w-1/2"
+            priority
+            description={
+              lang === "it"
+                ? "Vittorio D'Alfonso all'aperto"
+                : "Vittorio D'Alfonso outdoors"
+            }
+            revealLabel={lang === "it" ? "Foto a colori" : "Color photo"}
           />
-          <Image
+          <PortraitReveal
             src={main}
-            alt="Vittorio D'Alfonso"
-            className="h-full w-1/2 object-fill md:size-full lg:w-1/2"
+            description={
+              lang === "it"
+                ? "Vittorio D'Alfonso davanti allo specchio"
+                : "Vittorio D'Alfonso in a mirror"
+            }
+            revealLabel={lang === "it" ? "Foto a colori" : "Color photo"}
           />
         </div>
 
