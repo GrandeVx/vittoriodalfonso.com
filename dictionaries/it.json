@@ -7,8 +7,8 @@
       ", concentro la precisione artistica della programmazione in progetti per clienti e",
       "progetti personali",
       ". Ogni progetto è una tela dove la creatività incontra la tecnologia, producendo soluzioni uniche e visionarie.",
-      "Scoprimi",
-      "o",
+      "Scopri di più su di me in",
+      "oppure guarda",
       "Visualizza i Miei Lavori"
     ],
     "journey": {
@@ -18,7 +18,7 @@
       "startWith": "Inizia da"
     },
     "navigation": {
-      "sources": "aree",
+      "sources": "Aree del sito",
       "followUps": "Follow-ups",
       "questions": [
         "Quali lavori ho realizzato per i clienti?",
@@ -99,6 +99,10 @@
     "insight": "Insight",
     "paper": "Paper",
     "papers": "paper",
+    "note": "Nota",
+    "experiment": "Esperimento",
+    "article": "Articolo",
+    "openEntry": "Apri la lettura",
     "openReader": "Apri il reader",
     "source": "Fonte",
     "annotations": "annotazioni",
