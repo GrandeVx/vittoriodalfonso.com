@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import type { Book } from "@/lib/books";
 import type { Locale } from "@/i18n-config";
 import SectionHeader from "@/components/SectionHeader";
@@ -115,8 +115,90 @@ export default function BooksIndex({
     entries.find((book) => book.readYear === years[0])?.photoPosition ??
       entries[0]?.photoPosition,
   );
+  const [expandedPosition, setExpandedPosition] = useState<number | undefined>(
+    activePosition,
+  );
+  const [hasInteracted, setHasInteracted] = useState(false);
+  const rowRefs = useRef(new Map<number, HTMLButtonElement>());
+  const pendingScroll = useRef<{
+    position: number;
+    top: number;
+    container: HTMLElement | null;
+  } | null>(null);
   const activeBook =
     entries.find((book) => book.photoPosition === activePosition) ?? entries[0];
+
+  useLayoutEffect(() => {
+    const pending = pendingScroll.current;
+    if (!pending || pending.position !== expandedPosition) return;
+    pendingScroll.current = null;
+
+    const row = rowRefs.current.get(pending.position);
+    if (!row) return;
+
+    // Removing an earlier book changes the row's document position. Keep the
+    // tapped row under the reader's finger before the browser paints.
+    const delta = row.getBoundingClientRect().top - pending.top;
+    if (pending.container) {
+      pending.container.scrollTop += delta;
+    } else {
+      document.scrollingElement!.scrollTop += delta;
+    }
+
+    const frame = requestAnimationFrame(() => {
+      const viewportHeight =
+        pending.container?.clientHeight ?? window.innerHeight;
+      const viewportTop = pending.container?.getBoundingClientRect().top ?? 0;
+      const comfortableTop = viewportTop + Math.min(80, viewportHeight * 0.1);
+      const distance = row.getBoundingClientRect().top - comfortableTop;
+      if (Math.abs(distance) < 8) return;
+
+      const behavior = window.matchMedia("(prefers-reduced-motion: reduce)")
+        .matches
+        ? "auto"
+        : "smooth";
+      if (pending.container) {
+        pending.container.scrollTo({
+          top: pending.container.scrollTop + distance,
+          behavior,
+        });
+      } else {
+        window.scrollTo({ top: window.scrollY + distance, behavior });
+      }
+    });
+
+    return () => cancelAnimationFrame(frame);
+  }, [expandedPosition]);
+
+  function selectBook(position: number, row: HTMLButtonElement) {
+    const inlineSpotlight = window.matchMedia("(max-width: 1279px)").matches;
+    setActivePosition(position);
+    if (!inlineSpotlight) return;
+
+    const nextPosition = expandedPosition === position ? undefined : position;
+    if (nextPosition !== undefined) {
+      let container: HTMLElement | null = row.parentElement;
+      while (container) {
+        const overflow = getComputedStyle(container).overflowY;
+        if (
+          /auto|scroll/.test(overflow) &&
+          container.scrollHeight > container.clientHeight + 1
+        ) {
+          break;
+        }
+        container = container.parentElement;
+      }
+      pendingScroll.current = {
+        position,
+        top: row.getBoundingClientRect().top,
+        container,
+      };
+    } else {
+      pendingScroll.current = null;
+    }
+    setHasInteracted(true);
+    setExpandedPosition(nextPosition);
+  }
 
   return (
     <>
@@ -153,15 +235,21 @@ export default function BooksIndex({
                   .map((book) => (
                     <div key={book.photoPosition}>
                       <button
+                        ref={(node) => {
+                          if (node) rowRefs.current.set(book.photoPosition, node);
+                          else rowRefs.current.delete(book.photoPosition);
+                        }}
                         type="button"
                         aria-pressed={
                           activeBook?.photoPosition === book.photoPosition
                         }
                         aria-expanded={
-                          activeBook?.photoPosition === book.photoPosition
+                          expandedPosition === book.photoPosition
                         }
                         aria-label={`${labels.selectBook}: ${book.title}`}
-                        onClick={() => setActivePosition(book.photoPosition)}
+                        onClick={(event) =>
+                          selectBook(book.photoPosition, event.currentTarget)
+                        }
                         className="books-row group flex w-full items-center gap-5 px-3 py-4 text-left outline-none hover:bg-surface focus-visible:bg-surface focus-visible:outline-2 focus-visible:outline-selected aria-pressed:bg-surface"
                       >
                         <span className="relative block h-[74px] w-[52px] shrink-0 overflow-hidden bg-[#30383a]">
@@ -195,13 +283,17 @@ export default function BooksIndex({
                         </span>
                         <ChevronDown
                           aria-hidden="true"
-                          className={`size-5 shrink-0 text-muted transition-transform duration-200 ${activeBook?.photoPosition === book.photoPosition ? "rotate-180" : ""}`}
+                          className={`size-5 shrink-0 text-muted transition-transform duration-200 ${expandedPosition === book.photoPosition ? "rotate-180" : ""}`}
                           strokeWidth={1.5}
                         />
                       </button>
-                      {activeBook?.photoPosition === book.photoPosition ? (
-                        <div className="mt-2 bg-surface xl:hidden">
-                          <BookSpotlight book={book} lang={lang} labels={labels} />
+                      {expandedPosition === book.photoPosition ? (
+                        <div
+                          className={`books-mobile-panel xl:hidden ${hasInteracted ? "books-mobile-panel-enter" : ""}`}
+                        >
+                          <div className="books-mobile-panel-inner mt-2 bg-surface">
+                            <BookSpotlight book={book} lang={lang} labels={labels} />
+                          </div>
                         </div>
                       ) : null}
                     </div>

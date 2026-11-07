@@ -159,6 +159,33 @@
   transition: background-color 180ms ease;
 }
 
+.books-mobile-panel {
+  display: grid;
+  grid-template-rows: 1fr;
+}
+
+.books-mobile-panel-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .books-mobile-panel-enter {
+    animation: books-panel-open 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
+@keyframes books-panel-open {
+  from {
+    grid-template-rows: 0fr;
+    opacity: 0;
+  }
+  to {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+}
+
 @keyframes book-arrive {
   from {
     opacity: 0;
