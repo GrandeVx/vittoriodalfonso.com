@@ -3,6 +3,7 @@ import { Locale } from "@/i18n-config";
 import TopBar from "@/layouts/TopBar";
 import { Metadata } from "next";
 import Link from "next/link";
+import SectionHeader from "@/components/SectionHeader";
 
 export const metadata: Metadata = {
   title: "Colophon | Vittorio D'Alfonso",
@@ -27,15 +28,12 @@ export default async function Colpohon({
   const { lang } = await params;
   const dictionary = await getDictionary(lang);
   return (
-    <main className="flex h-screen flex-col items-center gap-16 first-line:text-foreground md:gap-0 xl:flex-row">
-      <section className="w-[92%] md:h-[4%] md:w-[90%] lg:w-[95%] xl:h-full xl:w-[50%]">
+    <main className="relative flex min-h-dvh flex-col bg-background text-primary xl:grid xl:grid-cols-[42%_58%]">
+      <section className="h-16 shrink-0 px-4 xl:h-auto">
         <TopBar />
       </section>
-      <main className="flex h-full w-[92%] flex-col gap-3 pb-20 pt-6 selection:bg-orange-400/30 selection:text-selected md:w-[90%] md:pr-[15%] md:pt-8 lg:pl-[23%] lg:pr-[15%] xl:px-[12%]">
-        <p className="text-pretty font-sans text-sm">
-          Everything about this website.
-        </p>
-        <p className="text-sm text-muted">Last updated Aug 28, 2026</p>
+      <div className="min-w-0 px-4 pb-28 pt-5 md:px-8 md:pt-12 xl:pt-8">
+        <SectionHeader title={dictionary.colophon.title} intro={dictionary.colophon.intro} contact={dictionary.colophon.sub} />
 
         <section className="mt-10 flex flex-col gap-1 text-pretty md:mt-20">
           <p className="text-sm text-muted">Technical</p>
@@ -85,7 +83,7 @@ export default async function Colpohon({
           </p>
           <p className="text-sm">{dictionary.colophon.Inspiration[2]}</p>
         </section>
-      </main>
+      </div>
     </main>
   );
 }

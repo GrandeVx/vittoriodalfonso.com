@@ -6,6 +6,7 @@ import Link from "next/link";
 import { getDictionary } from "@/get-dictionary";
 import { Locale } from "@/i18n-config";
 import PortraitReveal from "@/components/about/PortraitReveal";
+import SectionHeader from "@/components/SectionHeader";
 
 export const metadata: Metadata = {
   title: "About | Vittorio D'Alfonso",
@@ -30,23 +31,13 @@ export default async function About({
   const { lang } = await params;
   const dictionary = await getDictionary(lang);
   return (
-    <main className="flex h-screen flex-col items-center gap-16 first-line:text-foreground md:gap-0 xl:flex-row">
-      <section className="w-[92%] md:h-[4%] md:w-[90%] lg:w-[95%] xl:h-full xl:w-[50%]">
+    <main className="relative flex min-h-dvh flex-col bg-background text-primary xl:grid xl:grid-cols-[42%_58%]">
+      <section className="h-16 shrink-0 px-4 xl:h-auto">
         <TopBar />
       </section>
-      <main className="flex h-full w-[92%] flex-col gap-3 pt-8 selection:bg-orange-400/30 selection:text-selected md:mt-8 md:w-[90%] md:pr-[15%] md:pt-8 lg:mt-0 lg:pl-[23%] lg:pr-[15%] xl:px-[12%]">
-        <p className="text-pretty text-start font-sans text-sm">
-          {dictionary.about.intro[0]}{" "}
-          <Link
-            className="underline"
-            href={"https://corsi.unisa.it/Informatica"}
-          >
-            {dictionary.about.intro[1]}
-          </Link>
-          {dictionary.about.intro[2]}
-        </p>
-
-        <div className="mt-6 flex w-full gap-4 pr-2">
+      <div className="min-w-0 px-4 pb-28 pt-5 md:px-8 md:pt-12 xl:pt-8">
+        <SectionHeader title={dictionary.about.title} intro={dictionary.about.headerIntro} contact={dictionary.about.headerContact} />
+        <div className="mt-14 flex w-full gap-4">
           <PortraitReveal
             src={main2}
             priority
@@ -68,25 +59,27 @@ export default async function About({
           />
         </div>
 
-        <p className="mt-6 text-pretty text-start font-sans text-sm">
+        <p className="mt-8 text-pretty text-base leading-[1.55]">
+          {dictionary.about.intro[0]}{" "}
+          <Link className="underline underline-offset-4" href="https://corsi.unisa.it/Informatica">
+            {dictionary.about.intro[1]}
+          </Link>
+          {dictionary.about.intro[2]}
+        </p>
+
+        <p className="mt-6 text-pretty text-base leading-[1.55]">
           {dictionary.about.digitalCreative}
         </p>
 
-        <p className="text-pretty text-start font-sans text-sm">
+        <p className="mt-6 text-pretty text-base leading-[1.55]">
           {dictionary.about.challenges}
         </p>
 
-        <p className="text-pretty text-start font-sans text-sm">
+        <p className="mt-6 text-pretty text-base leading-[1.55]">
           {dictionary.about.journey}
         </p>
 
         <div className="flex items-center gap-4 pb-16 pt-6">
-          <a
-            href="mailto:v.dalfonso@metrica.dev"
-            className="text-sm underline hover:text-black dark:hover:text-white"
-          >
-            {dictionary.about.contactMe}
-          </a>
           <a
             href="https://instagram.com/vittodalfo"
             target="_blank"
@@ -112,7 +105,7 @@ export default async function About({
             GitHub
           </a>
         </div>
-      </main>
+      </div>
     </main>
   );
 }

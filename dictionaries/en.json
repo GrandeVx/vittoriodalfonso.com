@@ -51,6 +51,9 @@
     }
   },
   "about": {
+    "title": "About",
+    "headerIntro": "I’m a self-taught creative developer exploring where design, code, and new ideas meet.",
+    "headerContact": "If you would like to discuss a project or collaborate, write to me at",
     "intro": [
       "I am a self-taught Creative Developer with a passion for exploring diverse scenarios within the IT industry. Currently pursuing my studies in IT at ",
       "UNISA",
@@ -69,6 +72,7 @@
     "projectsPlural": "projects",
     "projectSingular": "project",
     "journey": "The Journey",
+    "books": "Reading",
     "paper": "paper",
     "papers": "papers",
     "about": "About",
@@ -81,11 +85,13 @@
     "cv": "Curriculum Vitae"
   },
   "project": {
-    "main": "This section serves as a showcase for the projects I've crafted over the years, underscoring my dedication to hands-on learning and the development of practical, functional solutions that resonate in various domains of application.",
+    "title": "Projects",
+    "main": "Personal projects built to learn by doing and turn ideas into practical, working solutions.",
     "sub": "For any inquiries regarding these projects or if you are interested in potential collaboration, feel free to reach out to me at"
   },
   "work": {
-    "main": "In this section, you'll find a bunch of projects I've done for clients. They're the result of teamwork, turning ideas into real, impactful solutions. Check them out to see how I blend creativity and tech skills to bring visions to life.",
+    "title": "Work",
+    "main": "A selection of projects made with clients, where collaboration, creativity, and technical craft turn ideas into real work.",
     "sub": "For any inquiries regarding these projects or if you are interested in potential collaboration, feel free to reach out to me at",
     "agencyBadge": "Agency",
     "agencyTooltip": "Work done made for"
@@ -117,7 +123,23 @@
     "page": "Page",
     "loadError": "This PDF could not be loaded. Check that the exported paper is available."
   },
+  "books": {
+    "title": "Reading",
+    "intro": "A record of my reading, year by year. Covers and notes trace the ideas that stayed with me.",
+    "sub": "Read one of these books, or have one to recommend? Write to me at",
+    "yearPending": "Reading year to reconstruct",
+    "undatedHeading": "Year unknown",
+    "booksRead": "books",
+    "unfinished": "Unfinished",
+    "inProgress": "To finish",
+    "unread": "To start",
+    "source": "Cover source",
+    "selectBook": "Highlight"
+  },
   "colophon": {
+    "title": "Colophon",
+    "intro": "The technical choices, images, and people that helped shape this website.",
+    "sub": "For questions about the site or its design, write to me at",
     "techincal": [
       "Built with",
       "and",

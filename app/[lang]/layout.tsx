@@ -1,14 +1,20 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
 import { ThemeProvider } from "@/components/theme-provider";
 const inter = Inter({ subsets: ["latin"] });
+const instrumentSans = Instrument_Sans({
+  subsets: ["latin"],
+  variable: "--font-instrument-sans",
+  display: "swap",
+});
 
 import MobileMenu from "@/layouts/MobileMenu";
 import DesktopMenu from "@/layouts/DesktopMenu";
 import { getJourneys, getProjects, getWorks } from "@/lib/content";
+import { books } from "@/lib/books";
 import { getSiteUrl } from "@/lib/site-url";
 
 export const metadata: Metadata = {
@@ -68,6 +74,7 @@ export default async function RootLayout({
 }) {
   const { lang } = await params;
   const menuProps = {
+    bookCount: books.length,
     works: getWorks()
       .filter((work) => work.language === lang)
       .map(({ _id, title, date, url, redirect, comingSoon, comingSoonDark }) => ({
@@ -106,6 +113,7 @@ export default async function RootLayout({
       <body
         className={cn(
           inter.className,
+          instrumentSans.variable,
           "relative bg-background dark:antialiased",
         )}
       >
