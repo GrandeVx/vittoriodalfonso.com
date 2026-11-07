@@ -1,8 +1,18 @@
 import Link from "next/link";
 
-export default function TopBar() {
+export default function TopBar({
+  mobileStatic = false,
+}: {
+  mobileStatic?: boolean;
+}) {
   return (
-    <div className="fixed w-full md:w-[70%] xl:w-[30%]">
+    <div
+      className={
+        mobileStatic
+          ? "relative w-full md:fixed md:w-[70%] xl:w-[30%]"
+          : "fixed w-full md:w-[70%] xl:w-[30%]"
+      }
+    >
       <Link href={"/"}>
         <section className="flex size-full items-center pt-5 lg:pl-4 xl:items-start xl:pl-7">
           <p className="w-3/6 text-sm md:w-2/6 lg:w-3/12 xl:w-5/12 xl:gap-4">

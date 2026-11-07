@@ -22,7 +22,7 @@ export default async function BooksPage({
   return (
     <main className="relative flex min-h-dvh flex-col bg-background text-primary xl:grid xl:grid-cols-[42%_58%]">
       <section className="h-16 shrink-0 px-4 xl:h-auto">
-        <TopBar />
+        <TopBar mobileStatic />
       </section>
       <BooksIndex entries={books} lang={lang} labels={dictionary.books} />
     </main>
