@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import type { Locale } from "@/i18n-config";
 import type { JourneyKind } from "@/lib/journey";
+import SectionHeader from "@/components/SectionHeader";
 
 type JourneyIndexEntry = {
   url: string;
@@ -88,23 +89,7 @@ export default function JourneyIndex({
       ) : null}
 
       <div className="min-w-0 px-4 pb-28 pt-5 md:px-8 md:pt-12 xl:px-8 xl:pt-8">
-        <header className="max-w-[62ch]">
-          <h1 className="text-[clamp(2.8rem,4vw,4.5rem)] leading-[0.95] tracking-[-0.055em]">
-            {labels.title}
-          </h1>
-          <p className="mt-8 max-w-[43ch] text-pretty text-[17px] leading-normal">
-            {labels.intro}
-          </p>
-          <p className="mt-5 max-w-[56ch] text-pretty text-sm leading-[1.6] text-muted">
-            {labels.sub}{" "}
-            <a
-              href="mailto:v.dalfonso@metrica.dev"
-              className="decoration-primary/40 text-primary underline underline-offset-4 transition-[text-decoration-color] duration-200 hover:decoration-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-selected"
-            >
-              v.dalfonso@metrica.dev
-            </a>
-          </p>
-        </header>
+        <SectionHeader title={labels.title} intro={labels.intro} contact={labels.sub} />
 
         <section aria-label={labels.papers} className="mt-14 space-y-3">
           {entries.map((entry, index) => (

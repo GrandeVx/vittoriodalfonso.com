@@ -37,3 +37,13 @@ Journey entries share `title`, `description`, `date`, `language`, and `kind`.
 Use `kind: paper` for the PDF reader; `note`, `experiment`, and `article`
 render as regular MDX posts. Paper-only fields such as `pdf`, `annotations`,
 `paperYear`, and `sourceUrl` are optional for the other entry types.
+
+### Books
+
+The bilingual book index lives at `/{lang}/books`. Edit `lib/books.ts` to add
+books, assign `readYear`, and set `yearEstimated: true` when the year is an
+approximation. Amazon matches also record `purchaseYear`; this is used as the
+estimated reading year, never presented as a confirmed reading date. Optional
+`comment.it` and `comment.en` appear when a book is
+selected. Keep the cover source URL with each image. Position 18 in the first
+photo is reserved until the book can be identified.

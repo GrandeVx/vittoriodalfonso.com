@@ -129,7 +129,7 @@ export default async function JourneyPaperPage({ params }: Props) {
             <p className="text-[10px] uppercase tracking-[0.14em] text-muted">
               The Journey · {journey.kind}
             </p>
-            <h1 className="mt-5 text-balance text-4xl leading-tight tracking-[-0.04em]">
+            <h1 className="page-display-title mt-5 text-balance text-4xl leading-tight">
               {journey.title}
             </h1>
             <p className="mt-4 max-w-2xl text-pretty text-sm leading-6 text-muted">

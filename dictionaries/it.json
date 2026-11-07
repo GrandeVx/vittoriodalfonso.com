@@ -51,6 +51,9 @@
     }
   },
   "about": {
+    "title": "Chi sono",
+    "headerIntro": "Sono uno sviluppatore creativo autodidatta. Esploro il punto d’incontro tra design, codice e nuove idee.",
+    "headerContact": "Se vuoi confrontarti su un progetto o collaborare, scrivimi a",
     "intro": [
       "Sono uno Sviluppatore Creativo autodidatta con una passione per l'esplorazione di scenari diversi all'interno dell'industria IT. Attualmente sto proseguendo i miei studi in IT presso ",
       "UNISA",
@@ -69,6 +72,7 @@
     "projectsPlural": "progetti",
     "projectSingular": "progetto",
     "journey": "The Journey",
+    "books": "Letture",
     "paper": "paper",
     "papers": "paper",
     "about": "Chi sono",
@@ -81,11 +85,13 @@
     "cv": "Curriculum Vitae"
   },
   "project": {
-    "main": "Questa sezione funge da vetrina per i progetti che ho realizzato nel corso degli anni, sottolineando la mia dedizione all'apprendimento pratico e allo sviluppo di soluzioni pratiche e funzionali che trovano applicazione in vari domini.",
+    "title": "Progetti",
+    "main": "Progetti personali nati dalla voglia di imparare facendo e di trasformare idee in soluzioni concrete.",
     "sub": "Per qualsiasi domanda riguardante questi progetti o se sei interessato a una potenziale collaborazione, non esitare a contattarmi a"
   },
   "work": {
-    "main": "Questa sezione è una vetrina dei progetti sviluppati per i miei clienti, frutto di un lavoro di squadra che ha trasformato le idee in soluzioni concrete e significative. Esplora questa collezione per scoprire l'armonia tra creatività e abilità tecniche, che insieme danno vita alle visioni più ambiziose.",
+    "title": "Lavori",
+    "main": "Una selezione di progetti sviluppati con i miei clienti, dove collaborazione, creatività e tecnica danno forma a idee concrete.",
     "sub": "Per qualsiasi domanda riguardante questi progetti o se sei interessato a una potenziale collaborazione, non esitare a contattarmi a",
     "agencyBadge": "Agenzia",
     "agencyTooltip": "Lavoro realizzato per"
@@ -117,7 +123,23 @@
     "page": "Pagina",
     "loadError": "Non è stato possibile caricare il PDF. Verifica che il paper esportato sia disponibile."
   },
+  "books": {
+    "title": "Letture",
+    "intro": "Le mie letture, raccolte anno per anno. Copertine e appunti raccontano le idee che mi sono rimaste.",
+    "sub": "Hai letto uno di questi libri o vuoi consigliarmene uno? Scrivimi a",
+    "yearPending": "Anno di lettura da ricostruire",
+    "undatedHeading": "Senza anno",
+    "booksRead": "libri",
+    "unfinished": "Lettura interrotta",
+    "inProgress": "Da finire",
+    "unread": "Da iniziare",
+    "source": "Fonte della copertina",
+    "selectBook": "Metti in risalto"
+  },
   "colophon": {
+    "title": "Colophon",
+    "intro": "Le scelte tecniche, le immagini e le persone che hanno contribuito a dare forma a questo sito.",
+    "sub": "Per domande sul sito o sulle sue scelte di design, scrivimi a",
     "techincal": [
       "Costruito con",
       "e",

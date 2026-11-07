@@ -35,6 +35,7 @@ export type DesktopMenuProps = {
   works: MenuPortfolioItem[];
   projects: MenuPortfolioItem[];
   journeys: MenuJourneyItem[];
+  bookCount: number;
 };
 
 function accordionItemFor(position: string | undefined) {
@@ -56,6 +57,7 @@ export default function DesktopMenu({
   works: workItems,
   projects: projectItems,
   journeys: journeyItems,
+  bookCount,
 }: DesktopMenuProps) {
   const router = useRouter();
   const pathname = usePathname();
@@ -105,7 +107,7 @@ export default function DesktopMenu({
               onClick={() => router.push(`/${lang}/work`)}
               className="grid w-full cursor-pointer grid-cols-[minmax(0,1fr)_auto] gap-5 px-4 text-left hover:text-black dark:hover:text-white"
             >
-              <p className="">{dict.menu.work}</p>
+              <p>{dict.menu.work}</p>
               <p className="whitespace-nowrap text-right">
                 {works.length}{" "}
                 {works.length > 1 ? dict.menu.works : dict.menu.workSingular}
@@ -237,6 +239,16 @@ export default function DesktopMenu({
             })}
           </AccordionContent>
         </AccordionItem>
+
+        <Link
+          href={`/${lang}/books`}
+          className="grid w-full grid-cols-[minmax(0,1fr)_auto] gap-5 px-4 text-left hover:text-black focus-visible:outline-2 focus-visible:outline-selected dark:hover:text-white"
+        >
+          <span>{dict.menu.books}</span>
+          <span className="whitespace-nowrap text-right">
+            {bookCount} {dict.books.booksRead}
+          </span>
+        </Link>
 
         <AccordionItem value="item-4">
           <AccordionTrigger>

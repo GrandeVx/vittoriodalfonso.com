@@ -6,6 +6,7 @@ import SafeImage from "@/components/SafeImage";
 import { Metadata } from "next";
 import { Locale } from "@/i18n-config";
 import { getDictionary } from "@/get-dictionary";
+import SectionHeader from "@/components/SectionHeader";
 
 export const metadata: Metadata = {
   title: "Project | Vittorio D'Alfonso",
@@ -105,40 +106,18 @@ export default async function project({
   );
 
   return (
-    <main className="flex h-screen flex-col items-center gap-16 first-line:text-foreground md:gap-0 xl:flex-row">
-      <section className="w-[92%] md:h-[4%] md:w-[90%] lg:w-[95%] xl:h-full xl:w-1/2">
+    <main className="relative flex min-h-dvh flex-col bg-background text-primary xl:grid xl:grid-cols-[42%_58%]">
+      <section className="h-16 shrink-0 px-4 xl:h-auto">
         <TopBar />
       </section>
-      <main className="flex h-screen w-[92%] flex-col gap-3 pt-3 selection:bg-orange-400/30 selection:text-selected md:w-[90%] md:pr-[15%] md:pt-12 lg:pl-[23%] lg:pr-[15%] xl:px-[12%]">
-        <p className="text-pretty font-sans text-sm">
-          {dictionary.project.main}
-        </p>
-        <p className="text-pretty font-sans text-sm  text-black/40 dark:text-white/40">
-          {dictionary.project.sub}{" "}
-          <Link
-            href="mailto:v.dalfonso@metrica.dev"
-            className="cursor-pointer underline"
-          >
-            v.dalfonso@metrica.dev
-          </Link>
-        </p>
-
-        <section className="mt-8 flex flex-col gap-6 pb-16">
+      <div className="min-w-0 px-4 pb-28 pt-5 md:px-8 md:pt-12 xl:pt-8">
+        <SectionHeader title={dictionary.project.title} intro={dictionary.project.main} contact={dictionary.project.sub} />
+        <section className="mt-14 flex flex-col gap-6">
           {projects.map((project: Project, idx: number) => (
             <ProjectCard key={idx} {...project} />
           ))}
         </section>
-      </main>
+      </div>
     </main>
   );
-  {
-    /*
-        <div className="mx-auto max-w-xl py-8">
-      <h1 className="mb-8 text-center text-2xl font-black">Next.js + Contentlayer Example</h1>
-      {projects.map((project : any, idx : any) => (
-        <projectCard key={idx} {...project} />
-      ))}
-    </div>
-      */
-  }
 }

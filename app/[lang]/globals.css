@@ -44,6 +44,12 @@
 }
 
 @layer utilities {
+  .page-display-title {
+    font-family: var(--font-instrument-sans), Arial, sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.055em;
+  }
+
   /* Hide scrollbar for Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
     display: none;
@@ -101,6 +107,67 @@
   inset: auto 0.75rem 0.75rem;
   max-height: 78vh;
   animation: journey-panel-in 180ms cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+.books-volume-stage {
+  perspective: 900px;
+}
+
+.books-volume {
+  position: relative;
+  width: clamp(175px, 16vw, 205px);
+  aspect-ratio: 2 / 3;
+  transform-style: preserve-3d;
+  transform: rotateY(-13deg) rotateX(2deg);
+  animation: book-arrive 500ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.books-volume::before {
+  position: absolute;
+  top: 1.5%;
+  right: -13px;
+  width: 14px;
+  height: 97%;
+  background: #dedbd3;
+  content: "";
+  transform: rotateY(84deg);
+  transform-origin: left center;
+}
+
+.books-volume::after {
+  position: absolute;
+  inset: 0 auto 0 -10px;
+  width: 11px;
+  background: #1c2425;
+  content: "";
+  transform: rotateY(-80deg);
+  transform-origin: right center;
+}
+
+.books-volume-cover {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+}
+
+.books-volume-fallback {
+  background: #304043;
+  color: white;
+}
+
+.books-row {
+  transition: background-color 180ms ease;
+}
+
+@keyframes book-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(10px) rotateY(-25deg) rotateX(4deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateY(-13deg) rotateX(2deg);
+  }
 }
 
 @keyframes journey-panel-in {
@@ -177,6 +244,13 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .books-volume {
+    animation: none;
+  }
+
+  .books-row {
+    transition: none;
+  }
   .about-portrait-color {
     transition: none;
   }
