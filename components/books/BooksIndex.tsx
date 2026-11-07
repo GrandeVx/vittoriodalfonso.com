@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 import type { Book } from "@/lib/books";
 import type { Locale } from "@/i18n-config";
@@ -156,6 +157,9 @@ export default function BooksIndex({
                         aria-pressed={
                           activeBook?.photoPosition === book.photoPosition
                         }
+                        aria-expanded={
+                          activeBook?.photoPosition === book.photoPosition
+                        }
                         aria-label={`${labels.selectBook}: ${book.title}`}
                         onClick={() => setActivePosition(book.photoPosition)}
                         className="books-row group flex w-full items-center gap-5 px-3 py-4 text-left outline-none hover:bg-surface focus-visible:bg-surface focus-visible:outline-2 focus-visible:outline-selected aria-pressed:bg-surface"
@@ -189,9 +193,11 @@ export default function BooksIndex({
                             </span>
                           ) : null}
                         </span>
-                        <span aria-hidden="true" className="text-xl text-muted">
-                          ↗
-                        </span>
+                        <ChevronDown
+                          aria-hidden="true"
+                          className={`size-5 shrink-0 text-muted transition-transform duration-200 ${activeBook?.photoPosition === book.photoPosition ? "rotate-180" : ""}`}
+                          strokeWidth={1.5}
+                        />
                       </button>
                       {activeBook?.photoPosition === book.photoPosition ? (
                         <div className="mt-2 bg-surface xl:hidden">
