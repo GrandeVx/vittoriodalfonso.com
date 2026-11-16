@@ -76,6 +76,7 @@
     "paper": "paper",
     "papers": "papers",
     "about": "About",
+    "pickList": "Wishlist",
     "years": "years",
     "colophon": "Colophon",
     "topics": "topics",
@@ -135,6 +136,13 @@
     "unread": "To start",
     "source": "Cover source",
     "selectBook": "Highlight"
+  },
+  "pickList": {
+    "title": "Wishlist",
+    "intro": "Objects that catch my eye through a shape, a material or a detail. Collected here as I imagine the place they might one day have in my everyday life.",
+    "item": "object",
+    "items": "objects",
+    "source": "Photo and details"
   },
   "colophon": {
     "title": "Colophon",

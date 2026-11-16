@@ -15,6 +15,7 @@ import MobileMenu from "@/layouts/MobileMenu";
 import DesktopMenu from "@/layouts/DesktopMenu";
 import { getJourneys, getProjects, getWorks } from "@/lib/content";
 import { books } from "@/lib/books";
+import { pickList } from "@/lib/pick-list";
 import { getSiteUrl } from "@/lib/site-url";
 
 export const metadata: Metadata = {
@@ -75,6 +76,7 @@ export default async function RootLayout({
   const { lang } = await params;
   const menuProps = {
     bookCount: books.length,
+    pickListCount: pickList.length,
     works: getWorks()
       .filter((work) => work.language === lang)
       .map(({ _id, title, date, url, redirect, comingSoon, comingSoonDark }) => ({

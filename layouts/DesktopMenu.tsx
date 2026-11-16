@@ -36,6 +36,7 @@ export type DesktopMenuProps = {
   projects: MenuPortfolioItem[];
   journeys: MenuJourneyItem[];
   bookCount: number;
+  pickListCount: number;
 };
 
 function accordionItemFor(position: string | undefined) {
@@ -46,6 +47,7 @@ function accordionItemFor(position: string | undefined) {
       return "item-2";
     case "journey":
       return "item-3";
+    case "pick-list":
     case "about":
       return "item-4";
     default:
@@ -58,6 +60,7 @@ export default function DesktopMenu({
   projects: projectItems,
   journeys: journeyItems,
   bookCount,
+  pickListCount,
 }: DesktopMenuProps) {
   const router = useRouter();
   const pathname = usePathname();
@@ -265,6 +268,17 @@ export default function DesktopMenu({
             </div>
           </AccordionTrigger>
           <AccordionContent>
+            <Link
+              href={`/${lang}/pick-list`}
+              aria-current={position === "pick-list" ? "page" : undefined}
+              className="grid w-full grid-cols-[minmax(0,1fr)_auto] gap-5 pr-4 text-left hover:text-black focus-visible:outline-2 focus-visible:outline-selected dark:hover:text-white"
+            >
+              <span>{dict.menu.pickList}</span>
+              <span className="whitespace-nowrap text-right">
+                {pickListCount}{" "}
+                {pickListCount === 1 ? dict.pickList.item : dict.pickList.items}
+              </span>
+            </Link>
             <a
               key={1}
               href="/CV.pdf"
@@ -307,6 +321,7 @@ export default function DesktopMenu({
             </Link>
           </AccordionContent>
         </AccordionItem>
+
 
         <div className="my-4 w-full px-4">
           <Separator />
