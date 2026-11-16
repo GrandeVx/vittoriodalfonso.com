@@ -792,4 +792,30 @@ export const books: Book[] = [
     isbnCandidates: ["9788886314480"],
     cover: hoepliCover("9788886314480"),
   },
+  {
+    photoPosition: 58,
+    title: "Valeva la pena tentare",
+    author: "Pier Luigi Pisa",
+    readYear: 2026,
+    yearEstimated: false,
+    readStatus: "in-progress",
+    isbn: "9788850338993",
+    cover: {
+      url: "/assets/books/valeva-la-pena-tentare.jpeg",
+      sourceUrl: "https://www.apogeonline.com/libri/valeva-la-pena-tentare-pier-luigi-pisa/",
+    },
+  },
+  {
+    photoPosition: 59,
+    title: "Sell Like Crazy",
+    author: "Sabri Suby",
+    readYear: 2025,
+    yearEstimated: false,
+    readStatus: "in-progress",
+    isbn: "9780648459927",
+    cover: {
+      url: "https://covers.openlibrary.org/b/id/10352021-L.jpg",
+      sourceUrl: "https://openlibrary.org/books/OL28735830M/Sell_Like_Crazy",
+    },
+  },
 ];

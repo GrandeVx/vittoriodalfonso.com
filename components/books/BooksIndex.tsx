@@ -29,6 +29,7 @@ function readingStatusLabel(book: Book, labels: Labels) {
 
 function coverSourceName(book: Book) {
   const source = book.cover?.sourceUrl ?? "";
+  if (source.includes("apogeonline.com")) return "Apogeo";
   if (source.includes("mondolibro.de")) return "MondoLibro";
   if (source.includes("hoepli.it")) return "Hoepli";
   if (source.includes("feltrinellieditore.it")) return "Feltrinelli";
