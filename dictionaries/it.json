@@ -76,6 +76,7 @@
     "paper": "paper",
     "papers": "paper",
     "about": "Chi sono",
+    "pickList": "Desideri",
     "years": "anni",
     "colophon": "Colophon",
     "topics": "argomenti",
@@ -135,6 +136,13 @@
     "unread": "Da iniziare",
     "source": "Fonte della copertina",
     "selectBook": "Metti in risalto"
+  },
+  "pickList": {
+    "title": "Desideri",
+    "intro": "Oggetti che mi colpiscono per una forma, un materiale o un dettaglio. Li raccolgo qui, immaginando il posto che potrebbero avere, un giorno, nella mia quotidianità.",
+    "item": "oggetto",
+    "items": "oggetti",
+    "source": "Foto e dettagli"
   },
   "colophon": {
     "title": "Colophon",
