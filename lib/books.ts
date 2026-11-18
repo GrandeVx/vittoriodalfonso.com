@@ -818,4 +818,15 @@ export const books: Book[] = [
       sourceUrl: "https://openlibrary.org/books/OL28735830M/Sell_Like_Crazy",
     },
   },
+  {
+    photoPosition: 60,
+    title: "L’arte della guerra",
+    author: "Sun Tzu",
+    readYear: 2026,
+    yearEstimated: true,
+    purchaseYear: 2026,
+    readStatus: "in-progress",
+    isbn: "9788807900525",
+    cover: hoepliCover("9788807900525"),
+  },
 ];
