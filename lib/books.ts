@@ -822,6 +822,10 @@ export const books: Book[] = [
     photoPosition: 60,
     title: "L’arte della guerra",
     author: "Sun Tzu",
+    comment: {
+      it: "Pensavo di aver già letto questo libro, forse perché in passato avevo letto Il libro dei cinque anelli. Poi non l’ho trovato nella mia libreria e ho approfittato di una giornata di trasferta a Roma per leggerlo durante i viaggi.",
+      en: "I thought I had already read this book, perhaps because I had read The Book of Five Rings before. Then I couldn't find it on my shelves, so I used a work trip to Rome to read it while traveling.",
+    },
     readYear: 2026,
     yearEstimated: false,
     purchaseYear: 2026,
